@@ -6,6 +6,7 @@
     "@react-navigation/native-stack": "^6.9.12",
     "@types/react": "^18.0.28",
     "expo": "^48.0.4",
+    "firebase": "^9.17.1",
     "install": "^0.13.0",
     "react-dom": "^18.2.0",
     "react-native-paper": "^5.2.0",
