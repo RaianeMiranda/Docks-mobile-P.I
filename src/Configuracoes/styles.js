@@ -1,7 +1,11 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  container: {
-    color:"#FFF2D8"
+  containerConfig: {
+    backgroundColor:"#FFF2D8"
+  },
+  navConfig:{
+    
   }
+
 });
