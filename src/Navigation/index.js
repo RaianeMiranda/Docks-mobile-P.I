@@ -10,19 +10,7 @@ export const RootNavigation = () => {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen style={styles.navConfig}
-        options={{
-          alignContent: "center",
-          justifyContent: "center",
-          alignItems: "center",
-          title: "Configurações",
-          headerStyle: {
-            backgroundColor: "#D5ECB4",
-          },
-          headerTintColor: "black",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
+        options={{ headerShown: false }}
         name="Config"
         component={ConfigScreen}
        
