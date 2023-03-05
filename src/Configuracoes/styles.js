@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     backgroundColor:"#FFF2D8"
   },
   navConfig:{
-    
+    backgroundColor:'#d5ecb4'
   }
 
 });
