@@ -6,6 +6,19 @@ export const styles = StyleSheet.create({
   },
   navConfig:{
     backgroundColor:'#d5ecb4'
+  },
+  inputConfig:{
+    backgroundColor:'white',
+    width:'100px',
+    outlined:'gray'
+  },
+  buttonConfig1:{
+    backgroundcolor:'#d5ecb4'
+  },
+  buttonConfig2:{
+    backgroundColor:'red'
+  },
+  buttonConfig3:{
+    backgroundColor:'F1C4A5'
   }
-
 });
