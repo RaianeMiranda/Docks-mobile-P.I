@@ -1,54 +1,84 @@
-import * as React from 'react';
-import { Text, View } from "react-native";
+import * as React from "react";
+import { Text, View, StatusBar, SafeAreaView } from "react-native";
 import { styles } from "../Configuracoes/styles";
-import { Appbar, TextInput, Button } from 'react-native-paper';
+import { Appbar, TextInput, Button } from "react-native-paper";
 export const ConfigScreen = ({ navigation }) => {
-  const _goBack = () => console.log('Went back')
-  const _handleMore = () => console.log('Shown more');
+  const _goBack = () => console.log("Went back");
+  const _handleMore = () => console.log("Shown more");
   const [text, setNome] = React.useState("");
-  const [text, setEmail] = React.useState("");
-  const [text, setText] = React.useState("");
 
   return (
-
     <View style={styles.containerConfig}>
       <Appbar.Header style={styles.navConfig}>
         <Appbar.BackAction onPress={_goBack} />
-        <Appbar.Content titleStyle={{ textAlign: 'center' }} title="Configurações" />
+        <Appbar.Content
+          titleStyle={{ textAlign: "center", fontWeight: "bold" }}
+          title="Configurações"
+        />
         <Appbar.Action icon="menu" onPress={_handleMore} />
       </Appbar.Header>
-      <Text variant="headlineLarge">Configurações da Conta</Text>
-      <TextInput style={styles.inputConfig}
+      <Text style={styles.tituloConfig1}>Configurações da Conta</Text>
+      <TextInput
+        style={styles.inputConfigNome}
+        theme={{ colors: { primary: "#A9A9A9" } }}
         label="Nome"
         value={text}
-        onChangeText={text => setNome(text)}
+        onChangeText={(text) => setNome(text)}
       />
-      <TextInput style={styles.inputConfig}
-        label="Email"
+      <TextInput
+        style={styles.inputConfigEmail}
+        theme={{ colors: { primary: "#A9A9A9" } }}
+        label="Nome"
         value={text}
-        onChangeText={text => setEmail(text)}
+        onChangeText={(text) => setNome(text)}
       />
-      <TextInput style={styles.inputConfig}
-        label="Password"
-        secureTextEntry
-        right={<TextInput.Icon icon="eye" />}
+      <TextInput
+        style={styles.inputConfigSenha}
+        theme={{ colors: { primary: "#A9A9A9" } }}
+        label="Nome"
+        value={text}
+        onChangeText={(text) => setNome(text)}
       />
-      <Button style={styles.buttonConfig1} mode="outlined" onPress={() => console.log('Pressed')}>
-        Salvar alterações
-      </Button>
-      <Button style={styles.buttonConfig2} mode="outlined" onPress={() => console.log('Pressed')}>
-        Deletar conta
-      </Button>
-      <Text variant="headlineLarge">Termos e Licenças</Text>
-      <Button style={styles.buttonConfig3} mode="elevated" onPress={() => console.log('Pressed')}>
-        Termos e condições
-      </Button>
-      <Button style={styles.buttonConfig3} mode="elevated" onPress={() => console.log('Pressed')}>
-        Licenças
-      </Button> <Button style={styles.buttonConfig3} mode="elevated" onPress={() => console.log('Pressed')}>
-        Política de Privacidade
-      </Button>
-
+      <View style={{ flex: 1, flexDirection: "row" }}>
+        <Button
+          style={styles.buttonConfigSalvar}
+          mode="contained"
+          onPress={() => console.log("Pressed")}
+        >
+          Salvar alterações
+        </Button>
+        <Button
+          style={styles.buttonConfigDeletar}
+          mode="Contained"
+          onPress={() => console.log("Pressed")}
+        >
+          Deletar conta
+        </Button>
+      </View>
+      <Text style={styles.tituloConfig1}>Termos e Licenças</Text>
+      <View style={{ flex: 1, flexDirection: "colum" }}>
+        <Button
+          style={styles.buttonConfigTermos}
+          mode="Contained"
+          onPress={() => console.log("Pressed")}
+        >
+          Termos e condições
+        </Button>
+        <Button
+          style={styles.buttonConfigTermos}
+          mode="Contained"
+          onPress={() => console.log("Pressed")}
+        >
+          Licenças
+        </Button>
+        <Button
+          style={styles.buttonConfigTermos}
+          mode="Contained"
+          onPress={() => console.log("Pressed")}
+        >
+          Políticas de Privacidade
+        </Button>
+      </View>
     </View>
   );
 };
