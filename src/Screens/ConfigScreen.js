@@ -5,8 +5,8 @@ import { Appbar, TextInput, Button } from 'react-native-paper';
 export const ConfigScreen = ({ navigation }) => {
   const _goBack = () => console.log('Went back')
   const _handleMore = () => console.log('Shown more');
-  const [text, setText] = React.useState("");
-  const [text, setText] = React.useState("");
+  const [text, setNome] = React.useState("");
+  const [text, setEmail] = React.useState("");
   const [text, setText] = React.useState("");
 
   return (

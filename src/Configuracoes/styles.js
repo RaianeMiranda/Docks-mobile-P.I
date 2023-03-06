@@ -9,16 +9,20 @@ export const styles = StyleSheet.create({
   },
   inputConfig:{
     backgroundColor:'white',
-    width:'100px',
-    outlined:'gray'
+    width:'200px',
+    alignItens:'center'
+    
   },
   buttonConfig1:{
-    backgroundcolor:'#d5ecb4'
+    backgroundcolor:'#d5ecb4',
+    alignItens:'center'
   },
   buttonConfig2:{
-    backgroundColor:'red'
+    backgroundColor:'red',
+    alignItens:'center'
   },
   buttonConfig3:{
-    backgroundColor:'F1C4A5'
+    backgroundColor:'F1C4A5',
+    alignItens:'center'
   }
 });
