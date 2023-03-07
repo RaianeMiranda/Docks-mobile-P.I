@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
-import connection from '../config/connections';
+import connection from '../config/MySql';
 
 export default function Login({ navigation }) {
   const [idEmail, setIdEmail] = useState('');

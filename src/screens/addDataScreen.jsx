@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, Picker } from 'react-native';
-import connection from './db.js';
+import connection from '../config/MySql';
 
 export default function AddBook() {
   const [nomeLivro, setNomeLivro] = useState('');
@@ -50,4 +50,4 @@ export default function AddBook() {
       <Button nomeLivro="Add Book" onPress={addBook} />
     </View>
   );
-}
+};

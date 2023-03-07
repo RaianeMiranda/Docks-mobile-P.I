@@ -1,51 +1,24 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
-import connection from '../config/connections'
 
-export default function Register({ navigation }) {
-  const [username, setUsername] = useState('');
-  const [idEmail, setIdEmail] = useState('');
-  const [password, setPassword] = useState('');
+import crypto from 'crypto-browserify';
+import Stream from 'stream-browserify';
 
-  async function registerUser() {
-    const query = `INSERT INTO users (nome, idEmail, senha, administrador) VALUES (?, ?, ?)`;
-    const values = [nome, idEmail, senha, administrador];
-
-    const [rows, fields] = await connection.execute(query, values);
-    console.log(rows);
-  }
-
-  function handleRegister() {
-    registerUser()
-      .then(() => {
-        console.log('User registered successfully');
-        navigation.navigate('Login');
-      })
-      .catch((error) => {
-        console.error(`Error registering user: ${error}`);
-      });
-  }
-
-  return (
-    <View>
-      <Text>Register</Text>
-      <TextInput
-        placeholder="Enter username"
-        value={username}
-        onChangeText={(text) => setUsername(text)}
-      />
-      <TextInput
-        placeholder="Enter Email"
-        value={idEmail}
-        onChangeText={(text) => setIdEmail(text)}
-      />
-      <TextInput
-        placeholder="Enter password"
-        value={password}
-        secureTextEntry={true}
-        onChangeText={(text) => setPassword(text)}
-      />
-      <Button title="Register" onPress={handleRegister} />
-    </View>
+import React, { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
+import mysql from 'mysql';
+import { Appbar } from 'react-native-paper'; const connection = mysql.createConnection({
+  host: 'mysql54-farm2.uni5.net',
+  user: 'nw203',
+  password: 'your_password',
+  database: 'nw203',
+});
+const Register = () => {
+  const [users, setUsers] = useState([]); useEffect(() => {
+    connection.connect(); connection.query('SELECT name FROM user', function (error, results, fields) {
+      if (error) throw error;
+      setUsers(results);
+    }); connection.end();
+  }, []); return (<><Appbar.Header><Appbar.Content title="Users" /></Appbar.Header><View style={{ padding: 16 }}>
+    {users.map((user, index) => (<Text key={index}>{user.name}</Text>
+    ))}</View></>
   );
-}
+}; export default Register;

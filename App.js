@@ -1,13 +1,16 @@
+import Stream from 'stream-browserify';
+import crypto from 'crypto-browserify';
+
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-native-paper";
-import { RootNavigation } from "./src/navigation";
+import Register from "./src/screens/RegisterScreen";
 
 
 export default function App() {
   return (
     <Provider>
       <NavigationContainer>
-        <RootNavigation />
+        <Register />
       </NavigationContainer>
     </Provider>
   );
