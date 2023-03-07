@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, StatusBar, SafeAreaView } from "react-native";
+import { Text, View } from "react-native";
 import { styles } from "../Configuracoes/styles";
 import { Appbar, TextInput, Button } from "react-native-paper";
 export const ConfigScreen = ({ navigation }) => {
@@ -39,22 +39,21 @@ export const ConfigScreen = ({ navigation }) => {
         value={text}
         onChangeText={(text) => setNome(text)}
       />
-      <View style={{ flex: 1, flexDirection: "row" }}>
-        <Button
-          style={styles.buttonConfigSalvar}
-          mode="contained"
-          onPress={() => console.log("Pressed")}
-        >
-          Salvar alterações
-        </Button>
-        <Button
-          style={styles.buttonConfigDeletar}
-          mode="Contained"
-          onPress={() => console.log("Pressed")}
-        >
-          Deletar conta
-        </Button>
-      </View>
+      <Button
+        style={styles.buttonConfigSalvar}
+        mode="Contained"
+        onPress={() => console.log("Pressed")}
+      >
+        <text style={styles.textSalvar}>Salvar alterações</text>
+      </Button>
+      <Button
+        style={styles.buttonConfigDeletar}
+        mode="Contained"
+        onPress={() => console.log("Pressed")}
+      >
+        <text style={styles.textDeletar}>Deletar conta</text>
+      </Button>
+
       <Text style={styles.tituloConfig1}>Termos e Licenças</Text>
       <View style={{ flex: 1, flexDirection: "colum" }}>
         <Button
@@ -62,21 +61,23 @@ export const ConfigScreen = ({ navigation }) => {
           mode="Contained"
           onPress={() => console.log("Pressed")}
         >
-          Termos e condições
+          <text style={styles.textTermos}>Termos e condições</text>
+        </Button>
+        <Button icon="heart"
+          style={styles.buttonConfigTermos}
+          mode="Contained"
+          onPress={() => console.log("Pressed")}
+          
+        >
+          <text style={styles.textLicencas}>Licenças</text>  
+          
         </Button>
         <Button
           style={styles.buttonConfigTermos}
           mode="Contained"
           onPress={() => console.log("Pressed")}
         >
-          Licenças
-        </Button>
-        <Button
-          style={styles.buttonConfigTermos}
-          mode="Contained"
-          onPress={() => console.log("Pressed")}
-        >
-          Políticas de Privacidade
+          <text style={styles.textTermos}>Políticas de Privacidade</text>
         </Button>
       </View>
     </View>

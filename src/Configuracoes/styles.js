@@ -25,42 +25,56 @@ export const styles = StyleSheet.create({
     borderBottomStartRadius: "20px",
     borderBottomEndRadius: "20px",
     marginLeft: "15px",
-    
   },
 
   buttonConfigSalvar: {
-    backgroundcolor: "#D5ECB",
-    alignItens: "center",
-    marginTop: "30px",
-    width: "200px",
-    textColor: "black",
-    height: "50px",
+    marginLeft: "30px",
+    backgroundColor: "#D5ECB4",
+    width: "170px",
+    border: "3px solid #44712F",
   },
   buttonConfigDeletar: {
+    width: "170px",
     backgroundColor: "#E08181",
-    borderBottomColor: "#C63F3F",
-    alignItens: "center",
-    width: "200px",
-    marginTop: "30px",
-    textColor: "black",
-    height: "50px",
-    fontFamily: "sansSerif",
-    fontSize:'18px',
-    textColor:'black'
+    border: "3px solid #C63F3F",
   },
-
+  textDeletar: {
+    fontSize: "15px",
+    fontFamily: "sansSerif",
+    fontWeight: "bold",
+    color: "black",
+  },
+  textSalvar: {
+    fontSize: "15px",
+    fontFamily: "sansSerif",
+    fontWeight: "bold",
+    color: "black",
+  },
+  textTermos: {
+    fontSize: "15px",
+    fontFamily: "sansSerif",
+    color: "black",
+    marginRight: "220px",
+  },
+  textLicencas: {
+    fontSize: "15px",
+    fontFamily: "sansSerif",
+    color: "black",
+    marginRight: "220px",
+  },
   tituloConfig1: {
     fontFamily: "sansSerif",
     marginLeft: "40px",
     marginTop: "30px",
     marginBottom: "10px",
     fontWeight: "bold",
-    fontFamily: "sansSerif",
+    fontSize:'20px'
   },
   buttonConfigTermos: {
-    backgroundColor:'#F1C4A5',
-    marginBottom:'20px',
-    borderBottomWidth:'10pdx',
-    size:'small'
+    backgroundColor: "#F1C4A5",
+    marginLeft: "20px",
+    width: "240px",
+    marginTop: "15px",
+    borderRadius: "15px",
   },
 });
