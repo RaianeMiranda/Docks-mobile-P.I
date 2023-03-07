@@ -1,60 +1,53 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, Button, Picker } from 'react-native';
+import connection from './db.js';
 
-const addData = () => {
-  const [nome_livro, setnome_livro] = useState('');
+export default function AddBook() {
+  const [nomeLivro, setNomeLivro] = useState('');
   const [capaLivro, setcapaLivro] = useState('');
+  const [idEmail, setIdEmail] = useState('');
+  const [users, setUsers] = useState([]);
 
-  const handleSaveBook = () => {
-    // Get a reference to the books node in the Realtime Database
-    const booksRef = firebase.database().ref('livros');
+  useEffect(() => {
+    async function getUsers() {
+      const query = `SELECT idEmail FROM usuarios`;
+      const [rows, fields] = await connection.execute(query);
+      setUsers(rows);
+    }
 
-    // Generate a unique key for the new book
-    const newBookRef = booksRef.push();
+    getUsers();
+  }, []);
 
-    // Upload the image to Firebase Storage
-    const storageRef = firebase.storage().ref(`images/${newBookRef.key}`);
-    const uploadTask = storageRef.put(capaLivro);
+  async function addBook() {
+    const query = `INSERT INTO books (nomeLivro, capaLivro, idEmail) VALUES (?, ?, ?)`;
+    const values = [nomeLivro, capaLivro, idEmail];
 
-    // Wait for the image to upload and get the download URL
-    uploadTask.on('state_changed', null, null, () => {
-      uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-        // Save the book data to the Realtime Database
-        newBookRef.set({
-          cod_book: newBookRef.key,
-          name: nome_livro,
-          img_book: downloadURL,
-        });
-      });
-    });
-  };
-
-  const handleChooseImage = () => {
-    ImagePicker.launchImageLibrary(
-      { mediaType: 'photo', includeBase64: true },
-      (response) => {
-        if (response.assets) {
-          setBookImage('data:image/png;base64,' + response.assets[0].base64);
-        }
-      },
-    );
-  };
+    const [rows, fields] = await connection.execute(query, values);
+    console.log(rows);
+  }
 
   return (
     <View>
-      <Text>Book Name:</Text>
+      <Text>Add Book</Text>
       <TextInput
-        value={nome_livro}
-        onChangeText={(text) => setnome_livro(text)}
+        placeholder="Enter book nomeLivro"
+        value={nomeLivro}
+        onChangeText={(text) => setNomeLivro(text)}
       />
-      <Text>Book Image:</Text>
       <TextInput
+        placeholder="Enter capaLivro"
         value={capaLivro}
         onChangeText={(text) => setcapaLivro(text)}
       />
-      <Button title="Save Book" onPress={handleSaveBook} />
+      <Picker
+        selectedValue={idEmail}
+        onValueChange={(itemValue, itemIndex) => setIdEmail(itemValue)}
+      >
+        {users.map((user) => (
+          <Picker.Item key={user.id} label={user.idEmail} value={user.idEmail} />
+        ))}
+      </Picker>
+      <Button nomeLivro="Add Book" onPress={addBook} />
     </View>
   );
-};
-
-export default addData;
+}

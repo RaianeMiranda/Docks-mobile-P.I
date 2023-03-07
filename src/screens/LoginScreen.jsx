@@ -1,105 +1,45 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
-import { TouchableOpacity, Text, View, Image } from "react-native";
-import {
-  Button,
-  Dialog,
-  HelperText,
-  Paragraph,
-  Portal,
-  TextInput,
-} from "react-native-paper";
-import { auth } from "../config/firebase";
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button } from 'react-native';
+import connection from '../config/connections';
 
-export const LoginScreen = ({ route, navigation }) => {
-  const [email, setEmail] = useState({
-    value: "",
-    error: "",
-  });
-  const [password, setPassword] = useState({
-    value: "",
-    error: "",
-  });
-  const [mostraErro, setMostraErro] = useState("");
-  const { mensagem } = route.params || false;
+export default function Login({ navigation }) {
+  const [idEmail, setIdEmail] = useState('');
+  const [senha, setSenha] = useState('');
 
-  function onLoginPressed() {
-    console.log("LoginIniciado");
-    if (email.value === "" || password.value === "") {
-      setEmail({ ...email, error: "Entre com um e-mail válido" });
-      setPassword({ ...password, error: "Entre com uma senha" });
-      return;
+  async function loginUser() {
+    const query = `SELECT * FROM usuarios WHERE idEmail = ? AND senha = ?`;
+    const values = [idEmail, senha];
+
+    const [rows, fields] = await connection.execute(query, values);
+    if (rows.length > 0) {
+      console.log(`Welcome ${rows[0].idEmail}!`);
+      navigation.navigate('Home');
+    } else {
+      console.error('Invalid credentials');
     }
-    signInWithEmailAndPassword(auth, email.value, password.value)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        navigation.navigate("addData");
-      })
-      .catch((error) => {
-        lidarComErro(error.code);
-      });
   }
 
-  function lidarComErro(erro) {
-    if (erro == "auth/wrong-password") {
-      setMostraErro("Senha errada 😕");
-      return;
-    }
-    if (erro == "auth/user-not-found") {
-      setMostraErro("Usuário não encontrado 😕");
-      return;
-    }
-    if (erro == "auth/invalid-email") {
-      setMostraErro("E-mail inválido 😕");
-      return;
-    }
-    setMostraErro(erro);
+  function handleLogin() {
+    loginUser().catch((error) => {
+      console.error(`Error logging in: ${error}`);
+    });
   }
 
   return (
     <View>
-      {mensagem && <HelperText type="info">{mensagem}</HelperText>}
-      <HelperText type="error">{mostraErro}</HelperText>
+      <Text>Login</Text>
       <TextInput
-        label="Digite seu E-mail"
-        value={email.value}
-        onChangeText={(text) => setEmail({ value: text, error: "" })}
-        error={!!email.error}
-        errorText={email.error}
-        
-        /* não essenciais  */
-        returnKeyType="next"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
+        placeholder="Enter idEmail"
+        value={idEmail}
+        onChangeText={(text) => setIdEmail(text)}
       />
-      <HelperText visible={!!email.error}>{email.error}</HelperText>
       <TextInput
-        label="Senha"
-        returnKeyType="done"
-        value={password.value}
-        onChangeText={(text) => setPassword({ value: text, error: "" })}
-        error={!!password.error}
-        errorText={password.error}
-        secureTextEntry
-  
+        placeholder="Enter senha"
+        value={senha}
+        secureTextEntry={true}
+        onChangeText={(text) => setSenha(text)}
       />
-      <View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("ForgotPasswordScreen")}
-        >
-          <Text>Esqueceu sua senha?</Text>
-        </TouchableOpacity>
-      </View>
-      <Button mode="contained" onPress={onLoginPressed}>
-        Login
-      </Button>
-      <View>
-        <Text>Não possui uma conta? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("RegisterScreen")}>
-          <Text>Cadastrar</Text>
-        </TouchableOpacity>
-      </View>
+      <Button title="Login" onPress={handleLogin} />
     </View>
   );
-};
+}
