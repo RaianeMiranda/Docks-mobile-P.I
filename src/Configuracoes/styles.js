@@ -77,4 +77,11 @@ export const styles = StyleSheet.create({
     marginTop: "15px",
     borderRadius: "15px",
   },
+
+  buttonSalvar:{
+    backgroundColor: "#D5ECB4",
+    border: "3px solid #44712F",
+  },
+
 });
+

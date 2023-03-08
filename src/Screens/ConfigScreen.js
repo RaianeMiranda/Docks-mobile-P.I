@@ -8,6 +8,7 @@ export const ConfigScreen = ({ navigation }) => {
   const [text, setNome] = React.useState("");
 
   return (
+  
     <View style={styles.containerConfig}>
       <Appbar.Header style={styles.navConfig}>
         <Appbar.BackAction onPress={_goBack} />
@@ -39,21 +40,7 @@ export const ConfigScreen = ({ navigation }) => {
         value={text}
         onChangeText={(text) => setNome(text)}
       />
-      <Button
-        style={styles.buttonConfigSalvar}
-        mode="Contained"
-        onPress={() => console.log("Pressed")}
-      >
-        <text style={styles.textSalvar}>Salvar alterações</text>
-      </Button>
-      <Button
-        style={styles.buttonConfigDeletar}
-        mode="Contained"
-        onPress={() => console.log("Pressed")}
-      >
-        <text style={styles.textDeletar}>Deletar conta</text>
-      </Button>
-
+    
       <Text style={styles.tituloConfig1}>Termos e Licenças</Text>
       <View style={{ flex: 1, flexDirection: "colum" }}>
         <Button
@@ -63,14 +50,13 @@ export const ConfigScreen = ({ navigation }) => {
         >
           <text style={styles.textTermos}>Termos e condições</text>
         </Button>
-        <Button icon="heart"
+        <Button
+          icon="heart"
           style={styles.buttonConfigTermos}
           mode="Contained"
           onPress={() => console.log("Pressed")}
-          
         >
-          <text style={styles.textLicencas}>Licenças</text>  
-          
+          <text style={styles.textLicencas}>Licenças</text>
         </Button>
         <Button
           style={styles.buttonConfigTermos}
@@ -81,5 +67,6 @@ export const ConfigScreen = ({ navigation }) => {
         </Button>
       </View>
     </View>
+    
   );
 };
