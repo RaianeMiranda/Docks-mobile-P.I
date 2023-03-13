@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   containerConfig: {
     backgroundColor: "#FFF2D8",
+    height: '100%'
   },
   navConfig: {
     backgroundColor: "#D5ECB4",
@@ -27,43 +28,6 @@ export const styles = StyleSheet.create({
     marginLeft: "15px",
   },
 
-  buttonConfigSalvar: {
-
-    backgroundcolor: "#D5ECB",
-    marginTop: "30px",
-    width: "100px",
-    textColor: "black",
-    height: "50px",
-
-    marginLeft: "30px",
-    backgroundColor: "#D5ECB4",
-    width: "100px",
-    border: "3px solid #44712F",
-
-  },
-  buttonConfigDeletar: {
-    width: "170px",
-    backgroundColor: "#E08181",
-    width: "100px",
-    marginTop: "30px",
-    textColor: "black",
-    height: "50px",
-
-    border: "3px solid #C63F3F",
-  },
-  textDeletar: {
-    fontSize: "15px",
-    fontFamily: "sansSerif",
-    fontWeight: "bold",
-    color: "black",
-  },
-  textSalvar: {
-    fontSize: "15px",
-
-    fontFamily: "sansSerif",
-    fontWeight: "bold",
-    color: "black",
-  },
   textTermos: {
     fontSize: "15px",
     fontFamily: "sansSerif",
@@ -99,14 +63,29 @@ export const styles = StyleSheet.create({
 buttons:{
   flex:'1',
   flexDirection:'row',
-  justifyContent:'center',
-  alignItens:'center'
+  justifyContent:'space-evenly',
+  alignItens:'center',
+  marginTop:'20px'
 },
 button1:{
-  backgroundColor:'green'
+  backgroundColor:'#D5ECB6',
+  border:"3px solid #44712F"
+  
 },
 button2:{
-  backgroundColor:'red'
+  backgroundColor:'#E08181',
+  border: "3px solid #C63F3F",
+  
+},
+textSal:{
+  fontFamily: "sansSerif",
+  fontWeight: "bold",
+  color:'black'
+},
+textDel:{
+  fontFamily: "sansSerif",
+  fontWeight: "bold",
+ color:'black'
 }
 });
 

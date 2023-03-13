@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity, Image } from "react-native";
 import { styles } from "../Configuracoes/styles";
 import { Appbar, TextInput, Button } from "react-native-paper";
 export const ConfigScreen = ({ navigation }) => {
@@ -8,7 +8,6 @@ export const ConfigScreen = ({ navigation }) => {
   const [text, setNome] = React.useState("");
 
   return (
-  
     <View style={styles.containerConfig}>
       <Appbar.Header style={styles.navConfig}>
         <Appbar.BackAction onPress={_goBack} />
@@ -40,36 +39,45 @@ export const ConfigScreen = ({ navigation }) => {
         value={text}
         onChangeText={(text) => setNome(text)}
       />
-    <View style={styles.buttons}>
-     <View> <Button style={styles.button1}>salvar</Button></View>
-       <View> <Button style={styles.button2}>deletar</Button></View>
+      <View style={styles.buttons}>
+        <View>
+          {" "}
+          <Button style={styles.button1}>
+            <Text style={styles.textSal}>salvar alterações</Text>
+          </Button>
+        </View>
+        <View>
+          {" "}
+          <Button style={styles.button2}>
+            <Text style={styles.textDel}>deletar conta</Text>
+          </Button>
+        </View>
       </View>
       <Text style={styles.tituloConfig1}>Termos e Licenças</Text>
       <View style={{ flex: 1, flexDirection: "colum" }}>
-        <Button
-          style={styles.buttonConfigTermos}
-          mode="Contained"
-          onPress={() => console.log("Pressed")}
-        >
+        <TouchableOpacity style={styles.buttonConfigTermos} activeOpacity={0.5}>
           <text style={styles.textTermos}>Termos e condições</text>
-        </Button>
-        <Button
-          icon="heart"
-          style={styles.buttonConfigTermos}
-          mode="Contained"
-          onPress={() => console.log("Pressed")}
-        >
-          <text style={styles.textLicencas}>Licenças</text>
-        </Button>
-        <Button
-          style={styles.buttonConfigTermos}
-          mode="Contained"
-          onPress={() => console.log("Pressed")}
-        >
+          <Image
+            source={require("../Images/Vector.png")}
+            style={styles.buttonImageIconStyle}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonConfigTermos} activeOpacity={0.5}>
+          <text style={styles.textTermos}>Licenças</text>
+          <Image
+            source={require("../Images/Vector.png")}
+            style={styles.buttonImageIconStyle}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonConfigTermos} activeOpacity={0.5}>
           <text style={styles.textTermos}>Políticas de Privacidade</text>
-        </Button>
+          <Image
+            source={require("../Images/Vector.png")}
+            style={styles.buttonImageIconStyle}
+          />
+          
+        </TouchableOpacity>
       </View>
     </View>
-    
   );
 };
