@@ -40,7 +40,10 @@ export const ConfigScreen = ({ navigation }) => {
         value={text}
         onChangeText={(text) => setNome(text)}
       />
-    
+    <View style={styles.buttons}>
+     <View> <Button style={styles.button1}>salvar</Button></View>
+       <View> <Button style={styles.button2}>deletar</Button></View>
+      </View>
       <Text style={styles.tituloConfig1}>Termos e Licenças</Text>
       <View style={{ flex: 1, flexDirection: "colum" }}>
         <Button

@@ -28,31 +28,27 @@ export const styles = StyleSheet.create({
   },
 
   buttonConfigSalvar: {
-<<<<<<< HEAD
+
     backgroundcolor: "#D5ECB",
-    alignItens: "center",
     marginTop: "30px",
     width: "100px",
     textColor: "black",
     height: "50px",
-=======
+
     marginLeft: "30px",
     backgroundColor: "#D5ECB4",
-    width: "170px",
+    width: "100px",
     border: "3px solid #44712F",
->>>>>>> 0552d853df7e197fd59a33fde4f2bfe4408cc1d5
+
   },
   buttonConfigDeletar: {
     width: "170px",
     backgroundColor: "#E08181",
-<<<<<<< HEAD
-    borderBottomColor: "#C63F3F",
-    alignItens: "center",
     width: "100px",
     marginTop: "30px",
     textColor: "black",
     height: "50px",
-=======
+
     border: "3px solid #C63F3F",
   },
   textDeletar: {
@@ -63,7 +59,7 @@ export const styles = StyleSheet.create({
   },
   textSalvar: {
     fontSize: "15px",
->>>>>>> 0552d853df7e197fd59a33fde4f2bfe4408cc1d5
+
     fontFamily: "sansSerif",
     fontWeight: "bold",
     color: "black",
@@ -100,6 +96,17 @@ export const styles = StyleSheet.create({
     backgroundColor: "#D5ECB4",
     border: "3px solid #44712F",
   },
-
+buttons:{
+  flex:'1',
+  flexDirection:'row',
+  justifyContent:'center',
+  alignItens:'center'
+},
+button1:{
+  backgroundColor:'green'
+},
+button2:{
+  backgroundColor:'red'
+}
 });
 
