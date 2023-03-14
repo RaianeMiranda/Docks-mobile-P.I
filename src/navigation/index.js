@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import SplashScreen from "../screens/SplashScreen";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
+//111
 const Stack = createStackNavigator();
 
 export const RootNavigation = () => {
