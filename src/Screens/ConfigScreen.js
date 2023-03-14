@@ -18,65 +18,81 @@ export const ConfigScreen = ({ navigation }) => {
         <Appbar.Action icon="menu" onPress={_handleMore} />
       </Appbar.Header>
       <Text style={styles.tituloConfig1}>Configurações da Conta</Text>
-      <TextInput
-        style={styles.inputConfigNome}
-        theme={{ colors: { primary: "#A9A9A9" } }}
-        label="Nome"
-        value={text}
-        onChangeText={(text) => setNome(text)}
-      />
-      <TextInput
-        style={styles.inputConfigEmail}
-        theme={{ colors: { primary: "#A9A9A9" } }}
-        label="Nome"
-        value={text}
-        onChangeText={(text) => setNome(text)}
-      />
-      <TextInput
-        style={styles.inputConfigSenha}
-        theme={{ colors: { primary: "#A9A9A9" } }}
-        label="Nome"
-        value={text}
-        onChangeText={(text) => setNome(text)}
-      />
+      <View style={styles.inputs}>
+        <TextInput
+          style={styles.inputConfigNome}
+          theme={{ colors: { primary: "#A9A9A9" } }}
+          label="Nome"
+          value={text}
+          onChangeText={(text) => setNome(text)}
+        />
+        <TextInput
+          style={styles.inputConfigEmail}
+          theme={{ colors: { primary: "#A9A9A9" } }}
+          label="Email"
+          value={text}
+          onChangeText={(text) => setNome(text)}
+        />
+        <TextInput
+          style={styles.inputConfigSenha}
+          theme={{ colors: { primary: "#A9A9A9" } }}
+          secureTextEntry
+          value={text}
+          label="Senha"
+          onChangeText={(text) => setNome(text)}
+        />
+      </View>
       <View style={styles.buttons}>
         <View>
-          {" "}
           <Button style={styles.button1}>
             <Text style={styles.textSal}>salvar alterações</Text>
           </Button>
         </View>
         <View>
-          {" "}
           <Button style={styles.button2}>
             <Text style={styles.textDel}>deletar conta</Text>
+            <Image
+              source={require("../Images/VectorRed.png")}
+              style={styles.vectorRed}
+            />
           </Button>
         </View>
       </View>
-      <Text style={styles.tituloConfig1}>Termos e Licenças</Text>
-      <View style={{ flex: 1, flexDirection: "colum" }}>
-        <TouchableOpacity style={styles.buttonConfigTermos} activeOpacity={0.5}>
-          <text style={styles.textTermos}>Termos e condições</text>
-          <Image
-            source={require("../Images/Vector.png")}
-            style={styles.buttonImageIconStyle}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonConfigTermos} activeOpacity={0.5}>
-          <text style={styles.textTermos}>Licenças</text>
-          <Image
-            source={require("../Images/Vector.png")}
-            style={styles.buttonImageIconStyle}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonConfigTermos} activeOpacity={0.5}>
-          <text style={styles.textTermos}>Políticas de Privacidade</text>
-          <Image
-            source={require("../Images/Vector.png")}
-            style={styles.buttonImageIconStyle}
-          />
-          
-        </TouchableOpacity>
+      <Text style={styles.tituloConfig2}>Termos e Licenças</Text>
+      <View style={styles.buttonTermos}>
+        <View>
+          <Button style={styles.buttonConfigTermos1} activeOpacity={0.5}>
+            <text style={styles.textTermos1}>Termos e condições</text>
+            <View style={styles.image1}>
+              <Image
+                source={require("../Images/VectorOrange.png")}
+                style={styles.vectorOrange}
+              />
+            </View>
+          </Button>
+        </View>
+        <View>
+          <Button style={styles.buttonConfigTermos2} activeOpacity={0.5}>
+            <text style={styles.textTermos2}>Licenças</text>
+            <View style={styles.image2}>
+            <Image
+              source={require("../Images/VectorOrange.png")}
+              style={styles.vectorOrange}
+            />
+            </View>
+          </Button>
+        </View>
+        <View>
+          <Button style={styles.buttonConfigTermos3} activeOpacity={0.5}>
+            <text style={styles.textTermos3}>Políticas de Privacidade</text>
+            <View style={styles.image3}>
+            <Image
+              source={require("../Images/VectorOrange.png")}
+              style={styles.vectorOrange}
+            />
+            </View>
+          </Button>
+        </View>
       </View>
     </View>
   );

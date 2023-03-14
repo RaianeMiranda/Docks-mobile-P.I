@@ -3,89 +3,166 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   containerConfig: {
     backgroundColor: "#FFF2D8",
-    height: '100%'
+    height: "100%",
   },
   navConfig: {
     backgroundColor: "#D5ECB4",
   },
+
+  inputs: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
   inputConfigNome: {
     backgroundColor: "white",
     width: "330px",
-    marginLeft: "15px",
     borderTopRightRadius: "20px",
     borderTopLeftRadius: "20px",
   },
+
   inputConfigEmail: {
     backgroundColor: "white",
     width: "330px",
-    marginLeft: "15px",
   },
+
   inputConfigSenha: {
     backgroundColor: "white",
     width: "330px",
     borderBottomStartRadius: "20px",
     borderBottomEndRadius: "20px",
-    marginLeft: "15px",
   },
 
-  textTermos: {
+  textTermos1: {
     fontSize: "15px",
     fontFamily: "sansSerif",
     color: "black",
-    marginRight: "220px",
+    marginRight: "100px",
   },
+
+  image1: {
+    marginLeft: "50px",
+  },
+
+  image3: {
+    marginLeft: "125px",
+  },
+
+  image2: {
+    marginLeft: "230px",
+  },
+
+  textTermos2: {
+    fontSize: "15px",
+    fontFamily: "sansSerif",
+    color: "black",
+  },
+
+  textTermos3: {
+    fontSize: "15px",
+    fontFamily: "sansSerif",
+    color: "black",
+  },
+
   textLicencas: {
     fontSize: "15px",
     fontFamily: "sansSerif",
     color: "black",
     marginRight: "220px",
   },
+
   tituloConfig1: {
+    marginTop: "20px",
     fontFamily: "sansSerif",
-    marginLeft: "40px",
-    marginTop: "30px",
     marginBottom: "10px",
     fontWeight: "bold",
-    fontSize:'20px'
+    fontSize: "20px",
+    textAlign: "center",
   },
-  buttonConfigTermos: {
+
+  tituloConfig2: {
+    fontFamily: "sansSerif",
+    marginBottom: "10px",
+    fontWeight: "bold",
+    fontSize: "20px",
+    textAlign: "center",
+  },
+
+  buttonConfigTermos1: {
     backgroundColor: "#F1C4A5",
-    marginLeft: "20px",
-    width: "240px",
     marginTop: "15px",
     borderRadius: "15px",
+    width: "330px",
+    height: "40px",
   },
 
-  buttonSalvar:{
-    backgroundColor: "#D5ECB4",
+  buttonConfigTermos2: {
+    backgroundColor: "#F1C4A5",
+    marginTop: "15px",
+    borderRadius: "15px",
+    width: "330px",
+    height: "40px",
+  },
+
+  buttonConfigTermos3: {
+    backgroundColor: "#F1C4A5",
+    marginTop: "15px",
+    borderRadius: "15px",
+    width: "330px",
+    height: "40px",
+  },
+
+  buttons: {
+    flex: "1",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItens: "center",
+    marginTop: "20px",
+    maxHeight: "80px",
+  },
+
+  button1: {
+    backgroundColor: "#D5ECB6",
     border: "3px solid #44712F",
   },
-buttons:{
-  flex:'1',
-  flexDirection:'row',
-  justifyContent:'space-evenly',
-  alignItens:'center',
-  marginTop:'20px'
-},
-button1:{
-  backgroundColor:'#D5ECB6',
-  border:"3px solid #44712F"
-  
-},
-button2:{
-  backgroundColor:'#E08181',
-  border: "3px solid #C63F3F",
-  
-},
-textSal:{
-  fontFamily: "sansSerif",
-  fontWeight: "bold",
-  color:'black'
-},
-textDel:{
-  fontFamily: "sansSerif",
-  fontWeight: "bold",
- color:'black'
-}
-});
 
+  button2: {
+    backgroundColor: "#E08181",
+    border: "3px solid #C63F3F",
+  },
+
+  textSal: {
+    fontFamily: "sansSerif",
+    fontWeight: "bold",
+    color: "black",
+    textAlign: "center",
+  },
+
+  textDel: {
+    fontFamily: "sansSerif",
+    fontWeight: "bold",
+    color: "black",
+    marginRight: "10px",
+  },
+
+  vectorRed: {
+    height: "10px",
+    width: "10px",
+  },
+
+  buttonTermos: {
+    flex: "1",
+    flexDirection: "colum",
+    alignItems: "center",
+  },
+
+  vectorOrange: {
+    height: "10px",
+    width: "10px",
+  },
+
+  vectorRed: {
+    height: "10px",
+    width: "10px",
+  },
+});
