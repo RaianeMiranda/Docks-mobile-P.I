@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   buttonHome: {
     marginBottom: "10px",
-  }, 
+  },
   containerConfig: {
     backgroundColor: "#FFF2D8",
     height: "100%",
@@ -173,26 +173,35 @@ export const styles = StyleSheet.create({
     width: "10px",
   },
 
-  nomeUsuario:{
+  nomeUsuario: {
     fontFamily: "sansSerif",
     fontWeight: "bold",
     color: "black",
-    fontSize:"20px",
-    marginLeft:"30px",
-    marginTop:"40px"
-  }, 
+    fontSize: "20px",
+    marginLeft: "30px",
+    marginTop: "40px",
+  },
 
-  buttonCL:{
+  buttonCL: {
     border: "5px solid #FED576",
     borderRadius: "8px",
-    width:"180px",
-    marginTop:"20px",
-    marginLeft:"20px"
- 
+    width: "180px",
+    marginTop: "20px",
+    marginLeft: "20px",
   },
-  textBL:{
+  textBL: {
     fontFamily: "sansSerif",
     fontWeight: "bold",
     color: "black",
+    margin: "0",
+  },
+  modalBiblioconteudo: {
+    backgroundColor: "white",
+    height: "400px",
+    width: "250px",
+    borderRadius: "50px",
+  marginLeft:"55px"
+ 
+  },
   }
-});
+);
