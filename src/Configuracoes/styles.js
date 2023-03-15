@@ -1,7 +1,14 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  buttonHome: {
+    marginBottom: "10px",
+  }, 
   containerConfig: {
+    backgroundColor: "#FFF2D8",
+    height: "100%",
+  },
+  containerBiblio: {
     backgroundColor: "#FFF2D8",
     height: "100%",
   },
@@ -9,7 +16,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#D5ECB4",
   },
 
-  inputs: {
+  inputsConfig: {
     alignItems: "center",
     justifyContent: "center",
   },
@@ -40,15 +47,15 @@ export const styles = StyleSheet.create({
     marginRight: "100px",
   },
 
-  image1: {
+  imageTermos1: {
     marginLeft: "50px",
   },
 
-  image3: {
+  imageTermos3: {
     marginLeft: "125px",
   },
 
-  image2: {
+  imageTermos2: {
     marginLeft: "230px",
   },
 
@@ -112,7 +119,7 @@ export const styles = StyleSheet.create({
     height: "40px",
   },
 
-  buttons: {
+  buttonsConfig: {
     flex: "1",
     flexDirection: "row",
     justifyContent: "space-evenly",
@@ -121,12 +128,12 @@ export const styles = StyleSheet.create({
     maxHeight: "80px",
   },
 
-  button1: {
+  buttonSal: {
     backgroundColor: "#D5ECB6",
     border: "3px solid #44712F",
   },
 
-  button2: {
+  buttonDel: {
     backgroundColor: "#E08181",
     border: "3px solid #C63F3F",
   },
@@ -165,4 +172,27 @@ export const styles = StyleSheet.create({
     height: "10px",
     width: "10px",
   },
+
+  nomeUsuario:{
+    fontFamily: "sansSerif",
+    fontWeight: "bold",
+    color: "black",
+    fontSize:"20px",
+    marginLeft:"30px",
+    marginTop:"40px"
+  }, 
+
+  buttonCL:{
+    border: "5px solid #FED576",
+    borderRadius: "8px",
+    width:"180px",
+    marginTop:"20px",
+    marginLeft:"20px"
+ 
+  },
+  textBL:{
+    fontFamily: "sansSerif",
+    fontWeight: "bold",
+    color: "black",
+  }
 });

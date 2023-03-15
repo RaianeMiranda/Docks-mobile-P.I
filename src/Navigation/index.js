@@ -3,17 +3,24 @@ import { HomeScreen } from "../Screens/HomeScreen";
 import { ConfigScreen } from "../Screens/ConfigScreen";
 import { styles } from "../Configuracoes/styles";
 import { CurrentRenderContext } from "@react-navigation/native";
+import { BiblioScreen } from "../Screens/BiblioScreen";
 
 const Stack = createNativeStackNavigator();
 export const RootNavigation = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen style={styles.navConfig}
+      <Stack.Screen
+        style={styles.navConfig}
         options={{ headerShown: false }}
         name="Config"
         component={ConfigScreen}
-       
+      />
+      <Stack.Screen
+        style={styles.navConfig}
+        options={{ headerShown: false }}
+        name="Biblio"
+        component={BiblioScreen}
       />
     </Stack.Navigator>
   );

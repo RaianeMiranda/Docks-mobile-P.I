@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, TouchableOpacity, Image } from "react-native";
+import { Text, View, Image } from "react-native";
 import { styles } from "../Configuracoes/styles";
 import { Appbar, TextInput, Button } from "react-native-paper";
 export const ConfigScreen = ({ navigation }) => {
@@ -18,7 +18,7 @@ export const ConfigScreen = ({ navigation }) => {
         <Appbar.Action icon="menu" onPress={_handleMore} />
       </Appbar.Header>
       <Text style={styles.tituloConfig1}>Configurações da Conta</Text>
-      <View style={styles.inputs}>
+      <View style={styles.inputsConfig}>
         <TextInput
           style={styles.inputConfigNome}
           theme={{ colors: { primary: "#A9A9A9" } }}
@@ -42,14 +42,14 @@ export const ConfigScreen = ({ navigation }) => {
           onChangeText={(text) => setNome(text)}
         />
       </View>
-      <View style={styles.buttons}>
+      <View style={styles.buttonsConfig}>
         <View>
-          <Button style={styles.button1}>
+          <Button style={styles.buttonSal}>
             <Text style={styles.textSal}>salvar alterações</Text>
           </Button>
         </View>
         <View>
-          <Button style={styles.button2}>
+          <Button style={styles.buttonDel}>
             <Text style={styles.textDel}>deletar conta</Text>
             <Image
               source={require("../Images/VectorRed.png")}
@@ -63,7 +63,7 @@ export const ConfigScreen = ({ navigation }) => {
         <View>
           <Button style={styles.buttonConfigTermos1} activeOpacity={0.5}>
             <text style={styles.textTermos1}>Termos e condições</text>
-            <View style={styles.image1}>
+            <View style={styles.imageTermos1}>
               <Image
                 source={require("../Images/VectorOrange.png")}
                 style={styles.vectorOrange}
@@ -74,7 +74,7 @@ export const ConfigScreen = ({ navigation }) => {
         <View>
           <Button style={styles.buttonConfigTermos2} activeOpacity={0.5}>
             <text style={styles.textTermos2}>Licenças</text>
-            <View style={styles.image2}>
+            <View style={styles.imageTermos2}>
             <Image
               source={require("../Images/VectorOrange.png")}
               style={styles.vectorOrange}
@@ -85,7 +85,7 @@ export const ConfigScreen = ({ navigation }) => {
         <View>
           <Button style={styles.buttonConfigTermos3} activeOpacity={0.5}>
             <text style={styles.textTermos3}>Políticas de Privacidade</text>
-            <View style={styles.image3}>
+            <View style={styles.imageTermos3}>
             <Image
               source={require("../Images/VectorOrange.png")}
               style={styles.vectorOrange}
