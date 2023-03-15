@@ -200,8 +200,17 @@ export const styles = StyleSheet.create({
     height: "400px",
     width: "250px",
     borderRadius: "50px",
-  marginLeft:"55px"
- 
+    marginLeft: "55px",
   },
-  }
-);
+
+  textLivro: {
+    fontFamily: "sansSerif",
+    fontWeight: "bold",
+    color: "black",
+    fontSize:"20px",
+    marginLeft:"20px",
+    
+    
+  
+  },
+});

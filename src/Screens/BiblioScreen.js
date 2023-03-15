@@ -15,7 +15,6 @@ export const BiblioScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  
 
   return (
     <View style={styles.containerBiblio}>
@@ -31,8 +30,18 @@ export const BiblioScreen = ({ navigation }) => {
       <View>
         <Provider>
           <Portal>
-            <Modal visible={visible} onDismiss={hideModal} style={styles.modalBiblioconteudo}>
-              <Text>Example Modal. Click outside this area to dismiss.</Text>
+            <Modal
+              visible={visible}
+              onDismiss={hideModal}
+              style={styles.modalBiblioconteudo}
+            >
+              <Text style={styles.textLivro}>Criar Livros</Text>
+              <View style={styles.Livro}>
+                <Image
+                  source={require("../Images/Livro.png")}
+                  style={styles.CapaLivro}
+                />
+              </View>
             </Modal>
           </Portal>
           <Button style={styles.buttonCL} onPress={showModal}>
