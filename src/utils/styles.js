@@ -46,6 +46,42 @@ export const styles = StyleSheet.create({
     textversion:{
       fontWeight:"bold",
       fontSize:"20px",
-    }
-   
-});
+    },
+    containernome:{
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-evenly",
+  },
+  textmentor:{
+    fontWeight:"bolder",
+    marginRight:"10px",
+  },
+  textpaty:{
+    fontWeight:"bolder",
+    marginRight:"10px",
+  },
+  textdock_mao:{
+    fontWeight:"bolder",
+    marginRight:"10px",
+  },
+  textpsicopato:{
+    fontWeight:"bolder",
+    marginRight:"10px",
+  },
+  containercriadoras:{
+    fontWeight:"bolder",
+    marginRight:"10px",
+    display:"flex",
+    justifyContent:"center" 
+  },
+  containercriadoras2:{
+    backgroundColor: "white",
+     width:"400px",
+      height:"400px",
+       display:"flex",     
+    borderRadius: "40px",
+    margin: "auto",
+    marginTop:"20px"
+ },
+  
+    } )

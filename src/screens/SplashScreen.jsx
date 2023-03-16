@@ -26,7 +26,7 @@ export default function SplashScreen () {
 <Image source={{uri: require("../images/mentor.png")}}
        style={{width:"180px", height:"300px",}}/>
        
-               
+              
 <Image source={{uri: require("../images/patydocks.png")}}
        style={{width:"180px", height:"300px",}}/>
 
@@ -39,7 +39,19 @@ export default function SplashScreen () {
               
 
        </View>
+       <View style={styles.containernome}>
+               <Text style={styles.textmentor}>Mentor</Text>  
+               <Text style={styles.textpaty}>Paty</Text>  
+               <Text style={styles.textdock_mao}>Dock</Text>  
+               <Text style={styles.textpsicopato}>Psicopato</Text>  
+               </View>
+               <View>
+               <Text style={styles.containercriadoras}>Conheça o Time</Text>  
+               <View style={styles.containercriadoras2}>
+               </View>
+               </View>
   </View>
+
     )
   
  
