@@ -213,4 +213,8 @@ export const styles = StyleSheet.create({
     
   
   },
+  linha: {
+    height: 10, width: '100%',
+     
+  },
 });
