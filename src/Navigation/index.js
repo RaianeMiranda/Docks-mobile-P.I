@@ -3,6 +3,7 @@ import { HomeScreen } from "../Screens/HomeScreen";
 import { ConfigScreen } from "../Screens/ConfigScreen";
 import { styles } from "../Configuracoes/styles";
 import { BiblioScreen } from "../Screens/BiblioScreen";
+import { DrawerScreen} from "../Screens/DrawerScreen";
 
 const Stack = createNativeStackNavigator();
 export const RootNavigation = () => {
@@ -25,7 +26,7 @@ export const RootNavigation = () => {
         style={styles.navConfig}
         options={{ headerShown: false }}
         name="Drawer"
-        component={MenuL}
+        component={DrawerScreen}
       />
     </Stack.Navigator>
   );
