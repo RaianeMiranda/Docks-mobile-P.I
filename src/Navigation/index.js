@@ -2,7 +2,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { HomeScreen } from "../Screens/HomeScreen";
 import { ConfigScreen } from "../Screens/ConfigScreen";
 import { styles } from "../Configuracoes/styles";
-import { CurrentRenderContext } from "@react-navigation/native";
 import { BiblioScreen } from "../Screens/BiblioScreen";
 
 const Stack = createNativeStackNavigator();
@@ -22,6 +21,14 @@ export const RootNavigation = () => {
         name="Biblio"
         component={BiblioScreen}
       />
+       <Stack.Screen
+        style={styles.navConfig}
+        options={{ headerShown: false }}
+        name="Drawer"
+        component={MenuL}
+      />
     </Stack.Navigator>
   );
 };
+
+

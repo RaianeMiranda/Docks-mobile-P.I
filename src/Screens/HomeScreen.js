@@ -16,6 +16,10 @@ export const HomeScreen = ({navigation}) => {
         title="Ir para Biblio"
         onPress={() => navigation.navigate("Biblio")}
       />
+      <Button 
+        title="Ir para o drawer"
+        onPress={() => navigation.navigate("Drawer")}
+      />
       </View>
     </View>
   );
