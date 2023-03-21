@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,7 +11,7 @@ import {
 function Feed() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Feed Screen</Text>
+      <Text>FEED</Text>
     </View>
   );
 }
@@ -20,10 +19,12 @@ function Feed() {
 function Article() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Article Screen</Text>
+      <Text>ARTICKLE</Text>
     </View>
   );
 }
+
+
 
 function CustomDrawerContent(props) {
   return (
@@ -41,6 +42,10 @@ function MyDrawer() {
     <Drawer.Navigator
       useLegacyImplementation
       drawerContent={(props) => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        drawerPosition: "right"
+      }}
+ 
     >
       <Drawer.Screen name="Feed" component={Feed} />
       <Drawer.Screen name="Article" component={Article} />

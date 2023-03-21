@@ -4,6 +4,7 @@ import { styles } from "../Configuracoes/styles";
 import { Appbar, TextInput, Button } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
 
+
 export const ConfigScreen = ({ navigation }) => {
   const _goBack = () => console.log("Went back");
   const _handleMore = () => console.log("Shown more");
@@ -135,3 +136,7 @@ export const ConfigScreen = ({ navigation }) => {
     </View>
   );
 };
+
+
+
+
