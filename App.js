@@ -1,16 +1,12 @@
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from '@react-navigation/drawer';
+import * as React from "react";
+import { View, Text } from "react-native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { Ionicons } from "@expo/vector-icons";
 
 function Feed() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>FEED</Text>
     </View>
   );
@@ -18,20 +14,9 @@ function Feed() {
 
 function Article() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>ARTICKLE</Text>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>ARTICLE</Text>
     </View>
-  );
-}
-
-
-
-function CustomDrawerContent(props) {
-  return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      <DrawerItem label="Help" onPress={() => alert('Link to help')} />
-    </DrawerContentScrollView>
   );
 }
 
@@ -41,11 +26,22 @@ function MyDrawer() {
   return (
     <Drawer.Navigator
       useLegacyImplementation
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={{
-        drawerPosition: "right"
+        drawerPosition: "right",
+        headerRight: () => {
+          const navigation = useNavigation();
+
+          return (
+            <Ionicons
+              name="menu"
+              size={24}
+              color="black"
+              style={{ marginRight: 15 }}
+              onPress={() => navigation.openDrawer()}
+            />
+          );
+        },
       }}
- 
     >
       <Drawer.Screen name="Feed" component={Feed} />
       <Drawer.Screen name="Article" component={Article} />
