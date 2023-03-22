@@ -2,86 +2,114 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   imagedocks_mao: {
-    width:"150px",
-     height:"100px",
-    },
-    imgcontainer:{
-     display:"flex",
-     flexDirection: "row",
-     justifyContent: "space-evenly",
-    },
-    mentor:{
-      width:"190px",
-      height:"350px",
-    },
-    logodocks:{
-      width:"200px",
-      height:"200px",
-      
-    },
-    paty:{
-      width:"200px",
-      height:"350px",
-    },
-    psicopato:{
-      width:"190px",
-      height:"350px",
-      backgroundColor: "#FFF2D8",
-    },
-    containersobre:{
-      backgroundColor:"#FFF2D8"
-      
-    },
-    textdocks:{
-      fontWeight: "bold",
-      fontSize:"30px",
-      textAlign:"center"
-    },
+    width: "150px",
+    height: "100px",
+  },
+  imgcontainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+  mentor: {
+    width: "90px",
+    height: "50px",
+  },
+  logodocks: {
+    width: "200px",
+    height: "200px",
 
-    textdocks2:{
-      fontSize:"15px",
-      textAlign:"center"
-    },
+  },
+  paty: {
+    width: "20px",
+    height: "30px",
+  },
+  psicopato: {
+    width: "90px",
+    height: "150px",
+    backgroundColor: "#FFF2D8",
+  },
+  containersobre: {
+    backgroundColor: "#FFF2D8"
 
-    textversion:{
-      fontWeight:"bold",
-      fontSize:"20px",
-    },
-    containernome:{
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-evenly",
   },
-  textmentor:{
-    fontWeight:"bolder",
-    marginRight:"10px",
+  textdocks: {
+    fontWeight: "bold",
+    fontSize: "30px",
+    textAlign: "center"
   },
-  textpaty:{
-    fontWeight:"bolder",
-    marginRight:"10px",
+
+  textdocks2: {
+    fontSize: "15px",
+    textAlign: "center"
   },
-  textdock_mao:{
-    fontWeight:"bolder",
-    marginRight:"10px",
+
+  textversion: {
+    fontWeight: "bold",
+    fontSize: "20px",
   },
-  textpsicopato:{
-    fontWeight:"bolder",
-    marginRight:"10px",
+  containernome: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
   },
-  containercriadoras:{
-    fontWeight:"bolder",
-    marginRight:"10px",
-    display:"flex",
-    justifyContent:"center" 
+  textmentor: {
+    fontWeight: "bolder",
+    marginRight: "10px",
   },
-  containercriadoras2:{
+  textpaty: {
+    fontWeight: "bolder",
+    marginRight: "10px",
+  },
+  textdock_mao: {
+    fontWeight: "bolder",
+    marginRight: "10px",
+  },
+  textpsicopato: {
+    fontWeight: "bolder",
+    marginRight: "10px",
+  },
+  containercriadoras: {
+    fontWeight: "bolder",
+    marginRight: "10px",
+    display: "flex",
+    justifyContent: "center"
+  },
+  containercriadoras2: {
     backgroundColor: "white",
-     width:"400px",
-      height:"400px",
-       display:"flex",     
+    width: "330px",
+    height: "250px",
+    display: "flex",
     borderRadius: "40px",
     margin: "auto",
-    marginTop:"20px"
- },
-  
-    } )
+    marginTop: "20px"
+  },
+  containercriadoras3: {
+    fontWeight: "bolder",
+    marginRight: "10px",
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "40px",
+  },
+  nomesdevs1: {
+    fontWeight: "bolder",
+    marginBottom: "3px",
+    fontSize: "15px",
+    marginTop: "17px"
+  },
+  nomesdevs: {
+    fontWeight: "bolder",
+    marginBottom: "3px",
+    fontSize: "15px",
+  },
+  nomesfun: {
+    fontSize: "13px",
+    marginBottom: "14px",
+  },
+  containerfototext:{
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft:"10px",
+  }
+
+})
