@@ -3,18 +3,20 @@ import { View, Text } from "react-native";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
+import { styles } from "./src/Configuracoes/styles";
+
 
 function Feed() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>FEED</Text>
+      <Text>melancia</Text>
     </View>
   );
 }
 
 function Article() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" , backgroundColor:"pink"}}>
       <Text>ARTICLE</Text>
     </View>
   );
@@ -22,28 +24,46 @@ function Article() {
 
 const Drawer = createDrawerNavigator();
 
+const UserView = () => {
+  return(
+    <View style={{backgroundColor:"white", height:"100px"}}/>
+  )
+}
+
 function MyDrawer() {
+
   return (
-    <Drawer.Navigator
+    <Drawer.Navigator 
       useLegacyImplementation
       screenOptions={{
+        drawerStyle: {
+          backgroundColor: 'pink',
+          width: 250,
+          height: 700,
+          marginTop: 60
+        },
         drawerPosition: "right",
         headerRight: () => {
           const navigation = useNavigation();
+         
 
           return (
             <Ionicons
               name="menu"
-              size={24}
+              size={28}
               color="black"
               style={{ marginRight: 15 }}
               onPress={() => navigation.openDrawer()}
             />
           );
-        },
+        }, 
+        headerLeft:()=> {
+          return ""
+        }
       }}
+      
     >
-      <Drawer.Screen name="Feed" component={Feed} />
+      <Drawer.Screen style={styles.kk} name="jaboticaba" component={Feed}  />
       <Drawer.Screen name="Article" component={Article} />
     </Drawer.Navigator>
   );
