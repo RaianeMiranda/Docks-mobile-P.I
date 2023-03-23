@@ -9,10 +9,11 @@ export const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
+    
   },
   mentor: {
-    width: "90px",
-    height: "50px",
+    width: "280px",
+    height: "400px",
   },
   logodocks: {
     width: "200px",
@@ -21,7 +22,7 @@ export const styles = StyleSheet.create({
   },
   paty: {
     width: "20px",
-    height: "30px",
+    height: "350px",
   },
   psicopato: {
     width: "90px",
