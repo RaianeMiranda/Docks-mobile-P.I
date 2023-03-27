@@ -8,7 +8,7 @@
  <li>Instituição: O Serviço Nacional de Aprendizagem ComerciaL-Joinville (SENAC).</li>
  <li>Instituição: Serviço Nacional de Aprendizagem Comercial - Joinville (SENAC).</li>
  <li>Integrantes: Clara Pietra Vasconcelos Viena, Helena Meirelles, Heloísa Rebello Cabral e Raiane Miranda de Oliveira.</li>
- <li>Professores: Claudia Werlich Marcelo Petri.</li>
+ <li>Professor: Marcelo Petri.</li>
  </ul>
 </p>
  <div align="left">
@@ -26,17 +26,13 @@ A nossa equipe visa com o Docks tornar fácil a criação de um livro e aprendiz
  </p>
  </div>
 <div style="display: inline_block"><br>
-  <img  align="center" alt="Docks-PHP" height="60" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" />
-   <img align="center" alt="Docks-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
    <img align="center" alt="Docks-FIGMA" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" />
   <img  align="center" alt="Docks-CANVA" height="35" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" />
   <img align="center" alt="Docks-GITHUB" height="40" width="40"src="https://cdn.iconscout.com/icon/free/png-256/github-2690381-2232884.png" />
   <img align="center" alt="Docks-GIT" height="35" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
-  <img align="center" alt="Docks-MYSQL" height="35" width="40"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" />
   <img  align="center" alt="Docks-VSCODE" height="35" width="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
   <img  align="center" alt="Docks-LUCIDCHARD" height="35" width="40" src="https://i.ytimg.com/an/y55mSDtBT4jnP27fZjJNQw/featured_channel.jpg?v=614c8f78"/>
   <img align="center" alt="Docks-NOTION" height="40" width="40" src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png"/>
-  <img align="center" alt="Docks-FIGMA" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
   </div>
 <div>
  <hr border="1px">
