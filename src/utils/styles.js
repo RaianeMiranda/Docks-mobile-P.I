@@ -12,8 +12,8 @@ export const styles = StyleSheet.create({
     
   },
   mentor: {
-    width: "280px",
-    height: "400px",
+    width: "200px",
+    height: "100px",
   },
   logodocks: {
     width: "200px",
@@ -73,12 +73,12 @@ export const styles = StyleSheet.create({
     fontWeight: "bolder",
     marginRight: "10px",
     display: "flex",
-    justifyContent: "center"
+    
   },
   containercriadoras2: {
     backgroundColor: "white",
-    width: "330px",
-    height: "250px",
+    width: "300px",
+    height: "300px",
     display: "flex",
     borderRadius: "40px",
     margin: "auto",
@@ -95,7 +95,7 @@ export const styles = StyleSheet.create({
     fontWeight: "bolder",
     marginBottom: "3px",
     fontSize: "15px",
-    marginTop: "17px"
+    marginTop: "5px"
   },
   nomesdevs: {
     fontWeight: "bolder",
@@ -104,13 +104,26 @@ export const styles = StyleSheet.create({
   },
   nomesfun: {
     fontSize: "13px",
-    marginBottom: "14px",
+    marginBottom: "10px",
   },
   containerfototext:{
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    marginLeft:"10px",
-  }
+    marginLeft:"30px",
+  },
+  containerfototext_:{
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft:"30px",
+    marginTop:"15px"
+  },
+  nomesdevs1_: {
+    fontWeight: "bolder",
+    marginBottom: "3px",
+    fontSize: "15px",
+    marginTop: "5px"
+  },
 
 })
