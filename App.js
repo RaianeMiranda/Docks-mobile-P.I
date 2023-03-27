@@ -1,14 +1,24 @@
 import * as React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./src/Configuracoes/styles";
 
-
 function Feed() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "PINK",
+      }}
+    >
       <Text>melancia</Text>
     </View>
   );
@@ -16,36 +26,53 @@ function Feed() {
 
 function Article() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" , backgroundColor:"pink"}}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white",
+      }}
+    >
       <Text>ARTICLE</Text>
     </View>
   );
 }
 
 const Drawer = createDrawerNavigator();
-
-const UserView = () => {
-  return(
-    <View style={{backgroundColor:"white", height:"100px"}}/>
-  )
-}
+const CustomDrawer = (props) => {
+  return (
+    <DrawerContentScrollView {...props}>
+      <View style={styles.drawerHeader}>
+        <View>
+          <Image
+            source={require("./src/Images/Usuario.png")}
+            style={styles.vectorUsuario}
+          />
+        </View>
+        <View><Text>Helene</Text></View>
+      
+        <Text>Helene123@gmail.com</Text>
+      </View>
+      <DrawerItemList {...props} />
+    </DrawerContentScrollView>
+  );
+};
 
 function MyDrawer() {
-
   return (
-    <Drawer.Navigator 
+    <Drawer.Navigator
+      drawerContent={(props) => <CustomDrawer {...props} />}
       useLegacyImplementation
       screenOptions={{
         drawerStyle: {
-          backgroundColor: 'pink',
           width: 250,
           height: 700,
-          marginTop: 60
+          marginTop: "60px",
         },
         drawerPosition: "right",
         headerRight: () => {
           const navigation = useNavigation();
-         
 
           return (
             <Ionicons
@@ -56,14 +83,14 @@ function MyDrawer() {
               onPress={() => navigation.openDrawer()}
             />
           );
-        }, 
-        headerLeft:()=> {
-          return ""
-        }
+        },
+        headerLeft: () => {
+          return "";
+        },
+        headerStyle: { backgroundColor: "#D5ECB4" },
       }}
-      
     >
-      <Drawer.Screen style={styles.kk} name="jaboticaba" component={Feed}  />
+      <Drawer.Screen name="jaboticaba" component={Feed} />
       <Drawer.Screen name="Article" component={Article} />
     </Drawer.Navigator>
   );

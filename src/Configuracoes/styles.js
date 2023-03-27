@@ -219,8 +219,12 @@ import { StyleSheet } from "react-native";
     backgroundColor:"pink"
 
    },
-  kk:{
-    marginTop:"50px",
-    backgroundColor:"blue"
-  }
+   
+   vectorUsuario:{
+    width:"50px",
+    height:"50px"
+   },
+   drawerHeader:{
+    flexDirection: "row", justifyContent: "space-between"
+   }
  });

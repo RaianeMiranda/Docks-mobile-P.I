@@ -91,7 +91,7 @@ export const ConfigScreen = ({ navigation }) => {
           <Button style={styles.buttonDel}>
             <Text style={styles.textDel}>deletar conta</Text>
             <Image
-              source={require("../Images/VectorRed.png")}
+              source={require("./src/Images/VectorRed.png")}
               style={styles.vectorRed}
             />
           </Button>
@@ -104,7 +104,7 @@ export const ConfigScreen = ({ navigation }) => {
             <text style={styles.textTermos1}>Termos e condições</text>
             <View style={styles.imageTermos1}>
               <Image
-                source={require("../Images/VectorOrange.png")}
+                source={require("./src/Images/VectorOrange.png")}
                 style={styles.vectorOrange}
               />
             </View>
@@ -115,7 +115,7 @@ export const ConfigScreen = ({ navigation }) => {
             <text style={styles.textTermos2}>Licenças</text>
             <View style={styles.imageTermos2}>
               <Image
-                source={require("../Images/VectorOrange.png")}
+                source={require("./src/Images/VectorOrange.png")}
                 style={styles.vectorOrange}
               />
             </View>
@@ -126,7 +126,7 @@ export const ConfigScreen = ({ navigation }) => {
             <text style={styles.textTermos3}>Políticas de Privacidade</text>
             <View style={styles.imageTermos3}>
               <Image
-                source={require("../Images/VectorOrange.png")}
+                source={require("./src/Images/VectorOrange.png")}
                 style={styles.vectorOrange}
               />
             </View>

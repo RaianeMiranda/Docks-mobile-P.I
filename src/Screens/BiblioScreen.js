@@ -38,7 +38,7 @@ export const BiblioScreen = ({ navigation }) => {
               <Text style={styles.textLivro}>Criar Livros</Text>
               <View style={styles.Livro}>
                 <Image
-                  source={require("../Images/Livro.png")}
+                  source={require("./src/Images/Livro.png")}
                   style={styles.CapaLivro}
                 />
               </View>
