@@ -9,7 +9,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./src/Configuracoes/styles";
 
-function Feed() {
+function Biblioteca() {
   return (
     <View
       style={{
@@ -19,12 +19,12 @@ function Feed() {
         backgroundColor: "PINK",
       }}
     >
-      <Text>melancia</Text>
+      <Text>BIBLIO</Text>
     </View>
   );
 }
 
-function Article() {
+function Heroi() {
   return (
     <View
       style={{
@@ -34,7 +34,77 @@ function Article() {
         backgroundColor: "white",
       }}
     >
-      <Text>ARTICLE</Text>
+      <Text>HERO</Text>
+    </View>
+  );
+}
+function Snowflake() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white",
+      }}
+    >
+      <Text>SNOWFLAKE</Text>
+    </View>
+  );
+}
+function Mundo() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white",
+      }}
+    >
+      <Text>MUNDO</Text>
+    </View>
+  );
+}
+function Personagens() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white",
+      }}
+    >
+      <Text>PERSONAGENS</Text>
+    </View>
+  );
+}
+function Sobrenos() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white",
+      }}
+    >
+      <Text>SOBRENOSS</Text>
+    </View>
+  );
+}
+function Configuracoes() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white",
+      }}
+    >
+      <Text>CONFIGGS</Text>
     </View>
   );
 }
@@ -50,10 +120,12 @@ const CustomDrawer = (props) => {
             style={styles.vectorUsuario}
           />
         </View>
-        <View><Text>Helene</Text></View>
-      
-        <Text>Helene123@gmail.com</Text>
+        <View style={styles.infUsuario}>
+          <Text style={styles.nomeUsuario}>Helene</Text>
+          <Text>Helene123@gmail.com</Text>
+        </View>
       </View>
+
       <DrawerItemList {...props} />
     </DrawerContentScrollView>
   );
@@ -90,8 +162,13 @@ function MyDrawer() {
         headerStyle: { backgroundColor: "#D5ECB4" },
       }}
     >
-      <Drawer.Screen name="jaboticaba" component={Feed} />
-      <Drawer.Screen name="Article" component={Article} />
+      <Drawer.Screen name="Biblioteca" component={Biblioteca} />
+      <Drawer.Screen name="Jornada do Herói" component={Heroi} />
+      <Drawer.Screen name="Snowflake" component={Snowflake} />
+      <Drawer.Screen name="Criação de Mundo" component={Mundo} />
+      <Drawer.Screen name="Criação de Personagens" component={Personagens} />
+      <Drawer.Screen name="Sobre nós" component={Sobrenos} />
+      <Drawer.Screen name="Configurações" component={Configuracoes} />
     </Drawer.Navigator>
   );
 }
