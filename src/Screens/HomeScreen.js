@@ -1,5 +1,6 @@
 import { Button, Text, View } from "react-native";
 import { styles } from "../Configuracoes/styles";
+import * as React from "react";
 
 
 export const HomeScreen = ({navigation}) => {
@@ -16,10 +17,7 @@ export const HomeScreen = ({navigation}) => {
         title="Ir para Biblio"
         onPress={() => navigation.navigate("Biblio")}
       />
-      <Button 
-        title="Ir para o drawer"
-        onPress={() => navigation.navigate("Drawer")}
-      />
+  
       </View>
     </View>
   );

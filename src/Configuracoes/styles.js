@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  navConfig:{
+    backgroundColor: "#D5ECB4",
+  },
   buttonHome: {
     marginBottom: "10px",
   },
@@ -11,7 +14,7 @@ export const styles = StyleSheet.create({
   containerBiblio: {
     backgroundColor: "#FFF2D8",
     height: "100%",
-    backgroundColor: "#D5ECB4",
+   
   },
 
   inputsConfig: {
@@ -171,7 +174,7 @@ export const styles = StyleSheet.create({
     width: "10px",
   },
 
-  nomeUsuario: {
+  nomeUsuariob: {
     fontFamily: "sansSerif",
     fontWeight: "bold",
     color: "black",
@@ -194,20 +197,13 @@ export const styles = StyleSheet.create({
     margin: "0",
   },
   modalBiblioconteudo: {
-    backgroundColor: "white",
+    //backgroundColor: "white",
     height: "400px",
     width: "250px",
     borderRadius: "50px",
     marginLeft: "55px",
   },
 
-  textLivro: {
-    fontFamily: "sansSerif",
-    fontWeight: "bold",
-    color: "black",
-    fontSize: "20px",
-    marginLeft: "20px",
-  },
   linha: {
     height: 10,
     width: "100%",
@@ -219,10 +215,12 @@ export const styles = StyleSheet.create({
   vectorUsuario: {
     width: "50px",
     height: "50px",
+   
   },
   drawerHeader: {
     flexDirection: "row",
     backgroundColor: "#F4CCC8",
+    padding:"10px"
    
   },
   nomeUsuario: {

@@ -15,17 +15,19 @@ export const BiblioScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
+  const _goBack = () => console.log("Went back");
 
   return (
     <View style={styles.containerBiblio}>
       <Appbar.Header style={styles.navConfig}>
+      <Appbar.BackAction onPress={_goBack} />
         <Appbar.Content
           titleStyle={{ textAlign: "center", fontWeight: "bold" }}
           title="Biblioteca"
         />
         <Appbar.Action icon="menu" onPress={_handleMore} />
       </Appbar.Header>
-      <Text style={styles.nomeUsuario}>Bem vindo(a) Helene</Text>
+      <Text style={styles.nomeUsuariob}>Bem vindo(a) Helene</Text>
 
       <View>
         <Provider>
@@ -33,15 +35,8 @@ export const BiblioScreen = ({ navigation }) => {
             <Modal
               visible={visible}
               onDismiss={hideModal}
-              style={styles.modalBiblioconteudo}
+              
             >
-              <Text style={styles.textLivro}>Criar Livros</Text>
-              <View style={styles.Livro}>
-                <Image
-                  source={require("./src/Images/Livro.png")}
-                  style={styles.CapaLivro}
-                />
-              </View>
             </Modal>
           </Portal>
           <Button style={styles.buttonCL} onPress={showModal}>
