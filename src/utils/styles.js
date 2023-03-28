@@ -38,7 +38,9 @@ export const styles = StyleSheet.create({
     fontSize: "30px",
     textAlign: "center"
   },
-
+ containernome:{
+  marginBottom:"20px",
+ },
   textdocks2: {
     fontSize: "15px",
     textAlign: "center"
@@ -73,7 +75,9 @@ export const styles = StyleSheet.create({
     fontWeight: "bolder",
     marginRight: "10px",
     display: "flex",
-    
+    marginLeft: "45px",
+    fontSize:"20px",
+    marginTop:"50px"
   },
   containercriadoras2: {
     backgroundColor: "white",
@@ -82,14 +86,15 @@ export const styles = StyleSheet.create({
     display: "flex",
     borderRadius: "40px",
     margin: "auto",
-    marginTop: "20px"
+    marginTop: "10px"
   },
   containercriadoras3: {
     fontWeight: "bolder",
-    marginRight: "10px",
+    marginRight: "30px",
     display: "flex",
     justifyContent: "center",
-    marginTop: "40px",
+    
+  
   },
   nomesdevs1: {
     fontWeight: "bolder",

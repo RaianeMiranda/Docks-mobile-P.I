@@ -15,9 +15,7 @@ export default function SplashScreen() {
       >
         <Image
           source={{ uri: require("../images/dockinha.png") }}
-          style={{ width: "100px", height: "100px", }}
-        
-        
+          style={{ width: "100px", height: "100px" }}
         />
       </View>
       <View>
@@ -60,37 +58,30 @@ export default function SplashScreen() {
         livros, possibilitando assim o crescimento de escritores na literatura
         nacional.{" "}
       </Paragraph>
-      <View style={styles.imgcontainer} >
-    
+      <View style={styles.imgcontainer}>
         <Image
           source={{ uri: require("../images/mentor.png") }}
-          style={{ width: "110px", height: "90px",  
-       }}
+          style={{ width: "110px", height: "90px" }}
           resizeMode="contain"
         />
-         
-    
+
         <Image
           source={{ uri: require("../images/patydocks.png") }}
-          style={{ width: "85px", height: "100px", 
-        }}
+          style={{ width: "85px", height: "100px" }}
           resizeMode="contain"
         />
-        
-      
+
         <Image
           source={{ uri: require("../images/dock_mao.png") }}
-          style={{ width: "100px", height: "100px", }}
+          style={{ width: "100px", height: "100px" }}
           resizeMode="contain"
         />
-      
-      
+
         <Image
           source={{ uri: require("../images/psicopato.png") }}
-          style={{ width: "100px", height: "100px", }}
+          style={{ width: "100px", height: "100px" }}
           resizeMode="contain"
         />
-        
       </View>
       <View style={styles.containernome}>
         <Text style={styles.textmentor}>Mentor</Text>
@@ -100,45 +91,32 @@ export default function SplashScreen() {
       </View>
       <View>
         <Text style={styles.containercriadoras}>Conheça o Time</Text>
+
         <View style={styles.containercriadoras2}>
           <View style={styles.containerfototext_}>
             <Image
               source={{ uri: require("../images/dockinha.png") }}
               style={{ width: "40px", height: "40px" }}
             />
-          
-          <View>
-            <View style>
-              <Text style={styles.nomesdevs1}>Clara Vasconcelos</Text>
-              <Text style={styles.nomesfun}>Desenvolvedora</Text>
-            </View>
-            </View>
-          </View>
-          <View style={styles.containerfototext}>
-            <Image
-              source={{ uri: require("../images/dockinha.png") }}
-              style={{ width: "40px", height: "40px" }}
-            />
-          
-          <View>
-            <View style>
-              <Text style={styles.nomesdevs1}>Helena Meirelles</Text>
-              <Text style={styles.nomesfun}>Desenvolvedora</Text>
-            </View>
-            </View>
-          </View>
 
+            <View>
+              <View style>
+                <Text style={styles.nomesdevs1_}>Clara Vasconcelos</Text>
+                <Text style={styles.nomesfun_}>Desenvolvedora</Text>
+              </View>
+            </View>
+          </View>
           <View style={styles.containerfototext}>
             <Image
               source={{ uri: require("../images/dockinha.png") }}
               style={{ width: "40px", height: "40px" }}
             />
-          
-          <View>
-            <View style>
-              <Text style={styles.nomesdevs1}>Heloísa Rebello</Text>
-              <Text style={styles.nomesfun}>Desenvolvedora</Text>
-            </View>
+
+            <View>
+              <View style>
+                <Text style={styles.nomesdevs1}>Helena Meirelles</Text>
+                <Text style={styles.nomesfun}>Desenvolvedora</Text>
+              </View>
             </View>
           </View>
 
@@ -147,39 +125,47 @@ export default function SplashScreen() {
               source={{ uri: require("../images/dockinha.png") }}
               style={{ width: "40px", height: "40px" }}
             />
-          
-          <View>
-            <View style>
-              <Text style={styles.nomesdevs1}>Raiane Miranda</Text>
-              <Text style={styles.nomesfun}>Desenvolvedora</Text>
-            </View>
+
+            <View>
+              <View style>
+                <Text style={styles.nomesdevs1}>Heloísa Rebello</Text>
+                <Text style={styles.nomesfun}>Desenvolvedora</Text>
+              </View>
             </View>
           </View>
-
 
           <View style={styles.containerfototext}>
             <Image
               source={{ uri: require("../images/dockinha.png") }}
               style={{ width: "40px", height: "40px" }}
             />
-          
-          <View>
-            <View style>
-              <Text style={styles.nomesdevs1}>Você!!!</Text>
-              <Text style={styles.nomesfun}>Usuário do Docks</Text>
-            </View>
+
+            <View>
+              <View style>
+                <Text style={styles.nomesdevs1}>Raiane Miranda</Text>
+                <Text style={styles.nomesfun}>Desenvolvedora</Text>
+              </View>
             </View>
           </View>
 
+          <View style={styles.containerfototext}>
+            <Image
+              source={{ uri: require("../images/dockinha.png") }}
+              style={{ width: "40px", height: "40px" }}
+            />
 
-         
-         
-         
+            <View>
+              <View style>
+                <Text style={styles.nomesdevs1}>Você!!!</Text>
+                <Text style={styles.nomesfun}>Usuário do Docks</Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
       <Text style={styles.containercriadoras3}>
-        A Nossa equipe visa com o Docks facilitar a criação de um livro e tornar
-        apredizado acessível para escritores{" "}
+        A nossa equipe visa com o Docks facilitar a criação de um livro e tornar
+        o aprendizado acessível para escritores .{" "}
       </Text>
     </View>
   );
