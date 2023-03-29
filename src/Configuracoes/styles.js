@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  navConfig:{
+  navConfig: {
     backgroundColor: "#D5ECB4",
   },
   buttonHome: {
@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
   containerBiblio: {
     backgroundColor: "#FFF2D8",
     height: "100%",
-   
   },
 
   inputsConfig: {
@@ -175,7 +174,7 @@ export const styles = StyleSheet.create({
   },
 
   nomeUsuariob: {
-    fontFamily: "sansSerif",
+   
     fontWeight: "bold",
     color: "black",
     fontSize: "20px",
@@ -187,14 +186,18 @@ export const styles = StyleSheet.create({
     border: "5px solid #FED576",
     borderRadius: "8px",
     width: "180px",
+    height:"40px",
     marginTop: "20px",
-    marginLeft: "20px",
+    marginLeft: "30px",
   },
   textBL: {
-    fontFamily: "sansSerif",
+    
     fontWeight: "bold",
     color: "black",
-    margin: "0",
+    fontSize:"17PX",
+    paddingTop:"5PX",
+    paddingBottom:"5px",
+    marginLeft:"10px"
   },
   modalBiblioconteudo: {
     //backgroundColor: "white",
@@ -204,10 +207,7 @@ export const styles = StyleSheet.create({
     marginLeft: "55px",
   },
 
-  linha: {
-    height: 10,
-    width: "100%",
-  },
+  
   nomePagina: {
     backgroundColor: "pink",
   },
@@ -215,18 +215,16 @@ export const styles = StyleSheet.create({
   vectorUsuario: {
     width: "50px",
     height: "50px",
-   
   },
   drawerHeader: {
     flexDirection: "row",
     backgroundColor: "#F4CCC8",
-    padding:"10px"
-   
+    padding: "10px",
   },
   nomeUsuario: {
     fontFamily: "sansSerif",
     fontWeight: "bold",
-    fontSize:"15PX"
+    fontSize: "15PX",
   },
 
   infUsuario: {
@@ -234,4 +232,50 @@ export const styles = StyleSheet.create({
     flexDirection: "colum",
     padding: "10px",
   },
+  LivroB:{
+    position:"relative",
+     height:"300%",
+      width:"35%",
+    marginLeft:"5px",
+      marginTop:"30px"
+  },
+  LivroB1:{
+    position:"relative",
+     height:"300%",
+      width:"35%",
+    marginLeft:"50px",
+      marginTop:"30px"
+  },
+
+
 });
+
+export const colors = [
+  "rgba(190,228,228,1)",
+  "rgba(190,228,228,1)",
+  "rgba(242,204,201,1)",
+  "rgba(242,204,201,1)",
+  "rgba(235,222,240,1)",
+  "rgba(235,222,240,1)",
+  "rgba(239,196,167,1)",
+  "rgba(239,196,167,1)",
+  "rgba(239,196,167,1)",
+  "rgba(190,228,228,1)",
+  "rgba(190,228,228,1)",
+  "rgba(242,204,201,1)",
+  "rgba(242,204,201,1)",
+  "rgba(235,222,240,1)",
+  "rgba(235,222,240,1)",
+  "rgba(239,196,167,1)",
+  "rgba(239,196,167,1)",
+  "rgba(190,228,228,1)",
+  "rgba(190,228,228,1)",
+  "rgba(242,204,201,1)",
+  "rgba(242,204,201,1)",
+];
+
+export const locations = [
+  0, 0.1, 0.1, 0.2, 0.2, 0.3, 0.3, 0.3, 0.4, 0.4, 0.5, 0.5, 0.6, 0.6, 0.7, 0.7,
+  0.8, 0.8, 0.9, 0.9, 1, 1,
+];
+

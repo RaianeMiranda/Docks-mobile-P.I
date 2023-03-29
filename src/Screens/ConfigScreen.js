@@ -1,9 +1,8 @@
 import * as React from "react";
 import { Text, View, Image } from "react-native";
-import { styles } from "../Configuracoes/styles";
+import { colors, locations, styles } from "../Configuracoes/styles";
 import { Appbar, TextInput, Button } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
-
 
 export const ConfigScreen = ({ navigation }) => {
   const _goBack = () => console.log("Went back");
@@ -21,44 +20,17 @@ export const ConfigScreen = ({ navigation }) => {
         <Appbar.Action icon="menu" onPress={_handleMore} />
       </Appbar.Header>
       <View>
-        <LinearGradient
-          // Background Linear Gradient
+        <LinearGradient // Background Linear Gradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
-          colors={[
-            "rgba(190,228,228,1)",
-            "rgba(190,228,228,1)",
-            "rgba(242,204,201,1)",
-            "rgba(242,204,201,1)",
-            "rgba(235,222,240,1)",
-            "rgba(235,222,240,1)",
-            "rgba(239,196,167,1)",
-            "rgba(239,196,167,1)",
-            "rgba(239,196,167,1)",
-            "rgba(190,228,228,1)",
-            "rgba(190,228,228,1)",
-            "rgba(242,204,201,1)",
-            "rgba(242,204,201,1)",
-            "rgba(235,222,240,1)",
-            "rgba(235,222,240,1)",
-            "rgba(239,196,167,1)",
-            "rgba(239,196,167,1)",
-            "rgba(190,228,228,1)",
-            "rgba(190,228,228,1)",
-            "rgba(242,204,201,1)",
-            "rgba(242,204,201,1)",
-          ]}
-          locations={[
-            0, 0.1, 0.1, 0.2, 0.2, 0.3, 0.3, 0.3, 0.4, 0.4, 0.5, 0.5, 0.6, 0.6,
-            0.7, 0.7, 0.8, 0.8, 0.9, 0.9, 1, 1,
-          ]}
+          colors={colors}
+          locations={locations}
           style={{ height: 7, width: "100%" }}
         />
-        
       </View>
       <Text style={styles.tituloConfig1}>Configurações da Conta</Text>
       <View style={styles.inputsConfig}>
-        <TextInput 
+        <TextInput
           style={styles.inputConfigNome}
           theme={{ colors: { primary: "#A9A9A9" } }}
           label="Nome"
@@ -136,7 +108,3 @@ export const ConfigScreen = ({ navigation }) => {
     </View>
   );
 };
-
-
-
-
