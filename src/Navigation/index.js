@@ -3,6 +3,7 @@ import { HomeScreen } from "../Screens/HomeScreen";
 import { ConfigScreen } from "../Screens/ConfigScreen";
 import { styles } from "../Configuracoes/styles";
 import { BiblioScreen } from "../Screens/BiblioScreen";
+
 //import { DrawerScreen } from "../Screens/DrawerScreen";
 
 const Stack = createNativeStackNavigator();
@@ -22,7 +23,6 @@ export const RootNavigation = () => {
         name="Biblio"
         component={BiblioScreen}
       />
-     
     </Stack.Navigator>
   );
 };

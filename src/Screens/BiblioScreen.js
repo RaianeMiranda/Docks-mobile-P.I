@@ -32,43 +32,49 @@ export const BiblioScreen = ({ navigation }) => {
       <Text style={styles.nomeUsuariob}>Bem vindo(a) Helene</Text>
 
       <View>
-        <Pressable style={styles.buttonCL}><Text style={styles.textBL}>+ Criar novo Livro</Text></Pressable>
-        
+        <Pressable style={styles.buttonCL}>
+          <Text style={styles.textBL}>+ Criar novo Livro</Text>
+        </Pressable>
       </View>
-      <View>
-        <View
-          style={{
-            flex: 1,
-            flexWrap: "wrap",
-            flexDirection: "row",
-           marginLeft:"30px"
-          }}
-        >
+
+      <View style={styles.container}>
+        <View style={styles.row}>
           <Image
-            style={styles.LivroB}
             source={require("../Images/Livro1.png")}
+            style={styles.image}
           />
-          
           <Image
-            style={styles.LivroB1}
             source={require("../Images/Livro2.png")}
-          />
-           
-           <Image
             style={styles.LivroB}
+          />
+        </View>
+        <View style={styles.LivroB}>
+          <Image
             source={require("../Images/Livro3.png")}
-          /> 
-          
-          
+            style={styles.LivroB}
+          />
         </View>
       </View>
-      <LinearGradient  // Background Linear Gradient
+
+      <LinearGradient // Background Linear Gradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         colors={colors}
         locations={locations}
-        style={{ height: 7, width: "100%",marginTop:"135%" }}
+        style={{ height: 7, width: "100%", marginTop: "135%" }}
       />
     </View>
+
   );
 };
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  row: {
+    flexDirection: 'row',
+  },
+ 
+});

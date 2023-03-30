@@ -236,16 +236,8 @@ export const styles = StyleSheet.create({
     position:"relative",
      height:"300%",
       width:"35%",
-    marginLeft:"5px",
-      marginTop:"30px"
   },
-  LivroB1:{
-    position:"relative",
-     height:"300%",
-      width:"35%",
-    marginLeft:"50px",
-      marginTop:"30px"
-  },
+ 
 
 
 });
