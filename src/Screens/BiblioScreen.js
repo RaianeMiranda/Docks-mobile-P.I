@@ -12,6 +12,8 @@ export const BiblioScreen = ({ navigation }) => {
   const hideModal = () => setVisible(false);
   const _goBack = () => console.log("Went back");
 
+
+  
   return (
     <View style={styles.containerBiblio}>
       <Appbar.Header style={styles.navConfig}>
@@ -29,6 +31,7 @@ export const BiblioScreen = ({ navigation }) => {
         locations={locations}
         style={{ height: 7, width: "100%" }}
       />
+       <View style={styles.shadow} />
       <Text style={styles.nomeUsuariob}>Bem vindo(a) Helene</Text>
 
       <View>
@@ -37,22 +40,45 @@ export const BiblioScreen = ({ navigation }) => {
         </Pressable>
       </View>
 
-      <View style={styles.container}>
-        <View style={styles.row}>
+      <View
+        style={{
+          flex: "1",
+          flexWrap: "wrap",
+          display: "flex",
+          gap: "40px",
+          marginLeft: "30px",
+          flexDirection: "row",
+        }}
+      >
+        <View>
           <Image
             source={require("../Images/Livro1.png")}
-            style={styles.image}
+            style={styles.LivroB}
           />
+          <View style={{display:"flex", flexDirection:"row", marginLeft:"30px", marginTop:"10px"   }}>
+            <Text style={{ fontWeight: "bold",fontSize:"18px", marginLeft:"5px", textAlign:"auto" }}>Livro1</Text>
+            <Image style={{width:"20px", height:"20px",marginLeft:"20px", position:"relative" }} source={require("../Images/Vector.png")}/>
+          </View>
+        </View>
+        <View>
           <Image
             source={require("../Images/Livro2.png")}
             style={styles.LivroB}
           />
+          <View style={{display:"flex", flexDirection:"row", marginLeft:"30px", marginTop:"10px"  }}>
+            <Text style={{ fontWeight: "bold", fontSize:"18px",  marginLeft:"5px", textAlign:"auto"}}>Livro2</Text>
+        <Image style={{width:"20px", height:"20px",marginLeft:"20px", position:"relative" }} source={require("../Images/Vector.png")}/>
+          </View>
         </View>
-        <View style={styles.LivroB}>
+        <View>
           <Image
             source={require("../Images/Livro3.png")}
             style={styles.LivroB}
           />
+          <View style={{ display:"flex", flexDirection:"row", marginLeft:"30px", marginTop:"10px"  }}>
+            <Text style={{ fontWeight: "bold",fontSize:"18px", marginLeft:"5px", textAlign:"auto" }}>Livro3</Text>
+            <Image style={{width:"20px", height:"20px",marginLeft:"20px", position:"relative" }} source={require("../Images/Vector.png")}/>
+          </View>
         </View>
       </View>
 
@@ -64,17 +90,22 @@ export const BiblioScreen = ({ navigation }) => {
         style={{ height: 7, width: "100%", marginTop: "135%" }}
       />
     </View>
-
   );
 };
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  row: {
-    flexDirection: 'row',
-  },
  
+  shadow: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 5,
+    backgroundColor: '#f2f2f2',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.4,
+    shadowRadius: 3,
+    elevation: 5,
+  },
 });

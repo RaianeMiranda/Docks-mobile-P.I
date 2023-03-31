@@ -189,6 +189,7 @@ export const styles = StyleSheet.create({
     height:"40px",
     marginTop: "20px",
     marginLeft: "30px",
+    marginBottom:"20PX"
   },
   textBL: {
     
@@ -233,9 +234,10 @@ export const styles = StyleSheet.create({
     padding: "10px",
   },
   LivroB:{
-    position:"relative",
-     height:"300%",
-      width:"35%",
+  
+     height:"150PX",
+      width:"130PX",
+      
   },
  
 

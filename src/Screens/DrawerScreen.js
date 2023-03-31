@@ -110,12 +110,8 @@ function Configuracoes() {
     </View>
   );
 }
-
 const Drawer = createDrawerNavigator();
 const CustomDrawer = (props) => {
-
-  
-
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.drawerHeader}>
