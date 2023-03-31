@@ -1,8 +1,8 @@
-import { Image, ImageBase, Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { Paragraph } from "react-native-paper";
 import { styles } from "../utils/styles";
 
-export default function SplashScreen() {
+export const SplashScreen = ()=>{
   return (
     <View style={styles.containersobre}>
       <View

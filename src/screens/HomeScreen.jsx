@@ -1,7 +1,13 @@
-import { Text } from "react-native";
+import * as React from "react";
+import { Button, View } from "react-native";
 
-export default function HomeScreen(){
-    return(
-    <Text>Hello</Text>
-    )
-}
+export const HomeScreen = ({ navigation }) => {
+  return (
+    <View>
+      <Button
+        title="Ir para Pagina"
+        onPress={() => navigation.navigate("PaginaScreen")}
+      />
+    </View>
+  );
+};

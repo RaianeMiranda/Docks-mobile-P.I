@@ -130,5 +130,8 @@ export const styles = StyleSheet.create({
     fontSize: "15px",
     marginTop: "5px"
   },
+  pagdocks :{
+    fontWeight: "bolder",
+  },
 
 })
