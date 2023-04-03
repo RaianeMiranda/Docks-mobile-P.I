@@ -4,25 +4,21 @@ import { colors, locations, styles } from "../config/styles";
 import { LinearGradient } from "expo-linear-gradient";
 
 export const InicialScreen = () => {
-
     return (
         <View style={styles.containerConfig}>
             <View>
-            <LinearGradient
-          // Background Linear Gradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          colors={colors}
-          locations={locations}
-          style={{ height: 7, width: "100%" }}
-        />
+                <LinearGradient
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    colors={colors}
+                    locations={locations}
+                    style={{height: 7, width: "100%"}}
+                />
             </View>
             <View style={styles.container}>
-                <View >
-                    <Text style={styles.tituloInicial}> Escrevendo </Text>
-
+                <View>
+                    <Text style={styles.tituloInicial}>Escrevendo</Text>
                 </View>
-
             </View>
         </View>
     );

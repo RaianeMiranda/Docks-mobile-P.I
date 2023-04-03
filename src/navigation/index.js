@@ -6,18 +6,26 @@ import {
     DrawerItemList,
 } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
+import CarouselCards from "../cards/CaroulselCard";
 import { InicialScreen } from "../screens/InicialScreen";
-import CarouselCards from "../screens/CaroulselCard";
+import { LoginScreen } from "../screens/loginScreen";
+import { CadScreen } from "../screens/cadScreen";
+import { CadastroLivros } from "../screens/cadLivros";
+
 
 const Drawer = createDrawerNavigator();
 const CustomDrawer = (props) => {
     return (
+  
         <DrawerContentScrollView {...props}>
-            <DrawerItemList {...props} />
+            <DrawerItemList {...props}/>
         </DrawerContentScrollView>
+       
     );
 };
+
 export function MyDrawer() {
+    
     return (
         <Drawer.Navigator
             drawerContent={(props) => <CustomDrawer {...props} />}
@@ -31,7 +39,6 @@ export function MyDrawer() {
                 drawerPosition: "right",
                 headerRight: () => {
                     const navigation = useNavigation();
-
                     return (
                         <Ionicons
                             name="menu"
@@ -43,12 +50,14 @@ export function MyDrawer() {
                     );
                 },
                 headerLeft: () => {
-                    return "";
-                },
-                headerStyle: { backgroundColor: "#D5ECB4" },
+                    return ;
+                }, headerStyle: { backgroundColor: "#D5ECB4" },
             }}>
-            <Drawer.Screen name="Página inicial" component={InicialScreen} />
+            <Drawer.Screen name="Página Inicial" component={InicialScreen} />
             <Drawer.Screen name="Card" component={CarouselCards} />
+            <Drawer.Screen name="Login" component={LoginScreen} />
+            <Drawer.Screen name="Cadastro" component={CadScreen} />
+            <Drawer.Screen name="Cadastro Livros" component={CadastroLivros} />
         </Drawer.Navigator>
     );
 };

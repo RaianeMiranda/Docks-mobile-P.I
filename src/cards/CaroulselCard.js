@@ -1,12 +1,11 @@
 import React from 'react'
 import { View } from "react-native"
 import Carousel, { Pagination } from 'react-native-snap-carousel'
-import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from './CaroulselCardItem'
+import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH, SLIDER_HEIGHT } from './CaroulselCardItem'
 
 const CarouselCards = () => {
   const [index, setIndex] = React.useState(0)
   const isCarousel = React.useRef(null)
-
 
   return (
     <View>
@@ -17,10 +16,12 @@ const CarouselCards = () => {
         data={dataCard}
         renderItem={CarouselCardItem}
         sliderWidth={SLIDER_WIDTH}
+        sliderHeight={SLIDER_HEIGHT}
         itemWidth={ITEM_WIDTH}
         onSnapToItem={(index) => setIndex(index)}
         useScrollView={true}
       />
+
       <Pagination
         activeDotIndex={index}
         carouselRef={isCarousel}
@@ -31,7 +32,7 @@ const CarouselCards = () => {
           marginHorizontal: 0,
           backgroundColor: 'rgba(0, 0, 0, 0.92)'
         }}
-        inactiveDotOpacity={0.4}
+        inactiveDotOpacity={0}
         inactiveDotScale={0.6}
         tappableDots={true}
       />
@@ -47,11 +48,11 @@ export const dataCard = [
   },
   {
     title: "In turpis",
-    body: "Aenean ut eros et nisl sagittis vestibulum. Donec posuere vulputate arcu.  ",
+    body: "Aenean ut eros et nisl sagittis vestibulum. Donec posuere vulputate arcu.",
   },
   {
     title: "Lorem Ipsum",
-    body: "Phasellus ullamcorper ipsum rutrum nunc. Nullam quis ante. Etiam ultricies nisi vel augue. ",
+    body: "Phasellus ullamcorper ipsum rutrum nunc. Nullam quis ante. Etiam ultricies nisi vel augue.",
   }
 ]
 
