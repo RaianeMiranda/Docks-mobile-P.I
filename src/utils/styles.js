@@ -130,8 +130,34 @@ export const styles = StyleSheet.create({
     fontSize: "15px",
     marginTop: "5px"
   },
+
   pagdocks :{
     fontWeight: "bolder",
+    fontSize:"16px",
+    marginLeft:"20px",
+    marginTop:"10px",
+    textAlign:"center",
   },
+  containerpagina:{
+     backgroundColor:"#FFF2D8",
+     height:"100%"
+  },
+  
 
 })
+export const colors =
+
+["rgba(190,228,228,1)",
+"rgba(190,228,228,1)",
+"rgba(242,204,201,1)",
+"rgba(242,204,201,1)",
+"rgba(235,222,240,1)",
+"rgba(235,222,240,1)",
+"rgba(239,196,167,1)",
+"rgba(239,196,167,1)", "rgba(239,196,167,1)", "rgba(190,228,228,1)", "rgba(190,228,228,1)", "rgba(242,204,201,1)", "rgba(242,204,201,1)", "rgba(235,222,240,1)", "rgba(235,222,240,1)", "rgba(239,196,167,1)", "rgba(239,196,167,1)", "rgba(190,228,228,1)", "rgba(190,228,228,1)", "rgba(242,204,201,1)", "rgba(242,204,201,1)",];
+
+
+
+
+export const locations = [0, 0.1, 0.1, 0.2, 0.2, 0.3, 0.3, 0.3, 0.4, 0.4, 0.5, 0.5, 0.6, 0.6, 0.7, 0.7, 0.8, 0.8, 0.9, 0.9, 1, 1,];
+
