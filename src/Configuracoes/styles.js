@@ -195,10 +195,10 @@ export const styles = StyleSheet.create({
     
     fontWeight: "bold",
     color: "black",
-    fontSize:"17PX",
+    fontSize:"15PX",
     paddingTop:"5PX",
     paddingBottom:"5px",
-    marginLeft:"10px"
+
   },
   modalBiblioconteudo: {
     //backgroundColor: "white",
