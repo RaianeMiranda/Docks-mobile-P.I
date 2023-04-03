@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TouchableOpacity, Text, View, Image } from "react-native";
 import { Button, HelperText, Paragraph, TextInput } from "react-native-paper";
-import { auth } from "../config/firebase";
+import { auth } from "../config/firebase/firebase";
 import { styles } from "../config/styles";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
@@ -167,3 +167,4 @@ export const CadScreen = ({ navigation }) => {
         </View>
     );
 };
+

@@ -1,7 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
 import { FlatList, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { auth, firestore } from "../config/firebase";
+import { auth, firestore } from "../config/firebase/firebase";
 
 export const CadastroLivros = () => {
   const [nomeLivro, setNomeLivro] = useState("");

@@ -9,7 +9,7 @@ import {
   Portal,
   TextInput,
 } from "react-native-paper";
-import { auth } from "../config/firebase";
+import { auth } from "../config/firebase/firebase";
 import { styles } from "../config/styles";
 
 export const LoginScreen = ({ route, navigation }) => {

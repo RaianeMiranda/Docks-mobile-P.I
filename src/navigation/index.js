@@ -11,21 +11,22 @@ import { InicialScreen } from "../screens/InicialScreen";
 import { LoginScreen } from "../screens/loginScreen";
 import { CadScreen } from "../screens/cadScreen";
 import { CadastroLivros } from "../screens/cadLivros";
+import { ListaLivros } from "../screens/listLivros";
 
 
 const Drawer = createDrawerNavigator();
 const CustomDrawer = (props) => {
     return (
-  
+
         <DrawerContentScrollView {...props}>
-            <DrawerItemList {...props}/>
+            <DrawerItemList {...props} />
         </DrawerContentScrollView>
-       
+
     );
 };
 
 export function MyDrawer() {
-    
+
     return (
         <Drawer.Navigator
             drawerContent={(props) => <CustomDrawer {...props} />}
@@ -50,7 +51,7 @@ export function MyDrawer() {
                     );
                 },
                 headerLeft: () => {
-                    return ;
+                    return;
                 }, headerStyle: { backgroundColor: "#D5ECB4" },
             }}>
             <Drawer.Screen name="Página Inicial" component={InicialScreen} />
@@ -58,6 +59,7 @@ export function MyDrawer() {
             <Drawer.Screen name="Login" component={LoginScreen} />
             <Drawer.Screen name="Cadastro" component={CadScreen} />
             <Drawer.Screen name="Cadastro Livros" component={CadastroLivros} />
+            <Drawer.Screen name="Biblioteca" component={ListaLivros} />
         </Drawer.Navigator>
     );
 };
