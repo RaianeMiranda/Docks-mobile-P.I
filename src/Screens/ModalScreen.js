@@ -17,17 +17,20 @@ const MyComponent = () => {
   const [text, setText] = React.useState("");
   const containerStyle = {
     backgroundColor: "white",
-
-    height: "400px",
-    borderRadius: "50px",
-    padding: "10px",
+    height: "420px",
+    borderRadius: "25px",
+   
+    paddingRight:"10px"
   };
 
   return (
     <Provider>
       <Portal>
         <Modal
-          style={{ width: "250px", marginLeft: "60px" }}
+          style={{ width: "250px",     flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+       }}
           visible={visible}
           onDismiss={hideModal}
           contentContainerStyle={containerStyle}
@@ -37,8 +40,10 @@ const MyComponent = () => {
               <Text
                 style={{
                   fontWeight: "bold",
-                  fontSize: "20px",
-                  marginBottom: "5px",
+                  fontSize: "25px",
+                  marginBottom: "20px",
+                  marginLeft: "10px",
+                  marginTop: "10px",
                 }}
               >
                 Criar Livros
@@ -47,7 +52,7 @@ const MyComponent = () => {
             <View style={{ marginLeft: "30px" }}>
               <ImageBackground
                 source={require("../Images/CriarLivros.png")}
-                style={{ width: "150px", height: "200px" }}
+                style={{ width: "150px", height: "200px",  }}
               >
                 <Button>
                   <Image
@@ -63,9 +68,10 @@ const MyComponent = () => {
             </View>
             <Text
               style={{
-                fontSize: "20px",
-                marginBottom: "5px",
-                marginTop: "10px",
+                fontSize: "25px",
+                marginBottom: "3px",
+                marginTop: "20px",
+                marginLeft: "10px",
               }}
             >
               Título
@@ -73,9 +79,12 @@ const MyComponent = () => {
             <TextInput
               style={{
                 width: "200px",
-                height: "35px",
+                height: "30px",
                 backgroundColor: "#F4CCC8",
-                border:"3px solid #D7C3C1"
+                border: " solid #D7C3C1",
+                borderTopRightRadius: "0",
+                borderTopLeftRadius: "0",
+                marginLeft: "10px",
               }}
               label="Nome do livro"
               value={text}
@@ -85,15 +94,23 @@ const MyComponent = () => {
               style={{
                 border: "3px solid #D9D9D9",
                 backgroundColor: "#D5ECB6",
-                width: "80px",
-                borderRadius: "OPX",
+                width: "50px",
+                borderRadius: "Opx",
                 height: "30PX",
-              marginTop:"10px",
-              display:"flex",
-              alignContent:""
+                marginTop: "10px",
+                marginLeft: "145px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-             <Text style={{ fontWeight: "bold",paddingBottom:"3px"}}>Salvar</Text> 
+              <Text
+                style={{
+                  fontWeight: "bold",  fontSize: "15px",
+                }}
+              >
+                Salvar
+              </Text>
             </Button>
           </View>
         </Modal>
