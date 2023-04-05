@@ -142,6 +142,10 @@ export const styles = StyleSheet.create({
      backgroundColor:"#FFF2D8",
      height:"100%"
   },
+  linear:{
+    marginLeft:"20px",
+    marginRight:"20px",
+  }
   
 
 })
