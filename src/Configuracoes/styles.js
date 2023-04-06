@@ -5,11 +5,15 @@ export const styles = StyleSheet.create({
     backgroundColor: "#D5ECB4",
   },
   buttonHome: {
-    marginBottom: "10px",
+    marginBottom: "90px",
+    height:'40PX',
+   
+    
   },
   containerConfig: {
     backgroundColor: "#FFF2D8",
     height: "100%",
+    
   },
   containerBiblio: {
     backgroundColor: "#FFF2D8",

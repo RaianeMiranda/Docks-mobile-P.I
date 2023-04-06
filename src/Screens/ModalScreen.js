@@ -1,5 +1,6 @@
 import * as React from "react";
-import { View, Image, ImageBackground } from "react-native";
+import { View, Image, ImageBackground, TouchableOpacity } from "react-native";
+
 import {
   Modal,
   Portal,
@@ -9,52 +10,68 @@ import {
   TextInput,
 } from "react-native-paper";
 
-const MyComponent = () => {
+const MyComponent = ({navigation}) => {
   const [visible, setVisible] = React.useState(false);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const [text, setText] = React.useState("");
+
   const containerStyle = {
     backgroundColor: "white",
-    height: "420px",
+    height: "380px",
     borderRadius: "25px",
-   
-    paddingRight:"10px"
+    width: "220px",
   };
 
   return (
     <Provider>
       <Portal>
         <Modal
-          style={{ width: "250px",     flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-       }}
+          style={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "0px",
+          }}
           visible={visible}
           onDismiss={hideModal}
           contentContainerStyle={containerStyle}
         >
-          <View style={{ margin: 0 }}>
-            <View style={{ marginTop: "0" }}>
+          <View>
+            <View
+              style={{
+                flex: "1",
+                flexDirection: "row",
+                justifyContent: "space-around",
+              }}
+            >
               <Text
                 style={{
                   fontWeight: "bold",
                   fontSize: "25px",
-                  marginBottom: "20px",
-                  marginLeft: "10px",
-                  marginTop: "10px",
+                  marginBottom: "10px",
                 }}
               >
                 Criar Livros
               </Text>
+              <TouchableOpacity
+                onPress={hideModal}
+              >
+              <Image
+                source={require("../Images/FecharModal.png")}
+                style={{ height: "15px", width: "15px" }}
+                
+              />
+              </TouchableOpacity>
             </View>
-            <View style={{ marginLeft: "30px" }}>
+            <View style={{ alignItems: "center" }}>
               <ImageBackground
                 source={require("../Images/CriarLivros.png")}
-                style={{ width: "150px", height: "200px",  }}
+                style={{ width: "130px", height: "180px" }}
               >
                 <Button>
+
                   <Image
                     style={{
                       width: "80px",
@@ -69,22 +86,22 @@ const MyComponent = () => {
             <Text
               style={{
                 fontSize: "25px",
-                marginBottom: "3px",
+
                 marginTop: "20px",
-                marginLeft: "10px",
+                marginLeft: "20px",
               }}
             >
               Título
             </Text>
             <TextInput
               style={{
-                width: "200px",
+                width: "180px",
                 height: "30px",
                 backgroundColor: "#F4CCC8",
                 border: " solid #D7C3C1",
                 borderTopRightRadius: "0",
                 borderTopLeftRadius: "0",
-                marginLeft: "10px",
+                marginLeft: "20px",
               }}
               label="Nome do livro"
               value={text}
@@ -97,8 +114,8 @@ const MyComponent = () => {
                 width: "50px",
                 borderRadius: "Opx",
                 height: "30PX",
-                marginTop: "10px",
-                marginLeft: "145px",
+                marginTop: "15px",
+                marginLeft: "135px",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -106,7 +123,8 @@ const MyComponent = () => {
             >
               <Text
                 style={{
-                  fontWeight: "bold",  fontSize: "15px",
+                  fontWeight: "bold",
+                  fontSize: "15px",
                 }}
               >
                 Salvar
