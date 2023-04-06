@@ -6,7 +6,7 @@ import { BiblioScreen } from "../Screens/BiblioScreen";
 import  ModalScreen  from "../Screens/ModalScreen";
 
 
-//import { DrawerScreen } from "../Screens/DrawerScreen";
+
 
 const Stack = createNativeStackNavigator();
 export const RootNavigation = () => {

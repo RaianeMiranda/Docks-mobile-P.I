@@ -1,52 +1,150 @@
 import * as React from "react";
-import { View, Image } from "react-native";
-import { Appbar, Modal, Text, Provider, Portal,Button } from "react-native-paper";
+import { View, Image, ImageBackground, TouchableOpacity } from "react-native";
+import {
+  Modal,
+  Text,
+  Provider,
+  Portal,
+  Button,
+  TextInput,
+} from "react-native-paper";
 import { colors, locations, styles } from "../Configuracoes/styles";
 import { LinearGradient } from "expo-linear-gradient";
-import { Pressable } from "react-native";
 
 export const BiblioScreen = ({ navigation }) => {
-  const _handleMore = () => console.log("Shown more");
   const [visible, setVisible] = React.useState(false);
-  const _goBack = () => console.log("Went back");
-  const containerStyle = { backgroundColor: "white", padding: 20 , width:'300px', height:"500px", borderRadius:"30px" };
+
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
+  const [text, setText] = React.useState("");
+
+  const containerStyle = {
+    backgroundColor: "white",
+    height: "380px",
+    borderRadius: "25px",
+    width: "220px",
+  };
 
   return (
     <View style={styles.containerBiblio}>
-      <Appbar.Header style={styles.navConfig}>
-        <Appbar.BackAction onPress={_goBack} />
-        <Appbar.Content
-          titleStyle={{ textAlign: "center", fontWeight: "bold" }}
-          title="Biblioteca"
-        />
-        <Appbar.Action icon="menu" onPress={_handleMore} />
-      </Appbar.Header>
-      <LinearGradient // Background Linear Gradient
+    <LinearGradient // Background Linear Gradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         colors={colors}
         locations={locations}
-        style={{ height: 7, width: "100%" }}
+        style={{ height: 7, width: "100%", }}
       />
-      <View style={styles.shadow} />
-      <Text style={styles.nomeUsuariob}>Bem vindo(a) Helene</Text>
-
+      
+      
       <Provider>
         <Portal>
           <Modal
+            style={{
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "0px",
+            }}
             visible={visible}
             onDismiss={hideModal}
             contentContainerStyle={containerStyle}
           >
-            <Text>Example Modal. Click outside this area to dismiss.</Text>
+            <View>
+              <View
+                style={{
+                  flex: "1",
+                  flexDirection: "row",
+                  justifyContent: "space-around",
+                }}
+              >
+                <Text
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "25px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Criar Livros
+                </Text>
+                <TouchableOpacity onPress={hideModal}>
+                  <Image
+                    source={require("../Images/FecharModal.png")}
+                    style={{ height: "15px", width: "15px" }}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={{ alignItems: "center" }}>
+                <ImageBackground
+                  source={require("../Images/CriarLivros.png")}
+                  style={{ width: "130px", height: "180px" }}
+                >
+                  <Button>
+                    <Image
+                      style={{
+                        width: "80px",
+                        height: "100px",
+                        marginTop: "30px",
+                      }}
+                      source={require("../Images/botaoModal.png")}
+                    />
+                  </Button>
+                </ImageBackground>
+              </View>
+              <Text
+                style={{
+                  fontSize: "25px",
+
+                  marginTop: "20px",
+                  marginLeft: "20px",
+                }}
+              >
+                Título
+              </Text>
+              <TextInput
+                style={{
+                  width: "180px",
+                  height: "30px",
+                  backgroundColor: "#F4CCC8",
+                  border: " solid #D7C3C1",
+                  borderTopRightRadius: "0",
+                  borderTopLeftRadius: "0",
+                  marginLeft: "20px",
+                }}
+                label="Nome do livro"
+                value={text}
+                onChangeText={(text) => setText(text)}
+              />
+              <Button
+                style={{
+                  border: "3px solid #D9D9D9",
+                  backgroundColor: "#D5ECB6",
+                  width: "50px",
+                  borderRadius: "Opx",
+                  height: "30PX",
+                  marginTop: "15px",
+                  marginLeft: "135px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "15px",
+                  }}
+                >
+                  Salvar
+                </Text>
+              </Button>
+            </View>
           </Modal>
         </Portal>
+       
         <Button style={styles.buttonCL} onPress={showModal}>
-        <Text style={styles.textBL} >+ Criar novo Livro</Text>
+          <Text style={styles.textBL}>+ Criar novo Livro</Text>
         </Button>
-      </Provider>
+     
 
       <View
         style={{
@@ -56,7 +154,7 @@ export const BiblioScreen = ({ navigation }) => {
           gap: "40px",
           marginLeft: "30px",
           flexDirection: "row",
-          marginTop:"50px"
+          marginTop: "50px",
         }}
       >
         <View>
@@ -170,6 +268,7 @@ export const BiblioScreen = ({ navigation }) => {
         locations={locations}
         style={{ height: 7, width: "100%", marginTop: "135%" }}
       />
+       </Provider>
     </View>
   );
 };

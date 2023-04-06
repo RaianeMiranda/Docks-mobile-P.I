@@ -136,8 +136,9 @@ const MyComponent = ({navigation}) => {
       <Button style={{ marginTop: 30 }} onPress={showModal}>
         Show
       </Button>
-    </Provider>
+   </Provider>
   );
 };
+ export default MyComponent;
 
-export default MyComponent;
+
