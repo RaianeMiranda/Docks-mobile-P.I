@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
-    
   },
   mentor: {
     width: "200px",
@@ -18,7 +17,6 @@ export const styles = StyleSheet.create({
   logodocks: {
     width: "200px",
     height: "200px",
-
   },
   paty: {
     width: "20px",
@@ -30,20 +28,19 @@ export const styles = StyleSheet.create({
     backgroundColor: "#FFF2D8",
   },
   containersobre: {
-    backgroundColor: "#FFF2D8"
-
+    backgroundColor: "#FFF2D8",
   },
   textdocks: {
     fontWeight: "bold",
     fontSize: "30px",
-    textAlign: "center"
+    textAlign: "center",
   },
- containernome:{
-  marginBottom:"20px",
- },
+  containernome: {
+    marginBottom: "20px",
+  },
   textdocks2: {
     fontSize: "15px",
-    textAlign: "center"
+    textAlign: "center",
   },
 
   textversion: {
@@ -76,8 +73,8 @@ export const styles = StyleSheet.create({
     marginRight: "10px",
     display: "flex",
     marginLeft: "45px",
-    fontSize:"20px",
-    marginTop:"50px"
+    fontSize: "20px",
+    marginTop: "50px",
   },
   containercriadoras2: {
     backgroundColor: "white",
@@ -86,21 +83,19 @@ export const styles = StyleSheet.create({
     display: "flex",
     borderRadius: "40px",
     margin: "auto",
-    marginTop: "10px"
+    marginTop: "10px",
   },
   containercriadoras3: {
     fontWeight: "bolder",
     marginRight: "30px",
     display: "flex",
     justifyContent: "center",
-    
-  
   },
   nomesdevs1: {
     fontWeight: "bolder",
     marginBottom: "3px",
     fontSize: "15px",
-    marginTop: "5px"
+    marginTop: "5px",
   },
   nomesdevs: {
     fontWeight: "bolder",
@@ -111,57 +106,67 @@ export const styles = StyleSheet.create({
     fontSize: "13px",
     marginBottom: "10px",
   },
-  containerfototext:{
+  containerfototext: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    marginLeft:"30px",
+    marginLeft: "30px",
   },
-  containerfototext_:{
+  containerfototext_: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    marginLeft:"30px",
-    marginTop:"15px"
+    marginLeft: "30px",
+    marginTop: "15px",
   },
   nomesdevs1_: {
     fontWeight: "bolder",
     marginBottom: "3px",
     fontSize: "15px",
-    marginTop: "5px"
+    marginTop: "5px",
   },
 
-  pagdocks :{
+  pagdocks: {
     fontWeight: "bolder",
-    fontSize:"16px",
-    marginLeft:"20px",
-    marginTop:"10px",
-    textAlign:"center",
+    fontSize: "16px",
+    marginLeft: "20px",
+    marginTop: "10px",
+    textAlign: "center",
   },
-  containerpagina:{
-     backgroundColor:"#FFF2D8",
-     height:"100%"
+  containerpagina: {
+    backgroundColor: "#FFF2D8",
+    height: "100%",
   },
-  linear:{
-    marginLeft:"20px",
-    marginRight:"20px",
-  }
-  
+  linear: {
+    marginLeft: "20px",
+    marginRight: "20px",
+  },
+});
+export const colors = [
+  "rgba(190,228,228,1)",
+  "rgba(190,228,228,1)",
+  "rgba(242,204,201,1)",
+  "rgba(242,204,201,1)",
+  "rgba(235,222,240,1)",
+  "rgba(235,222,240,1)",
+  "rgba(239,196,167,1)",
+  "rgba(239,196,167,1)",
+  "rgba(239,196,167,1)",
+  "rgba(190,228,228,1)",
+  "rgba(190,228,228,1)",
+  "rgba(242,204,201,1)",
+  "rgba(242,204,201,1)",
+  "rgba(235,222,240,1)",
+  "rgba(235,222,240,1)",
+  "rgba(239,196,167,1)",
+  "rgba(239,196,167,1)",
+  "rgba(190,228,228,1)",
+  "rgba(190,228,228,1)",
+  "rgba(242,204,201,1)",
+  "rgba(242,204,201,1)",
+];
 
-})
-export const colors =
-
-["rgba(190,228,228,1)",
-"rgba(190,228,228,1)",
-"rgba(242,204,201,1)",
-"rgba(242,204,201,1)",
-"rgba(235,222,240,1)",
-"rgba(235,222,240,1)",
-"rgba(239,196,167,1)",
-"rgba(239,196,167,1)", "rgba(239,196,167,1)", "rgba(190,228,228,1)", "rgba(190,228,228,1)", "rgba(242,204,201,1)", "rgba(242,204,201,1)", "rgba(235,222,240,1)", "rgba(235,222,240,1)", "rgba(239,196,167,1)", "rgba(239,196,167,1)", "rgba(190,228,228,1)", "rgba(190,228,228,1)", "rgba(242,204,201,1)", "rgba(242,204,201,1)",];
-
-
-
-
-export const locations = [0, 0.1, 0.1, 0.2, 0.2, 0.3, 0.3, 0.3, 0.4, 0.4, 0.5, 0.5, 0.6, 0.6, 0.7, 0.7, 0.8, 0.8, 0.9, 0.9, 1, 1,];
-
+export const locations = [
+  0, 0.1, 0.1, 0.2, 0.2, 0.3, 0.3, 0.3, 0.4, 0.4, 0.5, 0.5, 0.6, 0.6, 0.7, 0.7,
+  0.8, 0.8, 0.9, 0.9, 1, 1,
+];

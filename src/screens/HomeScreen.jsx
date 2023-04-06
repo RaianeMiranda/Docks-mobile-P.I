@@ -8,6 +8,12 @@ export const HomeScreen = ({ navigation }) => {
         title="Ir para Pagina"
         onPress={() => navigation.navigate("PaginaScreen")}
       />
+       <Button
+          title="Ir para Pagina2"
+          onPress={() => navigation.navigate("Pagina2Screen")}
+        />
     </View>
   );
 };
+ 
+
