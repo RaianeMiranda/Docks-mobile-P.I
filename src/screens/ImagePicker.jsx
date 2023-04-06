@@ -2,6 +2,8 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { useState } from "react";
 import { storage } from "../config/firebase/firebase";
 import { Button, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Image } from "react-native";
 
 export default function ImagePicker({ onImgURLChange }) {
   const [progressPorcent, setPorgessPorcent] = useState(0);
@@ -41,7 +43,12 @@ export default function ImagePicker({ onImgURLChange }) {
 
   return (
     <View>
-      <Button title="Escolher arquivo" onPress={handleButtonPress} />
+         <TouchableOpacity onPress={handleButtonPress}>
+        <Image
+          source={require("../Images/botaoModal.png")}
+          style={{ width: "80px", height: "100px", marginTop: "30px" }}
+        />
+      </TouchableOpacity>
       {!progressPorcent ? null : <p>{progressPorcent}%</p>}
     </View>
   );

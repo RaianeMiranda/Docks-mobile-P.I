@@ -23,7 +23,98 @@ export const styles = StyleSheet.create({
             fontSize: 30,
             fontWeight: "bold",
         },
-    }
+    },
+
+    containerBiblio: {
+        backgroundColor: "#FFF2D8",
+        height: "100%",
+      },
+    
+    
+      buttonCL: {
+        border: "5px solid #FED576",
+        borderRadius: "8px",
+        width: "180px",
+        height: "40px",
+        marginTop: "20px",
+        marginLeft: "30px",
+        marginBottom: "5PX",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      },
+      textBL: {
+        fontWeight: "bold",
+        color: "black",
+        fontSize: "15PX",
+      },
+     
+      LivroB: {
+        height: "150PX",
+        width: "130PX",
+      },
+    
+    
+      //BIBLIOmodal
+      modalBiblio1: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: "0px",
+      },
+      TituloFecharModal: {
+        flex: "1",
+        flexDirection: "row",
+        justifyContent: "space-around",
+      },
+      CriarLivros: {
+        fontWeight: "bold",
+        fontSize: "25px",
+        marginBottom: "10px",
+      },
+      FecharModal: {
+        height: "15px",
+        width: "15px",
+      },
+      LivroColorido: {
+        width: "130px",
+        height: "180px",
+      },
+      MaisDoLivro: {
+        width: "80px",
+        height: "100px",
+        marginTop: "30px",
+      },
+      TituloTitulo: {
+        fontSize: "25px",
+        marginTop: "20px",
+        marginLeft: "20px",
+      },
+      NomeDoLivro: {
+        width: "180px",
+        height: "30px",
+        backgroundColor: "#F4CCC8",
+        border: " solid #D7C3C1",
+        borderTopRightRadius: "0",
+        borderTopLeftRadius: "0",
+        marginLeft: "20px",
+      },
+      ButtonSalvarBiblio:{
+        border: "3px solid #D9D9D9",
+        backgroundColor: "#D5ECB6",
+        width: "50px",
+        borderRadius: "Opx",
+        height: "30PX",
+        marginTop: "15px",
+        marginLeft: "135px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      },
+      TextButtonSalvarBiblio:{
+        fontWeight: "bold",
+        fontSize: "15px",
+      }
 
 });
 
