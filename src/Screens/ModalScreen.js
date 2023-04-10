@@ -1,11 +1,19 @@
 import * as React from "react";
 import { View, Image, ImageBackground, TouchableOpacity } from "react-native";
-import { Modal, Portal, Text, Button, Provider, TextInput } from "react-native-paper";
+import {
+  Modal,
+  Portal,
+  Text,
+  Button,
+  Provider,
+  TextInput,
+} from "react-native-paper";
 import { addDoc, collection, ref, uploadString } from "firebase/firestore";
-import { auth, database, storage } from "../config/firebase/firebase";
-import ImagePicker from "../screens/ImagePicker";
+import { auth, database, storage } from "../Configuracoes/firebase";
+import ImagePicker from "./ImagePicker";
 
 const ModalCadLivros = ({ navigation }) => {
+  const userId = "QtBISAQHWGQPp80rMGaBi9CV8JN2";
   const [visible, setVisible] = React.useState(false);
   const [nomeLivro, setNomeLivro] = React.useState("");
   const [descricao, setDescricao] = React.useState("");
@@ -14,12 +22,9 @@ const ModalCadLivros = ({ navigation }) => {
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
 
+  console.log(userId);
   const handleAdd = async () => {
     try {
-      const user = auth.currentUser;
-      if (!user) {
-        throw new Error("Usuário não autenticado.");
-      }
 
       if (!nomeLivro.trim()) {
         throw new Error("Por favor, insira um nome para o livro.");
@@ -29,14 +34,11 @@ const ModalCadLivros = ({ navigation }) => {
         throw new Error("Por favor, selecione uma capa para o livro.");
       }
 
-      const handleImgURLChange = (url) => {
-        setCapaLivro(url);
-      };
       const docRef = await addDoc(collection(database, "livros"), {
         nomeLivro: nomeLivro,
         descricao: descricao,
-        capaLivro: `images/${capaLivro}`,
-        userId: user.uid,
+        capaLivro: capaLivro,
+        userId: userId,
       });
 
       console.log("Livro adicionado com ID: ", docRef.id);
@@ -59,7 +61,6 @@ const ModalCadLivros = ({ navigation }) => {
   const handleImgURLChange = (url) => {
     setCapaLivro(url);
   };
-
 
   return (
     <Provider>
@@ -172,11 +173,8 @@ const ModalCadLivros = ({ navigation }) => {
         </Modal>
       </Portal>
 
-      <Button style={{ marginTop: 30 }} onPress={showModal}>
-      </Button>
+      <Button style={{ marginTop: 30 }} onPress={showModal}></Button>
     </Provider>
   );
 };
 export default ModalCadLivros;
-
-

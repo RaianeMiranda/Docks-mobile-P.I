@@ -1,43 +1,60 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { HomeScreen } from "../Screens/HomeScreen";
+import * as React from "react";
+import { useNavigation } from "@react-navigation/native";
+import {
+    createDrawerNavigator,
+    DrawerContentScrollView,
+    DrawerItemList,
+} from "@react-navigation/drawer";
+import { Ionicons } from "@expo/vector-icons";
+import { BiblioScreen } from "../Screens/BiblioScreen"; 
 import { ConfigScreen } from "../Screens/ConfigScreen";
-import { styles } from "../Configuracoes/styles";
-import { BiblioScreen } from "../Screens/BiblioScreen";
-import  ModalScreen  from "../Screens/ModalScreen";
-import  DropdownScreen  from "../Screens/DropdownScreen";
+import { MyComponent } from "../Screens/DropdownScreen";
 
 
 
+const Drawer = createDrawerNavigator();
+const CustomDrawer = (props) => {
+    return (
 
-const Stack = createNativeStackNavigator();
-export const RootNavigation = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen
-        style={styles.navConfig}
-        options={{ headerShown: false }}
-        name="Config"
-        component={ConfigScreen}
-      />
-      <Stack.Screen
-        style={styles.navConfig}
-        options={{ headerShown: false }}
-        name="Biblio"
-        component={BiblioScreen}
-      />
-      <Stack.Screen
-        style={styles.navConfig}
-        options={{ headerShown: false }}
-        name="Modal"
-        component={ModalScreen}
-      />
-       <Stack.Screen
-        style={styles.navConfig}
-        options={{ headerShown: false }}
-        name="Dropdown"
-        component={DropdownScreen}
-      />
-    </Stack.Navigator>
-  );
+        <DrawerContentScrollView {...props}>
+            <DrawerItemList {...props} />
+        </DrawerContentScrollView>
+
+    );
+};
+
+export function MyDrawer() {
+
+    return (
+        <Drawer.Navigator
+            drawerContent={(props) => <CustomDrawer {...props} />}
+            useLegacyImplementation
+            screenOptions={{
+                drawerStyle: {
+                    width: 250,
+                    height: 700,
+                    marginTop: "60px",
+                },
+                drawerPosition: "right",
+                headerRight: () => {
+                    const navigation = useNavigation();
+                    return (
+                        <Ionicons
+                            name="menu"
+                            size={28}
+                            color="black"
+                            style={{ marginRight: 15 }}
+                            onPress={() => navigation.openDrawer()}
+                        />
+                    );
+                },
+                headerLeft: () => {
+                    return;
+                }, headerStyle: { backgroundColor: "#D5ECB4" },
+            }}>
+            <Drawer.Screen name="Biblioteca" component={BiblioScreen} />
+            <Drawer.Screen name="configScreen" component={ConfigScreen} />
+            <Drawer.Screen name="dropDown" component={MyComponent} />
+        </Drawer.Navigator>
+    );
 };

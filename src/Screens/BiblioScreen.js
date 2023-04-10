@@ -9,10 +9,10 @@ import {
   TextInput,
 } from "react-native-paper";
 import { collection, onSnapshot } from "firebase/firestore"
-import { colors, locations, styles } from "../config/styles";
+import { colors, locations, styles } from "../Configuracoes/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import ModalCadLivros from "./ModalScreen";
-import { database } from "../config/firebase/firebase";
+import { database } from "../Configuracoes/firebase"; 
 
 export const BiblioScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);

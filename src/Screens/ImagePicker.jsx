@@ -1,6 +1,6 @@
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { useState } from "react";
-import { storage } from "../config/firebase/firebase";
+import { storage } from "../Configuracoes/firebase";
 import { Button, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Image } from "react-native";

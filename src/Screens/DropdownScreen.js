@@ -9,7 +9,7 @@ import {
   Provider,
 } from "react-native-paper";
 
-const MyComponent = ({navigation}) => {
+export const MyComponent = ({navigation}) => {
   const [visible, setVisible] = React.useState(false);
 
   const showModal = () => setVisible(true);
@@ -48,4 +48,3 @@ const MyComponent = ({navigation}) => {
    </Provider>
   );
 };
- export default MyComponent;
