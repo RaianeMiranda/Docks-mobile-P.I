@@ -4,6 +4,7 @@ import { ConfigScreen } from "../Screens/ConfigScreen";
 import { styles } from "../Configuracoes/styles";
 import { BiblioScreen } from "../Screens/BiblioScreen";
 import  ModalScreen  from "../Screens/ModalScreen";
+import  DropdownScreen  from "../Screens/DropdownScreen";
 
 
 
@@ -30,6 +31,12 @@ export const RootNavigation = () => {
         options={{ headerShown: false }}
         name="Modal"
         component={ModalScreen}
+      />
+       <Stack.Screen
+        style={styles.navConfig}
+        options={{ headerShown: false }}
+        name="Dropdown"
+        component={DropdownScreen}
       />
     </Stack.Navigator>
   );

@@ -21,6 +21,10 @@ export const HomeScreen = ({navigation}) => {
         title="Ir para Modal"
         onPress={() => navigation.navigate("Modal")}
       />
+       <Button 
+        title="Ir para Dropdown"
+        onPress={() => navigation.navigate("Dropdown")}
+      />
       </View>
     </View>
   );
