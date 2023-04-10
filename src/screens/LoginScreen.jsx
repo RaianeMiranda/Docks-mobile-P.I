@@ -62,6 +62,7 @@ export const LoginScreen = ({ route, navigation }) => {
       {mensagem && <HelperText type="info">{mensagem}</HelperText>}
       <HelperText type="error">{mostraErro}</HelperText>
       <TextInput
+        testID="Email"
         label="Digite seu E-mail"
         value={email.value}
         onChangeText={(text) => setEmail({ value: text, error: "" })}
@@ -76,6 +77,7 @@ export const LoginScreen = ({ route, navigation }) => {
       />
       <HelperText visible={!!email.error}>{email.error}</HelperText>
       <TextInput
+        testID="Senha"
         label="Senha"
         returnKeyType="done"
         value={password.value}

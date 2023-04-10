@@ -12,6 +12,7 @@ import { LoginScreen } from "../screens/loginScreen";
 import { CadScreen } from "../screens/cadScreen";
 import { CadastroLivros } from "../screens/cadLivros";
 import {Biblioteca} from "../screens/listLivros";
+import {BiblioScreen} from "../screens/BiblioScreen";
 
 
 const Drawer = createDrawerNavigator();
@@ -60,6 +61,7 @@ export function MyDrawer() {
             <Drawer.Screen name="Cadastro" component={CadScreen} />
             <Drawer.Screen name="Cadastro Livros" component={CadastroLivros} />
             <Drawer.Screen name="Biblioteca" component={Biblioteca} />
+            <Drawer.Screen name="Biblioteca Modal" component={BiblioScreen} />
         </Drawer.Navigator>
     );
 };
