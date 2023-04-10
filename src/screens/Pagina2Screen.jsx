@@ -5,7 +5,7 @@ import { colors, locations, styles } from "../utils/styles";
 
 export const Pagina2Screen = () => {
   return (
-    <View style={styles.containerpagina}>
+    <View style={styles.containerpagina2}>
       <LinearGradient // Background Linear Gradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
