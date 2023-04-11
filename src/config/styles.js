@@ -27,7 +27,6 @@ export const styles = StyleSheet.create({
 
     containerBiblio: {
         backgroundColor: "#FFF2D8",
-        height: "100%",
       },
     
     
@@ -114,9 +113,47 @@ export const styles = StyleSheet.create({
       TextButtonSalvarBiblio:{
         fontWeight: "bold",
         fontSize: "15px",
-      }
+      },
 
-});
+
+      //////////////////////////////////////////////////////////////////////////////
+      navConfig: {
+        backgroundColor: "#D5ECB4",
+      },
+      containercriacaoper: {
+        backgroundColor: "#FFF2D8",
+      },
+      paragraphper: {
+        fontWeight: "bolder",
+        marginRight: "10px",
+        marginLeft: "10px",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+      },
+      containernomeper: {
+        marginTop: "15px",
+        marginBottom: "10px",
+        display: "flex",
+      },
+      inputper: {
+        backgroundColor: "white",
+        width: "90px",
+        height: "20px",
+        marginLeft: "10px",
+        borderRadius: "0px",
+      },
+    
+
+      containersalvarper: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        marginTop: "20px",
+      },
+
+    });
+    
 
 export const colors = [
     "rgba(190,228,228,1)",
