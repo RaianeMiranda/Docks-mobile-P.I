@@ -132,6 +132,7 @@ export const styles = StyleSheet.create({
     marginLeft: "20px",
     marginTop: "10px",
     textAlign: "center",
+    
    
   },
   containerpagina2: {
