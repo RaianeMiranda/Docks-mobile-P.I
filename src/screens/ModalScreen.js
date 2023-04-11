@@ -29,13 +29,10 @@ const ModalCadLivros = ({ navigation }) => {
         throw new Error("Por favor, selecione uma capa para o livro.");
       }
 
-      const handleImgURLChange = (url) => {
-        setCapaLivro(url);
-      };
       const docRef = await addDoc(collection(database, "livros"), {
         nomeLivro: nomeLivro,
         descricao: descricao,
-        capaLivro: `images/${capaLivro}`,
+        capaLivro: capaLivro,
         userId: user.uid,
       });
 
@@ -69,7 +66,7 @@ const ModalCadLivros = ({ navigation }) => {
             flex: 1,
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "0px",
+            marginTop: 0,
           }}
           visible={visible}
           onDismiss={hideModal}
@@ -81,7 +78,7 @@ const ModalCadLivros = ({ navigation }) => {
             </View>
             <View
               style={{
-                flex: "1",
+                flex: 1,
                 flexDirection: "row",
                 justifyContent: "space-around",
               }}
@@ -89,8 +86,8 @@ const ModalCadLivros = ({ navigation }) => {
               <Text
                 style={{
                   fontWeight: "bold",
-                  fontSize: "25px",
-                  marginBottom: "10px",
+                  fontSize: 25,
+                  marginBottom: 10,
                 }}
               >
                 Criar Livros

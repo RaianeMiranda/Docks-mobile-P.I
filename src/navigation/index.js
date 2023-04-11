@@ -8,11 +8,12 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import CarouselCards from "../cards/CaroulselCard";
 import { InicialScreen } from "../screens/InicialScreen";
-import { LoginScreen } from "../screens/loginScreen";
+import { LoginScreen } from "../screens/LoginScreen";
 import { CadScreen } from "../screens/cadScreen";
 import { CadastroLivros } from "../screens/cadLivros";
 import {Biblioteca} from "../screens/listLivros";
 import {BiblioScreen} from "../screens/BiblioScreen";
+import cadMundo from "../screens/cadMundo";
 
 
 const Drawer = createDrawerNavigator();
@@ -62,6 +63,7 @@ export function MyDrawer() {
             <Drawer.Screen name="Cadastro Livros" component={CadastroLivros} />
             <Drawer.Screen name="Biblioteca" component={Biblioteca} />
             <Drawer.Screen name="Biblioteca Modal" component={BiblioScreen} />
+            <Drawer.Screen name="Mundo" component={cadMundo} />
         </Drawer.Navigator>
     );
 };

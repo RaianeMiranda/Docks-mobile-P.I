@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Image } from "react-native";
+import { View, Image, TouchableOpacity } from "react-native";
 import {
   Modal,
   Text,
@@ -14,7 +14,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import ModalCadLivros from "./ModalScreen";
 import { database } from "../config/firebase/firebase";
 
-export const BiblioScreen = ({ navigation }) => {
+export const BiblioScreen = ({ route, navigation }) => {
   const [visible, setVisible] = React.useState(false);
   const [livros, setLivros] = React.useState([]);
   const showModal = () => setVisible(true);
@@ -37,7 +37,7 @@ export const BiblioScreen = ({ navigation }) => {
 
     return () => unsubscribe()
   }, [])
-
+  console.log("BiblioScreen navigation:", navigation);
   return (
     <View style={styles.containerBiblio}>
       <LinearGradient // Background Linear Gradient
@@ -71,7 +71,9 @@ export const BiblioScreen = ({ navigation }) => {
                 }}
               >
                 <View>
-                  <Image source={{ uri: livro.capaLivro }} style={styles.LivroB} />
+                  <TouchableOpacity onPress={() => navigation.navigate("Mundo", { bookId: livro.id })}>
+                    <Image source={{ uri: livro.capaLivro }} style={styles.LivroB} />
+                  </TouchableOpacity>
                   <View
                     style={{
                       display: "flex",
