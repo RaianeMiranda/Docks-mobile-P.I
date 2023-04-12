@@ -19,6 +19,12 @@ export const RootNavigation = () => {
         name="PaginaScreen"
         component={PaginaScreen}
       />
+         <Stack.Screen
+        style={styles.navConfig}
+        options={{ headerShown: false }}
+        name="SplashScreen"
+        component={SplashScreen}
+      />
         <Stack.Screen
         style={styles.navConfig}
         options={{ headerShown: false }}

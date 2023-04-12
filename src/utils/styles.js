@@ -105,12 +105,14 @@ export const styles = StyleSheet.create({
   nomesfun: {
     fontSize: "13px",
     marginBottom: "10px",
+    borderRadius:"50px",
   },
   containerfototext: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     marginLeft: "30px",
+    
   },
   containerfototext_: {
     display: "flex",
@@ -141,7 +143,7 @@ export const styles = StyleSheet.create({
   },
   containerpagina3: {
     backgroundColor: "#FFF2D8",
-    height: "151%",
+    height: "200%",
   },
   linear: {
     marginLeft: "20px",

@@ -2,7 +2,7 @@ import { Image, Text, View } from "react-native";
 import { Paragraph } from "react-native-paper";
 import { styles } from "../utils/styles";
 
-export const SplashScreen = ()=>{
+export const SplashScreen = () => {
   return (
     <View style={styles.containersobre}>
       <View
@@ -95,20 +95,20 @@ export const SplashScreen = ()=>{
         <View style={styles.containercriadoras2}>
           <View style={styles.containerfototext_}>
             <Image
-              source={{ uri: require("../images/dockinha.png") }}
+              source={{ uri: require("../images/clara.png") }}
               style={{ width: "40px", height: "40px" }}
             />
 
             <View>
               <View style>
                 <Text style={styles.nomesdevs1_}>Clara Vasconcelos</Text>
-                <Text style={styles.nomesfun_}>Desenvolvedora</Text>
+                <Text style={styles.nomesfun}>Desenvolvedora</Text>
               </View>
             </View>
           </View>
           <View style={styles.containerfototext}>
             <Image
-              source={{ uri: require("../images/dockinha.png") }}
+              source={{ uri: require("../images/helena.png") }}
               style={{ width: "40px", height: "40px" }}
             />
 
@@ -122,7 +122,7 @@ export const SplashScreen = ()=>{
 
           <View style={styles.containerfototext}>
             <Image
-              source={{ uri: require("../images/dockinha.png") }}
+              source={{ uri: require("../images/heloisa.png") }}
               style={{ width: "40px", height: "40px" }}
             />
 
@@ -136,7 +136,7 @@ export const SplashScreen = ()=>{
 
           <View style={styles.containerfototext}>
             <Image
-              source={{ uri: require("../images/dockinha.png") }}
+              source={{ uri: require("../images/raiane.png") }}
               style={{ width: "40px", height: "40px" }}
             />
 
@@ -169,4 +169,4 @@ export const SplashScreen = ()=>{
       </Text>
     </View>
   );
-}
+};
