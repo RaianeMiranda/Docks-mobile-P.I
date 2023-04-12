@@ -46,7 +46,7 @@ export default function ImagePicker({ onImgURLChange }) {
          <TouchableOpacity onPress={handleButtonPress}>
         <Image
           source={require("../Images/botaoModal.png")}
-          style={{ alignItems: "center",width: "80px", height: "100px", marginTop: "30px" }}
+          style={{margin:"auto",width: "80px", height: "100px", marginTop: "30px" }}
         />
       </TouchableOpacity>
     </View>

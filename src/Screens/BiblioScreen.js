@@ -4,13 +4,11 @@ import { Modal, Text, Provider, Button, TextInput } from "react-native-paper";
 import { collection, onSnapshot } from "firebase/firestore";
 import { colors, locations, styles } from "../Configuracoes/styles";
 import { LinearGradient } from "expo-linear-gradient";
-import ModalCadLivros from "./ModalScreen";
 import { database } from "../Configuracoes/firebase";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export const BiblioScreen = ({ navigation }) => {
-  const [visible, setVisible] = useState(false);
   const [livros, setLivros] = useState([]);
 
   useEffect(() => {
@@ -38,16 +36,19 @@ export const BiblioScreen = ({ navigation }) => {
         end={{ x: 1, y: 0 }}
         colors={colors}
         locations={locations}
-        style={{ height: 7, width: "100%" }}
+        style={{ height: 7, width: "100%", }}
       />
-      <ModalCadLivros></ModalCadLivros>
-      <Button style={styles.buttonCL} onPress={() => setVisible(true)}>
+
+      <Button style={styles.buttonCL} onPress={() =>
+        navigation.navigate("CadModal")
+      }>
         <Text style={styles.textBL}>+ Criar novo Livro</Text>
       </Button>
 
-      {Array.isArray(livros) &&
-        livros.map((livro) => (
+      {
+        Array.isArray(livros) && livros.map((livro) => (
           <View key={livro.id}>
+
             <View
               style={{
                 flex: "1",
@@ -60,10 +61,17 @@ export const BiblioScreen = ({ navigation }) => {
               }}
             >
               <View>
-                <Image
-                  source={{ uri: livro.capaLivro }}
-                  style={styles.LivroB}
-                />
+                <Text>{livro.id}</Text>
+                {/* <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("Mundo", { bookId: livro.id }, { UserId: user.uid })
+                  }
+                > */}
+                  <Image
+                    source={{ uri: livro.capaLivro }}
+                    style={styles.LivroB}
+                  />
+                {/* </TouchableOpacity> */}
                 <View
                   style={{
                     display: "flex",

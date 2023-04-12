@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
   },
   containerBiblio: {
     backgroundColor: "#FFF2D8",
-    height: "100%",
   },
 
   inputsConfig: {

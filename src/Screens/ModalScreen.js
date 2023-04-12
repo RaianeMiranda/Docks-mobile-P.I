@@ -8,9 +8,11 @@ import {
 } from "react-native";
 import { Text, Button, TextInput } from "react-native-paper";
 import { addDoc, collection } from "firebase/firestore";
+import { LinearGradient } from "expo-linear-gradient";
 import { database } from "../Configuracoes/firebase";
 import ImagePicker from "./ImagePicker";
 import { useState } from "react";
+import { colors, locations, styles } from "../Configuracoes/styles";
 
 const ModalCadLivros = ({ navigation }) => {
   const userId = "QtBISAQHWGQPp80rMGaBi9CV8JN2";
@@ -44,17 +46,10 @@ const ModalCadLivros = ({ navigation }) => {
       setNomeLivro("");
       setDescricao("");
       setCapaLivro("");
-      hideModal();
+      navigation.navigate("Biblioteca Modal", { UserId: user.uid });
     } catch (error) {
       console.error("Erro ao adicionar livro: ", error.message);
     }
-  };
-
-  const containerStyle = {
-    backgroundColor: "white",
-    height: 380,
-    borderRadius: 25,
-    width: 220,
   };
 
   const handleImgURLChange = (url) => {
@@ -62,19 +57,26 @@ const ModalCadLivros = ({ navigation }) => {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-     <Modal visible={visible} onDismiss={() => setVisible(false)}
+    <View style={styles.containerBiblio}>
+      <LinearGradient // Background Linear Gradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={colors}
+        locations={locations}
+        style={{ height: 7, width: "100%" }}
+      />
+
+      <View
         style={{
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: 0,
+          backgroundColor: "white",
+          height: 380,
+          borderRadius: 25,
+          width: 220,
+         margin:"auto",
+         marginTop:'30px'
         }}
-        contentContainerStyle={containerStyle}
       >
         <View>
-          <View>
-            <ImagePicker onImgURLChange={handleImgURLChange}></ImagePicker>
-          </View>
           <View
             style={{
               flex: 1,
@@ -86,32 +88,35 @@ const ModalCadLivros = ({ navigation }) => {
               style={{
                 fontWeight: "bold",
                 fontSize: 25,
-                marginBottom: 10,
+                marginBottom: 15,
+                marginTop:15
               }}
             >
               Criar Livros
             </Text>
-            <TouchableOpacity onPress={hideModal}>
-              <Image
-                source={require("../Images/FecharModal.png")}
-                style={{ height: 15, width: 15 }}
-              />
-            </TouchableOpacity>
           </View>
           <View style={{ alignItems: "center" }}>
             <View>
               {capaLivro ? (
                 <TouchableOpacity onPress={setCapaLivro}>
-                  <Image
-                    style={{ width: 130, height: 180 }}
+                  <ImageBackground
+                    style={{ width: "130px", height: "180px" }}
                     source={{ uri: capaLivro }}
-                  />
+                  >
+                    <ImagePicker
+                      onImgURLChange={handleImgURLChange}
+                    ></ImagePicker>
+                  </ImageBackground>
                 </TouchableOpacity>
               ) : (
                 <ImageBackground
                   source={require("../Images/CriarLivros.png")}
-                  style={{ width: 130, height: 180 }}
-                />
+                  style={{ width: "130px", height: "180px" }}
+                >
+                  <ImagePicker
+                    onImgURLChange={handleImgURLChange}
+                  ></ImagePicker>
+                </ImageBackground>
               )}
             </View>
           </View>
@@ -167,7 +172,14 @@ const ModalCadLivros = ({ navigation }) => {
             </Text>
           </Button>
         </View>
-      </Modal>
+      </View>
+      <LinearGradient // Background Linear Gradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={colors}
+        locations={locations}
+        style={{ height: 7, width: "100%", marginTop: "135%" }}
+      />
     </View>
   );
 };

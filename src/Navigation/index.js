@@ -9,6 +9,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { BiblioScreen } from "../Screens/BiblioScreen"; 
 import { ConfigScreen } from "../Screens/ConfigScreen";
 import { MyComponent } from "../Screens/DropdownScreen";
+import ModalCadLivros from "../Screens/ModalScreen";
 
 
 
@@ -55,6 +56,7 @@ export function MyDrawer() {
             <Drawer.Screen name="Biblioteca" component={BiblioScreen} />
             <Drawer.Screen name="configScreen" component={ConfigScreen} />
             <Drawer.Screen name="dropDown" component={MyComponent} />
+            <Drawer.Screen name="CadModal" component={ModalCadLivros} />
         </Drawer.Navigator>
     );
 };
