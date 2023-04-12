@@ -12,13 +12,12 @@ const ModalCadLivros = ({ navigation }) => {
   const [descricao, setDescricao] = React.useState("");
   const [capaLivro, setCapaLivro] = React.useState("");
 
-
   const handleAdd = async () => {
     try {
       const user = auth.currentUser;
       if (!user) {
         throw new Error("Usuário não autenticado.");
-      }
+      } else { console.log(user.uid) }
 
       if (!nomeLivro.trim()) {
         throw new Error("Por favor, insira um nome para o livro.");
@@ -39,10 +38,10 @@ const ModalCadLivros = ({ navigation }) => {
       setNomeLivro("");
       setDescricao("");
       setCapaLivro("");
+      navigation.navigate("Biblioteca Modal", { UserId: user.uid })
     } catch (error) {
       console.error("Erro ao adicionar livro: ", error.message);
     }
-    navigation.navigate("Biblioteca Modal",{ UserId: user.uid });
   };
 
   const handleImgURLChange = (url) => {
