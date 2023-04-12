@@ -42,7 +42,7 @@ const ModalCadLivros = ({ navigation }) => {
     } catch (error) {
       console.error("Erro ao adicionar livro: ", error.message);
     }
-    navigation.navigate("Biblioteca Modal");
+    navigation.navigate("Biblioteca Modal",{ UserId: user.uid });
   };
 
   const handleImgURLChange = (url) => {

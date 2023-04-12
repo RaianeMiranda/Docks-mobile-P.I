@@ -9,6 +9,7 @@ import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import 'firebase/firestore';
 import { database, auth } from "../config/firebase/firebase";
+import { useEffect } from "react";
 
 export default function cadMundo({ route }) {
     const [nomeMundo, setNomeMundo] = useState('');
@@ -17,6 +18,7 @@ export default function cadMundo({ route }) {
     const handleChange = (event, editor) => {
         setDescricao(editor.getData());
     }
+    console.log(bookId)
     const handleSalvar = async () => {
         try {
             const user = auth.currentUser;
@@ -29,15 +31,34 @@ export default function cadMundo({ route }) {
                 descricao: descricao,
                 bookId: bookId, // add bookId to the document object
             });
-            console.log(bookId)
-            
+
             console.log("Mundo adicionado com ID: ", docRef.id);
-            setNomeMundo("");
-            setDescricao("");
+
+
         } catch (error) {
             console.error("Erro ao adicionar mundo: ", error.message);
         }
     };
+
+    useEffect(() => {
+        const handleBeforeUnload = () => {
+            setBookId(""); // reset bookId
+        };
+        window.addEventListener("beforeunload", handleBeforeUnload);
+
+        // update bookId if it changes
+        if (route.params.bookId !== bookId) {
+            setBookId(route.params.bookId);
+        }
+        // reset nomeMundo and descricao when bookId changes
+        setNomeMundo("");
+        setDescricao("");
+
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, [bookId, route.params.bookId]);
+
     return (
         <SafeAreaProvider style={styles.containercriacaoper}>
             <View>
@@ -71,8 +92,14 @@ export default function cadMundo({ route }) {
             <View style={{ maxWidth: "300px", margin: "0 auto", }}>
                 <CKEditor
                     editor={ClassicEditor}
-                    onChange={handleChange}
+                    data={descricao} // set the initial data value
+                    onChange={(event, editor) => {
+                        const data = editor.getData();
+                        setDescricao(data);
+                        handleChange(event, editor); // call the handleChange function
+                    }}
                 />
+
                 <View style={styles.containersalvarper}>
                     <Button
                         style={{

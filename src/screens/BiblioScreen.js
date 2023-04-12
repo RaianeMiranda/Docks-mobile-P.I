@@ -9,7 +9,7 @@ import {
 import { collection, onSnapshot } from "firebase/firestore"
 import { colors, locations, styles } from "../config/styles";
 import { LinearGradient } from "expo-linear-gradient";
-import { database } from "../config/firebase/firebase";
+import { auth, database } from "../config/firebase/firebase";
 import { useState, useEffect } from "react";
 
 export const BiblioScreen = ({ route, navigation }) => {
@@ -18,6 +18,11 @@ export const BiblioScreen = ({ route, navigation }) => {
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
 
+  const user = auth.currentUser;
+  if (!user) {
+    throw new Error("Usuário não autenticado.");
+  }
+  console.log(user.uid)
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(database, "livros"),
@@ -67,9 +72,10 @@ export const BiblioScreen = ({ route, navigation }) => {
               }}
             >
               <View>
+                <Text>{livro.id}</Text>
                 <TouchableOpacity
                   onPress={() =>
-                    navigation.navigate("Mundo", { bookId: livro.id })
+                    navigation.navigate("Mundo", { bookId: livro.id }, { UserId: user.uid })
                   }
                 >
                   <Image
