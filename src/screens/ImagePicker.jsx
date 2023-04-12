@@ -49,7 +49,6 @@ export default function ImagePicker({ onImgURLChange }) {
           style={{ width: "80px", height: "100px", marginTop: "30px" }}
         />
       </TouchableOpacity>
-      {!progressPorcent ? null : <p>{progressPorcent}%</p>}
     </View>
   );
 }

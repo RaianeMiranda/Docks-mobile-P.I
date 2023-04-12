@@ -14,7 +14,8 @@ import { CadastroLivros } from "../screens/cadLivros";
 import {Biblioteca} from "../screens/listLivros";
 import {BiblioScreen} from "../screens/BiblioScreen";
 import cadMundo from "../screens/cadMundo";
-
+import SnowflakeCK from "../screens/teste";
+import ModalCadLivros from "../screens/ModalScreen";
 
 const Drawer = createDrawerNavigator();
 const CustomDrawer = (props) => {
@@ -61,9 +62,10 @@ export function MyDrawer() {
             <Drawer.Screen name="Login" component={LoginScreen} />
             <Drawer.Screen name="Cadastro" component={CadScreen} />
             <Drawer.Screen name="Cadastro Livros" component={CadastroLivros} />
-            <Drawer.Screen name="Biblioteca" component={Biblioteca} />
+            <Drawer.Screen name="CadModal" component={ModalCadLivros} />
             <Drawer.Screen name="Biblioteca Modal" component={BiblioScreen} />
             <Drawer.Screen name="Mundo" component={cadMundo} />
+            <Drawer.Screen name="teste" component={SnowflakeCK} />
         </Drawer.Navigator>
     );
 };

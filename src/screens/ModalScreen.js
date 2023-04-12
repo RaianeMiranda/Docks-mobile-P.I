@@ -1,18 +1,17 @@
 import * as React from "react";
 import { View, Image, ImageBackground, TouchableOpacity } from "react-native";
-import { Modal, Portal, Text, Button, Provider, TextInput } from "react-native-paper";
-import { addDoc, collection, ref, uploadString } from "firebase/firestore";
-import { auth, database, storage } from "../config/firebase/firebase";
+import { Text, Button, TextInput } from "react-native-paper";
+import { addDoc, collection } from "firebase/firestore";
+import { LinearGradient } from "expo-linear-gradient";
+import { auth, database } from "../config/firebase/firebase";
 import ImagePicker from "../screens/ImagePicker";
+import { colors, locations, styles } from "../config/styles";
 
 const ModalCadLivros = ({ navigation }) => {
-  const [visible, setVisible] = React.useState(false);
   const [nomeLivro, setNomeLivro] = React.useState("");
   const [descricao, setDescricao] = React.useState("");
   const [capaLivro, setCapaLivro] = React.useState("");
 
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
 
   const handleAdd = async () => {
     try {
@@ -40,17 +39,10 @@ const ModalCadLivros = ({ navigation }) => {
       setNomeLivro("");
       setDescricao("");
       setCapaLivro("");
-      hideModal();
     } catch (error) {
       console.error("Erro ao adicionar livro: ", error.message);
     }
-  };
-
-  const containerStyle = {
-    backgroundColor: "white",
-    height: 380,
-    borderRadius: 25,
-    width: 220,
+    navigation.navigate("Biblioteca Modal");
   };
 
   const handleImgURLChange = (url) => {
@@ -59,121 +51,125 @@ const ModalCadLivros = ({ navigation }) => {
 
 
   return (
-    <Provider>
-      <Portal>
-        <Modal
-          style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: 0,
-          }}
-          visible={visible}
-          onDismiss={hideModal}
-          contentContainerStyle={containerStyle}
-        >
-          <View>
-            <View>
-              <ImagePicker onImgURLChange={handleImgURLChange}></ImagePicker>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                justifyContent: "space-around",
-              }}
-            >
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 25,
-                  marginBottom: 10,
-                }}
-              >
-                Criar Livros
-              </Text>
-              <TouchableOpacity onPress={hideModal}>
-                <Image
-                  source={require("../Images/FecharModal.png")}
-                  style={{ height: "15px", width: "15px" }}
-                />
-              </TouchableOpacity>
-            </View>
-            <View style={{ alignItems: "center" }}>
-              <View>
-                {capaLivro ? (
-                  <TouchableOpacity onPress={setCapaLivro}>
-                    <Image
-                      style={{ width: "130px", height: "180px" }}
-                      source={{ uri: capaLivro }}
-                    />
-                  </TouchableOpacity>
-                ) : (
-                  <ImageBackground
-                    source={require("../Images/CriarLivros.png")}
-                    style={{ width: "130px", height: "180px" }}
-                  />
-                )}
-              </View>
-            </View>
+    <View style={styles.containerBiblio}>
+      <LinearGradient // Background Linear Gradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={colors}
+        locations={locations}
+        style={{ height: 7, width: "100%", }}
+      />
+
+      <View style={{
+        backgroundColor: "white",
+        height: 450,
+        borderRadius: 25,
+        width: 220,
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
+      }}>
+        <View>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              justifyContent: "space-around",
+            }}
+          >
             <Text
               style={{
-                fontSize: "25px",
-                marginTop: "20px",
-                marginLeft: "20px",
+                fontWeight: "bold",
+                fontSize: 25,
+                marginBottom: 10,
               }}
             >
-              Título
+              Criar Livros
             </Text>
-            <TextInput
-              style={{
-                width: "180px",
-                height: "30px",
-                backgroundColor: "#F4CCC8",
-                borderWidth: 1,
-                borderColor: "#D7C3C1",
-                borderTopRightRadius: 0,
-                borderTopLeftRadius: 0,
-                marginLeft: "20px",
-              }}
-              label="Nome do livro"
-              value={nomeLivro}
-              onChangeText={setNomeLivro}
-            />
-            <Button
-              style={{
-                borderWidth: 3,
-                borderColor: "#D9D9D9",
-                backgroundColor: "#D5ECB6",
-                width: "50px",
-                borderRadius: 0,
-                height: "30PX",
-                marginTop: "15px",
-                marginLeft: "135px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              onPress={handleAdd}
-            >
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "15px",
-                }}
-              >
-                Salvar
-              </Text>
-            </Button>
           </View>
-        </Modal>
-      </Portal>
+          <View style={{ alignItems: "center" }}>
+            <View>
+              {capaLivro ? (
+                <TouchableOpacity onPress={setCapaLivro}>
+                  <ImageBackground
+                    style={{ width: "130px", height: "180px" }}
+                    source={{ uri: capaLivro }}
+                  >
+                    <ImagePicker onImgURLChange={handleImgURLChange}></ImagePicker>
+                  </ImageBackground>
+                </TouchableOpacity>
+              ) : (
+                <ImageBackground
+                  source={require("../Images/CriarLivros.png")}
+                  style={{ width: "130px", height: "180px" }}
+                >
+                  <ImagePicker onImgURLChange={handleImgURLChange}></ImagePicker>
+                </ImageBackground>
+              )}
+            </View>
+          </View>
+          <Text
+            style={{
+              fontSize: "25px",
+              marginTop: "20px",
 
-      <Button style={{ marginTop: 30 }} onPress={showModal}>
-      </Button>
-    </Provider>
+              marginLeft: "20px",
+            }}
+          >
+            Título
+          </Text>
+          <TextInput
+            style={{
+              width: "180px",
+              height: "30px",
+              backgroundColor: "#F4CCC8",
+              borderWidth: 1,
+              borderColor: "#D7C3C1",
+              borderTopRightRadius: 0,
+              borderTopLeftRadius: 0,
+              marginLeft: "20px",
+            }}
+            label="Nome do livro"
+            value={nomeLivro}
+            onChangeText={setNomeLivro}
+          />
+          <Button
+            style={{
+              borderWidth: 3,
+              borderColor: "#D9D9D9",
+              backgroundColor: "#D5ECB6",
+
+              width: "50px",
+              borderRadius: 0,
+              height: "30PX",
+              marginTop: "15px",
+              marginLeft: "135px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            onPress={handleAdd}
+          >
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: "15px",
+              }}
+            >
+              Salvar
+            </Text>
+          </Button>
+        </View>
+      </View>
+      <LinearGradient // Background Linear Gradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={colors}
+        locations={locations}
+        style={{ height: 7, width: "100%", marginTop: "135%" }}
+      />
+    </View>
   );
 };
+
 export default ModalCadLivros;
-
-
