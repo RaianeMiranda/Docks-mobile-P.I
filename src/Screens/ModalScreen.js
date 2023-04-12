@@ -1,11 +1,5 @@
 import * as React from "react";
-import {
-  View,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-  Modal,
-} from "react-native";
+import { View, ImageBackground, TouchableOpacity } from "react-native";
 import { Text, Button, TextInput } from "react-native-paper";
 import { addDoc, collection } from "firebase/firestore";
 import { LinearGradient } from "expo-linear-gradient";
@@ -72,8 +66,8 @@ const ModalCadLivros = ({ navigation }) => {
           height: 380,
           borderRadius: 25,
           width: 220,
-         margin:"auto",
-         marginTop:'30px'
+          margin: "auto",
+          marginTop: "30px",
         }}
       >
         <View>
@@ -89,7 +83,7 @@ const ModalCadLivros = ({ navigation }) => {
                 fontWeight: "bold",
                 fontSize: 25,
                 marginBottom: 15,
-                marginTop:15
+                marginTop: 15,
               }}
             >
               Criar Livros
@@ -131,20 +125,25 @@ const ModalCadLivros = ({ navigation }) => {
             Título
           </Text>
           <TextInput
+            mode="outlined"
+            underlineColor="#F4CCC8"
+            outlineColor="#F4CCC8"
+            activeOutlineColor="#A5A5A5"
             style={{
               width: "180px",
-              height: "30px",
+              height: 30,
               backgroundColor: "#F4CCC8",
-              borderWidth: 1,
-              borderColor: "#D7C3C1",
+
+              borderColor: "#F4CCC8",
               borderTopRightRadius: 0,
               borderTopLeftRadius: 0,
-              marginLeft: "20px",
+              margin: "auto",
             }}
             label="Nome do livro"
             value={nomeLivro}
             onChangeText={setNomeLivro}
           />
+
           <Button
             style={{
               borderWidth: 3,
