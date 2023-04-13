@@ -10,12 +10,12 @@ import CarouselCards from "../cards/CaroulselCard";
 import { InicialScreen } from "../screens/InicialScreen";
 import { LoginScreen } from "../screens/LoginScreen";
 import { CadScreen } from "../screens/cadScreen";
-import { CadastroLivros } from "../screens/cadLivros";
-import {Biblioteca} from "../screens/listLivros";
+import { CadastroLivros } from "../screens/TestecadLivros";
 import {BiblioScreen} from "../screens/BiblioScreen";
 import cadMundo from "../screens/cadMundo";
 import SnowflakeCK from "../screens/teste";
-import ModalCadLivros from "../screens/ModalScreen";
+import ModalCadLivros from "../screens/cadLivro";
+import UpdateLivro from "../screens/updateLivros";
 
 const Drawer = createDrawerNavigator();
 const CustomDrawer = (props) => {
@@ -62,8 +62,9 @@ export function MyDrawer() {
             <Drawer.Screen name="Login" component={LoginScreen} />
             <Drawer.Screen name="Cadastro" component={CadScreen} />
             <Drawer.Screen name="Cadastro Livros" component={CadastroLivros} />
+            <Drawer.Screen name="Atualizar Livros" component={UpdateLivro} />
             <Drawer.Screen name="CadModal" component={ModalCadLivros} />
-            <Drawer.Screen name="Biblioteca Modal" component={BiblioScreen} />
+            <Drawer.Screen name="Biblioteca " component={BiblioScreen} />
             <Drawer.Screen name="Mundo" component={cadMundo} />
             <Drawer.Screen name="teste" component={SnowflakeCK} />
         </Drawer.Navigator>

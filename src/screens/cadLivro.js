@@ -4,7 +4,7 @@ import { Text, Button, TextInput } from "react-native-paper";
 import { addDoc, collection } from "firebase/firestore";
 import { LinearGradient } from "expo-linear-gradient";
 import { auth, database } from "../config/firebase/firebase";
-import ImagePicker from "../screens/ImagePicker";
+import ImagePicker from "./ImagePicker";
 import { colors, locations, styles } from "../config/styles";
 
 const ModalCadLivros = ({ navigation }) => {
@@ -38,7 +38,7 @@ const ModalCadLivros = ({ navigation }) => {
       setNomeLivro("");
       setDescricao("");
       setCapaLivro("");
-      navigation.navigate("Biblioteca Modal", { UserId: user.uid })
+      navigation.navigate("Biblioteca ", { UserId: user.uid })
     } catch (error) {
       console.error("Erro ao adicionar livro: ", error.message);
     }
