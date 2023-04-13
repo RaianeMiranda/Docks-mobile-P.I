@@ -8,9 +8,13 @@ const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.28)
 const ITEM_HEIGHT = Math.round(SLIDER_HEIGHT * 0.29)
 
 const CarouselCardItem = ({ item, index }) => {
+  const isFirstItem = index === 0
+  const headerStyle = isFirstItem ? styles.headerFirst : styles.header
+  const containerStyle = isFirstItem ? styles.containerFirst : styles.container
+
   return (
-    <View style={styles.container} key={index} >
-      <Text style={styles.header}>{item.title}</Text>
+    <View style={containerStyle} key={index}>
+      <Text style={headerStyle}>{item.title}</Text>
       <Text style={styles.body}>{item.body}</Text>
     </View>
   )
@@ -61,6 +65,13 @@ const styles = StyleSheet.create({
     height: ITEM_HEIGHT,
     paddingBottom: 40,
   },
+  containerFirst: {
+    backgroundColor: 'red', // change the color of the first card here
+    borderRadius: 10,
+    width: ITEM_WIDTH,
+    height: ITEM_HEIGHT,
+    paddingBottom: 40,
+  },
   header: {
     color: "#222",
     backgroundColor: "#2250",
@@ -69,8 +80,19 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingTop: 20
   },
+  headerFirst: {
+    color: "#fff", // change the text color of the first card here
+    backgroundColor: "#FFF2D8", // change the background color of the first card here
+    border: "4px solid #D5ECB6",
+    borderRadius: "10px",
+    fontSize: 14,
+    fontWeight: "bold",
+    paddingLeft: 20,
+    paddingTop: 20
+  },
   body: {
     color: "#222",
+    backgroundColor: "#D5ECB6",
     fontSize: 14,
     paddingLeft: 20,
     paddingLeft: 20,
