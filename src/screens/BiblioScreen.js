@@ -6,7 +6,7 @@ import {
   Button,
   TextInput,
 } from "react-native-paper";
-import { collection, onSnapshot } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore"
 import { colors, locations, styles } from "../config/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import { auth, database } from "../config/firebase/firebase";
@@ -40,6 +40,18 @@ export const BiblioScreen = ({ route, navigation }) => {
 
     return () => unsubscribe()
   }, [])
+
+
+  function handleExcluir(livro) {
+    // deleteDoc é responsável pela exclusão do dado em uma coleção "Tabela"
+
+    deleteDoc(
+      doc(database, "livros", livro.id)
+    ).then(() => {
+      console.log("Usuário excluído com sucesso")
+    })
+  }
+
   return (
     <View style={styles.containerBiblio}>
       <LinearGradient // Background Linear Gradient
@@ -111,6 +123,14 @@ export const BiblioScreen = ({ route, navigation }) => {
                     source={require("../Images/Vector.png")}
                   />
                 </View>
+              </View>
+            </View>
+            <View>
+              <View style={{ flex: 1, flexDirection: "row", justifyContent: "flex-start" }}>
+                <Button onPress={() =>
+                  navigation.navigate("Atualizar Livros", { bookId: livro.id }, {bookName: livro.nomeLivro}, {bookCapa: livro.capaLivro}, { UserId: user.uid })
+                }>Editar</Button>
+                <Button onPress={() => handleExcluir(livro)}>Excluir</Button>
               </View>
             </View>
           </View>
