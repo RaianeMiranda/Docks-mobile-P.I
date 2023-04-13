@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { colors, locations, styles } from "../config/styles";
 import { Button, Paragraph, Text, TextInput, Alert } from "react-native-paper";
 import { View } from "react-native";
@@ -16,11 +16,11 @@ export default function AltMundo({ route }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [nomeMundo, setNomeMundo] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [bookId, setBookId] = useState(route.params.bookId);
-    const [mundoId, setMundoId] = useState(route.params.mundoId);
+    const [bookId, setBookId] = useState("");
+    const [mundoId, setMundoId] = useState("");
 
     const handleChange = (event, editor) => {
-        setDescricao(editor.getData());
+        setDescricao(editor?.getData());
     };
 
     function handleUpdate() {
@@ -37,27 +37,50 @@ export default function AltMundo({ route }) {
     }
 
     useEffect(() => {
+        console.log(route.params);
+        setBookId(route.params.bookId);
+        setMundoId(route.params.mundoId);
         const fetchMundo = async () => {
-            const docRef = doc(database, "mundo", mundoId);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                const data = docSnap.data();
-                setNomeMundo(data.nomeMundo);
-                setDescricao(data.descricao);
-            }
-        };
+
+            // query inside collection mundo where the bookId is equal to the bookId passed in the route
+            // fill the variable setNomeMundo with response.nomeMundo and setDescticao with response.descricao
+
+            console.log("Mundo certo", mundoId);
+            console.log("Vou buscar por ", bookId);
+            const querySnapshot = await getDocs(query(collection(database, "mundo"), where("bookId", "==", bookId)));
+            const response = querySnapshot.docs.map(
+                (doc) => {
+                    console.log(doc);
+                    doc.data()
+
+                    if (doc.id === mundoId) {
+                        setNomeMundo(doc.data().nomeMundo);
+                        setDescricao(doc.data().descricao);
+                        console.log("Mundo certo", doc.id);
+                        console.log("Mundo certo", doc.data());
+                    } else {
+                        console.log("Não é esse mundo", doc.id);
+                    }
+
+
+                }
+            );
+
+
+        }
         fetchMundo();
 
-        //reset the bookId state when the user navigates away from the screen
-        const handleBeforeUnload = () => {
-            setBookId("");
-        };
-        window.addEventListener("beforeunload", handleBeforeUnload);
-        if (route.params.bookId !== bookId) {
-            setBookId(route.params.bookId);
+        return () => {
+            if (route.params.bookId !== bookId) {
+                setBookId(route.params.bookId);
+            }
         }
-    }, [route.params.bookId, mundoId]);
+        //
+    }, [route.params.bookId]);
 
+    useEffect(() => {
+
+    }, [bookId])
 
     return (
         <SafeAreaProvider style={styles.containercriacaoper}>
@@ -90,7 +113,7 @@ export default function AltMundo({ route }) {
                             transparent={true}
                             visible={modalVisible}
                             onRequestClose={() => {
-                                Alert.alert('Modal has been closed.');
+                                console.log('Modal has been closed.');
                                 setModalVisible(!modalVisible);
                             }}>
                             <View style={styles.centeredView}>

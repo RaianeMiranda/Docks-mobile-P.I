@@ -42,6 +42,11 @@ export const LoginScreen = ({ route, navigation }) => {
   }
 
   function lidarComErro(erro) {
+    if (erro == "auth/network-request-failed") {
+      setMostraErro("Você está offline, tente novamente mais tarde 😕");
+
+      return;
+    }
     if (erro == "auth/wrong-password") {
       setMostraErro("Senha errada 😕");
       return;
@@ -99,7 +104,7 @@ export const LoginScreen = ({ route, navigation }) => {
       </Button>
       <View style={styles.row}>
         <Text style={styles.label}>Não possui uma conta? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Cadastro")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
           <Text style={styles.link}>Cadastrar</Text>
         </TouchableOpacity>
       </View>
