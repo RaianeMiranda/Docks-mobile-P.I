@@ -65,135 +65,65 @@ export default function SnowflakeCK() {
         setData(editor.getData());
     }
     return (
-                <View>
-                    <Modal
-                        animationType="none"
-                        transparent={true}
-                        visible={modalVisible}
-                        onRequestClose={() => {
-                            Alert.alert('Modal has been closed.');
-                            setModalVisible(!modalVisible);
-                        }}>
-                        <View>
-                            <View style={{
-                                margin: "auto",
-                                backgroundColor: 'white',
-                                borderRadius: 20,
-                                padding: 15,
-                                alignItems: 'center',
-                            }}>
-                                <Icon name="close"
-                                    style={{
-                                        fontSize: "24px",
-                                        marginLeft: "auto",
-                                    }}
-                                    onPress={() => setModalVisible(!modalVisible)}
-                                />
+        <View style={styles.containermodal}>
+            <View style={styles.containernomeper}>
+                <Paragraph style={styles.paragraphper}>1.Resuma seu livro em uma frase:
+                </Paragraph>
+            </View>
+            <View style={styles.centeredView}>
+                <Modal
 
-                                <View>
-                                    <View
-                                        style={{
-                                            flex: 1,
-                                            flexDirection: "row",
-                                            justifyContent: "space-around",
-                                        }}
-                                    >
-                                        <Text
-                                            style={{
-                                                fontWeight: "bold",
-                                                fontSize: 25,
-                                                marginBottom: 10,
-                                            }}
-                                        >
-                                            Criar Livros
-                                        </Text>
-                                    </View>
-                                    <View style={{ alignItems: "center" }}>
-                                        <View>
-                                            {capaLivro ? (
-                                                <TouchableOpacity onPress={setCapaLivro}>
-                                                    <ImageBackground
-                                                        style={{ width: "130px", height: "180px" }}
-                                                        source={{ uri: capaLivro }}
-                                                    >
-                                                        <ImagePicker onImgURLChange={handleImgURLChange}></ImagePicker>
-                                                    </ImageBackground>
-                                                </TouchableOpacity>
-                                            ) : (
-                                                <ImageBackground
-                                                    source={require("../Images/CriarLivros.png")}
-                                                    style={{ width: "130px", height: "180px" }}
-                                                >
-                                                    <ImagePicker onImgURLChange={handleImgURLChange}></ImagePicker>
-                                                </ImageBackground>
-                                            )}
-                                        </View>
-                                    </View>
-                                    <Text
-                                        style={{
-                                            fontSize: "25px",
-                                            marginTop: "20px",
-                                            marginLeft: "20px",
-                                        }}
-                                    >
-                                        Título
-                                    </Text>
-                                    <TextInput
-                                        style={{
-                                            width: "180px",
-                                            height: "30px",
-                                            backgroundColor: "#F4CCC8",
-                                            borderWidth: 1,
-                                            borderColor: "#D7C3C1",
-                                            borderTopRightRadius: 0,
-                                            borderTopLeftRadius: 0,
-                                            marginLeft: "20px",
-                                        }}
-                                        label="Nome do livro"
-                                        value={nomeLivro}
-                                        onChangeText={setNomeLivro}
-                                    />
-                                    <Button
-                                        style={{
-                                            borderWidth: 3,
-                                            borderColor: "#D9D9D9",
-                                            backgroundColor: "#D5ECB6",
-                                            width: "50px",
-                                            borderRadius: 0,
-                                            height: "30PX",
-                                            marginTop: "15px",
-                                            marginLeft: "135px",
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                        }}
-                                        onPress={handleAdd}
-                                    >
-                                        <Text
-                                            style={{
-                                                fontWeight: "bold",
-                                                fontSize: "15px",
-                                            }}
-                                        >
-                                            Salvar
-                                        </Text>
-                                    </Button>
-                                </View>
-                            </View>
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert('Modal has been closed.');
+                        setModalVisible(!modalVisible);
+                    }}>
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <Icon name="close"
+                                style={styles.buttonclose}
+                                onPress={() => setModalVisible(!modalVisible)}
+
+                            />
+
+                            <Text style={styles.modalText}>O primeiro passo é pequeno, mas não tão simples.
+                                Você deve escrever uma frase que resuma toda a história do seu livro.
+                                Recomendamos fazer uma frase com menos de 15 palavras que aborda as principais questões da estória sem citar nomes de personagens.
+                            </Text>
+                            <Text style={styles.modalText2}>
+                                O resultado deve ficar mais ou menos assim:
+                            </Text>
+                            <Text style={styles.modalText3}>
+                                “Um cientista excêntrico viaja no tempo para matar Hitler.”
+                            </Text>
+                            <Text>
+                                Como você pode observar, descrevemos o protagonista em vez de citar seu nome.
+                                Mencionar Hitler não tem problema, pois ele é uma figura histórica.
+                                Não se preocupe em alcançar a perfeição. O objetivo de cada etapa é justamente desenvolver e aperfeiçoar o seu enredo aos poucos.
+                            </Text>
+                            <Text style={styles.modalText4}>
+                                Aqui há outros exemplos para se inspirar:
+                            </Text>
+                            <Text style={styles.modalText5}>
+                                “Garoto órfão descobre que é um bruxo famoso e é levado para uma escola de magia” (Harry Potter e a Pedra filosofal)
+                            </Text>
+                            <Text style={styles.modalText6}>
+                                “Estudante adolescente descobre que o garoto que ela está interessada é um vampiro” (Crepúsculo)</Text>
+
                         </View>
-                    </Modal>
+                    </View>
+                </Modal>
 
 
-                    <Icon name="information-outline" style={{
-                        fontSize: "24px",
-                        marginLeft: "auto",
-                        marginTop: "15px",
-                    }}
-                        onPress={() => setModalVisible(true)} />
+                <Icon name="information-outline" style={styles.iconinfo}
+                    onPress={() => setModalVisible(true)} />
 
 
 
-                </View>
+            </View>
+        </View>
 
 
     );
