@@ -13,16 +13,15 @@ import { auth, database } from "../config/firebase/firebase";
 import { useState, useEffect } from "react";
 
 export const BiblioScreen = ({ route, navigation }) => {
-  const [visible, setVisible] = useState(false);
   const [livros, setLivros] = useState([]);
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
 
   const user = auth.currentUser;
   if (!user) {
     throw new Error("Usuário não autenticado.");
   }
   console.log(user.uid)
+
+
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(database, "livros"),
@@ -85,16 +84,16 @@ export const BiblioScreen = ({ route, navigation }) => {
             >
               <View>
                 <Text>{livro.id}</Text>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   onPress={() =>
-                    navigation.navigate("Mundo", { bookId: livro.id }, { UserId: user.uid })
+                    navigation.navigate("Inicial", { bookId: livro.id }, { UserId: user.uid })
                   }
-                >
-                  <Image
-                    source={{ uri: livro.capaLivro }}
-                    style={styles.LivroB}
-                  />
-                </TouchableOpacity>
+                > */}
+                <Image
+                  source={{ uri: livro.capaLivro }}
+                  style={styles.LivroB}
+                />
+                {/* </TouchableOpacity> */}
                 <View
                   style={{
                     display: "flex",
@@ -128,12 +127,15 @@ export const BiblioScreen = ({ route, navigation }) => {
             <View>
               <View style={{ flex: 1, flexDirection: "row", justifyContent: "flex-start" }}>
                 <Button onPress={() =>
-                  navigation.navigate("Atualizar Livros", { bookId: livro.id }, {bookName: livro.nomeLivro}, {bookCapa: livro.capaLivro}, { UserId: user.uid })
+                  navigation.navigate("Atualizar Livros", { bookId: livro.id }, { UserId: user.uid })
                 }>Editar</Button>
-                <Button onPress={() => handleExcluir(livro)}>Excluir</Button>
+                <Button onPress={() => handleExcluir(livro)}>Excluir Livro</Button>
+                <Button onPress={() => navigation.navigate("Mundo", { bookId: livro.id }, { UserId: user.uid })}>Criar Mundo</Button>
+                <Button onPress={() => navigation.navigate("ListMundo", { bookId: livro.id }, { UserId: user.uid })}>Lista de Mundos</Button>
               </View>
             </View>
           </View>
+
         ))}
 
       <LinearGradient // Background Linear Gradient

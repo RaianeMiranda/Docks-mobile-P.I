@@ -1,81 +1,63 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { addDoc, collection, doc, getDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { colors, locations, styles } from "../config/styles";
-import { Button, Paragraph, Text, TextInput } from "react-native-paper";
+import { Button, Paragraph, Text, TextInput, Alert } from "react-native-paper";
 import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import 'firebase/firestore';
 import { database, auth } from "../config/firebase/firebase";
-import { useEffect } from "react";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Modal } from "react-native";
 
-export default function cadMundo({ route }) {
+export default function AltMundo({ route }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [nomeMundo, setNomeMundo] = useState('');
     const [descricao, setDescricao] = useState('');
     const [bookId, setBookId] = useState(route.params.bookId);
+    const [mundoId, setMundoId] = useState(route.params.mundoId);
+
     const handleChange = (event, editor) => {
         setDescricao(editor.getData());
-    }
-    console.log(bookId)
-    const handleSalvar = async () => {
-        try {
-            const user = auth.currentUser;
-            if (!user) {
-                throw new Error("Usuário não autenticado.");
-            }
-
-            const docRef = await addDoc(collection(database, "mundo"), {
-                nomeMundo: nomeMundo,
-                descricao: descricao,
-                bookId: bookId, // add bookId to the document object
-            });
-
-            console.log("Mundo adicionado com ID: ", docRef.id);
-
-
-        } catch (error) {
-            console.error("Erro ao adicionar mundo: ", error.message);
-        }
     };
 
+    function handleUpdate() {
+        updateDoc(doc(database, "mundo", mundoId), {
+            nomeMundo: nomeMundo,
+            descricao: descricao,
+        })
+            .then(() => {
+                console.log("Mundo atualizado com sucesso");
+            })
+            .catch((error) => {
+                console.error("Erro ao atualizar mundo: ", error);
+            });
+    }
+
     useEffect(() => {
+        const fetchMundo = async () => {
+            const docRef = doc(database, "mundo", mundoId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                setNomeMundo(data.nomeMundo);
+                setDescricao(data.descricao);
+            }
+        };
+        fetchMundo();
+
+        //reset the bookId state when the user navigates away from the screen
         const handleBeforeUnload = () => {
             setBookId("");
         };
         window.addEventListener("beforeunload", handleBeforeUnload);
-
         if (route.params.bookId !== bookId) {
             setBookId(route.params.bookId);
         }
+    }, [route.params.bookId, mundoId]);
 
-        // fetch previous content "Mundo" from Firestore using doc method
-        const fetchPreviousContent = async () => {
-            try {
-                const docRef = doc(database, "mundo", "sFU8hOItb11B3dRRDs9i"); // pass document ID
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    setDescricao(docSnap.data().descricao); // set previous content to state
-                }
-            } catch (error) {
-                console.error("Erro ao buscar conteúdo anterior: ", error.message);
-            }
-        };
-
-        fetchPreviousContent(); // call fetchPreviousContent on mount
-
-        // reset nomeMundo and descricao when bookId changes
-        setNomeMundo("");
-        setDescricao("");
-
-        return () => {
-            window.removeEventListener("beforeunload", handleBeforeUnload);
-        };
-    }, [bookId, route.params.bookId]);
 
     return (
         <SafeAreaProvider style={styles.containercriacaoper}>
@@ -88,6 +70,7 @@ export default function cadMundo({ route }) {
                     locations={locations}
                     style={{ height: 7, width: "100%" }}
                 />
+
                 <View style={styles.containermodal}>
                     <View style={styles.containernomeper}>
                         <Paragraph style={styles.paragraphper}>
@@ -95,8 +78,10 @@ export default function cadMundo({ route }) {
                             <TextInput
                                 style={styles.inputper}
                                 value={nomeMundo}
-                                onChangeText={text => setNomeMundo(text)}
+                                onChangeText={(text) => setNomeMundo(text)}
+                                editable={true}
                             />
+
                         </Paragraph>
                     </View>
                     <View style={styles.centeredView}>
@@ -147,9 +132,6 @@ export default function cadMundo({ route }) {
 
                         <Icon name="information-outline" style={styles.iconinfo}
                             onPress={() => setModalVisible(true)} />
-
-
-
                     </View>
                 </View>
             </View>
@@ -163,9 +145,10 @@ export default function cadMundo({ route }) {
             <View style={{ maxWidth: "300px", margin: "0 auto", }}>
                 <CKEditor
                     editor={ClassicEditor}
-                    data={descricao} // set data from Firestore to the editor
+                    data={descricao}
                     onChange={handleChange}
                 />
+
 
                 <View style={styles.containersalvarper}>
                     <Button
@@ -182,7 +165,7 @@ export default function cadMundo({ route }) {
                             justifyContent: "center",
                         }}
                         mode="contained"
-                        onPress={handleSalvar}
+                        onPress={handleUpdate}
                     >
                         Salvar
                     </Button>

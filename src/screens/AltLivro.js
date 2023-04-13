@@ -7,7 +7,7 @@ import { auth, database } from "../config/firebase/firebase";
 import ImagePicker from "./ImagePicker";
 import { colors, locations, styles } from "../config/styles";
 
-const UpdateLivro = ({ navigation, route }) => { // route is passed as a prop
+const AltLivro = ({ navigation, route }) => { // route is passed as a prop
   const { bookID } = route.params; // get bookID from route
 
   const [nomeLivro, setNomeLivro] = React.useState("");
@@ -177,4 +177,4 @@ const UpdateLivro = ({ navigation, route }) => { // route is passed as a prop
   );
 };
 
-export default UpdateLivro;
+export default AltLivro;
