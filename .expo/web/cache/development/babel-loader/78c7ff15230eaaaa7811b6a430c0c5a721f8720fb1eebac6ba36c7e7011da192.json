@@ -1,1 +1,0 @@
-{"ast":null,"code":"import Icon from \"@expo/vector-icons/FontAwesome\";","map":{"version":3,"names":["Icon"],"sources":["/home/senac/Docks-mobile-P.I/App.js"],"sourcesContent":["import Icon from 'react-native-vector-icons/FontAwesome';\n"],"mappings":"AAAA,OAAOA,IAAI"},"metadata":{},"sourceType":"module","externalDependencies":[]}

@@ -8,8 +8,10 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { BiblioScreen } from "../Screens/BiblioScreen"; 
 import { ConfigScreen } from "../Screens/ConfigScreen";
-import { MyComponent } from "../Screens/DropdownScreen";
+import SimpleMenu, { MyComponent } from "../Screens/MenuPopUpScreen";
 import ModalCadLivros from "../Screens/ModalScreen";
+import MenuPop from "../Screens/MenuPopUpScreen";
+import menuTest from "../Screens/menuScreen";
 
 
 
@@ -53,9 +55,11 @@ export function MyDrawer() {
                     return;
                 }, headerStyle: { backgroundColor: "#D5ECB4" },
             }}>
+               
             <Drawer.Screen name="Biblioteca" component={BiblioScreen} />
             <Drawer.Screen name="configScreen" component={ConfigScreen} />
-            <Drawer.Screen name="dropDown" component={MyComponent} />
+            <Drawer.Screen name="MenuPopUp" component={MenuPop} />
+            <Drawer.Screen name="menu" component={menuTest} />
             <Drawer.Screen name="CadModal" component={ModalCadLivros} />
         </Drawer.Navigator>
     );

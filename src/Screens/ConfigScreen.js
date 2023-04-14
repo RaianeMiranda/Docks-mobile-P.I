@@ -5,20 +5,12 @@ import { Appbar, TextInput, Button } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
 
 export const ConfigScreen = ({ navigation }) => {
-  const _goBack = () => console.log("Went back");
-  const _handleMore = () => console.log("Shown more");
+ 
   const [text, setNome] = React.useState("");
 
   return (
     <View style={styles.containerConfig}>
-      <Appbar.Header style={styles.navConfig}>
-        <Appbar.BackAction onPress={_goBack} />
-        <Appbar.Content
-          titleStyle={{ textAlign: "center", fontWeight: "bold" }}
-          title="Configurações"
-        />
-        <Appbar.Action icon="menu" onPress={_handleMore} />
-      </Appbar.Header>
+    
       <View>
         <LinearGradient // Background Linear Gradient
           start={{ x: 0, y: 0 }}

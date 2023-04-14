@@ -133,7 +133,6 @@ const ModalCadLivros = ({ navigation }) => {
               width: "180px",
               height: 30,
               backgroundColor: "#F4CCC8",
-
               borderColor: "#F4CCC8",
               borderTopRightRadius: 0,
               borderTopLeftRadius: 0,
