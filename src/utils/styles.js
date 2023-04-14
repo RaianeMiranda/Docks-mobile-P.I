@@ -6,13 +6,16 @@ export const styles = StyleSheet.create({
     height: "100px",
   },
   imgcontainer: {
+    flex: "1",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    paddingTop:"20px"
+ 
   },
   mentor: {
     width: "200px",
     height: "100px",
+    
   },
   logodocks: {
     width: "200px",
@@ -29,6 +32,7 @@ export const styles = StyleSheet.create({
   },
   containersobre: {
     backgroundColor: "#FFF2D8",
+    height: "100",
   },
   textdocks: {
     fontWeight: "bold",
@@ -46,11 +50,13 @@ export const styles = StyleSheet.create({
   textversion: {
     fontWeight: "bold",
     fontSize: "20px",
+    marginTop: "10px",
+    marginLeft: "25px",
   },
   containernome: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
   },
   textmentor: {
     fontWeight: "bolder",
@@ -73,7 +79,7 @@ export const styles = StyleSheet.create({
     marginRight: "10px",
     display: "flex",
     marginLeft: "45px",
-    fontSize: "20px",
+    fontSize: "25px",
     marginTop: "50px",
   },
   containercriadoras2: {
@@ -90,6 +96,7 @@ export const styles = StyleSheet.create({
     marginRight: "30px",
     display: "flex",
     justifyContent: "center",
+    marginTop: "15px",
   },
   nomesdevs1: {
     fontWeight: "bolder",
@@ -105,14 +112,12 @@ export const styles = StyleSheet.create({
   nomesfun: {
     fontSize: "13px",
     marginBottom: "10px",
-    borderRadius:"50px",
   },
   containerfototext: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     marginLeft: "30px",
-    
   },
   containerfototext_: {
     display: "flex",
@@ -134,8 +139,6 @@ export const styles = StyleSheet.create({
     marginLeft: "20px",
     marginTop: "10px",
     textAlign: "center",
-    
-   
   },
   containerpagina2: {
     backgroundColor: "#FFF2D8",
