@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { colors, locations, styles } from "../config/styles";
-import { Button, Paragraph, Text, TextInput, Alert } from "react-native-paper";
+import { Button, Paragraph, Text, TextInput } from "react-native-paper";
 import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import 'firebase/firestore';
@@ -16,48 +16,40 @@ export default function AltMundo({ route }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [nomeMundo, setNomeMundo] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [bookId, setBookId] = useState(route.params.bookId);
-    const [mundoId, setMundoId] = useState(route.params.mundoId);
-
-    const handleChange = (event, editor) => {
-        setDescricao(editor.getData());
-    };
-
-    function handleUpdate() {
-        updateDoc(doc(database, "mundo", mundoId), {
-            nomeMundo: nomeMundo,
-            descricao: descricao,
-        })
-            .then(() => {
-                console.log("Mundo atualizado com sucesso");
-            })
-            .catch((error) => {
-                console.error("Erro ao atualizar mundo: ", error);
-            });
-    }
+    const [bookId, setBookId] = route.params.bookId;
+    const [mundoId, setMundoId] = useState('');
 
     useEffect(() => {
-        const fetchMundo = async () => {
-            const docRef = doc(database, "mundo", mundoId);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                const data = docSnap.data();
-                setNomeMundo(data.nomeMundo);
-                setDescricao(data.descricao);
+        const fetchPreviousContent = async () => {
+            try {
+                const docRef = doc(database, "mundo", route.params.mundoId);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setNomeMundo(docSnap.data().nomeMundo);
+                    setDescricao(docSnap.data().descricao);
+                }
+            } catch (error) {
+                console.error("Erro ao buscar conteúdo anterior: ", error.message);
             }
         };
-        fetchMundo();
 
-        //reset the bookId state when the user navigates away from the screen
-        const handleBeforeUnload = () => {
-            setBookId("");
-        };
-        window.addEventListener("beforeunload", handleBeforeUnload);
-        if (route.params.bookId !== bookId) {
-            setBookId(route.params.bookId);
+        fetchPreviousContent();
+    }, [route.params.mundoId]);
+
+    const handleSalvar = async () => {
+        try {
+            console.log(route);
+            const docRef = doc(database, "mundo", route.params.mundoId);
+
+            await updateDoc(docRef, {
+                nomeMundo: nomeMundo,
+                descricao: descricao,
+            });
+            console.log("Mundo atualizado com ID: ", route.params.mundoId);
+        } catch (error) {
+            console.error("Erro ao atualizar mundo: ", error.message);
         }
-    }, [route.params.bookId, mundoId]);
-
+    };
 
     return (
         <SafeAreaProvider style={styles.containercriacaoper}>
@@ -81,7 +73,6 @@ export default function AltMundo({ route }) {
                                 onChangeText={(text) => setNomeMundo(text)}
                                 editable={true}
                             />
-
                         </Paragraph>
                     </View>
                     <View style={styles.centeredView}>
@@ -90,7 +81,7 @@ export default function AltMundo({ route }) {
                             transparent={true}
                             visible={modalVisible}
                             onRequestClose={() => {
-                                Alert.alert('Modal has been closed.');
+                                console.log('Modal has been closed.');
                                 setModalVisible(!modalVisible);
                             }}>
                             <View style={styles.centeredView}>
@@ -146,7 +137,10 @@ export default function AltMundo({ route }) {
                 <CKEditor
                     editor={ClassicEditor}
                     data={descricao}
-                    onChange={handleChange}
+                    onChange={(event, editor) => {
+                        const data = editor.getData();
+                        setDescricao(data);
+                    }}
                 />
 
 
@@ -165,7 +159,7 @@ export default function AltMundo({ route }) {
                             justifyContent: "center",
                         }}
                         mode="contained"
-                        onPress={handleUpdate}
+                        onPress={handleSalvar}
                     >
                         Salvar
                     </Button>

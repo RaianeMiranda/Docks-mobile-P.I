@@ -14,6 +14,7 @@ export const listMundo = ({ route, navigation }) => {
     };
    
     useEffect(() => {
+        console.log(bookId)
         const unsubscribe = onSnapshot(
             collection(database, "mundo"),
             (querySnapshot) => {
@@ -42,8 +43,6 @@ export const listMundo = ({ route, navigation }) => {
         if (route.params.bookId !== bookId) {
             setBookId(route.params.bookId);
         }
-
-
         return () => {
             window.removeEventListener("beforeunload", handleBeforeUnload);
         };
@@ -56,7 +55,7 @@ export const listMundo = ({ route, navigation }) => {
 
                 Array.isArray(mundo) && mundo.map((mundo) => (
                     <View key={mundo.id}>
-                        <Button onPress={() => navigation.navigate("altMundo", { bookId }, { mundoId: mundo.id }, { UserId:user.id })}>{mundo.nomeMundo}</Button>
+                        <Button onPress={() => navigation.navigate("altMundo", { bookId, mundoId: mundo.id,  UserId:user.id })}>{mundo.nomeMundo}</Button>
                         {/* <Button onPress={() => handleExcluir(mundo)}>Excluir</Button> */}
                     </View>
                 ))

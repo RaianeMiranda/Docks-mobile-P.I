@@ -127,11 +127,11 @@ export const BiblioScreen = ({ route, navigation }) => {
             <View>
               <View style={{ flex: 1, flexDirection: "row", justifyContent: "flex-start" }}>
                 <Button onPress={() =>
-                  navigation.navigate("Atualizar Livros", { bookId: livro.id }, { UserId: user.uid })
+                  navigation.navigate("Atualizar Livros", { bookId: livro.id, UserId: user.uid })
                 }>Editar</Button>
                 <Button onPress={() => handleExcluir(livro)}>Excluir Livro</Button>
-                <Button onPress={() => navigation.navigate("Mundo", { bookId: livro.id }, { UserId: user.uid })}>Criar Mundo</Button>
-                <Button onPress={() => navigation.navigate("ListMundo", { bookId: livro.id }, { UserId: user.uid })}>Lista de Mundos</Button>
+                <Button onPress={() => navigation.navigate("Mundo", { bookId: livro.id, UserId: user.uid })}>Criar Mundo</Button>
+                <Button onPress={() => navigation.navigate("ListMundo", { bookId: livro.id, UserId: user.uid })}>Lista de Mundos</Button>
               </View>
             </View>
           </View>
