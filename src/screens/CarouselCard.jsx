@@ -89,7 +89,10 @@ const CarouselCards = () => {
               itemWidth={ITEM_WIDTH}
               onSnapToItem={(index) => setIndex(index)}
               useScrollView={true}
-            > <Button>Hello</Button></Carousel>
+              inactiveSlideScale={0.94}
+              inactiveSlideOpacity={100}
+              style={{paddingLeft: "18.5px",}}
+            /> 
           </View>
           <View style={styles.viewcardper}>
             <CarouselCards2 />
@@ -107,15 +110,12 @@ const CarouselCards = () => {
             borderRadius: 0,
             marginHorizontal: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.92)',
+            paddingLeft: "18.5px",
 
           }}
-          useRef={{
-            paddingLeft: "18.5px",
-            paddingRight: "158.5px"
-          }}
-          inactiveDotOpacity={0}
-          inactiveDotScale={0.6}
-          tappableDots={true}
+
+          
+     
 
         />}
 

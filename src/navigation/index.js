@@ -18,33 +18,25 @@ const Stack = createStackNavigator()
 
 export const RootNavigation = () => {
     return (
-
+ 
         <Stack.Navigator>
-           
-              <Stack.Screen
-                name="LoginScreen2"
+            <Stack.Screen
+                name="CardsPersonagem"
                 component={CarouselCards}
                 options={{
                     headerShown: false,
                     title: "Tela de Cards",
                 }}
             />
-               <Stack.Screen
-                name="CardsPersonagem"
-                component={CarouselCards3}
+            <Stack.Screen
+                name="SnowflakeCK"
+                component={SnowflakeCK}
                 options={{
                     headerShown: false,
-                    title: "Tela de Cards",
+                    title: "Tela de Snowflake",
                 }}
             />
-              <Stack.Screen
-                name="LoginScreen3"
-                component={CarouselCards2 }
-                options={{
-                    headerShown: false,
-                    title: "Tela de Cards",
-                }}
-            />
+             
             
               
               <Stack.Screen
@@ -80,14 +72,7 @@ export const RootNavigation = () => {
                     title: "Tela de Capítulos",
                 }}
             />
-              <Stack.Screen
-                name="SnowflakeCK"
-                component={SnowflakeCK}
-                options={{
-                    headerShown: false,
-                    title: "Tela de Snowflake",
-                }}
-            />
+             
              
               <Stack.Screen
                 name="CapitulosCKScreen"
