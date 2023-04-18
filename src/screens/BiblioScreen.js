@@ -84,16 +84,14 @@ export const BiblioScreen = ({ route, navigation }) => {
             >
               <View>
                 <Text>{livro.id}</Text>
-                {/* <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate("Inicial", { bookId: livro.id }, { UserId: user.uid })
-                  }
-                > */}
+                <TouchableOpacity
+                 onPress={() => navigation.navigate("Página Inicial", {bookId:livro.id, UserId:user.id })}
+                >
                 <Image
                   source={{ uri: livro.capaLivro }}
                   style={styles.LivroB}
                 />
-                {/* </TouchableOpacity> */}
+                </TouchableOpacity>
                 <View
                   style={{
                     display: "flex",
@@ -127,11 +125,12 @@ export const BiblioScreen = ({ route, navigation }) => {
             <View>
               <View style={{ flex: 1, flexDirection: "row", justifyContent: "flex-start" }}>
                 <Button onPress={() =>
-                  navigation.navigate("Atualizar Livros", { bookId: livro.id }, { UserId: user.uid })
+                  navigation.navigate("Atualizar Livros", { bookId: livro.id, UserId: user.uid })
                 }>Editar</Button>
                 <Button onPress={() => handleExcluir(livro)}>Excluir Livro</Button>
-                <Button onPress={() => navigation.navigate("Mundo", { bookId: livro.id }, { UserId: user.uid })}>Criar Mundo</Button>
-                <Button onPress={() => navigation.navigate("ListMundo", { bookId: livro.id }, { UserId: user.uid })}>Lista de Mundos</Button>
+                <Button onPress={() => navigation.navigate("Mundo", { bookId: livro.id, UserId: user.uid })}>Criar Mundo</Button>
+                <Button onPress={() => navigation.navigate("Persona", { bookId: livro.id, UserId: user.uid })}>Criar Personagem</Button>
+                <Button onPress={() => navigation.navigate("ListMundo", { bookId: livro.id, UserId: user.uid })}>Lista de Mundos</Button>
               </View>
             </View>
           </View>
