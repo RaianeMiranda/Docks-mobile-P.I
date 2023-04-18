@@ -139,14 +139,19 @@ export const styles = StyleSheet.create({
     marginLeft: "20px",
     marginTop: "10px",
     textAlign: "center",
+    
   },
+containerpagina:{
+  backgroundColor: "#FFF2D8",
+  height: "100%",
+},
   containerpagina2: {
     backgroundColor: "#FFF2D8",
     height: "151%",
   },
   containerpagina3: {
     backgroundColor: "#FFF2D8",
-    height: "200%",
+    height: "100%",
   },
   linear: {
     marginLeft: "20px",

@@ -46,7 +46,7 @@ export const Pagina3Screen = () => {
         end={{ x: 1, y: 0 }}
         colors={colors}
         locations={locations}
-        style={{ height: 7, width: "110%", marginTop: "255%" }}
+        style={{ height: 7, width: "110%", marginTop: "118%" }}
        
       />
     </View>

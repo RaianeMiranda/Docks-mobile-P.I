@@ -63,7 +63,7 @@ export const PaginaScreen = () => {
         end={{ x: 1, y: 0 }}
         colors={colors}
         locations={locations}
-        style={{ height: 7, width: "100%", marginTop: "30%" }}
+        style={{ height: 7, width: "110%", marginTop: "30%" }}
       />
     </View>
   );
