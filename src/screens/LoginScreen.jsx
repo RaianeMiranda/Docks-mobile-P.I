@@ -34,7 +34,7 @@ export const LoginScreen = ({ route, navigation }) => {
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
         const user = userCredential.user;
-        navigation.navigate("Cadastro Livros");
+        navigation.navigate("Biblioteca");
       })
       .catch((error) => {
         lidarComErro(error.code);
