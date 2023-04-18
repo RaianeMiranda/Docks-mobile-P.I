@@ -1,28 +1,50 @@
-import React from 'react'
-import { View, Text, StyleSheet, Dimensions } from "react-native"
-import Carousel, { Pagination } from 'react-native-snap-carousel'
+import React from 'react';
+import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
 
-const SLIDER_WIDTH = Dimensions.get('window').width + 80
-const SLIDER_HEIGHT = Dimensions.get('window').width + 80
-const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.28)
-const ITEM_HEIGHT = Math.round(SLIDER_HEIGHT * 0.29)
+const SLIDER_WIDTH = Dimensions.get('window').width + 80;
+const SLIDER_HEIGHT = Dimensions.get('window').width + 80;
+const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.28);
+const ITEM_HEIGHT = Math.round(SLIDER_HEIGHT * 0.29);
 
-const CarouselCardItem = ({ item, index }) => {
-  const isFirstItem = index === 0
-  const headerStyle = isFirstItem ? styles.headerFirst : styles.header
-  const containerStyle = isFirstItem ? styles.containerFirst : styles.container
+export const CarouselCards = () => {
+  const [index, setIndex] = React.useState(0);
+  const isCarousel = React.useRef(null);
 
-  return (
-    <View style={containerStyle} key={index}>
-      <Text style={headerStyle}>{item.title}</Text>
-      <Text style={styles.body}>{item.body}</Text>
-    </View>
-  )
-}
+  const dataCard = [
+    {
+      body: 'Criação de Personagens',
+    },
+    {
+      body: 'Alyssa',
+    },
+    {
+      body: 'terceiro',
+    },
+    {
+      body: 'Unique Card',
+      title: 'Last Card',
+      containerStyle: styles.containerLast,
+      headerStyle: styles.headerLast,
+      bodyStyle: styles.bodyLast,
+    },
+  ];
 
-const CarouselCards = () => {
-  const [index, setIndex] = React.useState(0)
-  const isCarousel = React.useRef(null)
+  const CarouselCardItem = ({ item, index }) => {
+    const isFirstItem = index === 0;
+    const isLastItem = index === dataCard.length - 1;
+    const containerStyle = isFirstItem ? styles.containerFirst : (isLastItem ? styles.containerLast : styles.container);
+    const headerStyle = isFirstItem ? styles.headerFirst : (isLastItem ? styles.headerLast : styles.header);
+    const bodyStyle = isFirstItem ? styles.bodyFirst : (isLastItem ? styles.bodyLast : styles.body);
+
+    return (
+      <View key={item.body} style={containerStyle}>
+        <Text style={headerStyle}>{item.title}</Text>
+        <Text style={bodyStyle}>{item.body}</Text>
+      </View>
+    );
+  };
+
 
   return (
     <View>
@@ -47,26 +69,36 @@ const CarouselCards = () => {
           height: 10,
           borderRadius: 10,
           marginHorizontal: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.92)'
+          backgroundColor: 'rgba(0, 0, 0, 0.92)',
         }}
         inactiveDotOpacity={0}
         inactiveDotScale={0.6}
         tappableDots={true}
       />
     </View>
-  )
-}
+  );
+};
+
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: '#EBDEF0',
+    borderRadius: 10,
+    width: ITEM_WIDTH,
+    height: ITEM_HEIGHT,
+    paddingBottom: 0,
+
+  },
+
+  containerFirst: {
+    backgroundColor: '#EBDEF0', // change the color of the first card here
     borderRadius: 10,
     width: ITEM_WIDTH,
     height: ITEM_HEIGHT,
     paddingBottom: 40,
   },
-  containerFirst: {
-    backgroundColor: 'red', // change the color of the first card here
+  containerLast: {
+    backgroundColor: 'yellow', // change the color of the first card here
     borderRadius: 10,
     width: ITEM_WIDTH,
     height: ITEM_HEIGHT,
@@ -80,39 +112,69 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingTop: 20
   },
+
   headerFirst: {
     color: "#fff", // change the text color of the first card here
     backgroundColor: "#FFF2D8", // change the background color of the first card here
-    border: "4px solid #D5ECB6",
+    border: "4px solid #EBDEF0",
     borderRadius: "10px",
     fontSize: 14,
     fontWeight: "bold",
     paddingLeft: 20,
-    paddingTop: 20
+    paddingTop: 20,
+    paddingTop: "45%",
+    borderBottomLeftRadius: "0px",
+    borderBottomRightRadius: "0px",
+
   },
-  body: {
-    color: "#222",
-    backgroundColor: "#D5ECB6",
+  bodyFirst: {
+    color: "black",
     fontSize: 14,
+    fontWeight: "bolder",
     paddingLeft: 20,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    marginTop: "15px",
+    textAlign: "center",
+
+  },
+
+  body: {
+    color: "black",
+    fontSize: 14,
+    fontWeight: "bolder",
+    paddingLeft: 15,
+    paddingLeft: 20,
+    paddingRight: 15,
+    marginTop: "25%",
+    marginLeft: "15%"
+  },
+  image: {
+    width: 10,
+    height: 10
+  },
+  imageFirst: {
+    width: 50,
+    height: 50,
+    display: "flex",
+    position: "fixed",
+    marginTop: "30px",
   }
 })
 
+
+
+
 export const dataCard = [
   {
-    title: "Aenean leo",
-    body: "Ut tincidunt tincidunt erat. Sed cursus turpis vitae tortor. Quisque malesuada placerat nisl. Donec quam felis.",
-  },
-  {
-    title: "In turpis",
-    body: "Aenean ut eros et nisl sagittis vestibulum. Donec posuere vulputate arcu.",
-  },
-  {
-    title: "Lorem Ipsum",
-    body: "Phasellus ullamcorper ipsum rutrum nunc. Nullam quis ante. Etiam ultricies nisi vel augue.",
-  }
-]
 
-export default CarouselCards
+    body: "Criação de Personagens",
+  },
+
+  {
+
+    body: "Alyssa",
+
+  },
+
+]
