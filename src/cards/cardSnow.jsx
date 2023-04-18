@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, Dimensions, Image } from "react-native"
 import { Button } from 'react-native-paper'
 import Carousel, { Pagination } from 'react-native-snap-carousel'
@@ -28,14 +28,20 @@ const CarouselCardItem = ({ item, index }) => {
     );
 };
 
-const CarouselCards1 = () => {
+const CarouselCards1 = (props) => {
 
     const _goBack = () => console.log("Went back");
     const _handleMore = () => console.log("Shown more");
     const [index, setIndex] = React.useState(0)
     const isCarousel = React.useRef(null)
+    const [idUsuario, setIdUsuario] = useState("");
+    const [bookId, setBookId] = useState("");
 
-
+    useEffect(() => {
+        // console.log("BookID", props?.bookId);
+        setIdUsuario(props?.idUsuario);
+        setBookId(props?.bookId);
+    }, [props?.bookId])
 
     return (
         <View style={styles.viewcarousel}>

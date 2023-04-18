@@ -10,9 +10,9 @@ const SLIDER_HEIGHT = Dimensions.get('window').width + 80;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.28);
 const ITEM_HEIGHT = Math.round(SLIDER_HEIGHT * 0.29);
 
-const CarouselCardItem = ({ item, index, onPress }) => {
+const CarouselCardItem = ({ item, index, onPress, props }) => {
     const isFirstItem = index === 0;
-    const isLastItem = index === dataCard.length - 1;
+    const isLastItem = index === props.dataCard.length - 1;
     const headerStyle = isFirstItem ? styles.headerFirst : (isLastItem ? styles.headerLast : styles.header);
     const containerStyle = isFirstItem ? styles.containerFirst : (isLastItem ? styles.containerLast : styles.container);
     const bodyStyle = isFirstItem ? styles.bodyFirst : (isLastItem ? styles.bodyLast : styles.body);
@@ -29,22 +29,84 @@ const CarouselCardItem = ({ item, index, onPress }) => {
     );
 };
 
-export const CarouselCards2 = ({ route, navigation }) => {
+export const CarouselCards2 = (props) => {
     const [index, setIndex] = useState(0);
     const isCarousel = useRef(null);
-   
-    const handlePress = (cardIndex) => {
-        if (cardIndex === 0) {
-            navigation.navigate('Biblioteca', { index: cardIndex });
-        } else if (cardIndex === 1) {
-            navigation.navigate('altMundo', { index: cardIndex });
-        } else if (cardIndex === dataCard.length - 1) {
-            navigation.navigate('Mundo', { index: cardIndex });
-        }
-    };
-
+    const [idUsuario, setIdUsuario] = useState("");
+    const [bookId, setBookId] = useState("");
     const [mundo, setMundo] = useState([]);
-    
+
+    useEffect(() => {
+        console.log(bookId)
+        const unsubscribe = onSnapshot(
+            collection(database, "mundo"),
+            (querySnapshot) => {
+                const mundoTemp = []
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data()
+                    if (data.bookId === bookId) {
+                        mundoTemp.push({
+                            ...data,
+                            id: doc.id
+                        })
+                    }
+                })
+                setMundo(mundoTemp)
+            }
+        )
+        return () => unsubscribe()
+    }, [bookId])
+    useEffect(() => {
+        // console.log("BookID", props?.bookId);
+        setIdUsuario(props?.idUsuario);
+        setBookId(props?.bookId);
+    }, [props?.bookId])
+    console.log("BookID", props?.bookId);
+
+
+    let cardArray = [
+        {
+            body: "Criação de Mundo",
+            image: require("../../src/Images/mundo.png"),
+        },
+        {
+            image: require("../../src/Images/mais.png"),
+        },
+    ];
+
+    if (Array.isArray(mundo)) {
+        const mundoCards = mundo.map((mundo) => ({
+            title: mundo.name,
+            body: mundo.description,
+            image: require(`../../src/Images/${mundo.image}`),
+            onPress: () =>
+                navigation.navigate("Mundo", {
+                    index,
+                }),
+        }));
+
+        mundoCards.forEach((card) => {
+            cardArray.splice(cardArray.length - 1, 0, {
+                body: (
+                    <View key={card.title}>
+                        <Button
+                            onPress={() =>
+                                navigation.navigate("altMundo", {
+                                    bookId,
+                                    mundoId: card.id,
+                                    UserId: user.id,
+                                })
+                            }
+                        >
+                            {card.title}
+                        </Button>
+                    </View>
+                ),
+                image: card.image,
+            });
+        });
+    }
+    const dataCard = cardArray;
 
 
     const mundoCards = mundo.map((mundo, index) => {
@@ -55,6 +117,8 @@ export const CarouselCards2 = ({ route, navigation }) => {
             onPress: () => navigation.navigate('Mundo', { index }),
         };
     });
+
+
 
     const isFirstItem = (index) => index === 0;
     const isLastItem = (index) => index === mundoCards.length - 1;
@@ -117,20 +181,8 @@ export const CarouselCards2 = ({ route, navigation }) => {
         </View>
     );
 };
-export const dataCard = [
-    {
-        body: "Criação de Mundo",
-        image: require("../../src/Images/mundo.png"),
-    },
 
-    {
-        body: "1. Kingdon",
-    },
-    {
-        image: require("../../src/Images/mais.png"),
-    },
-
-]
+export const dataCard
 
 const styles = StyleSheet.create({
     container: {

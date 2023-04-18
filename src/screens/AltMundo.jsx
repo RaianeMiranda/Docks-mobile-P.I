@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-<<<<<<< HEAD
 import { addDoc, collection, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
-=======
-import { doc, getDoc, updateDoc } from "firebase/firestore";
->>>>>>> 1f3c31b94c25920a259cbe44ac3cda9730bda0ce
 import { colors, locations, styles } from "../config/styles";
 import { Button, Paragraph, Text, TextInput } from "react-native-paper";
 import { View } from "react-native";
@@ -20,7 +16,6 @@ export default function AltMundo({ route }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [nomeMundo, setNomeMundo] = useState('');
     const [descricao, setDescricao] = useState('');
-<<<<<<< HEAD
     const [bookId, setBookId] = useState("");
     const [mundoId, setMundoId] = useState("");
 
@@ -86,42 +81,6 @@ export default function AltMundo({ route }) {
     useEffect(() => {
 
     }, [bookId])
-=======
-    const [bookId, setBookId] = route.params.bookId;
-    const [mundoId, setMundoId] = useState('');
-
-    useEffect(() => {
-        const fetchPreviousContent = async () => {
-            try {
-                const docRef = doc(database, "mundo", route.params.mundoId);
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    setNomeMundo(docSnap.data().nomeMundo);
-                    setDescricao(docSnap.data().descricao);
-                }
-            } catch (error) {
-                console.error("Erro ao buscar conteúdo anterior: ", error.message);
-            }
-        };
-
-        fetchPreviousContent();
-    }, [route.params.mundoId]);
-
-    const handleSalvar = async () => {
-        try {
-            console.log(route);
-            const docRef = doc(database, "mundo", route.params.mundoId);
-
-            await updateDoc(docRef, {
-                nomeMundo: nomeMundo,
-                descricao: descricao,
-            });
-            console.log("Mundo atualizado com ID: ", route.params.mundoId);
-        } catch (error) {
-            console.error("Erro ao atualizar mundo: ", error.message);
-        }
-    };
->>>>>>> 1f3c31b94c25920a259cbe44ac3cda9730bda0ce
 
     return (
         <SafeAreaProvider style={styles.containercriacaoper}>

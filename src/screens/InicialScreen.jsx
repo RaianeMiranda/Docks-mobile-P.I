@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, Dimensions, Image } from "react-native"
 import { Button, } from 'react-native-paper'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -12,31 +12,37 @@ import { auth } from '../config/firebase/firebase'
 
 
 export const PaginaInicial = ({ route, navigation }) => {
+    const [bookId, setBookId] = useState('');
+    const [userId, setUserId] = useState('');
     const user = auth.currentUser;
     if (!user) {
         throw new Error("Usuário não autenticado.");
     }
-    console.log(user.uid)
 
 
-    const bookId = route.params.bookId;
+    useEffect(() => {
+        setBookId(route.params.bookId);
+        setUserId(user.uid);
+    }, [route.params.bookId])
+
+    // const bookId = ;
 
 
 
     const withProps = (WrappedComponent) => ({ bookId, userId }) => {
         return <WrappedComponent bookId={bookId} userId={userId} />;
     };
-    console.log(bookId)
 
-    const CarouselCardsWithProps1 = withProps(CarouselCards1);
-    const CarouselCardsWithProps2 = withProps(CarouselCards2);
-    const CarouselCardsWithProps3 = withProps(CarouselCards3);
 
-    const CarouselCardsContainer = ({ bookId, userId }) => (
+    // const CarouselCardsWithProps1 = withProps(CarouselCards1);
+    // const CarouselCardsWithProps2 = withProps(CarouselCards2);
+    // const CarouselCardsWithProps3 = withProps(CarouselCards3);
+
+    const CarouselCardsContainer = (props) => (
         <View>
-            <CarouselCardsWithProps1 bookId={bookId} userId={userId} />
-            <CarouselCardsWithProps2 bookId={bookId} userId={userId} />
-            <CarouselCardsWithProps3 bookId={bookId} userId={userId} />
+            <CarouselCards1 bookId={props.bookId} userId={props.userId} />
+            <CarouselCards2 bookId={props.bookId} userId={props.userId} />
+            <CarouselCards3 bookId={props.bookId} userId={props.userId} />
         </View>
     );
     console.log(bookId)
@@ -72,7 +78,8 @@ export const PaginaInicial = ({ route, navigation }) => {
                     </View>
                 </Button>
                 <View style={styles.viewcardper}>
-                    <CarouselCardsContainer />
+                    <CarouselCardsContainer bookId={bookId} userId={userId} />
+
                 </View>
             </View>
         </SafeAreaProvider >
