@@ -55,6 +55,9 @@ export const CarouselCards3 = () => {
                 
                 onSnapToItem={(index) => setIndex(index)}
                 useScrollView={true}
+                inactiveSlideScale={0.94}
+                inactiveSlideOpacity={100}
+                contentContainerCustomStyle={{ paddingLeft:"25px"}}
             />
 
 

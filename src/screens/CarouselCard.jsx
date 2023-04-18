@@ -76,8 +76,9 @@ const CarouselCards = () => {
               source={{ uri: require("/assets/images/rightChevron2.png") }} />
           </View>
         </Button>
-        <View style={styles.viewcarousel}>
+        <View >
           <View style={styles.viewcarouselcard}>
+            <View >
             <Carousel
               layout="default"
               layoutCardOffset={9}
@@ -91,8 +92,10 @@ const CarouselCards = () => {
               useScrollView={true}
               inactiveSlideScale={0.94}
               inactiveSlideOpacity={100}
-              style={{paddingLeft: "18.5px"}}
+              contentContainerCustomStyle={{ paddingLeft:"25px"}}
+              
             /> 
+          </View>
           </View>
           <View style={styles.viewcardper}>
             <CarouselCards2 />
@@ -110,8 +113,7 @@ const CarouselCards = () => {
             borderRadius: 0,
             marginHorizontal: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.92)',
-            paddingLeft: "18.5px",
-
+           
           }}
 
           
@@ -244,7 +246,8 @@ const styles = StyleSheet.create({
     marginBottom: "30px"
   },
   viewcardper: {
-    marginBottom: "30px"
+    marginBottom: "30px",
+   
   }
 
 })
