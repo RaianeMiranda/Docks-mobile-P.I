@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Image, View } from "react-native";
-import { Text, Button, Menu } from "react-native-paper";
+import { Text, Button,Menu } from "react-native-paper";
 import { collection, onSnapshot } from "firebase/firestore";
 import { colors, locations, styles } from "../Configuracoes/styles";
 import { LinearGradient } from "expo-linear-gradient";
@@ -8,6 +8,7 @@ import { database } from "../Configuracoes/firebase";
 import { useState } from "react";
 import { useEffect } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
+
 
 export const BiblioScreen = ({ navigation }) => {
   const [livros, setLivros] = useState([]);
@@ -18,6 +19,9 @@ export const BiblioScreen = ({ navigation }) => {
   const openMenu = () => setVisible(true);
 
   const closeMenu = () => setVisible(false);
+
+
+
 
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
@@ -102,41 +106,40 @@ export const BiblioScreen = ({ navigation }) => {
                   >
                     {livro.nomeLivro}
                   </Text>
-
-                  <View>
-                    <Menu
-                      visible={visible}
-                      onDismiss={closeMenu}
-                      anchor={
-                        <Button onPress={openMenu}>
-                          <Image
-                            style={styles.image3p}
-                            source={require("../Images/Vector.png")}
-                          />
-                        </Button>
-                      }
-                      contentStyle={{
-                        paddingVertical: 0,
-                      }}
-                    >
-                      <TouchableOpacity
-                        style={styles.item1menu}
-                        onPress={() => console.log("Item 1")}
+               
+                    <View >
+                      <Menu
+                        visible={visible}
+                        onDismiss={closeMenu}
+                        anchor={
+                          <Button onPress={openMenu}>
+                            <Image
+                              style={styles.image3p}
+                              source={require("../Images/Vector.png")}
+                            />
+                          </Button>
+                        }
+                        contentStyle={{
+                          paddingVertical: 0,
+                         
+                        }}
+                      
                       >
-                        <Menu.Item>
-                          <Text style={styles.titulomenuB}>Editar livro</Text>
-                        </Menu.Item>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        style={styles.item2menu}
-                        onPress={() => console.log("Item 2")}
-                      >
-                        <Menu.Item>
-                          <Text style={styles.titulomenuB}>Excluir livro</Text>
-                        </Menu.Item>
-                      </TouchableOpacity>
-                    </Menu>
-                  </View>
+                        <TouchableOpacity
+                          style={styles.item1menu}
+                          onPress={() => console.log("Item 1")}
+                        >
+                          <Menu.Item title="Editar livro" />
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                          style={styles.item2menu}
+                          onPress={() => console.log("Item 2")}
+                        >
+                          <Menu.Item style={styles.titulomodal} 
+                          title="Excluit livro"/>
+                        </TouchableOpacity>
+                      </Menu>
+                    </View>
                 </View>
               </View>
             </View>
