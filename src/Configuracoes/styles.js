@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
   },
   containerBiblio: {
     backgroundColor: "#FFF2D8",
+   
   },
 
   inputsConfig: {
@@ -42,7 +43,6 @@ export const styles = StyleSheet.create({
 
   textTermos1: {
     fontSize: "15px",
-    fontFamily: "sansSerif",
     color: "black",
     marginRight: "100px",
   },
@@ -61,26 +61,23 @@ export const styles = StyleSheet.create({
 
   textTermos2: {
     fontSize: "15px",
-    fontFamily: "sansSerif",
     color: "black",
   },
 
   textTermos3: {
     fontSize: "15px",
-    fontFamily: "sansSerif",
     color: "black",
   },
 
   textLicencas: {
     fontSize: "15px",
-    fontFamily: "sansSerif",
     color: "black",
     marginRight: "220px",
   },
 
   tituloConfig1: {
     marginTop: "20px",
-    fontFamily: "sansSerif",
+
     marginBottom: "10px",
     fontWeight: "bold",
     fontSize: "20px",
@@ -88,7 +85,6 @@ export const styles = StyleSheet.create({
   },
 
   tituloConfig2: {
-    fontFamily: "sansSerif",
     marginBottom: "10px",
     fontWeight: "bold",
     fontSize: "20px",
@@ -139,14 +135,12 @@ export const styles = StyleSheet.create({
   },
 
   textSal: {
-    fontFamily: "sansSerif",
     fontWeight: "bold",
     color: "black",
     textAlign: "center",
   },
 
   textDel: {
-    fontFamily: "sansSerif",
     fontWeight: "bold",
     color: "black",
     marginRight: "10px",
@@ -191,14 +185,14 @@ export const styles = StyleSheet.create({
     marginBottom: "5PX",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   textBL: {
     fontWeight: "bold",
     color: "black",
     fontSize: "15PX",
   },
- 
+
   nomePagina: {
     backgroundColor: "pink",
   },
@@ -213,7 +207,6 @@ export const styles = StyleSheet.create({
     padding: "10px",
   },
   nomeUsuario: {
-    fontFamily: "sansSerif",
     fontWeight: "bold",
     fontSize: "15PX",
   },
@@ -227,10 +220,6 @@ export const styles = StyleSheet.create({
     height: "150PX",
     width: "130PX",
   },
-
-
-
-
 
   //BIBLIOmodal
   modalBiblio1: {
@@ -276,7 +265,7 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: "0",
     marginLeft: "20px",
   },
-  ButtonSalvarBiblio:{
+  ButtonSalvarBiblio: {
     border: "3px solid #D9D9D9",
     backgroundColor: "#D5ECB6",
     width: "50px",
@@ -288,39 +277,33 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  TextButtonSalvarBiblio:{
+  TextButtonSalvarBiblio: {
     fontWeight: "bold",
     fontSize: "15px",
   },
 
-
-  //container: {
-    //flex: 1,
-    //justifyContent: 'center',
-    //alignItems: 'center',
-  //},
-  //button: {
-   // padding: 10,
-   // borderRadius: 5,
-   // alignItems: 'center',
-  //},
-  //buttonText: {
-    //fontWeight: 'bold',
-  //},
-  
-  menuItem: {
-    border:"3px solid #F6EB60",
-    width: 130,
-    height:50,
-    justifyContent:"center",
-    display: "flex",
-    alignItems:'center'
-
+  item1menu: {
+    backgroundColor: "#FFFFFF",
+    border: "3px solid #F6EB60",
+    width: "114px",
+    height: "30px",
   },
-  menuItemText: {
-    fontSize: 15,
-   
+  item2menu: {
+    backgroundColor: "#FFFFFF",
+    border: "3px solid #F6EB60",
+    width: "114px",
+    height: "30px",
   },
+
+image3p:{
+  width: "20px",
+  height: "20px",
+  marginLeft: "20px",
+  position: "relative",
+},
+titulomenuB:{
+  fontSize:"12px"
+},
 
 });
 
@@ -352,4 +335,3 @@ export const locations = [
   0, 0.1, 0.1, 0.2, 0.2, 0.3, 0.3, 0.3, 0.4, 0.4, 0.5, 0.5, 0.6, 0.6, 0.7, 0.7,
   0.8, 0.8, 0.9, 0.9, 1, 1,
 ];
-

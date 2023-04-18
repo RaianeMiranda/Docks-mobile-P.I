@@ -37,6 +37,7 @@ export const ConfigScreen = ({ navigation }) => {
           onChangeText={(text) => setNome(text)}
         />
         <TextInput
+        
           style={styles.inputConfigSenha}
           theme={{ colors: { primary: "#A9A9A9" } }}
           secureTextEntry

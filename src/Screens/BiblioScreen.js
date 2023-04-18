@@ -1,17 +1,23 @@
 import * as React from "react";
-import { Image, View, TouchableOpacity } from 'react-native';
-import { Text, Button } from "react-native-paper";
+import { Image, View } from "react-native";
+import { Text, Button, Menu } from "react-native-paper";
 import { collection, onSnapshot } from "firebase/firestore";
 import { colors, locations, styles } from "../Configuracoes/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import { database } from "../Configuracoes/firebase";
 import { useState } from "react";
 import { useEffect } from "react";
-import Popover from 'react-native-popover-view';
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export const BiblioScreen = ({ navigation }) => {
   const [livros, setLivros] = useState([]);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+
+  const [visible, setVisible] = React.useState(false);
+
+  const openMenu = () => setVisible(true);
+
+  const closeMenu = () => setVisible(false);
 
   const toggleMenu = () => {
     setIsMenuVisible(!isMenuVisible);
@@ -96,40 +102,40 @@ export const BiblioScreen = ({ navigation }) => {
                   >
                     {livro.nomeLivro}
                   </Text>
-                  <View style={styles.container}>
-                    <TouchableOpacity
-                      style={styles.button}
-                      onPress={toggleMenu}
-                    >
-                      <Image
-                        style={{
-                          width: "20px",
-                          height: "20px",
-                          marginLeft: "20px",
-                          position: "relative",
-                        }}
-                        source={require("../Images/Vector.png")}
-                      />
-                    </TouchableOpacity>
-                    <Popover
-                      isVisible={isMenuVisible}
-                      onRequestClose={toggleMenu}
-                      placement="bottom"
-                    >
-                      <TouchableOpacity
-                        style={styles.menuItem}
-                        onPress={() => console.log("Editar livro")}
-                      >
-                        <Text style={styles.menuItemText}>Editar livro</Text>
-                      </TouchableOpacity>
 
+                  <View>
+                    <Menu
+                      visible={visible}
+                      onDismiss={closeMenu}
+                      anchor={
+                        <Button onPress={openMenu}>
+                          <Image
+                            style={styles.image3p}
+                            source={require("../Images/Vector.png")}
+                          />
+                        </Button>
+                      }
+                      contentStyle={{
+                        paddingVertical: 0,
+                      }}
+                    >
                       <TouchableOpacity
-                        style={styles.menuItem}
-                        onPress={() => console.log("Excluir livro")}
+                        style={styles.item1menu}
+                        onPress={() => console.log("Item 1")}
                       >
-                        <Text style={styles.menuItemText}>Excluir livro</Text>
+                        <Menu.Item>
+                          <Text style={styles.titulomenuB}>Editar livro</Text>
+                        </Menu.Item>
                       </TouchableOpacity>
-                    </Popover>
+                      <TouchableOpacity
+                        style={styles.item2menu}
+                        onPress={() => console.log("Item 2")}
+                      >
+                        <Menu.Item>
+                          <Text style={styles.titulomenuB}>Excluir livro</Text>
+                        </Menu.Item>
+                      </TouchableOpacity>
+                    </Menu>
                   </View>
                 </View>
               </View>

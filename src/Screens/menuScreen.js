@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Button, Menu, Divider, Provider } from "react-native-paper";
+import { Button, Menu, Provider } from "react-native-paper";
 import { styles } from "../Configuracoes/styles";
 
 const menuTest = () => {
@@ -14,40 +14,27 @@ const menuTest = () => {
   return (
     <Provider>
       <View
-        style={{
-          paddingTop: 50,
-          flexDirection: "row",
-          justifyContent: "center",
-          paddingBottom: 0,
-        }}
+        style={styles.containerMenu3p}
       >
         <Menu
           visible={visible}
           onDismiss={closeMenu}
           anchor={<Button onPress={openMenu}>Show menu</Button>}
+          contentStyle={{
+            paddingVertical: 0,
+          }}
         >
           <TouchableOpacity
-            style={{
-              backgroundColor: "#FFFFFF",
-              border: "3px solid #F6EB60",
-              width: "130",
-              height: "50px",
-              paddingTop: 0,
-            }}
+            style={styles.item1menu}
             onPress={() => console.log("Item 1")}
           >
             <Menu.Item title="Editar livro" />
           </TouchableOpacity>
           <TouchableOpacity
-            style={{
-              backgroundColor: "#FFFFFF",
-              border: "3px solid #F6EB60",
-              width: "130",
-              height: "50px",
-            }}
+            style={styles.item2menu}
             onPress={() => console.log("Item 2")}
           >
-            <Menu.Item title="Excluir livro" />
+            <Menu.Item   title="Excluir livro" />
           </TouchableOpacity>
         </Menu>
       </View>
