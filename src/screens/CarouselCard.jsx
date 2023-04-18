@@ -91,7 +91,7 @@ const CarouselCards = () => {
               useScrollView={true}
               inactiveSlideScale={0.94}
               inactiveSlideOpacity={100}
-              style={{paddingLeft: "18.5px",}}
+              style={{paddingLeft: "18.5px"}}
             /> 
           </View>
           <View style={styles.viewcardper}>
