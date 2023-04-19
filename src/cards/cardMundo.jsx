@@ -1,7 +1,6 @@
-
 import { collection, onSnapshot } from 'firebase/firestore';
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, Button } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { database } from '../config/firebase/firebase';
 
@@ -10,153 +9,95 @@ const SLIDER_HEIGHT = Dimensions.get('window').width + 80;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.28);
 const ITEM_HEIGHT = Math.round(SLIDER_HEIGHT * 0.29);
 
-const CarouselCardItem = ({ item, index, onPress, props }) => {
-    const isFirstItem = index === 0;
-    const isLastItem = index === props.dataCard.length - 1;
-    const headerStyle = isFirstItem ? styles.headerFirst : (isLastItem ? styles.headerLast : styles.header);
-    const containerStyle = isFirstItem ? styles.containerFirst : (isLastItem ? styles.containerLast : styles.container);
-    const bodyStyle = isFirstItem ? styles.bodyFirst : (isLastItem ? styles.bodyLast : styles.body);
-    const imageStyle = isFirstItem ? styles.imageFirst : (isLastItem ? styles.imageLast : styles.image);
-
-    return (
-        <TouchableOpacity onPress={() => onPress(index)}>
-            <View style={containerStyle} key={index}>
-                <Text style={headerStyle}>{item.title}</Text>
-                <Text style={bodyStyle}>{item.body}</Text>
-                <Image style={imageStyle} source={item.image} />
-            </View>
-        </TouchableOpacity>
-    );
-};
-
-export const CarouselCards2 = (props) => {
+export const CarouselCards2 = ({ bookId, userId, navigation }) => {
+    console.log(navigation)
     const [index, setIndex] = useState(0);
     const isCarousel = useRef(null);
-    const [idUsuario, setIdUsuario] = useState("");
-    const [bookId, setBookId] = useState("");
     const [mundo, setMundo] = useState([]);
 
     useEffect(() => {
-        console.log(bookId)
         const unsubscribe = onSnapshot(
-            collection(database, "mundo"),
-            (querySnapshot) => {
-                const mundoTemp = []
-                querySnapshot.forEach((doc) => {
-                    const data = doc.data()
+            collection(database, 'mundo'),
+            querySnapshot => {
+                const mundoTemp = [];
+                querySnapshot.forEach(doc => {
+                    const data = doc.data();
                     if (data.bookId === bookId) {
                         mundoTemp.push({
                             ...data,
-                            id: doc.id
-                        })
+                            id: doc.id,
+                        });
                     }
-                })
-                setMundo(mundoTemp)
+                });
+                setMundo(mundoTemp);
             }
-        )
-        return () => unsubscribe()
-    }, [bookId])
-    useEffect(() => {
-        // console.log("BookID", props?.bookId);
-        setIdUsuario(props?.idUsuario);
-        setBookId(props?.bookId);
-    }, [props?.bookId])
-    console.log("BookID", props?.bookId);
+        );
+        return () => unsubscribe();
+    }, [bookId]);
+
+    const handlePress = (index) => {
+        const item = data[index];
+        item.onPress();
+    };
 
 
-    let cardArray = [
+    const cardArray = [
         {
             body: "Criação de Mundo",
             image: require("../../src/Images/mundo.png"),
+            onPress: () => navigation.navigate("Biblioteca", { index: 0 }),
         },
         {
             image: require("../../src/Images/mais.png"),
+            onPress: () => navigation.navigate("Mundo", { index: cardArray.length - 1 }),
         },
     ];
 
     if (Array.isArray(mundo)) {
-        const mundoCards = mundo.map((mundo) => ({
-            title: mundo.name,
-            body: mundo.description,
-            image: require(`../../src/Images/${mundo.image}`),
-            onPress: () =>
-                navigation.navigate("Mundo", {
-                    index,
-                }),
-        }));
-
-        mundoCards.forEach((card) => {
-            cardArray.splice(cardArray.length - 1, 0, {
-                body: (
-                    <View key={card.title}>
-                        <Button
-                            onPress={() =>
-                                navigation.navigate("altMundo", {
-                                    bookId,
-                                    mundoId: card.id,
-                                    UserId: user.id,
-                                })
-                            }
-                        >
-                            {card.title}
-                        </Button>
-                    </View>
-                ),
-                image: card.image,
-            });
+        mundo.forEach((mundo, bookId) => {
+            const card = {
+                body: mundo.nomeMundo,
+                onPress: () => navigation.navigate("altMundo", { index: 1, bookId, mundoId: mundo.id, userId }),
+                id: mundo.id // Set the id field for the new card object
+            };
+            cardArray.splice(index + 1, 0, card);
         });
     }
-    const dataCard = cardArray;
 
+    const CarouselCardItem = ({ item, index }) => {
+        const isFirstItem = index === 0;
+        const isLastItem = index === cardArray.length - 1;
+        const headerStyle = isFirstItem ? styles.headerFirst : (isLastItem ? styles.headerLast : styles.header);
+        const containerStyle = isFirstItem ? styles.containerFirst : (isLastItem ? styles.containerLast : styles.container);
+        const bodyStyle = isFirstItem ? styles.bodyFirst : (isLastItem ? styles.bodyLast : styles.body);
+        const imageStyle = isFirstItem ? styles.imageFirst : (isLastItem ? styles.imageLast : styles.image);
 
-    const mundoCards = mundo.map((mundo, index) => {
-        return {
-            title: mundo.name,
-            body: mundo.description,
-            image: require(`../../src/Images/${mundo.image}`),
-            onPress: () => navigation.navigate('Mundo', { index }),
-        };
-    });
+        return (
+            <TouchableOpacity onPress={item.onPress}>
+                <View style={containerStyle} key={index}>
+                    <Text style={headerStyle}>{item.title}</Text>
+                    {typeof item.body === 'string' ? (
+                        <Text style={bodyStyle}>{item.body}</Text>
+                    ) : (
+                        <View style={{ marginVertical: 10 }}>{item.body}</View>
+                    )}
+                    <Image style={imageStyle} source={item.image} />
+                </View>
+            </TouchableOpacity>
+        );
+    };
 
-
-
-    const isFirstItem = (index) => index === 0;
-    const isLastItem = (index) => index === mundoCards.length - 1;
-    const headerStyle = (index) =>
-        isFirstItem(index)
-            ? styles.headerFirst
-            : isLastItem(index)
-                ? styles.headerLast
-                : styles.header;
-    const containerStyle = (index) =>
-        isFirstItem(index)
-            ? styles.containerFirst
-            : isLastItem(index)
-                ? styles.containerLast
-                : styles.container;
-    const bodyStyle = (index) =>
-        isFirstItem(index)
-            ? styles.bodyFirst
-            : isLastItem(index)
-                ? styles.bodyLast
-                : styles.body;
-    const imageStyle = (index) =>
-        isFirstItem(index)
-            ? styles.imageFirst
-            : isLastItem(index)
-                ? styles.imageLast
-                : styles.image;
     return (
         <View>
             <Carousel
                 layout="default"
                 layoutCardOffset={9}
                 ref={isCarousel}
-                data={dataCard}
+                data={cardArray}
                 sliderWidth={SLIDER_WIDTH}
                 sliderHeight={SLIDER_HEIGHT}
                 renderItem={({ item, index }) => (
-                    <CarouselCardItem item={item} index={index} onPress={handlePress} />
+                    <CarouselCardItem item={item} index={index} navigation={navigation} onPress={handlePress} />
                 )}
                 itemWidth={ITEM_WIDTH}
                 onSnapToItem={(index) => setIndex(index)}
@@ -182,7 +123,6 @@ export const CarouselCards2 = (props) => {
     );
 };
 
-export const dataCard
 
 const styles = StyleSheet.create({
     container: {
@@ -247,12 +187,13 @@ const styles = StyleSheet.create({
 
     body: {
         color: "black",
-        fontSize: 13,
+        fontSize: 14,
         fontWeight: "bolder",
         paddingLeft: 15,
         paddingLeft: 20,
         paddingRight: 15,
         marginTop: "25%",
+        marginLeft: "15%"
     },
     image: {
         width: 10,

@@ -40,9 +40,9 @@ export const PaginaInicial = ({ route, navigation }) => {
 
     const CarouselCardsContainer = (props) => (
         <View>
-            <CarouselCards1 bookId={props.bookId} userId={props.userId} />
-            <CarouselCards2 bookId={props.bookId} userId={props.userId} />
-            <CarouselCards3 bookId={props.bookId} userId={props.userId} />
+            <CarouselCards1 bookId={props.bookId} userId={props.userId} navigation={navigation} />
+            <CarouselCards2 bookId={props.bookId} userId={props.userId} navigation={navigation}/>
+            <CarouselCards3 bookId={props.bookId} userId={props.userId} navigation={navigation}/>
         </View>
     );
     console.log(bookId)
