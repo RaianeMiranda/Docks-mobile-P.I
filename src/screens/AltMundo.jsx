@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { addDoc, collection, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { colors, locations, styles } from "../config/styles";
 import { Button, Paragraph, Text, TextInput } from "react-native-paper";
 import { View } from "react-native";
@@ -11,76 +11,49 @@ import 'firebase/firestore';
 import { database, auth } from "../config/firebase/firebase";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Modal } from "react-native";
-
 export default function AltMundo({ route }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [nomeMundo, setNomeMundo] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [bookId, setBookId] = useState("");
-    const [mundoId, setMundoId] = useState("");
+    const [bookId, setBookId] = useState(route.params.bookId);
+    const [mundoId, setMundoId] = useState('');
 
     const handleChange = (event, editor) => {
         setDescricao(editor?.getData());
     };
 
-    function handleUpdate() {
-        updateDoc(doc(database, "mundo", mundoId), {
-            nomeMundo: nomeMundo,
-            descricao: descricao,
-        })
-            .then(() => {
-                console.log("Mundo atualizado com sucesso");
-            })
-            .catch((error) => {
-                console.error("Erro ao atualizar mundo: ", error);
-            });
-    }
-
     useEffect(() => {
-        console.log(route.params);
-        setBookId(route.params.bookId);
-        setMundoId(route.params.mundoId);
-        const fetchMundo = async () => {
-
-            // query inside collection mundo where the bookId is equal to the bookId passed in the route
-            // fill the variable setNomeMundo with response.nomeMundo and setDescticao with response.descricao
-
-            console.log("Mundo certo", mundoId);
-            console.log("Vou buscar por ", bookId);
-            const querySnapshot = await getDocs(query(collection(database, "mundo"), where("bookId", "==", bookId)));
-            const response = querySnapshot.docs.map(
-                (doc) => {
-                    console.log(doc);
-                    doc.data()
-
-                    if (doc.id === mundoId) {
-                        setNomeMundo(doc.data().nomeMundo);
-                        setDescricao(doc.data().descricao);
-                        console.log("Mundo certo", doc.id);
-                        console.log("Mundo certo", doc.data());
-                    } else {
-                        console.log("Não é esse mundo", doc.id);
-                    }
-
-
+        const fetchPreviousContent = async () => {
+            try {
+                const docRef = doc(database, "mundo", route.params.mundoId);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setNomeMundo(docSnap.data().nomeMundo);
+                    setDescricao(docSnap.data().descricao);
                 }
-            );
-
-
-        }
-        fetchMundo();
-
-        return () => {
-            if (route.params.bookId !== bookId) {
-                setBookId(route.params.bookId);
+            } catch (error) {
+                console.error("Erro ao buscar conteúdo anterior: ", error.message);
             }
+        };
+
+        fetchPreviousContent();
+    }, [route.params.mundoId]);
+
+    const handleSalvar = async () => {
+        try {
+            console.log(route);
+            const docRef = doc(database, "mundo", route.params.mundoId);
+
+            await updateDoc(docRef, {
+                nomeMundo: nomeMundo,
+                descricao: descricao,
+            });
+            console.log("Mundo atualizado com ID: ", route.params.mundoId);
+        } catch (error) {
+            console.error("Erro ao atualizar mundo: ", error.message);
         }
-        //
-    }, [route.params.bookId]);
+    };
 
-    useEffect(() => {
-
-    }, [bookId])
 
     return (
         <SafeAreaProvider style={styles.containercriacaoper}>
@@ -93,7 +66,6 @@ export default function AltMundo({ route }) {
                     locations={locations}
                     style={{ height: 7, width: "100%" }}
                 />
-
                 <View style={styles.containermodal}>
                     <View style={styles.containernomeper}>
                         <Paragraph style={styles.paragraphper}>
@@ -104,6 +76,8 @@ export default function AltMundo({ route }) {
                                 onChangeText={(text) => setNomeMundo(text)}
                                 editable={true}
                             />
+
+
                         </Paragraph>
                     </View>
                     <View style={styles.centeredView}>
@@ -120,9 +94,7 @@ export default function AltMundo({ route }) {
                                     <Icon name="close"
                                         style={styles.buttonclose}
                                         onPress={() => setModalVisible(!modalVisible)}
-
                                     />
-
                                     <Text style={styles.modalText}>O primeiro passo é pequeno, mas não tão simples.
                                         Você deve escrever uma frase que resuma toda a história do seu livro.
                                         Recomendamos fazer uma frase com menos de 15 palavras que aborda as principais questões da estória sem citar nomes de personagens.
@@ -146,12 +118,9 @@ export default function AltMundo({ route }) {
                                     </Text>
                                     <Text style={styles.modalText6}>
                                         “Estudante adolescente descobre que o garoto que ela está interessada é um vampiro” (Crepúsculo)</Text>
-
                                 </View>
                             </View>
                         </Modal>
-
-
                         <Icon name="information-outline" style={styles.iconinfo}
                             onPress={() => setModalVisible(true)} />
                     </View>
@@ -168,10 +137,7 @@ export default function AltMundo({ route }) {
                 <CKEditor
                     editor={ClassicEditor}
                     data={descricao}
-                    onChange={(event, editor) => {
-                        const data = editor.getData();
-                        setDescricao(data);
-                    }}
+                    onChange={handleChange}
                 />
 
 
@@ -195,7 +161,6 @@ export default function AltMundo({ route }) {
                         Salvar
                     </Button>
                 </View>
-
             </View>
             <View>
                 <LinearGradient
@@ -207,7 +172,6 @@ export default function AltMundo({ route }) {
                     style={{ height: 7, width: "100%", marginTop: "438px", }}
                 />
             </View>
-
         </SafeAreaProvider>
     );
 }
