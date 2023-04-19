@@ -217,8 +217,6 @@ export const styles = StyleSheet.create({
 });
 
 
-
-
 export const colors = [
   "rgba(190,228,228,1)",
   "rgba(190,228,228,1)",
