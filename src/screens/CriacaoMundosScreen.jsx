@@ -50,10 +50,10 @@ export default function CriacaoMundos(){
       editor={ClassicEditor}
       onChange={(e, editor)=> {handleChange(e, editor)}}/>
       <View style={styles.containersalvarper}>
-      <Button style={{backgroundColor:"#D5ECB4", border:"3px solid #D9D9D9", borderRadius:"1px", height:"40px", width:"70px", fontSize:"13px", display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",}}  mode="contained"onPress={() => navigation.navigate("CapitulosScreen")}>
+      <Button style={styles.buttondeletar} mode="contained">
+                            Deletar
+                        </Button>
+      <Button style={styles.buttonsalvar}  mode="contained"onPress={() => navigation.navigate("CapitulosScreen")}>
             Salvar
           </Button>
       </View>

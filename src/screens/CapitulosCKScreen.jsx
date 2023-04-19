@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -6,14 +6,70 @@ import { colors, locations, styles } from "../config/styles";
 import { Appbar, Button, Paragraph, TextInput } from "react-native-paper";
 import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { addDoc, collection, doc, getDoc } from "firebase/firestore";
+import { database } from "../config/firebase";
 
 export default function CapitulosCKScreen() {
   const _goBack = () => console.log("Went back");
   const _handleMore = () => console.log("Shown more");
-  const [data, setData] = useState('');
-  const handleChange = (e, editor) => {
-    setData(editor.getData());
-  }
+  const [nomeCapitulos, setNomeCapitulos] = useState('');
+  const [descricao, setDescricao] = useState('');
+    const userId = "QtBISAQHWGQPp80rMGaBi9CV8JN2";
+  const bookId = "HNlQEfr1VItwuVt9fBMC"
+
+  useEffect(() => {
+    console.log(bookId)
+  }, [])
+
+  const handleChange = (event, editor) => {
+    setDescricao(editor.getData());
+}
+
+  const handleSalvar = async () => {
+    try {
+      const docRef = await addDoc(collection(database, "capitulos"), {
+        nomeCapitulos: nomeCapitulos,
+        descricao: descricao,
+        bookId: bookId, // add bookId to the document object
+      });
+
+      console.log("capítulo adicionado com ID: ", docRef.id);
+
+
+    } catch (error) {
+      console.error("Erro ao adicionar capítulo: ", error.message);
+    }
+  };
+
+  
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      setBookId("");
+    };
+    //fetch previous content "etapas" from Firestore using doc method
+    const fetchPreviousContent = async () => {
+      try {
+        const docRef = doc(database, "capitulos", "erTGFbnvj2f2cp2eBXUT"); // pass document ID
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setDescricao(docSnap.data().descricao); // set previous content to state
+        }
+      } catch (error) {
+        console.error("Erro ao buscar conteúdo anterior: ", error.message);
+      }
+    };
+
+    fetchPreviousContent(); // call fetchPreviousContent on mount
+
+    // reset nomeCapitulos and descricao when bookId changes
+    setNomeCapitulos("");
+    setDescricao("");
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [bookId]);
+  
   return (
     <SafeAreaProvider style={styles.containercriacaoper}>
       <Appbar.Header style={styles.navConfig}>
@@ -34,7 +90,12 @@ export default function CapitulosCKScreen() {
 
     
       <View style={styles.containernomeper}>
-        <Paragraph style={styles.paragraphper}>Nome do Capítulo:<TextInput style={styles.inputper}></TextInput></Paragraph>
+        <Paragraph style={styles.paragraphper}>Nome do Capítulo:
+        <TextInput style={styles.inputper}
+           value={nomeCapitulos}
+           onChangeText={text => setNomeCapitulos(text)}
+       />
+        </Paragraph>
       </View>
       <View
         style={{
@@ -49,14 +110,14 @@ export default function CapitulosCKScreen() {
           onChange={(e, editor) => { handleChange(e, editor) }} />
         <View>
           <View style={styles.containersalvarper}>
-            <Button style={{
-              backgroundColor: "#F1C4A5", border: "3px solid #D9D9D9", borderRadius: "1px", height: "40px", width: "70px", fontSize: "13px", display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-            }} mode="contained" onPress={() => navigation.navigate("LoginScreen")}>
+           
+          <Button style={styles.buttondeletar} mode="contained">
+                            Deletar
+                        </Button>
+            <Button style={styles.buttonsalvar} mode="contained" onPress={handleSalvar}>
               Salvar
             </Button>
+      
           </View>
         </View>
       </div>

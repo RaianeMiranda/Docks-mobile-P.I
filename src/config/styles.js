@@ -334,6 +334,19 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems:"center"
   },
+  buttondeletar:{
+    backgroundColor: "red",  border: "3px solid  #D9D9D9", borderRadius: "1px", height: "40px", width: "70px", fontSize: "13px", display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight:"150px"
+  },
+  buttonsalvar:{
+    backgroundColor: "#F1C4A5", border: "3px solid #D9D9D9", borderRadius: "1px", height: "40px", width: "70px", fontSize: "13px", display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   capitulostext: {
     color:"black",
     marginTop: "12px",

@@ -168,12 +168,10 @@ export default function SnowflakeCK({ route }) {
           data={descricao} // set data from Firestore to the editor
           onChange={handleChange}/>
         <View style={styles.containersalvarper}>
-          <Button style={{
-            backgroundColor: "#F4CCC8", border: "3px solid #D9D9D9", borderRadius: "1px", height: "40px", width: "70px", fontSize: "13px", display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-          }} mode="contained"
+        <Button style={styles.buttondeletar} mode="contained">
+                            Deletar
+                        </Button>
+          <Button style={styles.buttonsalvar} mode="contained"
             onPress={handleSalvar}>
             Salvar
           </Button>

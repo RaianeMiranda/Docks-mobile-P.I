@@ -1,6 +1,7 @@
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { CadScreen } from "../screens/CadScreen";
+import CapitulosCk2 from "../screens/CapitulosCk2";
 import CapitulosCKScreen from "../screens/CapitulosCKScreen";
 import CapitulosScreen from "../screens/CapitulosScreen";
 import CarouselCards from "../screens/CarouselCard";
@@ -20,6 +21,23 @@ export const RootNavigation = () => {
     return (
  
         <Stack.Navigator>
+              <Stack.Screen
+                name="CapitulosCKScreen"
+                component={CapitulosCKScreen}
+                options={{
+                    headerShown: false,
+                    title: "Tela de Capítulos",
+                }}
+            />
+             <Stack.Screen
+                name="CapitulosCk2"
+                component={CapitulosCk2}
+                options={{
+                    headerShown: false,
+                    title: "Tela de Capítulos",
+                }}
+            />
+           
             <Stack.Screen
                 name="CardsPersonagem"
                 component={CarouselCards}
@@ -74,14 +92,7 @@ export const RootNavigation = () => {
             />
              
              
-              <Stack.Screen
-                name="CapitulosCKScreen"
-                component={CapitulosCKScreen}
-                options={{
-                    headerShown: false,
-                    title: "Tela de Capítulos",
-                }}
-            />
+             
              
             <Stack.Screen
                 name="ForgotPasswordScreen"
