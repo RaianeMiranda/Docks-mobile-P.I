@@ -293,6 +293,7 @@ export const styles = StyleSheet.create({
     border: "3px solid #F6EB60",
     width: "114px",
     height: "30px",
+ 
   },
 
 image3p:{

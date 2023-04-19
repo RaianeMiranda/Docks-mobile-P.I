@@ -1,39 +1,34 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import Popover from 'react-native-popover-view';
+import * as React from "react";
+import { Image } from "react-native";
+import { View } from "react-native";
 
-const MenuPop = () => {
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuVisible(!isMenuVisible);
-  };
-
+export const MenuPop = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={toggleMenu}>
-        <Text style={styles.buttonText}>Abrir menu</Text>
-      </TouchableOpacity>
-      <Popover
-        isVisible={isMenuVisible}
-        onRequestClose={toggleMenu}
-        placement="bottom"
-        arrowStyle={styles.popoverArrow}
-      >
-        <TouchableOpacity style={styles.menuItem} onPress={() => console.log('Editar livro')}>
-          <Text style={styles.menuItemText}>Editar livro</Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.menuItem} onPress={() => console.log('Excluir livro')}>
-          <Text style={styles.menuItemText}>Excluir livro</Text>
-        </TouchableOpacity>
-      </Popover>
+    <View style={{ display: "flex",flexDirection: "row",  flexWrap:"wrap", rowGap:30 , gap:40, justifyContent:'center', marginTop:"20px" }}>
+     
+        <Image
+          source={require("../Images/Livro1.png")}
+          style={{ height: "150PX", width: "130PX" }}
+        />
+        <Image
+          source={require("../Images/Livro2.png")}
+          style={{ height: "150PX", width: "130PX" }}
+        />
+        <Image
+          source={require("../Images/Livro3.png")}
+          style={{ height: "150PX", width: "130PX" }}
+        />
+         <Image
+          source={require("../Images/Livro3.png")}
+          style={{ height: "150PX", width: "130PX" }}
+        />
+         <Image
+          source={require("../Images/Livro3.png")}
+          style={{ height: "150PX", width: "130PX" }}
+        />
+    
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-
-});
 
 export default MenuPop;

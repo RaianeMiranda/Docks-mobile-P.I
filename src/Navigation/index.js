@@ -61,6 +61,7 @@ export function MyDrawer() {
             <Drawer.Screen name="MenuPopUp" component={MenuPop} />
             <Drawer.Screen name="menu" component={menuTest} />
             <Drawer.Screen name="CadModal" component={ModalCadLivros} />
+          
         </Drawer.Navigator>
     );
 };
