@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
   },
   containerBiblio: {
     backgroundColor: "#FFF2D8",
-   
   },
 
   inputsConfig: {
@@ -176,13 +175,13 @@ export const styles = StyleSheet.create({
   },
 
   buttonCL: {
-    border: "5px solid #FED576",
-    borderRadius: "8px",
-    width: "180px",
+    border: "4px solid #FED576",
+    borderRadius: "7px",
+    width: "170px",
     height: "40px",
-    marginTop: "20px",
+    marginTop: "10px",
     marginLeft: "30px",
-    marginBottom: "5PX",
+    marginBottom: "5px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -190,7 +189,7 @@ export const styles = StyleSheet.create({
   textBL: {
     fontWeight: "bold",
     color: "black",
-    fontSize: "15PX",
+    fontSize: "16px",
   },
 
   nomePagina: {
@@ -238,10 +237,7 @@ export const styles = StyleSheet.create({
     fontSize: "25px",
     marginBottom: "10px",
   },
-  FecharModal: {
-    height: "15px",
-    width: "15px",
-  },
+  
   LivroColorido: {
     width: "130px",
     height: "180px",
@@ -293,19 +289,32 @@ export const styles = StyleSheet.create({
     border: "3px solid #F6EB60",
     width: "114px",
     height: "30px",
- 
   },
 
-image3p:{
-  width: "20px",
-  height: "20px",
-  marginLeft: "20px",
-  position: "relative",
-},
-titulomenuB:{
-  fontSize:"12px"
-},
+  image3p: {
+    width: "5px",
+    height: "22px",
+  },
+  titulomenuB: {
+    fontSize: "12px",
+  },
 
+
+  nomeUsuariobi: {
+    fontSize: "22px",
+    fontWeight: "bold",
+    paddingLeft: 35,
+    marginTop: "20px",
+  },
+  containerLivros:{
+    display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          marginTop: "20px",
+          gap: 40,
+          rowGap: 30,
+          paddingLeft: 30,
+  }
 });
 
 export const colors = [
