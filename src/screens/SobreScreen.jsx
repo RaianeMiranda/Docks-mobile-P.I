@@ -3,7 +3,7 @@ import { Image, Text, View } from "react-native";
 import { Paragraph } from "react-native-paper";
 import { colors, locations, styles } from "../utils/styles";
 
-export const SplashScreen = () => {
+export const SobreScreen = () => {
   return (
     <View style={styles.containersobre}>
       <LinearGradient // Background Linear Gradient

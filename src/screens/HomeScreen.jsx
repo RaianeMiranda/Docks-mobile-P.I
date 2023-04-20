@@ -5,20 +5,20 @@ export const HomeScreen = ({ navigation }) => {
   return (
     <View>
           <Button
-          title="Ir para Splash"
-          onPress={() => navigation.navigate("SplashScreen")}
+          title="Ir para Sobre"
+          onPress={() => navigation.navigate("SobreScreen")}
         />
       <Button
-        title="Ir para Pagina"
-        onPress={() => navigation.navigate("PaginaScreen")}
+        title="Ir para Personagem"
+        onPress={() => navigation.navigate("PersonagemScreen")}
       />
        <Button
-          title="Ir para Pagina2"
-          onPress={() => navigation.navigate("Pagina2Screen")}
+          title="Ir para Mundo"
+          onPress={() => navigation.navigate("MundoScreen")}
         />
           <Button
-          title="Ir para Pagina3"
-          onPress={() => navigation.navigate("Pagina3Screen")}
+          title="Ir para Snowflake"
+          onPress={() => navigation.navigate("SnowflakeScreen")}
         />
     </View>
   );

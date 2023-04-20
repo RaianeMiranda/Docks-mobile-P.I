@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { Paragraph, Text } from "react-native-paper";
 import { colors, locations, styles } from "../utils/styles";
 
-export const Pagina2Screen = () => {
+export const MundoScreen = () => {
   return (
     <View style={styles.containerpagina2}>
       <LinearGradient // Background Linear Gradient

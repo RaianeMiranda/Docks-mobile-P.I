@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { Paragraph, Text } from "react-native-paper";
 import { colors, locations, styles } from "../utils/styles";
 
-export const Pagina3Screen = () => {
+export const SnowflakeScreen = () => {
   return (
     <View style={styles.containerpagina3}>
       <LinearGradient // Background Linear Gradient

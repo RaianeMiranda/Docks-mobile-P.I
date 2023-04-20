@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { styles } from "../utils/styles";
 import {HomeScreen} from "../screens/HomeScreen"; 
-import {PaginaScreen} from "../screens/PaginaScreen"; 
-import {SplashScreen} from "../screens/SplashScreen"; 
-import { Pagina2Screen } from "../screens/Pagina2Screen";
-import { Pagina3Screen } from "../screens/Pagina3Screen";
+import {PersonagemScreen} from "../screens/PersonagemScreen"; 
+import {SobreScreen} from "../screens/SobreScreen"; 
+import { MundoScreen } from "../screens/MundoScreen";
+import { SnowflakeScreen } from "../screens/SnowflakeScreen";
 
 //import { DrawerScreen } from "../Screens/DrawerScreen";
 
@@ -16,33 +16,33 @@ export const RootNavigation = () => {
       <Stack.Screen
         style={styles.navConfig}
         options={{ headerShown: false }}
-        name="PaginaScreen"
-        component={PaginaScreen}
+        name="HomeScreen"
+        component={HomeScreen}
       />
          <Stack.Screen
         style={styles.navConfig}
         options={{ headerShown: false }}
-        name="SplashScreen"
-        component={SplashScreen}
+        name="SobreScreen"
+        component={SobreScreen}
       />
         <Stack.Screen
         style={styles.navConfig}
         options={{ headerShown: false }}
-        name="Pagina2Screen"
-        component={Pagina2Screen}
+        name="MundoScreen"
+        component={MundoScreen}
       />
         <Stack.Screen
         style={styles.navConfig}
         options={{ headerShown: false }}
-        name="Pagina3Screen"
-        component={Pagina3Screen}
+        name="SnowflakeScreen"
+        component={SnowflakeScreen}
       />
   
       <Stack.Screen
         style={styles.navConfig}
         options={{ headerShown: false }}
-        name="Splash"
-        component={SplashScreen}
+        name="PersonagemScreen"
+        component={PersonagemScreen}
       />
     </Stack.Navigator>
   );
