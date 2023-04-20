@@ -1,48 +1,92 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Dimensions, Image } from "react-native"
-import { Button } from 'react-native-paper'
-import Carousel, { Pagination } from 'react-native-snap-carousel'
+import { collection, onSnapshot } from 'firebase/firestore';
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, Button } from 'react-native';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import { database } from '../config/firebase/firebase';
 
-const SLIDER_WIDTH = Dimensions.get('window').width + 80
-const SLIDER_HEIGHT = Dimensions.get('window').width + 80
-const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.28)
-const ITEM_HEIGHT = Math.round(SLIDER_HEIGHT * 0.29)
-
-const CarouselCardItem = ({ item, index }) => {
-    const isFirstItem = index === 0;
-    const headerStyle = isFirstItem ? styles.headerFirst : (isFirstItem ? styles.headerLast : styles.header);
-    const containerStyle = isFirstItem ? styles.containerFirst : (isFirstItem ? styles.containerLast : styles.container);
-    const bodyStyle = isFirstItem ? styles.bodyFirst : (isFirstItem ? styles.bodyLast : styles.body);
-    const imageStyle = isFirstItem ? styles.imageFirst : (isFirstItem ? styles.imageLast : styles.image);
-
-
-    return (
-        <View>
-            <View style={containerStyle} key={index}>
-                <Text style={headerStyle}>{item.title}</Text>
-                <Text style={bodyStyle}>{item.body}</Text>
-                <Image style={imageStyle} source={item.image} />
-
-            </View>
-        </View>
-    );
-};
-
-const CarouselCards1 = (props) => {
-
-    const _goBack = () => console.log("Went back");
-    const _handleMore = () => console.log("Shown more");
-    const [index, setIndex] = React.useState(0)
-    const isCarousel = React.useRef(null)
-    const [idUsuario, setIdUsuario] = useState("");
-    const [bookId, setBookId] = useState("");
+const SLIDER_WIDTH = Dimensions.get('window').width + 80;
+const SLIDER_HEIGHT = Dimensions.get('window').width + 80;
+const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.28);
+const ITEM_HEIGHT = Math.round(SLIDER_HEIGHT * 0.29);
+//================================================================================================
+//PORQUE O CAROUSEL RENDERIZA E APAGA OS OUTROS CARDS??
+//================================================================================================
+export const CarouselCards1 = ({userId, navigation }) => {
+    console.log(navigation)
+    const [index, setIndex] = useState(0);
+    const isCarousel = useRef(null);
+    const [etapas, setEtapas] = useState([]);
 
     useEffect(() => {
-        // console.log("BookID", props?.bookId);
-        setIdUsuario(props?.idUsuario);
-        setBookId(props?.bookId);
-    }, [props?.bookId])
+        const unsubscribe = onSnapshot(
+            collection(database, 'etapas'),
+            querySnapshot => {
+                const etapasTemp = [];
+                querySnapshot.forEach(doc => {
+                        etapasTemp.push({
+                            ...doc.data(),
+                            id: doc.id,
+                        });
+                    }
+                );
+                setEtapas(etapasTemp);
+            }
+        );
+        return () => unsubscribe();
+    }, []);
 
+    const handlePress = (index) => {
+        const item = data[index];
+        item.onPress();
+    };
+
+
+    const cardArray = [
+        {
+          body: "Criação de Snowflake",
+          image: require("../../src/Images/snow.png"),
+          onPress: () =>
+            navigation.navigate("Biblioteca", { index: 0, userId }),
+        },
+      ];
+      
+      const newCards = etapas.map((etapas) => ({
+        body: etapas.nomeEtapas,
+        onPress: () =>
+          navigation.navigate("altEtapa", {
+            index: 1,
+            etapasId: etapas.id,
+            userId,
+          }),
+        id: etapas.id,
+      }));
+      
+      const updatedCardArray = [...cardArray.slice(0, 1), ...newCards, ...cardArray.slice(1)];
+      
+      
+
+    const CarouselCardItem = ({ item, index }) => {
+        const isFirstItem = index === 0;
+        const isLastItem = index === updatedCardArray.length - 1;
+        const headerStyle = isFirstItem ? styles.headerFirst : (isLastItem ? styles.headerLast : styles.header);
+        const containerStyle = isFirstItem ? styles.containerFirst : (isLastItem ? styles.containerLast : styles.container);
+        const bodyStyle = isFirstItem ? styles.bodyFirst : (isLastItem ? styles.bodyLast : styles.body);
+        const imageStyle = isFirstItem ? styles.imageFirst : (isLastItem ? styles.imageLast : styles.image);
+
+        return (
+            <TouchableOpacity onPress={item.onPress}>
+                <View style={containerStyle} key={index}>
+                    <Text style={headerStyle}>{item.title}</Text>
+                    {typeof item.body === 'string' ? (
+                        <Text style={bodyStyle}>{item.body}</Text>
+                    ) : (
+                        <View style={{ marginVertical: 10 }}>{item.body}</View>
+                    )}
+                    <Image style={imageStyle} source={item.image} />
+                </View>
+            </TouchableOpacity>
+        );
+    };
     return (
         <View style={styles.viewcarousel}>
             <View style={styles.viewcarouselcard}>
@@ -50,8 +94,11 @@ const CarouselCards1 = (props) => {
                     layout="default"
                     layoutCardOffset={9}
                     ref={isCarousel}
-                    data={dataCard}
-                    renderItem={CarouselCardItem}
+                    data={updatedCardArray}
+                    renderItem={({ item, index }) => (
+                        <CarouselCardItem item={item} index={index} navigation={navigation} onPress={handlePress} />
+    
+                    )}
                     sliderWidth={SLIDER_WIDTH}
                     sliderHeight={SLIDER_HEIGHT}
                     itemWidth={ITEM_WIDTH}
@@ -213,26 +260,4 @@ const styles = StyleSheet.create({
     }
 
 })
-export const dataCard = [
-    {
-        image: require("../../src/Images/snow.png"),
-        body: "Método Snowflake",
 
-
-    },
-
-    {
-        body: "1. Resuma seu livro em uma frase",
-
-    },
-    {
-
-        body: "2. Transforme a frase em um parágrafo"
-
-    },
-
-]
-
-
-
-export default CarouselCards1

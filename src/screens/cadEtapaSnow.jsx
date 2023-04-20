@@ -9,9 +9,9 @@ import { Alert, Modal, Text, View } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { TouchableOpacity } from "react-native-web";
-import { database } from "../config/firebase";
+import { database } from "../config/firebase/firebase"; 
 
-export default function SnowflakeCK({ route }) {
+export default function cadEtapaSnow({ route }) {
 
   const [modalVisible, setModalVisible] = useState(false);
   const _goBack = () => console.log("Went back");
