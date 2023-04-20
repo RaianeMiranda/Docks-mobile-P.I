@@ -59,16 +59,16 @@ export const CarouselCards3 = ({ bookId, userId, navigation }) => {
         },
       ];
       
-      const newCards = personagens.map((personagem) => ({
-        body: personagem.nomePersona,
+      const newCards = personagens.map((personagens) => ({
+        body: personagens.nomePersona,
         onPress: () =>
           navigation.navigate("altPersona", {
             index: 1,
             bookId,
-            personagensId: personagem.id,
+            personagensId: personagens.id,
             userId,
           }),
-        id: personagem.id,
+        id: personagens.id,
       }));
       
       const updatedCardArray = [...cardArray.slice(0, 1), ...newCards, ...cardArray.slice(1)];
