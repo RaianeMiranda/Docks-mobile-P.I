@@ -59,6 +59,7 @@ const CarouselCards1 = (props) => {
                     useScrollView={true}
                     inactiveSlideScale={0.94}
                     inactiveSlideOpacity={100}
+                    contentContainerCustomStyle={{ paddingLeft: "25px" }}
                 >
                 </Carousel>
 

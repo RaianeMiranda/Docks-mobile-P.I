@@ -11,7 +11,8 @@ import 'firebase/firestore';
 import { database, auth } from "../config/firebase/firebase";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Modal } from "react-native";
-export default function AltMundo({ route }) {
+
+export default function AltMundo({ route, navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [nomeMundo, setNomeMundo] = useState('');
     const [descricao, setDescricao] = useState('');
@@ -39,7 +40,7 @@ export default function AltMundo({ route }) {
         fetchPreviousContent();
     }, [route.params.mundoId]);
 
-    const handleSalvar = async () => {
+    const handleUpdate = async () => {
         try {
             console.log(route);
             const docRef = doc(database, "mundo", route.params.mundoId);
@@ -48,11 +49,12 @@ export default function AltMundo({ route }) {
                 nomeMundo: nomeMundo,
                 descricao: descricao,
             });
+            navigation.navigate("Página Inicial", {bookId: bookId, mundoId: mundoId });
             console.log("Mundo atualizado com ID: ", route.params.mundoId);
         } catch (error) {
             console.error("Erro ao atualizar mundo: ", error.message);
         }
-    };
+    }
 
 
     return (
@@ -156,7 +158,7 @@ export default function AltMundo({ route }) {
                             justifyContent: "center",
                         }}
                         mode="contained"
-                        onPress={handleSalvar}
+                        onPress={handleUpdate}
                     >
                         Salvar
                     </Button>

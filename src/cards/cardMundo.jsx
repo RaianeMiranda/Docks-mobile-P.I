@@ -43,30 +43,39 @@ export const CarouselCards2 = ({ bookId, userId, navigation }) => {
 
     const cardArray = [
         {
-            body: "Criação de Mundo",
-            image: require("../../src/Images/mundo.png"),
-            onPress: () => navigation.navigate("Biblioteca", { index: 0 }),
+          body: "Criação de mundo",
+          image: require("../../src/Images/mundo.png"),
+          onPress: () =>
+            navigation.navigate("Biblioteca", { index: 0, bookId, userId }),
         },
         {
-            image: require("../../src/Images/mais.png"),
-            onPress: () => navigation.navigate("Mundo", { index: cardArray.length - 1 }),
+          image: require("../../src/Images/mais.png"),
+          onPress: () =>
+            navigation.navigate("Mundo", {
+              index: cardArray.length - 1,
+              bookId,
+              userId,
+            }),
         },
-    ];
-
-    if (Array.isArray(mundo)) {
-        mundo.forEach((mundo, bookId) => {
-            const card = {
-                body: mundo.nomeMundo,
-                onPress: () => navigation.navigate("altMundo", { index: 1, bookId, mundoId: mundo.id, userId }),
-                id: mundo.id // Set the id field for the new card object
-            };
-            cardArray.splice(index + 1, 0, card);
-        });
-    }
+      ];
+      
+      const newCards = mundo.map((mundo) => ({
+        body: mundo.nomeMundo,
+        onPress: () =>
+          navigation.navigate("altMundo", {
+            index: 1,
+            bookId,
+            mundoId: mundo.id,
+            userId,
+          }),
+        id: mundo.id,
+      }));
+      
+      const updatedCardArray = [...cardArray.slice(0, 1), ...newCards, ...cardArray.slice(1)];
 
     const CarouselCardItem = ({ item, index }) => {
         const isFirstItem = index === 0;
-        const isLastItem = index === cardArray.length - 1;
+        const isLastItem = index === updatedCardArray.length - 1;
         const headerStyle = isFirstItem ? styles.headerFirst : (isLastItem ? styles.headerLast : styles.header);
         const containerStyle = isFirstItem ? styles.containerFirst : (isLastItem ? styles.containerLast : styles.container);
         const bodyStyle = isFirstItem ? styles.bodyFirst : (isLastItem ? styles.bodyLast : styles.body);
@@ -93,17 +102,19 @@ export const CarouselCards2 = ({ bookId, userId, navigation }) => {
                 layout="default"
                 layoutCardOffset={9}
                 ref={isCarousel}
-                data={cardArray}
+                data={updatedCardArray}
                 sliderWidth={SLIDER_WIDTH}
                 sliderHeight={SLIDER_HEIGHT}
                 renderItem={({ item, index }) => (
                     <CarouselCardItem item={item} index={index} navigation={navigation} onPress={handlePress} />
+
                 )}
                 itemWidth={ITEM_WIDTH}
                 onSnapToItem={(index) => setIndex(index)}
                 useScrollView={true}
                 inactiveSlideScale={0.94}
                 inactiveSlideOpacity={100}
+                contentContainerCustomStyle={{ paddingLeft: "25px" }}
             />
             <Pagination
                 activeDotIndex={index}

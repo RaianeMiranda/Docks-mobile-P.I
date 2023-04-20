@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Modal } from "react-native";
 
-export default function cadMundo({ route }) {
+export default function cadMundo({ route, navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [nomeMundo, setNomeMundo] = useState('');
     const [descricao, setDescricao] = useState('');
@@ -34,7 +34,7 @@ export default function cadMundo({ route }) {
                 descricao: descricao,
                 bookId: bookId, // add bookId to the document object
             });
-
+            navigation.navigate("Página Inicial", {bookId: bookId });
             console.log("Mundo adicionado com ID: ", docRef.id);
 
 
@@ -44,11 +44,6 @@ export default function cadMundo({ route }) {
     };
 
     useEffect(() => {
-        const handleBeforeUnload = () => {
-            setBookId("");
-        };
-        window.addEventListener("beforeunload", handleBeforeUnload);
-
         if (route.params.bookId !== bookId) {
             setBookId(route.params.bookId);
         }
@@ -72,9 +67,6 @@ export default function cadMundo({ route }) {
         setNomeMundo("");
         setDescricao("");
 
-        return () => {
-            window.removeEventListener("beforeunload", handleBeforeUnload);
-        };
     }, [bookId, route.params.bookId]);
 
     return (

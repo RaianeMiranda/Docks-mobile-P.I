@@ -17,6 +17,7 @@ import AltMundo from "../screens/AltMundo";
 import { listMundo } from "../screens/listMundo";
 import CarouselCards1 from "../cards/cardSnow";
 import cadPersona from "../screens/cadPersona";
+import Altpersonagens from "../screens/AltPersona";
 
 const Drawer = createDrawerNavigator();
 const CustomDrawer = (props) => {
@@ -69,6 +70,8 @@ export function MyDrawer() {
             <Drawer.Screen name="Persona" component={cadPersona} />
             <Drawer.Screen name="ListMundo" component={listMundo} />
             <Drawer.Screen name="altMundo" component={AltMundo} />
+            <Drawer.Screen name="cadPersona" component={cadPersona} />
+            <Drawer.Screen name="altPersona" component={Altpersonagens} />
         </Drawer.Navigator>
     );
 };
