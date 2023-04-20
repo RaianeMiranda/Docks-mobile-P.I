@@ -237,7 +237,32 @@ export const styles = StyleSheet.create({
     fontSize: "25px",
     marginBottom: "10px",
   },
-  
+  nomebuttonBi: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: "20px",
+  },
+  nomeLivro: {
+    fontWeight: "bold",
+    fontSize: "16px",
+  },
+  itemMenuEditar: {
+    fontSize: "14px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingBottom: "25px",
+    paddingRight: "100px",
+  },
+  itemMenuExcluir: {
+    fontSize: "14px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingBottom: "25px",
+    paddingRight: "100px",
+  },
   LivroColorido: {
     width: "130px",
     height: "180px",
@@ -299,22 +324,21 @@ export const styles = StyleSheet.create({
     fontSize: "12px",
   },
 
-
   nomeUsuariobi: {
     fontSize: "22px",
     fontWeight: "bold",
     paddingLeft: 35,
     marginTop: "20px",
   },
-  containerLivros:{
+  containerLivros: {
     display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          marginTop: "20px",
-          gap: 40,
-          rowGap: 30,
-          paddingLeft: 30,
-  }
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginTop: "20px",
+    gap: 40,
+    rowGap: 30,
+    paddingLeft: 30,
+  },
 });
 
 export const colors = [

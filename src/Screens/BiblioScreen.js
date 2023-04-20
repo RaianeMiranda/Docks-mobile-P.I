@@ -12,6 +12,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 export const BiblioScreen = ({ navigation }) => {
   const [livros, setLivros] = useState([]);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [bookContainerHeight, setBookContainerHeight] = useState(0);
 
   const [visible, setVisible] = React.useState(false);
 
@@ -51,8 +52,7 @@ export const BiblioScreen = ({ navigation }) => {
         style={{ height: 7, width: "100%" }}
       />
 
-<Text style={{fontSize:"22px", fontWeight:"bold", paddingLeft: 35,
-          marginTop:"20px"}}>Bem vindo(a)</Text>
+      <Text style={styles.nomeUsuariobi}>Bem vindo(a)</Text>
 
       <Button
         style={styles.buttonCL}
@@ -61,15 +61,10 @@ export const BiblioScreen = ({ navigation }) => {
         <Text style={styles.textBL}>+ Criar novo Livro</Text>
       </Button>
       <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          marginTop: "20px",
-          gap: 40,
-          rowGap: 30,
-          paddingLeft: 30,
-        }}
+        style={styles.containerLivros}
+        onLayout={(event) =>
+          setBookContainerHeight(event.nativeEvent.layout.height)
+        } // add this line
       >
         {Array.isArray(livros) &&
           livros.map((livro) => (
@@ -86,26 +81,15 @@ export const BiblioScreen = ({ navigation }) => {
                 />
                 {/* </TouchableOpacity> */}
                 <View>
-                  <View
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      marginTop:"20px",
-                   
-          
-                    }}
-                  >
-                    <Text style={{ fontWeight: "bold", fontSize: "16px"  }}>
-                      {livro.nomeLivro}
-                    </Text>
+                  <View style={styles.nomebuttonBi}>
+                    <Text style={styles.nomeLivro}>{livro.nomeLivro}</Text>
 
                     <Menu
                       anchorPosition="bottom"
                       visible={visible}
                       onDismiss={closeMenu}
                       anchor={
-                        <TouchableOpacity  onPress={openMenu}>
+                        <TouchableOpacity onPress={openMenu}>
                           <Image
                             style={styles.image3p}
                             source={require("../Images/Vector.png")}
@@ -122,16 +106,7 @@ export const BiblioScreen = ({ navigation }) => {
                       >
                         <Menu.Item
                           title={
-                            <Text
-                              style={{
-                                fontSize: "14px",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                paddingBottom: "25px",
-                                paddingRight: "100px",
-                              }}
-                            >
+                            <Text style={styles.itemMenuEditar}>
                               Editar livro
                             </Text>
                           }
@@ -143,16 +118,7 @@ export const BiblioScreen = ({ navigation }) => {
                       >
                         <Menu.Item
                           title={
-                            <Text
-                              style={{
-                                fontSize: "14px",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                paddingBottom: "25px",
-                                paddingRight: "100px",
-                              }}
-                            >
+                            <Text style={styles.itemMenuExcluir}>
                               Excluir livro
                             </Text>
                           }
@@ -165,13 +131,19 @@ export const BiblioScreen = ({ navigation }) => {
             </View>
           ))}
       </View>
-      <LinearGradient // Background Linear Gradient
+      <LinearGradient
+        // Background Linear Gradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         colors={colors}
         locations={locations}
-        style={{ height: 7, width: "100%", marginTop: "135%" }}
+        style={{
+          height: 7,
+          width: "100%",
+          marginTop: bookContainerHeight + 50, // add this line
+        }}
       />
     </View>
   );
+  3;
 };
