@@ -51,6 +51,9 @@ export const BiblioScreen = ({ navigation }) => {
         style={{ height: 7, width: "100%" }}
       />
 
+<Text style={{fontSize:"22px", fontWeight:"bold", paddingLeft: 35,
+          marginTop:"20px"}}>Bem vindo(a)</Text>
+
       <Button
         style={styles.buttonCL}
         onPress={() => navigation.navigate("CadModal")}
@@ -65,7 +68,7 @@ export const BiblioScreen = ({ navigation }) => {
           marginTop: "20px",
           gap: 40,
           rowGap: 30,
-          paddingLeft:30
+          paddingLeft: 30,
         }}
       >
         {Array.isArray(livros) &&
@@ -82,37 +85,32 @@ export const BiblioScreen = ({ navigation }) => {
                   style={styles.LivroB}
                 />
                 {/* </TouchableOpacity> */}
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center"
-                  }}
-                >
-                  <Text
-                  //style={{
-                  //fontWeight: "bold",
-                  //fontSize: "18px",
-                  //marginLeft: "5px",
-                  //textAlign: "auto",
-                  //}}
+                <View>
+                  <View
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      marginTop:"20px",
+                   
+          
+                    }}
                   >
-                    {livro.nomeLivro}
-                  </Text>
+                    <Text style={{ fontWeight: "bold", fontSize: "16px"  }}>
+                      {livro.nomeLivro}
+                    </Text>
 
-                  <View>
                     <Menu
                       anchorPosition="bottom"
                       visible={visible}
                       onDismiss={closeMenu}
                       anchor={
-                        <Button onPress={openMenu}>
+                        <TouchableOpacity  onPress={openMenu}>
                           <Image
                             style={styles.image3p}
                             source={require("../Images/Vector.png")}
                           />
-                        </Button>
+                        </TouchableOpacity>
                       }
                       contentStyle={{
                         paddingVertical: 0,
