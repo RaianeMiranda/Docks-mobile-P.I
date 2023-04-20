@@ -214,6 +214,103 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
   },
 
+//ListCapitulos
+
+capitulosparagraph: {
+  fontWeight: "bolder",
+  fontSize: "25px",
+  marginTop: "15px",
+  marginLeft: "30px",
+},
+buttoncapitulos: {
+  border: "3px solid #F1C4A5",
+  borderRadius: "0px",
+  height: "50px",
+  width: "260px",
+  marginTop: "13px",
+  marginLeft: "32px",
+  display: "flex",
+  flexDirection: "row",
+  alignItems:"center"
+},
+buttondeletar:{
+  backgroundColor: "red",  border: "3px solid  #D9D9D9", borderRadius: "1px", height: "40px", width: "70px", fontSize: "13px", display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  marginRight:"150px"
+},
+buttonsalvar:{
+  backgroundColor: "#F1C4A5", border: "3px solid #D9D9D9", borderRadius: "1px", height: "40px", width: "70px", fontSize: "13px", display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+},
+capitulostext: {
+  color:"black",
+  marginTop: "12px",
+},
+capitulosub:{
+  height:"3px", 
+  width:"120px", 
+  color:"black",
+  marginBottom:"2px",
+  fontSize: "12px",
+},
+viewcapitulos:{
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent:"space-between",
+  width: 240,
+},
+imagelixeira:{
+  width:"15px", 
+  height:"15px", 
+}, 
+buttonadicionar:{
+  border: "3px solid #F1C4A5",
+  borderRadius: "5px",
+  height: "40px",
+  width: "200px",
+  marginLeft: "32px",
+  display: "flex",
+  flexDirection: "row",
+  alignItems:"center", 
+  padding: 0,
+  justifyContent:"center",
+  backgroundColor:"#FFA974",
+  
+},
+textadicionar:{
+  color:"black",
+},
+iconplus:{
+  fontSize:"30px",
+  color:"black"
+},
+containerplustext:{
+  display:"flex",
+  flexDirection:"row",
+  alignItems:"center"
+},
+
+header: {
+  color: "#222",
+  backgroundColor: "#2250",
+  fontSize: 14,
+  fontWeight: "bold",
+  paddingLeft: 20,
+  paddingTop: 20
+
+},
+body: {
+  color: "#222",
+  fontSize: 14,
+  paddingLeft: 20,
+  paddingLeft: 20,
+  paddingRight: 20
+}
 });
 
 

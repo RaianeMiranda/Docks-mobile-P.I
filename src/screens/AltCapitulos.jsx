@@ -7,16 +7,15 @@ import { Appbar, Button, Paragraph, TextInput } from "react-native-paper";
 import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { database } from "../config/firebase";
+import { database } from "../config/firebase/firebase";
 
-export default function CapitulosCk2() {
+export default function altCapitulos({route, navigation}) {
     const _goBack = () => console.log("Went back");
     const _handleMore = () => console.log("Shown more");
     const [nomeCapitulos, setNomeCapitulos] = useState('');
     const [descricao, setDescricao] = useState('');
-    const userId = "QtBISAQHWGQPp80rMGaBi9CV8JN2";
-    const bookId = "HNlQEfr1VItwuVt9fBMC"
-    const capId = "0RxTS1EN1U6D5rCKtRGb"
+    const [bookId, setBookId] = useState(route.params.bookId);
+    const [capId, setCapId] = useState('');
 
     const handleChange = (event, editor) => {
         setDescricao(editor?.getData());
@@ -25,7 +24,7 @@ export default function CapitulosCk2() {
     useEffect(() => {
         const fetchPreviousContent = async () => {
             try {
-                const docRef = doc(database, "capitulos", capId);
+                const docRef = doc(database, "capitulos", route.params.capId);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     setNomeCapitulos(docSnap.data().nomeCapitulos);
@@ -37,30 +36,25 @@ export default function CapitulosCk2() {
         };
 
         fetchPreviousContent();
-    }, [capId]);
+    }, [route.params.capId]);
 
-    const handleSalvar = async () => {
+    const handleUpdate = async () => {
         try {
-            const docRef = doc(database, "capitulos", capId);
+            console.log(route);
+            const docRef = doc(database, "capitulos", route.params.capId);
 
             await updateDoc(docRef, {
                 nomeCapitulos: nomeCapitulos,
                 descricao: descricao,
             });
-            console.log("capitulos atualizado com ID: ", capId);
+            navigation.navigate("listCap", { bookId: bookId, capId: capId });
+            console.log("capitulos atualizado com ID: ", route.params.capId);
         } catch (error) {
             console.error("Erro ao atualizar capitulos: ", error.message);
         }
-    };
-
-
+    }
     return (
         <SafeAreaProvider style={styles.containercriacaoper}>
-            <Appbar.Header style={styles.navConfig}>
-                <Appbar.BackAction onPress={_goBack} />
-                <Appbar.Content titleStyle={{ textAlign: "center", fontWeight: "bold", fontSize: "20px" }} title="Capítulos" />
-                <Appbar.Action icon="menu" onPress={_handleMore} />
-            </Appbar.Header>
             <View>
                 <LinearGradient
                     // Background Linear Gradient 
@@ -79,8 +73,7 @@ export default function CapitulosCk2() {
                         value={nomeCapitulos}
                         onChangeText={(text) => setNomeCapitulos(text)}
                         editable={true}
-                    >
-                    </TextInput>
+                    />
                 </Paragraph>
             </View>
             <View
@@ -92,18 +85,18 @@ export default function CapitulosCk2() {
             />
             <View style={{ maxWidth: "300px", margin: "0 auto", }}>
                 <CKEditor
-                    editor={ClassicEditor}
-                    data={descricao}
-                    onChange={handleChange} />
+                   editor={ClassicEditor}
+                   data={descricao}
+                   onChange={handleChange} />
                 <View>
                     <View style={styles.containersalvarper}>
-                    <Button style={styles.buttondeletar} mode="contained">
+                        <Button style={styles.buttondeletar} mode="contained">
                             Deletar
                         </Button>
-                        <Button style={styles.buttonsalvar} mode="contained" onPress={handleSalvar}>
+                        <Button style={styles.buttonsalvar} mode="contained" onPress={handleUpdate}>
                             Salvar
                         </Button>
-                       
+
                     </View>
                 </View>
             </View>

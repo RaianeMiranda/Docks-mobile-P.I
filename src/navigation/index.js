@@ -18,6 +18,11 @@ import { listMundo } from "../screens/listMundo";
 import CarouselCards1 from "../cards/cardSnow";
 import cadPersona from "../screens/cadPersona";
 import Altpersonagens from "../screens/AltPersona";
+import cadEtapaSnow from "../screens/cadEtapaSnow";
+import AltEtapasSnow from "../screens/AltEtapasSnow";
+import cadCapitulos from "../screens/cadCapitulo";
+import altCapitulos from "../screens/AltCapitulos";
+import listCapitulos from "../screens/ListCapitulos";
 
 const Drawer = createDrawerNavigator();
 const CustomDrawer = (props) => {
@@ -63,7 +68,6 @@ export function MyDrawer() {
             <Drawer.Screen name="Biblioteca" component={BiblioScreen} />
             <Drawer.Screen name="Login" component={LoginScreen} />
             <Drawer.Screen name="Página Inicial" component={PaginaInicial} />
-            <Drawer.Screen name="Card" component={CarouselCards1} />
             <Drawer.Screen name="Atualizar Livros" component={AltLivro} />
             <Drawer.Screen name="CadModal" component={ModalCadLivros} />
             <Drawer.Screen name="Mundo" component={cadMundo} />
@@ -72,6 +76,11 @@ export function MyDrawer() {
             <Drawer.Screen name="altMundo" component={AltMundo} />
             <Drawer.Screen name="cadPersona" component={cadPersona} />
             <Drawer.Screen name="altPersona" component={Altpersonagens} />
+            <Drawer.Screen name="cadEtapa" component={cadEtapaSnow} />
+            <Drawer.Screen name="altEtapa" component={AltEtapasSnow} />
+            <Drawer.Screen name="cadCap" component={cadCapitulos} />
+            <Drawer.Screen name="altCap" component={altCapitulos} />
+            <Drawer.Screen name="listCap" component={listCapitulos} />
         </Drawer.Navigator>
     );
 };
