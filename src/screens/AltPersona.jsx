@@ -1,73 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { addDoc, collection, doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { colors, locations, styles } from "../config/styles";
 import { Button, Paragraph, Text, TextInput } from "react-native-paper";
 import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import 'firebase/firestore';
 import { database, auth } from "../config/firebase/firebase";
-import { useEffect } from "react";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Modal } from "react-native";
 
-export default function cadPersona({ route, navigation }) {
+export default function Altpersonagens({ route, navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [nomePersona, setNomePersona] = useState('');
     const [descricao, setDescricao] = useState('');
     const [bookId, setBookId] = useState(route.params.bookId);
+    const [personagensId, setpersonagensId] = useState('');
+
     const handleChange = (event, editor) => {
-        setDescricao(editor.getData());
-    }
-    console.log(bookId)
-
-    const handleSalvar = async () => {
-        try {
-            const user = auth.currentUser;
-            if (!user) {
-                throw new Error("Usuário não autenticado.");
-            }
-
-            const docRef = await addDoc(collection(database, "personagens"), {
-                nomePersona: nomePersona,
-                descricao: descricao,
-                bookId: bookId, // add bookId to the document object
-            });
-            navigation.navigate("Página Inicial", {bookId: bookId });
-            console.log("Personagem adicionado com ID: ", docRef.id);
-
-        } catch (error) {
-            console.error("Erro ao adicionar Personagem: ", error.message);
-        }
+        setDescricao(editor?.getData());
     };
 
     useEffect(() => {
-        if (route.params.bookId !== bookId) {
-            setBookId(route.params.bookId);
-        }
-
-        // fetch previous content "Personagem" from Firestore using doc method
         const fetchPreviousContent = async () => {
             try {
-                const docRef = doc(database, "personagens", "dr5mLf4qGeGkwgLhQ1T8"); // pass document ID
+                const docRef = doc(database, "personagens", route.params.personagensId);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
-                    setDescricao(docSnap.data().descricao); // set previous content to state
+                    setNomePersona(docSnap.data().nomePersona);
+                    setDescricao(docSnap.data().descricao);
                 }
             } catch (error) {
                 console.error("Erro ao buscar conteúdo anterior: ", error.message);
             }
         };
 
-        fetchPreviousContent(); // call fetchPreviousContent on mount
+        fetchPreviousContent();
+    }, [route.params.personagensId]);
 
-        // reset nomePersona and descricao when bookId changes
-        setNomePersona("");
-        setDescricao("");
+    const handleUpdate = async () => {
+        try {
+            console.log(route);
+            const docRef = doc(database, "personagens", route.params.personagensId);
 
-    }, [bookId, route.params.bookId]);
+            await updateDoc(docRef, {
+                nomePersona: nomePersona,
+                descricao: descricao,
+            });
+            navigation.navigate("Página Inicial", {bookId: bookId, personagensId: personagensId });
+            console.log("personagens atualizado com ID: ", route.params.personagensId);
+        } catch (error) {
+            console.error("Erro ao atualizar personagens: ", error.message);
+        }
+    }
+
 
     return (
         <SafeAreaProvider style={styles.containercriacaoper}>
@@ -87,8 +75,11 @@ export default function cadPersona({ route, navigation }) {
                             <TextInput
                                 style={styles.inputper}
                                 value={nomePersona}
-                                onChangeText={text => setNomePersona(text)}
+                                onChangeText={(text) => setNomePersona(text)}
+                                editable={true}
                             />
+
+
                         </Paragraph>
                     </View>
                     <View style={styles.centeredView}>
@@ -97,7 +88,7 @@ export default function cadPersona({ route, navigation }) {
                             transparent={true}
                             visible={modalVisible}
                             onRequestClose={() => {
-                                Alert.alert('Modal has been closed.');
+                                console.log('Modal has been closed.');
                                 setModalVisible(!modalVisible);
                             }}>
                             <View style={styles.centeredView}>
@@ -105,9 +96,7 @@ export default function cadPersona({ route, navigation }) {
                                     <Icon name="close"
                                         style={styles.buttonclose}
                                         onPress={() => setModalVisible(!modalVisible)}
-
                                     />
-
                                     <Text style={styles.modalText}>O primeiro passo é pequeno, mas não tão simples.
                                         Você deve escrever uma frase que resuma toda a história do seu livro.
                                         Recomendamos fazer uma frase com menos de 15 palavras que aborda as principais questões da estória sem citar nomes de personagens.
@@ -131,17 +120,11 @@ export default function cadPersona({ route, navigation }) {
                                     </Text>
                                     <Text style={styles.modalText6}>
                                         “Estudante adolescente descobre que o garoto que ela está interessada é um vampiro” (Crepúsculo)</Text>
-
                                 </View>
                             </View>
                         </Modal>
-
-
                         <Icon name="information-outline" style={styles.iconinfo}
                             onPress={() => setModalVisible(true)} />
-
-
-
                     </View>
                 </View>
             </View>
@@ -154,10 +137,11 @@ export default function cadPersona({ route, navigation }) {
             />
             <View style={{ maxWidth: "300px", margin: "0 auto", }}>
                 <CKEditor
-                   editor={ClassicEditor}
-                   data={descricao} // set data from Firestore to the editor
-                   onChange={handleChange}
+                    editor={ClassicEditor}
+                    data={descricao}
+                    onChange={handleChange}
                 />
+
 
                 <View style={styles.containersalvarper}>
                     <Button
@@ -174,12 +158,11 @@ export default function cadPersona({ route, navigation }) {
                             justifyContent: "center",
                         }}
                         mode="contained"
-                        onPress={handleSalvar}
+                        onPress={handleUpdate}
                     >
                         Salvar
                     </Button>
                 </View>
-
             </View>
             <View>
                 <LinearGradient
@@ -191,7 +174,6 @@ export default function cadPersona({ route, navigation }) {
                     style={{ height: 7, width: "100%", marginTop: "438px", }}
                 />
             </View>
-
         </SafeAreaProvider>
     );
 }

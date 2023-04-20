@@ -1,53 +1,114 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Dimensions, Image } from "react-native"
-import Carousel, { Pagination } from 'react-native-snap-carousel'
+import { collection, onSnapshot } from 'firebase/firestore';
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, Button } from 'react-native';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import { database } from '../config/firebase/firebase';
 
+const SLIDER_WIDTH = Dimensions.get('window').width + 80;
+const SLIDER_HEIGHT = Dimensions.get('window').width + 80;
+const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.28);
+const ITEM_HEIGHT = Math.round(SLIDER_HEIGHT * 0.29);
 
-
-
-const SLIDER_WIDTH = Dimensions.get('window').width + 80
-const SLIDER_HEIGHT = Dimensions.get('window').width + 80
-const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.28)
-const ITEM_HEIGHT = Math.round(SLIDER_HEIGHT * 0.29)
-
-const CarouselCardItem = ({ item, index }) => {
-    const isFirstItem = index === 0;
-    const isLastItem = index === dataCard.length - 1;
-    const headerStyle = isFirstItem ? styles.headerFirst : (isLastItem ? styles.headerLast : styles.header);
-    const containerStyle = isFirstItem ? styles.containerFirst : (isLastItem ? styles.containerLast : styles.container);
-    const bodyStyle = isFirstItem ? styles.bodyFirst : (isLastItem ? styles.bodyLast : styles.body);
-    const imageStyle = isFirstItem ? styles.imageFirst : (isLastItem ? styles.imageLast : styles.image);
-
-    return (
-        <View>
-            <View style={containerStyle} key={index}>
-                <Text style={headerStyle}>{item.title}</Text>
-                <Text style={bodyStyle}>{item.body}</Text>
-                <Image style={imageStyle} source={item.image} />
-            </View>
-        </View>
-    )
-}
-
-export const CarouselCards3 = (props) => {
-    const [index, setIndex] = React.useState(0)
-    const isCarousel = React.useRef(null)
-    const [idUsuario, setIdUsuario] = useState("");
-    const [bookId, setBookId] = useState("");
+export const CarouselCards3 = ({ bookId, userId, navigation }) => {
+    console.log(navigation)
+    const [index, setIndex] = useState(0);
+    const isCarousel = useRef(null);
+    const [personagens, setPersonagens] = useState([]);
 
     useEffect(() => {
-        // console.log("BookID", props?.bookId);
-        setIdUsuario(props?.idUsuario);
-        setBookId(props?.bookId);
-    }, [props?.bookId])
+        const unsubscribe = onSnapshot(
+            collection(database, 'personagens'),
+            querySnapshot => {
+                const personagensTemp = [];
+                querySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (data.bookId === bookId) {
+                        personagensTemp.push({
+                            ...data,
+                            id: doc.id,
+                        });
+                    }
+                });
+                setPersonagens(personagensTemp);
+            }
+        );
+        return () => unsubscribe();
+    }, [bookId]);
+
+    const handlePress = (index) => {
+        const item = data[index];
+        item.onPress();
+    };
+
+
+    const cardArray = [
+        {
+          body: "Criação de personagem",
+          image: require("../../src/Images/heroi.png"),
+          onPress: () =>
+            navigation.navigate("Biblioteca", { index: 0, bookId, userId }),
+        },
+        {
+          image: require("../../src/Images/mais.png"),
+          onPress: () =>
+            navigation.navigate("cadPersona", {
+              index: cardArray.length - 1,
+              bookId,
+              userId,
+            }),
+        },
+      ];
+      
+      const newCards = personagens.map((personagem) => ({
+        body: personagem.nomePersona,
+        onPress: () =>
+          navigation.navigate("altPersona", {
+            index: 1,
+            bookId,
+            personagensId: personagem.id,
+            userId,
+          }),
+        id: personagem.id,
+      }));
+      
+      const updatedCardArray = [...cardArray.slice(0, 1), ...newCards, ...cardArray.slice(1)];
+      
+      
+
+    const CarouselCardItem = ({ item, index }) => {
+        const isFirstItem = index === 0;
+        const isLastItem = index === updatedCardArray.length - 1;
+        const headerStyle = isFirstItem ? styles.headerFirst : (isLastItem ? styles.headerLast : styles.header);
+        const containerStyle = isFirstItem ? styles.containerFirst : (isLastItem ? styles.containerLast : styles.container);
+        const bodyStyle = isFirstItem ? styles.bodyFirst : (isLastItem ? styles.bodyLast : styles.body);
+        const imageStyle = isFirstItem ? styles.imageFirst : (isLastItem ? styles.imageLast : styles.image);
+
+        return (
+            <TouchableOpacity onPress={item.onPress}>
+                <View style={containerStyle} key={index}>
+                    <Text style={headerStyle}>{item.title}</Text>
+                    {typeof item.body === 'string' ? (
+                        <Text style={bodyStyle}>{item.body}</Text>
+                    ) : (
+                        <View style={{ marginVertical: 10 }}>{item.body}</View>
+                    )}
+                    <Image style={imageStyle} source={item.image} />
+                </View>
+            </TouchableOpacity>
+        );
+    };
+
     return (
         <View >
             <Carousel
                 layout="default"
                 layoutCardOffset={9}
                 ref={isCarousel}
-                data={dataCard}
-                renderItem={CarouselCardItem}
+                data={updatedCardArray}
+                renderItem={({ item, index }) => (
+                    <CarouselCardItem item={item} index={index} navigation={navigation} onPress={handlePress} />
+
+                )}
                 sliderWidth={SLIDER_WIDTH}
                 sliderHeight={SLIDER_HEIGHT}
                 itemWidth={ITEM_WIDTH}
@@ -55,6 +116,7 @@ export const CarouselCards3 = (props) => {
                 useScrollView={true}
                 inactiveSlideScale={0.94}
                 inactiveSlideOpacity={100}
+                contentContainerCustomStyle={{ paddingLeft: "25px" }}
             >
             </Carousel>
 
@@ -166,18 +228,3 @@ const styles = StyleSheet.create({
         marginTop: "5px"
     },
 })
-
-export const dataCard = [
-    {
-        body: "Criação de Personagens",
-        image: require("../../src/Images/heroi.png"),
-    },
-
-    {
-        body: "Alyssa",
-    },
-    {
-        image: require("../../src/Images/mais.png"),
-    },
-
-]
