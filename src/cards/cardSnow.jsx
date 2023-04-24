@@ -8,10 +8,8 @@ const SLIDER_WIDTH = Dimensions.get('window').width + 80;
 const SLIDER_HEIGHT = Dimensions.get('window').width + 80;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.28);
 const ITEM_HEIGHT = Math.round(SLIDER_HEIGHT * 0.29);
-//================================================================================================
-//PORQUE O CAROUSEL RENDERIZA E APAGA OS OUTROS CARDS??
-//================================================================================================
-export const CarouselCards1 = ({userId, navigation }) => {
+
+export const CarouselCards1 = ({ bookId, userId, navigation }) => {
     console.log(navigation)
     const [index, setIndex] = useState(0);
     const isCarousel = useRef(null);
@@ -23,17 +21,20 @@ export const CarouselCards1 = ({userId, navigation }) => {
             querySnapshot => {
                 const etapasTemp = [];
                 querySnapshot.forEach(doc => {
-                        etapasTemp.push({
-                            ...doc.data(),
-                            id: doc.id,
-                        });
-                    }
+
+                    etapasTemp.push({
+                        ...doc.data(),
+                        id: doc.id,
+                    });
+
+                }
                 );
+                etapasTemp.sort((a, b) => a.nomeEtapas.localeCompare(b.nomeEtapas));
                 setEtapas(etapasTemp);
             }
         );
         return () => unsubscribe();
-    }, []);
+    }, [bookId]);
 
     const handlePress = (index) => {
         const item = data[index];
@@ -43,35 +44,37 @@ export const CarouselCards1 = ({userId, navigation }) => {
 
     const cardArray = [
         {
-          body: "Criação de Snowflake",
-          image: require("../../src/Images/snow.png"),
-          onPress: () =>
-            navigation.navigate("Biblioteca", { index: 0, userId }),
+            body: "Criação de Snowflake",
+            image: require("../../src/Images/snow.png"),
+            onPress: () =>
+                navigation.navigate("Biblioteca", { index: 0, bookId, userId }),
         },
-      ];
-      
-      const newCards = etapas.map((etapas) => ({
+    ];
+
+    const newCards = etapas.map((etapas) => ({
         body: etapas.nomeEtapas,
         onPress: () =>
-          navigation.navigate("altEtapa", {
-            index: 1,
-            etapasId: etapas.id,
-            userId,
-          }),
+            navigation.navigate("altEtapa", {
+                index: 1,
+                bookId,
+                etapasId: etapas.id,
+                userId,
+            }),
         id: etapas.id,
-      }));
-      
-      const updatedCardArray = [...cardArray.slice(0, 1), ...newCards, ...cardArray.slice(1)];
-      
-      
+    }));
+
+    const updatedCardArray = [...cardArray.slice(0, 1), ...newCards, ...cardArray.slice(1)];
+
+
 
     const CarouselCardItem = ({ item, index }) => {
         const isFirstItem = index === 0;
         const isLastItem = index === updatedCardArray.length - 1;
-        const headerStyle = isFirstItem ? styles.headerFirst : (isLastItem ? styles.headerLast : styles.header);
-        const containerStyle = isFirstItem ? styles.containerFirst : (isLastItem ? styles.containerLast : styles.container);
-        const bodyStyle = isFirstItem ? styles.bodyFirst : (isLastItem ? styles.bodyLast : styles.body);
-        const imageStyle = isFirstItem ? styles.imageFirst : (isLastItem ? styles.imageLast : styles.image);
+        const headerStyle = isFirstItem ? styles.headerFirst : styles.header;
+        const containerStyle = isFirstItem ? styles.containerFirst : styles.container;
+        const bodyStyle = isFirstItem ? styles.bodyFirst : styles.body;
+        const imageStyle = isFirstItem ? styles.imageFirst : styles.image;
+
 
         return (
             <TouchableOpacity onPress={item.onPress}>
@@ -97,7 +100,7 @@ export const CarouselCards1 = ({userId, navigation }) => {
                     data={updatedCardArray}
                     renderItem={({ item, index }) => (
                         <CarouselCardItem item={item} index={index} navigation={navigation} onPress={handlePress} />
-    
+
                     )}
                     sliderWidth={SLIDER_WIDTH}
                     sliderHeight={SLIDER_HEIGHT}
@@ -177,6 +180,7 @@ const styles = StyleSheet.create({
         paddingRight: 15,
         marginTop: "12%",
     },
+
     textwrite: {
         color: "black",
         fontSize: "20px",

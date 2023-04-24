@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, Image, TouchableOpacity } from "react-native";
-import { Text, Button} from "react-native-paper";
-import {  collection, deleteDoc, doc, onSnapshot } from "firebase/firestore"
+import { Text, Button } from "react-native-paper";
+import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore"
 import { colors, locations, styles } from "../config/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import { auth, database } from "../config/firebase/firebase";
@@ -62,80 +62,76 @@ export const BiblioScreen = ({ route, navigation }) => {
         <Text style={styles.textBL}>+ Criar novo Livro</Text>
       </Button>
 
-      {
-        Array.isArray(livros) && livros.map((livro) => (
-          <View key={livro.id}>
-
-            <View
-              style={{
-                flex: "1",
-                flexWrap: "wrap",
-                display: "flex",
-                gap: "40px",
-                marginLeft: "30px",
-                flexDirection: "row",
-                marginTop: "50px",
-              }}
-            >
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          marginTop: "20px",
+          gap: 40,
+          rowGap: 30,
+          paddingLeft: 30
+        }}
+      >
+        {Array.isArray(livros) &&
+          livros.map((livro) => (
+            <View key={livro.id}>
               <View>
-                <Text>{livro.id}</Text>
                 <TouchableOpacity
-                 onPress={() => navigation.navigate("Página Inicial", {bookId:livro.id, UserId:user.id })}
+                  onPress={() =>
+                    navigation.navigate("Página Inicial", { bookId: livro.id }, { UserId: user.uid })
+                  }
                 >
-                <Image
-                  source={{ uri: livro.capaLivro }}
-                  style={styles.LivroB}
-                />
+                  <Image
+                    source={{ uri: livro.capaLivro }}
+                    style={styles.LivroB}
+                  />
                 </TouchableOpacity>
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    marginLeft: "30px",
-                    marginTop: "10px",
-                  }}
-                >
-                  <Text
+                <View>
+                  <View
                     style={{
-                      fontWeight: "bold",
-                      fontSize: "18px",
-                      marginLeft: "5px",
-                      textAlign: "auto",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      marginTop: "20px",
+
+
                     }}
                   >
-                    {livro.nomeLivro}
-                  </Text>
-                  <Image
-                    style={{
-                      width: "20px",
-                      height: "20px",
-                      marginLeft: "20px",
-                      position: "relative",
-                    }}
-                    source={require("../Images/Vector.png")}
-                  />
+                    <Text style={{ fontWeight: "bold", fontSize: "16px" }}>
+                      {livro.nomeLivro}
+                    </Text>
+                    <Image
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        marginLeft: "20px",
+                        position: "relative",
+                      }}
+                      source={require("../Images/Vector.png")}
+                    />
+                  </View>
+                </View>
+                <View style={{ flex: 1, flexDirection: "row", justifyContent: "flex-start" }}>
+                  <Button onPress={() =>
+                    navigation.navigate("Atualizar Livros", { bookId: livro.id, UserId: user.uid })
+                  }>Editar Livro</Button>
+                  <Button onPress={() => handleExcluir(livro)}>Excluir Livro</Button>
                 </View>
               </View>
             </View>
-            <View>
-              <View style={{ flex: 1, flexDirection: "row", justifyContent: "flex-start" }}>
-                <Button onPress={() =>
-                  navigation.navigate("Atualizar Livros", { bookId: livro.id, UserId: user.uid })
-                }>Editar Livro</Button>
-                <Button onPress={() => handleExcluir(livro)}>Excluir Livro</Button>
-              </View>
-            </View>
-          </View>
 
-        ))}
 
-      <LinearGradient // Background Linear Gradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={colors}
-        locations={locations}
-        style={{ height: 7, width: "100%", marginTop: "135%" }}
-      />
+          ))}
+
+        <LinearGradient // Background Linear Gradient
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={colors}
+          locations={locations}
+          style={{ height: 7, width: "100%", marginTop: "135%" }}
+        />
+      </View>
     </View>
   );
 };

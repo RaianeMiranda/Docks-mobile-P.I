@@ -234,7 +234,7 @@ buttoncapitulos: {
   alignItems:"center"
 },
 buttondeletar:{
-  backgroundColor: "red",  border: "3px solid  #D9D9D9", borderRadius: "1px", height: "40px", width: "70px", fontSize: "13px", display: "flex",
+  backgroundColor: "#E88A8A",  border: "3px solid  #D9D9D9", borderRadius: "1px", height: "40px", width: "70px", fontSize: "13px", display: "flex",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
