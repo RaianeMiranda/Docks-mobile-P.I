@@ -339,6 +339,16 @@ export const styles = StyleSheet.create({
     rowGap: 30,
     paddingLeft: 30,
   },
+  drawerFotoDocks: {
+    height: 40,
+    width: 40,
+    marginLeft: 20,
+  },
+  drawerFotoVoltar:{
+    width:13,
+    height:24,
+    marginLeft:20
+  }
 });
 
 export const colors = [

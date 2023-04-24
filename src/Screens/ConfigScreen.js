@@ -66,7 +66,7 @@ export const ConfigScreen = ({ navigation }) => {
       <View style={styles.buttonTermos}>
         <View>
           <Button style={styles.buttonConfigTermos1} activeOpacity={0.5}>
-            <text style={styles.textTermos1}>Termos e condições</text>
+            <Text style={styles.textTermos1}>Termos e condições</Text>
             <View style={styles.imageTermos1}>
               <Image
                 source={require("../Images/VectorOrange.png")}
@@ -77,7 +77,7 @@ export const ConfigScreen = ({ navigation }) => {
         </View>
         <View>
           <Button style={styles.buttonConfigTermos2} activeOpacity={0.5}>
-            <text style={styles.textTermos2}>Licenças</text>
+            <Text style={styles.textTermos2}>Licenças</Text>
             <View style={styles.imageTermos2}>
               <Image
                 source={require("../Images/VectorOrange.png")}
@@ -88,7 +88,7 @@ export const ConfigScreen = ({ navigation }) => {
         </View>
         <View>
           <Button style={styles.buttonConfigTermos3} activeOpacity={0.5}>
-            <text style={styles.textTermos3}>Políticas de Privacidade</text>
+            <Text style={styles.textTermos3}>Políticas de Privacidade</Text>
             <View style={styles.imageTermos3}>
               <Image
                 source={require("../Images/VectorOrange.png")}
