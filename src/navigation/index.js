@@ -21,6 +21,15 @@ export const RootNavigation = () => {
     return (
  
         <Stack.Navigator>
+               <Stack.Screen
+                name="LoginScreen"
+                component={LoginScreen}
+                options={{
+                    headerShown: false,
+                    title: "Tela de Login",
+                }}
+            />
+          
               <Stack.Screen
                 name="CapitulosCKScreen"
                 component={CapitulosCKScreen}
@@ -57,15 +66,7 @@ export const RootNavigation = () => {
              
             
               
-              <Stack.Screen
-                name="LoginScreen"
-                component={LoginScreen}
-                options={{
-                    headerShown: false,
-                    title: "Tela de Login",
-                }}
-            />
-          
+           
            <Stack.Screen
                 name="CKeditor"
                 component={CKeditor}

@@ -50,6 +50,7 @@ export const styles = StyleSheet.create({
     width: "140px",
     margin: "auto",
     marginBottom: "15px",
+    marginTop:"10px"
   },
 
   esqueceuSenha: {
@@ -62,14 +63,20 @@ export const styles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
-    marginTop: 4,
+    marginTop: 15,
+    marginLeft:17
+  },
+  text_ou:{
+  marginLeft:110
+  },
+  text_cont:{
+  color: "black"
   },
   input: {
     alignSelf: "stretch",
     backgroundColor: "white",
     border: '5px solid',
     borderColor: "#EDEDED",
-    underline: "none",
     fontSize: "10px",
     borderTopRightRadius: "10px",
     borderTopLeftRadius: "10px",
@@ -79,55 +86,60 @@ export const styles = StyleSheet.create({
   },
   buttoncadface: {
     backgroundColor: "transparent",
-    borderRadius: "5px",
-    border: '5px solid #EDEDED',
+    borderRadius: "15px",
+    border: '1px solid #EDEDED',
     height: "60px",
-    width: "250px",
+    width: "200px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     margin: "auto",
     marginBottom: "5px",
-
-
+    marginTop: "5px",
   },
-  textcadface: {
-    color: "black",
-    fontFamily: "Open Sans",
-    margin: "auto",
-    fontSize: "12px",
-    marginLeft: "2px",
-
-  },
-
   buttoncadgoogle: {
     backgroundColor: "transparent",
-    borderRadius: "5px",
-    border: '5px solid #EDEDED',
+    borderRadius: "15px",
+    border: '1px solid #EDEDED',
     height: "60px",
-    width: "250px",
+    width: "200px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     margin: "auto",
   },
+  textcadface: {
+    color: "black",
+    fontFamily: "Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+     fontSize: "13px",
+    marginLeft: "12px",
+  },
+  textcadface2: {
+    color: "black",
+    fontFamily: "Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+    margin: " 0 auto",
+    fontSize: "13px",
+  },
+ 
   imageface: {
     width: "30px",
     height: "30px",
-    marginLeft: "0px",
     marginBottom: "1px",
+    marginTop:5
   },
   imagegoogle: {
-    width: "40px",
-    height: "40px",
-    marginLeft: "0px",
-    marginBottom: "0px",
+    width: "32px",
+    height: "32px",
+    marginLeft: "1px",
+    borderRadius:"20px",
+    marginTop:5
   },
   label: {
     color: "black",
   },
   logindocks: {
-    margin: "auto",
+    marginLeft:"70px",
+    marginTop:"10px"
   },
 
   link: {
@@ -138,12 +150,45 @@ export const styles = StyleSheet.create({
     display: "flex",
   },
   ////Login
+  textinput_email: {
+    width: "240px",
+    height: 40,
+    backgroundColor: "white",
+    borderTopRightRadius: "10px",
+    borderTopLeftRadius: "10px",
+    borderBottomLeftRadius: "10px",
+    borderBottomRightRadius: "10px",
+    margin: "auto",
+    marginBottom: "10px"
+  },
+  textinput_email1: {
+    width: "240px",
+    height: 40,
+    backgroundColor: "white",
+    borderTopRightRadius: "10px",
+    borderTopLeftRadius: "10px",
+    borderBottomLeftRadius: "10px",
+    borderBottomRightRadius: "10px",
+    margin: "auto",
+    marginBottom: "3px"
+  },
+  textinput_senha: {
+    width: "240px",
+    height: 40,
+    backgroundColor: "white",
+    borderTopRightRadius: "10px",
+    borderTopLeftRadius: "10px",
+    borderBottomLeftRadius: "10px",
+    borderBottomRightRadius: "10px",
+    margin: "auto",
+    marginBottom: "10px",
+  },
   containerlogin1: {
     backgroundColor: "white",
     paddingRight: '40px',
     paddingLeft: '40px',
     paddingTop: '40px',
-    paddingBottom: '100px',
+    paddingBottom: '60px',
     borderRadius: '35px',
   },
   containerlogin: {
@@ -162,7 +207,7 @@ export const styles = StyleSheet.create({
     borderRadius: "10px",
     width: "140px",
     margin: "auto",
-
+    marginBottom:10
   },
   buttoncadgoogle1: {
     backgroundColor: "transparent",
@@ -178,10 +223,10 @@ export const styles = StyleSheet.create({
   },
   buttoncadface1: {
     backgroundColor: "transparent",
-    borderRadius: "5px",
-    border: '5px solid #EDEDED',
+    borderRadius: "15px",
+    border: '1px solid #EDEDED',
     height: "60px",
-    width: "250px",
+    width: "200px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -192,10 +237,13 @@ export const styles = StyleSheet.create({
   imagetextgoogle: {
     display: "flex",
     flexDirection: "row",
+    margin: " 0 auto"
   },
   imagetextface: {
     display: "flex",
     flexDirection: "row",
+    margin:"0 auto"
+   
   },
   //CKeditor
   navConfig: {
@@ -332,75 +380,75 @@ export const styles = StyleSheet.create({
     marginLeft: "32px",
     display: "flex",
     flexDirection: "row",
-    alignItems:"center"
+    alignItems: "center"
   },
-  buttondeletar:{
-    backgroundColor: "red",  border: "3px solid  #D9D9D9", borderRadius: "1px", height: "40px", width: "70px", fontSize: "13px", display: "flex",
+  buttondeletar: {
+    backgroundColor: "red", border: "3px solid  #D9D9D9", borderRadius: "1px", height: "40px", width: "70px", fontSize: "13px", display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginRight:"150px"
+    marginRight: "150px"
   },
-  buttonsalvar:{
+  buttonsalvar: {
     backgroundColor: "#F1C4A5", border: "3px solid #D9D9D9", borderRadius: "1px", height: "40px", width: "70px", fontSize: "13px", display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
   capitulostext: {
-    color:"black",
+    color: "black",
     marginTop: "12px",
   },
-  capitulosub:{
-    height:"3px", 
-    width:"3px", 
-    color:"black",
-    marginBottom:"2px",
+  capitulosub: {
+    height: "3px",
+    width: "3px",
+    color: "black",
+    marginBottom: "2px",
     fontSize: "12px",
   },
-  viewcapitulos:{
+  viewcapitulos: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center"
   },
-  imagelixeira:{
-    width:"15px", 
-    height:"15px", 
-    marginLeft:"160px"
-  }, 
-  buttonadicionar:{
+  imagelixeira: {
+    width: "15px",
+    height: "15px",
+    marginLeft: "160px"
+  },
+  buttonadicionar: {
     border: "3px solid #F1C4A5",
     borderRadius: "0px",
     height: "50px",
     width: "260px",
   },
-  buttonadicionar:{
+  buttonadicionar: {
     border: "3px solid #F1C4A5",
     borderRadius: "0px",
     height: "40px",
     width: "200px",
     marginLeft: "32px",
     display: "flex",
-    marginTop:10,
+    marginTop: 10,
     flexDirection: "row",
-    alignItems:"center", 
-    justifyContent:"center",
-    backgroundColor:"#FFA974",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#FFA974",
   },
-  textadicionar:{
-    color:"black",
+  textadicionar: {
+    color: "black",
   },
-  iconplus:{
-    fontSize:"30px",
-    color:"black"
+  iconplus: {
+    fontSize: "30px",
+    color: "black"
   },
-  containerplustext:{
-    display:"flex",
-    flexDirection:"row",
-    alignItems:"center"
+  containerplustext: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center"
   },
 
-header: {
+  header: {
     color: "#222",
     backgroundColor: "#2250",
     fontSize: 14,
@@ -408,14 +456,14 @@ header: {
     paddingLeft: 20,
     paddingTop: 20
 
-},
-body: {
+  },
+  body: {
     color: "#222",
     fontSize: 14,
     paddingLeft: 20,
     paddingLeft: 20,
     paddingRight: 20
-}
+  }
 });
 
 
