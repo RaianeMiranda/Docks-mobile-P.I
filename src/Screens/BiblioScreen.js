@@ -56,7 +56,7 @@ export const BiblioScreen = ({ navigation }) => {
 
       <Button
         style={styles.buttonCL}
-        onPress={() => navigation.navigate("CadModal")}
+        onPress={() => navigation.navigate("Cadastro de Livro")}
       >
         <Text style={styles.textBL}>+ Criar novo Livro</Text>
       </Button>
@@ -81,51 +81,10 @@ export const BiblioScreen = ({ navigation }) => {
                 />
                 {/* </TouchableOpacity> */}
                 <View>
-                  <View style={styles.nomebuttonBi}>
+                  
                     <Text style={styles.nomeLivro}>{livro.nomeLivro}</Text>
 
-                    <Menu
-                      anchorPosition="bottom"
-                      visible={visible}
-                      onDismiss={closeMenu}
-                      anchor={
-                        <TouchableOpacity onPress={openMenu}>
-                          <Image
-                            style={styles.image3p}
-                            source={require("../Images/Vector.png")}
-                          />
-                        </TouchableOpacity>
-                      }
-                      contentStyle={{
-                        paddingVertical: 0,
-                      }}
-                    >
-                      <TouchableOpacity
-                        style={styles.item1menu}
-                        onPress={() => console.log("Item 1")}
-                      >
-                        <Menu.Item
-                          title={
-                            <Text style={styles.itemMenuEditar}>
-                              Editar livro
-                            </Text>
-                          }
-                        />
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        style={styles.item2menu}
-                        onPress={() => console.log("Item 2")}
-                      >
-                        <Menu.Item
-                          title={
-                            <Text style={styles.itemMenuExcluir}>
-                              Excluir livro
-                            </Text>
-                          }
-                        />
-                      </TouchableOpacity>
-                    </Menu>
-                  </View>
+               
                 </View>
               </View>
             </View>
@@ -140,7 +99,7 @@ export const BiblioScreen = ({ navigation }) => {
         style={{
           height: 7,
           width: "100%",
-          marginTop: bookContainerHeight + 50, // add this line
+         
         }}
       />
     </View>

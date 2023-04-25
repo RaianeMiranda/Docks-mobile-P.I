@@ -93,7 +93,7 @@ export function MyDrawer() {
       />
 
       <Drawer.Screen
-        name="Cadastro de livro"
+        name="Cadastro de Livro"
         component={ModalCadLivros}
         options={{
           headerTitleAlign: "center",

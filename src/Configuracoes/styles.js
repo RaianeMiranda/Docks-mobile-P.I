@@ -157,13 +157,13 @@ export const styles = StyleSheet.create({
   },
 
   vectorOrange: {
-    height: "10px",
-    width: "10px",
+    height: 18.36,
+    width: 11,
   },
 
   vectorRed: {
-    height: "10px",
-    width: "10px",
+    height: 14.28,
+    width: 9,
   },
 
   nomeUsuariob: {
@@ -242,10 +242,13 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: "20px",
+    backgroundColor:"yellow"
   },
   nomeLivro: {
     fontWeight: "bold",
     fontSize: "16px",
+   textAlign:"center",
+   marginTop:20
   },
   itemMenuEditar: {
     fontSize: "14px",

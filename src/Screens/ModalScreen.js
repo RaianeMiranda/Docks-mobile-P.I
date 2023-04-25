@@ -176,7 +176,7 @@ const ModalCadLivros = ({ navigation }) => {
         end={{ x: 1, y: 0 }}
         colors={colors}
         locations={locations}
-        style={{ height: 7, width: "100%", marginTop: "135%" }}
+        style={{ height: 7, width: "100%", marginTop: "70%" }}
       />
     </View>
   );

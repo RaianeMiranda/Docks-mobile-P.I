@@ -98,6 +98,14 @@ export const ConfigScreen = ({ navigation }) => {
           </Button>
         </View>
       </View>
+      <LinearGradient // Background Linear Gradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={colors}
+        locations={locations}
+        style={{ height: 7, width: "100%" }}
+      />
     </View>
+  
   );
 };
