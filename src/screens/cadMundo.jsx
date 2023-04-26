@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { colors, locations, styles } from "../config/styles";
 import { Button, Paragraph, Text, TextInput } from "react-native-paper";
@@ -12,6 +11,7 @@ import { database, auth } from "../config/firebase/firebase";
 import { useEffect } from "react";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Modal } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 export default function cadMundo({ route, navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
@@ -34,7 +34,7 @@ export default function cadMundo({ route, navigation }) {
                 descricao: descricao,
                 bookId: bookId, // add bookId to the document object
             });
-            navigation.navigate("Página Inicial", {bookId: bookId });
+            navigation.navigate("Página Inicial", { bookId: bookId });
             console.log("Mundo adicionado com ID: ", docRef.id);
 
 
@@ -70,7 +70,7 @@ export default function cadMundo({ route, navigation }) {
     }, [bookId, route.params.bookId]);
 
     return (
-        <SafeAreaProvider style={styles.containercriacaoper}>
+        <View style={styles.containerBiblio}>
             <View>
                 <LinearGradient
                     // Background Linear Gradient 
@@ -144,42 +144,42 @@ export default function cadMundo({ route, navigation }) {
 
                     </View>
                 </View>
-            </View>
-            <View
-                style={{
-                    height: 7,
-                    backgroundColor: '#EBDEF0',
-                    marginBottom: 10 //opcional
-                }}
-            />
-            <View style={{ maxWidth: "300px", margin: "0 auto", }}>
-                <CKEditor
-                    editor={ClassicEditor}
-                    data={descricao} // set data from Firestore to the editor
-                    onChange={handleChange}
+
+                <View
+                    style={{
+                        height: 7,
+                        backgroundColor: '#D5ECB6',
+                        marginBottom: 10 //opcional
+                    }}
                 />
 
-                <View style={styles.containersalvarper}>
-                    <Button
-                        style={{
-                            backgroundColor: "#EBDEF0",
-                            border: "3px solid #D9D9D9",
-                            borderRadius: "1px",
-                            height: "40px",
-                            width: "70px",
-                            fontSize: "13px",
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                        mode="contained"
-                        onPress={handleSalvar}
-                    >
-                        Salvar
-                    </Button>
+                <View style={{ maxWidth: "360px", margin: " auto", }}>
+                    <CKEditor
+                        editor={ClassicEditor}
+                        data={descricao} // set data from Firestore to the editor
+                        onChange={handleChange}
+                    />
                 </View>
-
+                <View style={styles.containerBiblio}>
+                    <View style={styles.containersalvarEtapa}>
+                        <TouchableOpacity
+                            style={{
+                                backgroundColor: "#D5ECB6",
+                                border: "3px solid #D9D9D9",
+                                borderRadius: "1px",
+                                height: "40px",
+                                width: "70px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                            mode="contained"
+                            onPress={handleSalvar}
+                        >
+                            <Text style={{ fontSize: "13px", fontWeight: "bold", color: "black" }}>  Salvar  </Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </View>
             <View>
                 <LinearGradient
@@ -188,10 +188,9 @@ export default function cadMundo({ route, navigation }) {
                     end={{ x: 1, y: 0 }}
                     colors={colors}
                     locations={locations}
-                    style={{ height: 7, width: "100%", marginTop: "438px", }}
+                    style={{ height: 7, width: "100%" }}
                 />
             </View>
-
-        </SafeAreaProvider>
+        </View>
     );
 }

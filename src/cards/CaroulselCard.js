@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     width: ITEM_WIDTH,
     height: ITEM_HEIGHT,
     paddingBottom: 0,
+    alignItems: 'center',
 
   },
 
@@ -147,7 +148,8 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 15,
     marginTop: "25%",
-    marginLeft: "15%"
+    justifyContent: "center",
+  
   },
   image: {
     width: 10,

@@ -43,35 +43,35 @@ export const CarouselCards2 = ({ bookId, userId, navigation }) => {
 
     const cardArray = [
         {
-          body: "Criação de mundo",
-          image: require("../../src/Images/mundo.png"),
-          onPress: () =>
-            navigation.navigate("Biblioteca", { index: 0, bookId, userId }),
+            body: "Criação de mundo",
+            image: require("../../src/Images/mundo.png"),
+            onPress: () =>
+                navigation.navigate("Biblioteca", { index: 0, bookId, userId }),
         },
         {
-          image: require("../../src/Images/mais.png"),
-          onPress: () =>
-            navigation.navigate("Mundo", {
-              index: cardArray.length - 1,
-              bookId,
-              userId,
-            }),
+            image: require("../../src/Images/mais.png"),
+            onPress: () =>
+                navigation.navigate("Mundo", {
+                    index: cardArray.length - 1,
+                    bookId,
+                    userId,
+                }),
         },
-      ];
-      
-      const newCards = mundo.map((mundo) => ({
+    ];
+
+    const newCards = mundo.map((mundo) => ({
         body: mundo.nomeMundo,
         onPress: () =>
-          navigation.navigate("altMundo", {
-            index: 1,
-            bookId,
-            mundoId: mundo.id,
-            userId,
-          }),
+            navigation.navigate("altMundo", {
+                index: 1,
+                bookId,
+                mundoId: mundo.id,
+                userId,
+            }),
         id: mundo.id,
-      }));
-      
-      const updatedCardArray = [...cardArray.slice(0, 1), ...newCards, ...cardArray.slice(1)];
+    }));
+
+    const updatedCardArray = [...cardArray.slice(0, 1), ...newCards, ...cardArray.slice(1)];
 
     const CarouselCardItem = ({ item, index }) => {
         const isFirstItem = index === 0;
@@ -115,7 +115,8 @@ export const CarouselCards2 = ({ bookId, userId, navigation }) => {
                 inactiveSlideScale={0.94}
                 inactiveSlideOpacity={100}
                 contentContainerCustomStyle={{ paddingLeft: "25px" }}
-            />
+           
+            />  
             <Pagination
                 activeDotIndex={index}
                 carouselRef={isCarousel}
@@ -142,6 +143,8 @@ const styles = StyleSheet.create({
         width: ITEM_WIDTH,
         height: ITEM_HEIGHT,
         paddingBottom: 0,
+        alignItems: "center",
+        marginBottom: 20,
 
     },
 
@@ -158,7 +161,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: "40px",
         height: "40px",
-        marginTop: "25%"
+        marginTop: "25%",
+        justifyContent: "center",
 
     },
     header: {
@@ -204,7 +208,7 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 15,
         marginTop: "25%",
-        marginLeft: "15%"
+
     },
     image: {
         width: 10,
@@ -220,8 +224,9 @@ const styles = StyleSheet.create({
     imageLast: {
         width: "20px",
         height: "20px",
-        marginLeft: "5px",
-        marginTop: "5px"
+        marginBottom: 20,
+        marginLeft: 5
+
     },
 })
 

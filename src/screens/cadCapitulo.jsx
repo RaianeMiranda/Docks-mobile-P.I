@@ -44,59 +44,58 @@ export default function cadCapitulos({ route, navigation }) {
 
 
   useEffect(() => {
-    const handleBeforeUnload = () => {
-      setBookId("");
-    };
-
-    // reset nomeCapitulos and descricao when bookId changes
+    if (route.params.bookId !== bookId) {
+      setBookId(route.params.bookId);
+    } // reset nomeMundo and descricao when bookId changes
     setNomeCapitulos("");
     setDescricao("");
-  }, [bookId]);
+
+  }, [bookId, route.params.bookId]);
+
 
   return (
-    <SafeAreaProvider style={styles.containercriacaoper}>
-      <View>
-        <LinearGradient
-          // Background Linear Gradient 
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          colors={colors}
-          locations={locations}
-          style={{ height: 7, width: "100%" }}
-        />
-      </View>
-
-
-      <View style={styles.containernomeper}>
-        <Paragraph style={styles.paragraphper}>Nome do Capítulo:
-          <TextInput style={styles.inputper}
-            value={nomeCapitulos}
-            onChangeText={text => setNomeCapitulos(text)}
-          />
-        </Paragraph>
-      </View>
-      <View
-        style={{
-          height: 7,
-          backgroundColor: '#F1C4A5',
-          marginBottom: 10 //opcional
-        }}
-      />
-      <View style={{ maxWidth: "300px", margin: "0 auto", }}>
-        <CKEditor
-           editor={ClassicEditor}
-           data={descricao} // set data from Firestore to the editor
-           onChange={handleChange}/>
+    <View style={styles.containerBiblio}>
+      <View style={{ flex: 1 }}>
         <View>
-          <View style={styles.containersalvarper}>
+          <LinearGradient
+            // Background Linear Gradient 
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            colors={colors}
+            locations={locations}
+            style={{ height: 7, width: "100%" }}
+          />
+        </View>
 
-            <Button style={styles.buttondeletar} mode="contained">
-              Deletar
-            </Button>
+
+        <View style={styles.containernomeper}>
+          <Paragraph style={styles.paragraphper}>Nome do Capítulo:
+            <TextInput style={styles.inputper}
+              value={nomeCapitulos}
+              onChangeText={text => setNomeCapitulos(text)}
+            />
+          </Paragraph>
+        </View>
+        <View
+          style={{
+            height: 7,
+            backgroundColor: '#F1C4A5',
+            marginBottom: 10 //opcional
+          }}
+        />
+        <View style={{ maxWidth: "360px", margin: "auto", }}>
+          <CKEditor
+            editor={ClassicEditor}
+            data={descricao}
+            onChange={handleChange}
+            style={{ height: "300px" }} />
+
+        </View>
+        <View>
+          <View style={styles.containersalvarEtapa}>
             <Button style={styles.buttonsalvar} mode="contained" onPress={handleSalvar}>
               Salvar
             </Button>
-
           </View>
         </View>
       </View>
@@ -110,9 +109,6 @@ export default function cadCapitulos({ route, navigation }) {
           style={{ height: 7, width: "100%", marginTop: "438px" }}
         />
       </View>
-
-
-
-    </SafeAreaProvider>
+    </View>
   );
 }

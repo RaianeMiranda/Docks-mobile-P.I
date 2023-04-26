@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { colors, locations, styles } from "../config/styles";
 import { Button, Paragraph, Text, TextInput } from "react-native-paper";
@@ -57,9 +56,9 @@ export default function AltEtapasSnow({ route, navigation }) {
     }
 
     return (
-        <SafeAreaProvider style={styles.containercriacaoper}>
+        <View style={styles.containerBiblio}>
 
-            <View>
+            <View style={{ flex: 1 }}>
                 <LinearGradient
                     // Background Linear Gradient 
                     start={{ x: 0, y: 0 }}
@@ -129,28 +128,27 @@ export default function AltEtapasSnow({ route, navigation }) {
 
                     </View>
                 </View>
-            </View>
-            <View
-                style={{
-                    height: 7,
-                    backgroundColor: '#F4CCC8',
-                    marginBottom: 10 //opcional
-                }}
-            />
 
-            <View style={{ maxWidth: "300px", margin: "0 auto", }}>
-                <CKEditor
-                    editor={ClassicEditor}
-                    data={descricao} // set data from Firestore to the editor
-                    onChange={handleChange} />
-                <View style={styles.containersalvarper}>
-                    <Button style={styles.buttondeletar} mode="contained">
-                        Deletar
-                    </Button>
-                    <Button style={styles.buttonsalvar} mode="contained"
+                <View
+                    style={{
+                        height: 7,
+                        backgroundColor: '#F4CCC8',
+                        marginBottom: 10 //opcional
+                    }}
+                />
+
+                <View style={{ maxWidth: "360px", margin: " auto" }}>
+                    <CKEditor style={{ minHeight: 200 }}
+                        editor={ClassicEditor}
+                        data={descricao} // set data from Firestore to the editor
+                        onChange={handleChange} />
+                </View>
+                <View style={styles.containersalvarEtapa}>
+                    <Button style={styles.buttonSalvarEtapa} mode="contained"
                         onPress={handleUpdate}>
-                        Salvar
+                        <Text style={{color:"black"}}>Salvar</Text>
                     </Button>
+
                 </View>
             </View>
             <View>
@@ -160,10 +158,10 @@ export default function AltEtapasSnow({ route, navigation }) {
                     end={{ x: 1, y: 0 }}
                     colors={colors}
                     locations={locations}
-                    style={{ height: 7, width: "100%", marginTop: "448px", }}
+                    style={{ height: 7, width: "100%", marginTop: "370px", }}
                 />
             </View>
 
-        </SafeAreaProvider>
+        </View>
     );
 }

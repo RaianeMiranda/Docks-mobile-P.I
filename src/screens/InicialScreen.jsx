@@ -1,17 +1,16 @@
 import { LinearGradient } from 'expo-linear-gradient'
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Dimensions, Image } from "react-native"
-import { Button } from 'react-native-paper'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { View, Text, StyleSheet, Image } from "react-native"
+import { Button, Paragraph } from 'react-native-paper'
 import { CarouselCards2 } from '../cards/cardMundo'
 import { CarouselCards1 } from '../cards/cardSnow'
-import { colors, locations } from '../config/styles'
+import { colors, styles, locations } from '../config/styles'
 import { CarouselCards3 } from '../cards/cardPersona'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { auth } from '../config/firebase/firebase'
 
 export const PaginaInicial = ({ route, navigation }) => {
     const [bookId, setBookId] = useState('');
+    const [nomeBook, setNomeBook] = useState('');
     const [userId, setUserId] = useState('');
     const user = auth.currentUser;
 
@@ -21,6 +20,7 @@ export const PaginaInicial = ({ route, navigation }) => {
 
     useEffect(() => {
         setBookId(route.params.bookId);
+        setNomeBook(route.params.nomeBook);
         setUserId(user.uid);
     }, [route.params.bookId])
 
@@ -33,122 +33,58 @@ export const PaginaInicial = ({ route, navigation }) => {
     );
 
     return (
-        <SafeAreaProvider style={styles.containercriacaoper}>
-            <View>
+        <View style={styles.containerBiblio}>
+            <View style={{ flex: 1 }}>
+                <View style={{ flexBasis: 7 }}>
+                    <LinearGradient
+                        // Background Linear Gradient 
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        colors={colors}
+                        locations={locations}
+                        style={{ height: 7, width: "100%" }}
+                    />
+                </View>
+                <View style={styles.containerBiblio}>
+                    <View style={{ flexBasis: "100%" }}>
+                        <Paragraph style={styles.textwrite}>Escrevendo: <Text style={{ color: "#CE4BA8" }}>{nomeBook}</Text></Paragraph>
+                        <Button style={styles.buttoncarousel} onPress={() => navigation.navigate('listCap', { bookId: bookId, userId: userId })}>
+                            <View style={{ display: "flex", flexDirection: "row" }}>
+
+                                <Text style={styles.textcard}> Capítulos</Text>
+
+
+                                <Image style={styles.imagechevron} source={require("../Images/rightChevron.png")} />
+                            </View>
+                        </Button>
+                        <Button style={styles.buttoncarousel2}>
+                            <View style={{ display: "flex", flexDirection: "row", }}>
+                                <Text style={styles.textcard}> Jornada do Heroí</Text>
+                                <Image style={styles.imagechevron2}
+                                    source={{ uri: require("../Images/rightChevron2.png") }} />
+                            </View>
+                        </Button>
+                        <View style={styles.viewcardper}>
+                            <CarouselCardsContainer bookId={bookId} userId={userId} />
+                        </View>
+                    </View>
+                </View>
+            </View>
+            <View >
                 <LinearGradient
-                    // Background Linear Gradient 
+                    // Background Linear Gradient
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                     colors={colors}
                     locations={locations}
-                    style={{ height: 7, width: "100%" }}
+                    style={{
+                        height: 7,
+                        width: "100%",
+
+                    }}
                 />
             </View>
-             <View style={{ flex: 1, backgroundColor: '#FFF2D8' }}>
-                <Text style={styles.textwrite}>Escrevendo</Text>
-                <Button style={styles.buttoncarousel}  onPress={() => navigation.navigate('listCap', { bookId: bookId, userId: userId })}>
-                    <View style={{ display: "flex", flexDirection: "row" }}>
-                       
-                            <Text style={styles.textcard}> Capítulos</Text>
-                       
-
-                        <Image style={styles.imagechevron} source={require("../Images/rightChevron.png")} />
-                    </View>
-                </Button>
-                <Button style={styles.buttoncarousel2}>
-                    <View style={{ display: "flex", flexDirection: "row", }}>
-                        <Text style={styles.textcard}> Jornada do Heroí</Text>
-                        <Image style={styles.imagechevron2}
-                            source={{ uri: require("../Images/rightChevron2.png") }} />
-                    </View>
-                </Button>
-                <View style={styles.viewcardper}>
-                    <CarouselCardsContainer bookId={bookId} userId={userId} />
-
-                </View>
-            </View>
-        </SafeAreaProvider >
+        </View >
     )
 
 }
-
-
-const styles = StyleSheet.create({
-
-    header: {
-        color: "#222",
-        backgroundColor: "#2250",
-        fontSize: 14,
-        fontWeight: "bold",
-        paddingLeft: 20,
-        paddingTop: 20,
-
-
-    },
-
-    textwrite: {
-        color: "black",
-        fontSize: "20px",
-        fontWeight: "bolder",
-        marginTop: "20px",
-        marginLeft: "20px"
-    },
-    buttoncarousel: {
-        border: "1px solid #F1C4A5",
-        backgroundColor: "#F1C4A5",
-        display: "flex",
-        flexDirection: "row",
-        width: "250px",
-        marginLeft: "20px",
-        borderRadius: "11px",
-        marginTop: "15px"
-    },
-    buttoncarousel2: {
-        border: "1px solid #BCE4E4",
-        backgroundColor: "#BCE4E4",
-        display: "flex",
-        flexDirection: "row",
-        width: "250px",
-        marginLeft: "20px",
-        borderRadius: "11px",
-        marginTop: "15px",
-        marginBottom: "30px"
-    },
-    textcard: {
-        fontSize: "18px",
-        color: "black"
-    },
-    imagechevron: {
-        height: "20px",
-        width: "20px",
-        marginLeft: "135px"
-    },
-    imagechevron2: {
-        height: "20px",
-        width: "20px",
-        marginLeft: "70px"
-    },
-
-    headerFirst: {
-        color: "#fff", // change the text color of the first card here
-        backgroundColor: "#FFF2D8", // change the background color of the first card here
-        border: "4px solid #F4CCC8",
-        borderRadius: "10px",
-        fontSize: 14,
-        fontWeight: "bold",
-        paddingLeft: 20,
-        paddingTop: "45%",
-        borderBottomLeftRadius: "0px",
-        borderBottomRightRadius: "0px",
-    },
-    image: {
-        width: 10,
-        height: 10
-    },
-
-    viewcardper: {
-        marginBottom: "30px"
-    }
-
-})
-

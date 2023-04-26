@@ -53,25 +53,19 @@ export const BiblioScreen = ({ route, navigation }) => {
         end={{ x: 1, y: 0 }}
         colors={colors}
         locations={locations}
-        style={{ height: 7, width: "100%", }}
+        style={{ height: 7, width: "100%" }}
       />
 
-      <Button style={styles.buttonCL} onPress={() =>
-        navigation.navigate("CadModal")
-      }>
+      <Text style={styles.nomeUsuariobi}>Seja Bem vindo(a)</Text>
+
+      <Button
+        style={styles.buttonCL}
+        onPress={() => navigation.navigate("CadModal")}
+      >
         <Text style={styles.textBL}>+ Criar novo Livro</Text>
       </Button>
-
       <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          marginTop: "20px",
-          gap: 40,
-          rowGap: 30,
-          paddingLeft: 30
-        }}
+        style={styles.containerLivros}
       >
         {Array.isArray(livros) &&
           livros.map((livro) => (
@@ -79,7 +73,7 @@ export const BiblioScreen = ({ route, navigation }) => {
               <View>
                 <TouchableOpacity
                   onPress={() =>
-                    navigation.navigate("Página Inicial", { bookId: livro.id }, { UserId: user.uid })
+                    navigation.navigate("Página Inicial", { bookId: livro.id, nomeBook: livro.nomeLivro, UserId: user.uid })
                   }
                 >
                   <Image
@@ -87,51 +81,30 @@ export const BiblioScreen = ({ route, navigation }) => {
                     style={styles.LivroB}
                   />
                 </TouchableOpacity>
-                <View>
-                  <View
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      marginTop: "20px",
+                <View style={{ marginBottom: 40 }}>
+
+                  <Text style={styles.nomeLivro}>{livro.nomeLivro}</Text>
 
 
-                    }}
-                  >
-                    <Text style={{ fontWeight: "bold", fontSize: "16px" }}>
-                      {livro.nomeLivro}
-                    </Text>
-                    <Image
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        marginLeft: "20px",
-                        position: "relative",
-                      }}
-                      source={require("../Images/Vector.png")}
-                    />
-                  </View>
-                </View>
-                <View style={{ flex: 1, flexDirection: "row", justifyContent: "flex-start" }}>
-                  <Button onPress={() =>
-                    navigation.navigate("Atualizar Livros", { bookId: livro.id, UserId: user.uid })
-                  }>Editar Livro</Button>
-                  <Button onPress={() => handleExcluir(livro)}>Excluir Livro</Button>
                 </View>
               </View>
             </View>
-
-
           ))}
-
-        <LinearGradient // Background Linear Gradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          colors={colors}
-          locations={locations}
-          style={{ height: 7, width: "100%", marginTop: "135%" }}
-        />
       </View>
+      <LinearGradient
+        // Background Linear Gradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={colors}
+        locations={locations}
+        style={{
+          height: 7,
+          width: "100%",
+          marginTop: "100px",
+
+        }}
+      />
     </View>
   );
+  3;
 };

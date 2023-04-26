@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, deleteDoc, getDoc, updateDoc } from "firebase/firestore";
 import { colors, locations, styles } from "../config/styles";
 import { Button, Paragraph, Text, TextInput } from "react-native-paper";
 import { View } from "react-native";
@@ -11,6 +10,7 @@ import 'firebase/firestore';
 import { database, auth } from "../config/firebase/firebase";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Modal } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Altpersonagens({ route, navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
@@ -49,16 +49,27 @@ export default function Altpersonagens({ route, navigation }) {
                 nomePersona: nomePersona,
                 descricao: descricao,
             });
-            navigation.navigate("Página Inicial", {bookId: bookId, personagensId: personagensId });
+            navigation.navigate("Página Inicial", { bookId: bookId, personagensId: personagensId });
             console.log("personagens atualizado com ID: ", route.params.personagensId);
         } catch (error) {
             console.error("Erro ao atualizar personagens: ", error.message);
         }
     }
 
+    function handleExcluir(personagensId) {
+        // deleteDoc é responsável pela exclusão do dado em uma coleção "Tabela"
+
+        deleteDoc(
+            doc(database, "personagens", route.params.personagensId)
+        ).then(() => {
+            console.log("Personagem excluído com sucesso")
+            navigation.navigate("Página Inicial", { bookId: bookId, personagensId: personagensId });
+        })
+
+    }
 
     return (
-        <SafeAreaProvider style={styles.containercriacaoper}>
+        <View style={styles.containerBiblio}>
             <View>
                 <LinearGradient
                     // Background Linear Gradient 
@@ -71,15 +82,12 @@ export default function Altpersonagens({ route, navigation }) {
                 <View style={styles.containermodal}>
                     <View style={styles.containernomeper}>
                         <Paragraph style={styles.paragraphper}>
-                            Nome do personagens:
+                            Nome do Personagem:
                             <TextInput
                                 style={styles.inputper}
                                 value={nomePersona}
-                                onChangeText={(text) => setNomePersona(text)}
-                                editable={true}
+                                onChangeText={text => setNomePersona(text)}
                             />
-
-
                         </Paragraph>
                     </View>
                     <View style={styles.centeredView}>
@@ -88,7 +96,7 @@ export default function Altpersonagens({ route, navigation }) {
                             transparent={true}
                             visible={modalVisible}
                             onRequestClose={() => {
-                                console.log('Modal has been closed.');
+                                Alert.alert('Modal has been closed.');
                                 setModalVisible(!modalVisible);
                             }}>
                             <View style={styles.centeredView}>
@@ -96,7 +104,9 @@ export default function Altpersonagens({ route, navigation }) {
                                     <Icon name="close"
                                         style={styles.buttonclose}
                                         onPress={() => setModalVisible(!modalVisible)}
+
                                     />
+
                                     <Text style={styles.modalText}>O primeiro passo é pequeno, mas não tão simples.
                                         Você deve escrever uma frase que resuma toda a história do seu livro.
                                         Recomendamos fazer uma frase com menos de 15 palavras que aborda as principais questões da estória sem citar nomes de personagens.
@@ -123,45 +133,51 @@ export default function Altpersonagens({ route, navigation }) {
                                 </View>
                             </View>
                         </Modal>
+
                         <Icon name="information-outline" style={styles.iconinfo}
                             onPress={() => setModalVisible(true)} />
+
                     </View>
                 </View>
-            </View>
-            <View
-                style={{
-                    height: 7,
-                    backgroundColor: '#EBDEF0',
-                    marginBottom: 10 //opcional
-                }}
-            />
-            <View style={{ maxWidth: "300px", margin: "0 auto", }}>
-                <CKEditor
-                    editor={ClassicEditor}
-                    data={descricao}
-                    onChange={handleChange}
+
+                <View
+                    style={{
+                        height: 7,
+                        backgroundColor: '#EBDEF0',
+                        marginBottom: 10 //opcional
+                    }}
                 />
 
+                <View style={{ maxWidth: "360px", margin: " auto", }}>
+                    <CKEditor
+                        editor={ClassicEditor}
+                        data={descricao} // set data from Firestore to the editor
+                        onChange={handleChange}
+                    />
+                </View>
+                <View style={styles.containerBiblio}>
 
-                <View style={styles.containersalvarper}>
-                    <Button
-                        style={{
-                            backgroundColor: "#EBDEF0",
-                            border: "3px solid #D9D9D9",
-                            borderRadius: "1px",
-                            height: "40px",
-                            width: "70px",
-                            fontSize: "13px",
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                        mode="contained"
-                        onPress={handleUpdate}
-                    >
-                        Salvar
-                    </Button>
+                    <View style={styles.containersalvarper}>
+                        <Button style={styles.buttondeletar} mode="contained" onPress={() => handleExcluir(personagensId)}>
+                            Deletar
+                        </Button>
+                        <TouchableOpacity
+                            style={{
+                                backgroundColor: "#EBDEF0",
+                                border: "3px solid #D9D9D9",
+                                borderRadius: "1px",
+                                height: "40px",
+                                width: "70px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                            mode="contained"
+                            onPress={handleUpdate}
+                        >
+                            <Text style={{ fontSize: "13px", fontWeight: "bold", color: "black" }}>  Salvar  </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
             <View>
@@ -171,9 +187,9 @@ export default function Altpersonagens({ route, navigation }) {
                     end={{ x: 1, y: 0 }}
                     colors={colors}
                     locations={locations}
-                    style={{ height: 7, width: "100%", marginTop: "438px", }}
+                    style={{ height: 7, width: "100%" }}
                 />
             </View>
-        </SafeAreaProvider>
+        </View>
     );
 }

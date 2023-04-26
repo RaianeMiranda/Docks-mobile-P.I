@@ -54,7 +54,7 @@ export default function altCapitulos({route, navigation}) {
         }
     }
     return (
-        <SafeAreaProvider style={styles.containercriacaoper}>
+        <SafeAreaProvider style={styles.containerBiblio}>
             <View>
                 <LinearGradient
                     // Background Linear Gradient 

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, deleteDoc, updateDoc } from "firebase/firestore";
 import { colors, locations, styles } from "../config/styles";
 import { Button, Paragraph, Text, TextInput } from "react-native-paper";
 import { View } from "react-native";
@@ -11,6 +10,7 @@ import 'firebase/firestore';
 import { database, auth } from "../config/firebase/firebase";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Modal } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function AltMundo({ route, navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
@@ -49,16 +49,28 @@ export default function AltMundo({ route, navigation }) {
                 nomeMundo: nomeMundo,
                 descricao: descricao,
             });
-            navigation.navigate("Página Inicial", {bookId: bookId, mundoId: mundoId });
+            navigation.navigate("Página Inicial", { bookId: bookId, mundoId: mundoId });
             console.log("Mundo atualizado com ID: ", route.params.mundoId);
         } catch (error) {
             console.error("Erro ao atualizar mundo: ", error.message);
         }
     }
 
+    function handleExcluir(mundoId) {
+        // deleteDoc é responsável pela exclusão do dado em uma coleção "Tabela"
+
+        deleteDoc(
+            doc(database, "mundo", route.params.mundoId)
+        ).then(() => {
+            console.log("Mundo excluído com sucesso")
+            navigation.navigate("Página Inicial", { bookId: bookId, mundoId: mundoId });
+        })  
+          
+    }
+
 
     return (
-        <SafeAreaProvider style={styles.containercriacaoper}>
+        <View style={styles.containerBiblio}>
             <View>
                 <LinearGradient
                     // Background Linear Gradient 
@@ -75,11 +87,8 @@ export default function AltMundo({ route, navigation }) {
                             <TextInput
                                 style={styles.inputper}
                                 value={nomeMundo}
-                                onChangeText={(text) => setNomeMundo(text)}
-                                editable={true}
+                                onChangeText={text => setNomeMundo(text)}
                             />
-
-
                         </Paragraph>
                     </View>
                     <View style={styles.centeredView}>
@@ -88,7 +97,7 @@ export default function AltMundo({ route, navigation }) {
                             transparent={true}
                             visible={modalVisible}
                             onRequestClose={() => {
-                                console.log('Modal has been closed.');
+                                Alert.alert('Modal has been closed.');
                                 setModalVisible(!modalVisible);
                             }}>
                             <View style={styles.centeredView}>
@@ -96,7 +105,9 @@ export default function AltMundo({ route, navigation }) {
                                     <Icon name="close"
                                         style={styles.buttonclose}
                                         onPress={() => setModalVisible(!modalVisible)}
+
                                     />
+
                                     <Text style={styles.modalText}>O primeiro passo é pequeno, mas não tão simples.
                                         Você deve escrever uma frase que resuma toda a história do seu livro.
                                         Recomendamos fazer uma frase com menos de 15 palavras que aborda as principais questões da estória sem citar nomes de personagens.
@@ -123,45 +134,51 @@ export default function AltMundo({ route, navigation }) {
                                 </View>
                             </View>
                         </Modal>
+
                         <Icon name="information-outline" style={styles.iconinfo}
                             onPress={() => setModalVisible(true)} />
+
                     </View>
                 </View>
-            </View>
-            <View
-                style={{
-                    height: 7,
-                    backgroundColor: '#EBDEF0',
-                    marginBottom: 10 //opcional
-                }}
-            />
-            <View style={{ maxWidth: "300px", margin: "0 auto", }}>
-                <CKEditor
-                    editor={ClassicEditor}
-                    data={descricao}
-                    onChange={handleChange}
+
+                <View
+                    style={{
+                        height: 7,
+                        backgroundColor: '#D5ECB6',
+                        marginBottom: 10 //opcional
+                    }}
                 />
 
+                <View style={{ maxWidth: "360px", margin: " auto", }}>
+                    <CKEditor
+                        editor={ClassicEditor}
+                        data={descricao} // set data from Firestore to the editor
+                        onChange={handleChange}
+                    />
+                </View>
+                <View style={styles.containerBiblio}>
 
-                <View style={styles.containersalvarper}>
-                    <Button
-                        style={{
-                            backgroundColor: "#EBDEF0",
-                            border: "3px solid #D9D9D9",
-                            borderRadius: "1px",
-                            height: "40px",
-                            width: "70px",
-                            fontSize: "13px",
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                        mode="contained"
-                        onPress={handleUpdate}
-                    >
-                        Salvar
-                    </Button>
+                    <View style={styles.containersalvarper}>
+                        <Button style={styles.buttondeletar} mode="contained"onPress={() => handleExcluir(mundoId)}>
+                            Deletar
+                        </Button>
+                        <TouchableOpacity
+                            style={{
+                                backgroundColor: "#D5ECB6",
+                                border: "3px solid #D9D9D9",
+                                borderRadius: "1px",
+                                height: "40px",
+                                width: "70px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                            mode="contained"
+                            onPress={handleUpdate}
+                        >
+                            <Text style={{ fontSize: "13px", fontWeight: "bold", color: "black" }}>  Salvar  </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
             <View>
@@ -171,9 +188,9 @@ export default function AltMundo({ route, navigation }) {
                     end={{ x: 1, y: 0 }}
                     colors={colors}
                     locations={locations}
-                    style={{ height: 7, width: "100%", marginTop: "438px", }}
+                    style={{ height: 7, width: "100%" }}
                 />
             </View>
-        </SafeAreaProvider>
+        </View>
     );
 }

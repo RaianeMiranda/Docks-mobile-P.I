@@ -8,6 +8,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 //have to create an way to save the field name into the firestore/firebase in collection "usuario"
 
 export const CadScreen = ({ navigation }) => {
+  
     const [mostraErro, setMostraErro] = useState("");
     const [nome, setNome] = useState({
         value: "",

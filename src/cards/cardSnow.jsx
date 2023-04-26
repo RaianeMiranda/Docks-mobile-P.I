@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
         width: ITEM_WIDTH,
         height: ITEM_HEIGHT,
         paddingBottom: 0,
+        alignItems: 'center',
     },
 
     header: {

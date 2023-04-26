@@ -43,37 +43,37 @@ export const CarouselCards3 = ({ bookId, userId, navigation }) => {
 
     const cardArray = [
         {
-          body: "Criação de personagem",
-          image: require("../../src/Images/heroi.png"),
-          onPress: () =>
-            navigation.navigate("Biblioteca", { index: 0, bookId, userId }),
+            body: "Criação de personagem",
+            image: require("../../src/Images/heroi.png"),
+            onPress: () =>
+                navigation.navigate("Biblioteca", { index: 0, bookId, userId }),
         },
         {
-          image: require("../../src/Images/mais.png"),
-          onPress: () =>
-            navigation.navigate("cadPersona", {
-              index: cardArray.length - 1,
-              bookId,
-              userId,
-            }),
+            image: require("../../src/Images/mais.png"),
+            onPress: () =>
+                navigation.navigate("cadPersona", {
+                    index: cardArray.length - 1,
+                    bookId,
+                    userId,
+                }),
         },
-      ];
-      
-      const newCards = personagens.map((personagens) => ({
+    ];
+
+    const newCards = personagens.map((personagens) => ({
         body: personagens.nomePersona,
         onPress: () =>
-          navigation.navigate("altPersona", {
-            index: 1,
-            bookId,
-            personagensId: personagens.id,
-            userId,
-          }),
+            navigation.navigate("altPersona", {
+                index: 1,
+                bookId,
+                personagensId: personagens.id,
+                userId,
+            }),
         id: personagens.id,
-      }));
-      
-      const updatedCardArray = [...cardArray.slice(0, 1), ...newCards, ...cardArray.slice(1)];
-      
-      
+    }));
+
+    const updatedCardArray = [...cardArray.slice(0, 1), ...newCards, ...cardArray.slice(1)];
+
+
 
     const CarouselCardItem = ({ item, index }) => {
         const isFirstItem = index === 0;
@@ -147,6 +147,8 @@ const styles = StyleSheet.create({
         width: ITEM_WIDTH,
         height: ITEM_HEIGHT,
         paddingBottom: 0,
+        alignItems: "center",
+        marginBottom: 10,
 
     },
     containerFirst: {
@@ -162,7 +164,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: "40px",
         height: "40px",
-        marginTop: "25%"
+        marginTop: "25%",
+        justifyContent: "center",
 
     },
     header: {
@@ -208,7 +211,7 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 15,
         marginTop: "25%",
-        marginLeft: "15%"
+
     },
     image: {
         width: 10,
@@ -224,7 +227,7 @@ const styles = StyleSheet.create({
     imageLast: {
         width: "20px",
         height: "20px",
-        marginLeft: "5px",
-        marginTop: "5px"
+        marginBottom: 20,
+        marginLeft: 5
     },
 })

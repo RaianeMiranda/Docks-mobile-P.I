@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { TouchableOpacity, Text, View, Image } from "react-native";
 import {
@@ -11,6 +11,7 @@ import {
 } from "react-native-paper";
 import { auth } from "../config/firebase/firebase";
 import { styles } from "../config/styles";
+import { useEffect } from "react";
 
 export const LoginScreen = ({ route, navigation }) => {
   const [email, setEmail] = useState({
@@ -23,6 +24,14 @@ export const LoginScreen = ({ route, navigation }) => {
   });
   const [mostraErro, setMostraErro] = useState("");
   const { mensagem } = route.params || false;
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigation.navigate("Biblioteca");
+      }
+    });
+  }, [])
 
   function onLoginPressed() {
     console.log("LoginIniciado");

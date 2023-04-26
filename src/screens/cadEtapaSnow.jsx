@@ -9,7 +9,7 @@ import { Alert, Modal, Text, View } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { TouchableOpacity } from "react-native-web";
-import { database } from "../config/firebase/firebase"; 
+import { database } from "../config/firebase/firebase";
 
 export default function cadEtapaSnow({ route }) {
 
@@ -28,7 +28,7 @@ export default function cadEtapaSnow({ route }) {
 
   const handleChange = (event, editor) => {
     setDescricao(editor.getData());
-}
+  }
 
   const handleSalvar = async () => {
     try {
@@ -46,7 +46,7 @@ export default function cadEtapaSnow({ route }) {
     }
   };
 
-  
+
   useEffect(() => {
     const handleBeforeUnload = () => {
       setBookId("");
@@ -76,7 +76,7 @@ export default function cadEtapaSnow({ route }) {
   }, [bookId]);
 
   return (
-    <SafeAreaProvider style={styles.containercriacaoper}>
+    <SafeAreaProvider style={styles.containerBiblio}>
       <Appbar.Header style={styles.navConfig}>
         <Appbar.BackAction onPress={_goBack} />
         <Appbar.Content titleStyle={{ textAlign: "center", fontWeight: "bold", fontSize: "20px" }} title="Snowflake" />
@@ -166,11 +166,8 @@ export default function cadEtapaSnow({ route }) {
         <CKEditor
           editor={ClassicEditor}
           data={descricao} // set data from Firestore to the editor
-          onChange={handleChange}/>
-        <View style={styles.containersalvarper}>
-        <Button style={styles.buttondeletar} mode="contained">
-                            Deletar
-                        </Button>
+          onChange={handleChange} />
+        <View style={styles.containersalvarEtapa}>
           <Button style={styles.buttonsalvar} mode="contained"
             onPress={handleSalvar}>
             Salvar
