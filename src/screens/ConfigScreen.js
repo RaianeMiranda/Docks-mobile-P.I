@@ -1,0 +1,114 @@
+import * as React from "react";
+import { Text, View, Image } from "react-native";
+import { TextInput, Button } from "react-native-paper";
+import { LinearGradient } from "expo-linear-gradient";
+import { colors, locations, styles } from "../config/styles";
+
+export const ConfigScreen = ({ navigation }) => {
+
+    const [text, setNome] = React.useState("");
+
+    return (
+        <View style={styles.containerBiblio}>
+            <View style={{ flex: 1 }}>
+                <View>
+                    <LinearGradient // Background Linear Gradient
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        colors={colors}
+                        locations={locations}
+                        style={{ height: 7, width: "100%" }}
+                    />
+                </View>
+                <Text style={styles.tituloConfig1}>Configurações da Conta</Text>
+                <View style={styles.inputsConfig}>
+                    <TextInput
+                        style={styles.inputConfigNome}
+                        theme={{ colors: { primary: "#A9A9A9" } }}
+                        label="Nome"
+                        value={text}
+                        onChangeText={(text) => setNome(text)}
+                    />
+                    <TextInput
+                        style={styles.inputConfigEmail}
+                        theme={{ colors: { primary: "#A9A9A9" } }}
+                        label="Email"
+                        value={text}
+                        onChangeText={(text) => setNome(text)}
+                    />
+                    <TextInput
+
+                        style={styles.inputConfigSenha}
+                        theme={{ colors: { primary: "#A9A9A9" } }}
+                        secureTextEntry
+                        value={text}
+                        label="Senha"
+                        onChangeText={(text) => setNome(text)}
+                    />
+                </View>
+                <View style={styles.buttonsConfig}>
+                    <View>
+                        <Button style={styles.buttonSal}>
+                            <Text style={styles.textSal}>salvar alterações</Text>
+                        </Button>
+                    </View>
+                    <View>
+                        <Button style={styles.buttonDel}>
+                            <Text style={styles.textDel}>deletar conta</Text>
+                            <Image
+                                source={require("../Images/VectorRed.png")}
+                                style={styles.vectorRed}
+                            />
+                        </Button>
+                    </View>
+                </View>
+                <View style={{backgroundColor: "#FFF2D8", marginTop: 50}}>
+                    <Text style={styles.tituloConfig2}>Termos e Licenças</Text>
+                    <View style={styles.buttonTermos}>
+                        <View>
+                            <Button style={styles.buttonConfigTermos1} activeOpacity={0.5}>
+                                <Text style={styles.textTermos1}>Termos e condições</Text>
+                                <View style={styles.imageTermos1}>
+                                    <Image
+                                        source={require("../Images/VectorOrange.png")}
+                                        style={styles.vectorOrange}
+                                    />
+                                </View>
+                            </Button>
+                        </View>
+                        <View>
+                            <Button style={styles.buttonConfigTermos2} activeOpacity={0.5}>
+                                <Text style={styles.textTermos2}>Licenças</Text>
+                                <View style={styles.imageTermos2}>
+                                    <Image
+                                        source={require("../Images/VectorOrange.png")}
+                                        style={styles.vectorOrange}
+                                    />
+                                </View>
+                            </Button>
+                        </View>
+                        <View>
+                            <Button style={styles.buttonConfigTermos3} activeOpacity={0.5}>
+                                <Text style={styles.textTermos3}>Políticas de Privacidade</Text>
+                                <View style={styles.imageTermos3}>
+                                    <Image
+                                        source={require("../Images/VectorOrange.png")}
+                                        style={styles.vectorOrange}
+                                    />
+                                </View>
+                            </Button>
+                        </View>
+                    </View>
+                </View>
+                <LinearGradient // Background Linear Gradient
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    colors={colors}
+                    locations={locations}
+                    style={{ height: 7, width: "100%", marginTop: 180 }}
+                />
+            </View>
+        </View>
+
+    );
+};
