@@ -38,7 +38,7 @@ const ModalCadLivros = ({ navigation }) => {
       setNomeLivro("");
       setDescricao("");
       setCapaLivro("");
-      navigation.navigate("Biblioteca ", { UserId: user.uid })
+      navigation.navigate("Login ", { UserId: user.uid })
     } catch (error) {
       console.error("Erro ao adicionar livro: ", error.message);
     }
@@ -48,7 +48,6 @@ const ModalCadLivros = ({ navigation }) => {
     setCapaLivro(url);
   };
 
-
   return (
     <View style={styles.containerBiblio}>
       <LinearGradient // Background Linear Gradient
@@ -56,18 +55,19 @@ const ModalCadLivros = ({ navigation }) => {
         end={{ x: 1, y: 0 }}
         colors={colors}
         locations={locations}
-        style={{ height: 7, width: "100%", }}
+        style={{ height: 7, width: "100%" }}
       />
 
-      <View style={{
-        backgroundColor: "white",
-        height: 450,
-        borderRadius: 25,
-        width: 220,
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
-      }}>
+      <View
+        style={{
+          backgroundColor: "white",
+          height: 380,
+          borderRadius: 25,
+          width: 220,
+          margin: "auto",
+          marginTop: "30px",
+        }}
+      >
         <View>
           <View
             style={{
@@ -80,7 +80,8 @@ const ModalCadLivros = ({ navigation }) => {
               style={{
                 fontWeight: "bold",
                 fontSize: 25,
-                marginBottom: 10,
+                marginBottom: 15,
+                marginTop: 15,
               }}
             >
               Criar Livros
@@ -91,18 +92,22 @@ const ModalCadLivros = ({ navigation }) => {
               {capaLivro ? (
                 <TouchableOpacity onPress={setCapaLivro}>
                   <ImageBackground
-                    style={{ width: "130px", height: "180px" }}
+                    style={{ width: "130px", height: "180px", margin: "auto" }}
                     source={{ uri: capaLivro }}
                   >
-                    <ImagePicker onImgURLChange={handleImgURLChange}></ImagePicker>
+                    <ImagePicker
+                      onImgURLChange={handleImgURLChange}
+                    ></ImagePicker>
                   </ImageBackground>
                 </TouchableOpacity>
               ) : (
                 <ImageBackground
                   source={require("../Images/CriarLivros.png")}
-                  style={{ width: "130px", height: "180px" }}
+                  style={{ width: "130px", height: "180px", margin: "auto" }}
                 >
-                  <ImagePicker onImgURLChange={handleImgURLChange}></ImagePicker>
+                  <ImagePicker
+                    onImgURLChange={handleImgURLChange}
+                  ></ImagePicker>
                 </ImageBackground>
               )}
             </View>
@@ -118,20 +123,24 @@ const ModalCadLivros = ({ navigation }) => {
             Título
           </Text>
           <TextInput
+            mode="outlined"
+            underlineColor="#F4CCC8"
+            outlineColor="#F4CCC8"
+            activeOutlineColor="#A5A5A5"
             style={{
               width: "180px",
-              height: "30px",
+              height: 30,
               backgroundColor: "#F4CCC8",
-              borderWidth: 1,
-              borderColor: "#D7C3C1",
+              borderColor: "#F4CCC8",
               borderTopRightRadius: 0,
               borderTopLeftRadius: 0,
-              marginLeft: "20px",
+              margin: "auto",
             }}
             label="Nome do livro"
             value={nomeLivro}
             onChangeText={setNomeLivro}
           />
+
           <Button
             style={{
               borderWidth: 3,
@@ -165,10 +174,11 @@ const ModalCadLivros = ({ navigation }) => {
         end={{ x: 1, y: 0 }}
         colors={colors}
         locations={locations}
-        style={{ height: 7, width: "100%", marginTop: "135%" }}
+        style={{ height: 7, width: "100%", marginTop: "85%" }}
       />
     </View>
   );
 };
+
 
 export default ModalCadLivros;

@@ -60,7 +60,7 @@ export const BiblioScreen = ({ route, navigation }) => {
 
       <Button
         style={styles.buttonCL}
-        onPress={() => navigation.navigate("CadModal")}
+        onPress={() => navigation.navigate("Criar Livro")}
       >
         <Text style={styles.textBL}>+ Criar novo Livro</Text>
       </Button>
@@ -100,7 +100,7 @@ export const BiblioScreen = ({ route, navigation }) => {
         style={{
           height: 7,
           width: "100%",
-          marginTop: "100px",
+          marginTop: "105px",
 
         }}
       />

@@ -33,7 +33,7 @@ export default function cadCapitulos({ route, navigation }) {
         descricao: descricao,
         bookId: bookId, // add bookId to the document object
       });
-      navigation.navigate("listCap", { bookId: bookId });
+      navigation.navigate("Capítulos", { bookId: bookId });
       console.log("capítulo adicionado com ID: ", docRef.id);
 
 

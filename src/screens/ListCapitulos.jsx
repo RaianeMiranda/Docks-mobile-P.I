@@ -67,7 +67,7 @@ export default function listCapitulos({ route, navigation }) {
                     <Text style={styles.capitulosub}>
                       Capítulo:
                     </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('altCap', { bookId: bookId, userId: userId, capId: capitulos.id })}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Alterar capítulo', { bookId: bookId, userId: userId, capId: capitulos.id })}>
                       <Text style={styles.capitulostext}>
                         {capitulos.nomeCapitulos}
                       </Text>
@@ -87,7 +87,7 @@ export default function listCapitulos({ route, navigation }) {
         <View style={{ marginTop: 40 }}>
         </View>
         <View>
-          <Button style={styles.buttonadicionar} onPress={() => navigation.navigate('cadCap', { bookId: bookId, userId: userId })}>
+          <Button style={styles.buttonadicionar} onPress={() => navigation.navigate('Criação de Capítulo', { bookId: bookId, userId: userId })}>
             <View style={styles.containerplustext}>
               <Icon name="plus" style={styles.iconplus}
               />
@@ -104,7 +104,7 @@ export default function listCapitulos({ route, navigation }) {
           end={{ x: 1, y: 0 }}
           colors={colors}
           locations={locations}
-          style={{ height: 7, width: "100%", marginTop: "250px" }}
+          style={{ height: 7, width: "100%", marginTop: "475px" }}
         />
       </View>
 

@@ -27,9 +27,18 @@ import { styles } from "../config/styles";
 import { Image } from "react-native";
 import { auth, onAuthStateChanged } from "../config/firebase/firebase";
 import { useEffect, useState } from "react";
+import { MundoScreen } from "../screens/MundoScreen";
+import { PersonagemScreen } from "../screens/PersonagemScreen";
+import { SnowflakeScreen } from "../screens/SnowflakeScreen";
+import { SobreScreen } from "../screens/SobreScreen";
+import { JornadaScreen } from "../screens/JornadaScreen";
+import LogOutScreen from "../screens/logOutScreen";
+import { ConfigScreen } from "../screens/ConfigScreen";
 
 const Drawer = createDrawerNavigator();
-
+function NoHeader(props) {
+    return <LoginScreen {...props} options={{ headerShown: false }} />;
+}
 const CustomDrawer = (props) => {
     return (
 
@@ -86,6 +95,7 @@ export function MyDrawer() {
                 name="Biblioteca"
                 component={user ? BiblioScreen : LoginScreen}
                 options={{
+                    headerShown: true,
                     headerTitleAlign: "center",
                     headerLeft: () => (
                         <TouchableOpacity>
@@ -108,7 +118,7 @@ export function MyDrawer() {
                 options={{
                     headerTitleAlign: "center",
                     headerLeft: () => (
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
                             <Image
                                 source={require("../Images/Voltar.png")}
                                 style={styles.drawerFotoVoltar}
@@ -121,22 +131,317 @@ export function MyDrawer() {
                     },
                 }}
             />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="Atualizar Livros" component={AltLivro} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="CadModal" component={ModalCadLivros} />
 
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="Persona" component={cadPersona} />
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                },
+            }}
+                name="Jornada do Herói" component={JornadaScreen}
+            />
+
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                },
+            }}
+                name="Snowflake" component={SnowflakeScreen}
+            />
+
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                },
+            }}
+                name="Criação de Mundos" component={MundoScreen}
+            />
+
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 16,
+                },
+            }}
+                name="Criação de Personagens" component={PersonagemScreen}
+            />
+
+
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                },
+            }} name="Sobre nós" component={SobreScreen}
+            />
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                },
+            }} name="Configurações" component={ConfigScreen}
+            />
+
+
+            <Drawer.Screen
+                name="Login"
+                component={user ? BiblioScreen : NoHeader}
+                options={{ drawerLabel: () => null }}
+            />
+
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                }, drawerLabel: () => null
+            }} name="Atualizar Livros" component={AltLivro}
+            />
+
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                }, drawerLabel: () => null
+            }} name="Criar Livro" component={ModalCadLivros}
+            />
+
+
+            {user && (
+                <Drawer.Screen
+                    name="Sair (logout)"
+                    component={LogOutScreen}
+                />
+            )}
+
+
             <Drawer.Screen options={{ drawerLabel: () => null }} name="ListMundo" component={listMundo} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="altMundo" component={AltMundo} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="cadPersona" component={cadPersona} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="altPersona" component={Altpersonagens} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="cadEtapa" component={cadEtapaSnow} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="altEtapa" component={AltEtapasSnow} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="cadCap" component={cadCapitulos} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="altCap" component={altCapitulos} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="listCap" component={listCapitulos} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="Login" component={user ? BiblioScreen : LoginScreen} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="Cadastro" component={CadScreen} />
-            <Drawer.Screen options={{ drawerLabel: () => null }} name="cadMundo" component={cadMundo} />
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                }, drawerLabel: () => null
+            }} name="Alteração de Mundo" component={AltMundo}
+            />
+
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                }, drawerLabel: () => null
+            }} name="Criação de Personagem" component={cadPersona}
+            />
+
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                }, drawerLabel: () => null
+            }} name="Alteração de Personagem" component={Altpersonagens}
+            />
+
+            <Drawer.Screen options={{ drawerLabel: () => null }} name="Criação de Etapa" component={cadEtapaSnow} />
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                }, drawerLabel: () => null
+            }} name="Alteração de Etapa" component={AltEtapasSnow}
+            />
+
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Capítulos")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                }, drawerLabel: () => null
+            }} name="Criação de Capítulo" component={cadCapitulos}
+            />
+
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Capítulos")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                }, drawerLabel: () => null
+            }} name="Alterar capítulo" component={altCapitulos}
+            />
+
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                }, drawerLabel: () => null
+            }} name="Capítulos" component={listCapitulos}
+            />
+
+
+            <Drawer.Screen options={{ drawerLabel: () => null, headerShown: false }} name="Cadastro" component={CadScreen} />
+
+            <Drawer.Screen options={{
+                headerTitleAlign: "center",
+                headerLeft: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
+                        <Image
+                            source={require("../Images/Voltar.png")}
+                            style={styles.drawerFotoVoltar}
+                        />
+                    </TouchableOpacity>
+                ),
+                headerTitleStyle: {
+                    fontWeight: "bold",
+                    fontSize: 20,
+                }, drawerLabel: () => null
+            }} name="Criação de Mundo" component={cadMundo}
+            />
+
         </Drawer.Navigator>
     );
 };

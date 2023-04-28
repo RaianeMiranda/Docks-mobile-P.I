@@ -46,12 +46,12 @@ export const CarouselCards3 = ({ bookId, userId, navigation }) => {
             body: "Criação de personagem",
             image: require("../../src/Images/heroi.png"),
             onPress: () =>
-                navigation.navigate("Biblioteca", { index: 0, bookId, userId }),
+                navigation.navigate("Criação de Personagens", { index: 0, bookId, userId }),
         },
         {
             image: require("../../src/Images/mais.png"),
             onPress: () =>
-                navigation.navigate("cadPersona", {
+                navigation.navigate("Criação de Personagem", {
                     index: cardArray.length - 1,
                     bookId,
                     userId,
@@ -62,7 +62,7 @@ export const CarouselCards3 = ({ bookId, userId, navigation }) => {
     const newCards = personagens.map((personagens) => ({
         body: personagens.nomePersona,
         onPress: () =>
-            navigation.navigate("altPersona", {
+            navigation.navigate("Alteração de Personagem", {
                 index: 1,
                 bookId,
                 personagensId: personagens.id,

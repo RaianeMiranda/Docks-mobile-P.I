@@ -46,12 +46,12 @@ export const CarouselCards2 = ({ bookId, userId, navigation }) => {
             body: "Criação de mundo",
             image: require("../../src/Images/mundo.png"),
             onPress: () =>
-                navigation.navigate("Biblioteca", { index: 0, bookId, userId }),
+                navigation.navigate("Criação de Mundos", { index: 0, bookId, userId }),
         },
         {
             image: require("../../src/Images/mais.png"),
             onPress: () =>
-                navigation.navigate("Mundo", {
+                navigation.navigate("Criação de Mundo", {
                     index: cardArray.length - 1,
                     bookId,
                     userId,
@@ -62,7 +62,7 @@ export const CarouselCards2 = ({ bookId, userId, navigation }) => {
     const newCards = mundo.map((mundo) => ({
         body: mundo.nomeMundo,
         onPress: () =>
-            navigation.navigate("altMundo", {
+            navigation.navigate("Alteração de Mundo", {
                 index: 1,
                 bookId,
                 mundoId: mundo.id,
@@ -115,8 +115,8 @@ export const CarouselCards2 = ({ bookId, userId, navigation }) => {
                 inactiveSlideScale={0.94}
                 inactiveSlideOpacity={100}
                 contentContainerCustomStyle={{ paddingLeft: "25px" }}
-           
-            />  
+
+            />
             <Pagination
                 activeDotIndex={index}
                 carouselRef={isCarousel}

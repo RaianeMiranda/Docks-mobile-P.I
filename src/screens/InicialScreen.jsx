@@ -48,7 +48,7 @@ export const PaginaInicial = ({ route, navigation }) => {
                 <View style={styles.containerBiblio}>
                     <View style={{ flexBasis: "100%" }}>
                         <Paragraph style={styles.textwrite}>Escrevendo: <Text style={{ color: "#CE4BA8" }}>{nomeBook}</Text></Paragraph>
-                        <Button style={styles.buttoncarousel} onPress={() => navigation.navigate('listCap', { bookId: bookId, userId: userId })}>
+                        <Button style={styles.buttoncarousel} onPress={() => navigation.navigate('Capítulos', { bookId: bookId, userId: userId })}>
                             <View style={{ display: "flex", flexDirection: "row" }}>
 
                                 <Text style={styles.textcard}> Capítulos</Text>
@@ -57,7 +57,7 @@ export const PaginaInicial = ({ route, navigation }) => {
                                 <Image style={styles.imagechevron} source={require("../Images/rightChevron.png")} />
                             </View>
                         </Button>
-                        <Button style={styles.buttoncarousel2}>
+                        <Button style={styles.buttoncarousel2} onPress={() => navigation.navigate("Jornada do Herói")}>
                             <View style={{ display: "flex", flexDirection: "row", }}>
                                 <Text style={styles.textcard}> Jornada do Heroí</Text>
                                 <Image style={styles.imagechevron2}

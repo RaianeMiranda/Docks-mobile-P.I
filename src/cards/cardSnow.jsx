@@ -47,14 +47,14 @@ export const CarouselCards1 = ({ bookId, userId, navigation }) => {
             body: "Criação de Snowflake",
             image: require("../../src/Images/snow.png"),
             onPress: () =>
-                navigation.navigate("Biblioteca", { index: 0, bookId, userId }),
+                navigation.navigate("Snowflake", { index: 0, bookId, userId }),
         },
     ];
 
     const newCards = etapas.map((etapas) => ({
         body: etapas.nomeEtapas,
         onPress: () =>
-            navigation.navigate("altEtapa", {
+            navigation.navigate("Alteração de Etapa", {
                 index: 1,
                 bookId,
                 etapasId: etapas.id,
