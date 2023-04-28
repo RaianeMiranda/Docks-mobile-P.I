@@ -3,7 +3,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { colors, locations, styles } from "../config/styles";
-import { Appbar, Button, Paragraph, TextInput } from "react-native-paper";
+import { Button, Paragraph } from "react-native-paper";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { Alert, Modal, Text, View } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient";
@@ -12,10 +12,6 @@ import { TouchableOpacity } from "react-native-web";
 import { database } from "../config/firebase/firebase";
 
 export default function cadEtapaSnow({ route }) {
-
-  const [modalVisible, setModalVisible] = useState(false);
-  const _goBack = () => console.log("Went back");
-  const _handleMore = () => console.log("Shown more");
   const [nomeEtapas, setEtapas] = useState('');
   const [descricao, setDescricao] = useState('');
   const userId = "QtBISAQHWGQPp80rMGaBi9CV8JN2";
@@ -77,11 +73,6 @@ export default function cadEtapaSnow({ route }) {
 
   return (
     <SafeAreaProvider style={styles.containerBiblio}>
-      <Appbar.Header style={styles.navConfig}>
-        <Appbar.BackAction onPress={_goBack} />
-        <Appbar.Content titleStyle={{ textAlign: "center", fontWeight: "bold", fontSize: "20px" }} title="Snowflake" />
-        <Appbar.Action icon="menu" onPress={_handleMore} />
-      </Appbar.Header>
 
       <View>
         <LinearGradient
@@ -100,9 +91,9 @@ export default function cadEtapaSnow({ route }) {
             </Paragraph>
           </View>
           <View style={styles.centeredView}>
-            <Modal
 
-              animationType="slide"
+            <Modal
+              animationType="none"
               transparent={true}
               visible={modalVisible}
               onRequestClose={() => {

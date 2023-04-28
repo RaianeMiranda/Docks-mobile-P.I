@@ -1,11 +1,11 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { Image, Text, View } from "react-native";
+import { Image, Linking, Text, TouchableOpacity, View } from "react-native";
 import { Paragraph } from "react-native-paper";
-import { colors, locations, styles } from "../utils/styles";
+import { colors, locations, styles } from "../config/styles";
 
 export const SobreScreen = () => {
   return (
-    <View style={styles.containersobre}>
+    <View style={styles.containerBiblio}>
       <LinearGradient // Background Linear Gradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
@@ -22,14 +22,14 @@ export const SobreScreen = () => {
         }}
       >
         <Image
-          source={{ uri: require("../images/dockinha.png") }}
-          style={{ width: "100px", height: "100px", marginTop: "10%" }}
+          source={{ uri: require("../Images/dockinha.png") }}
+          style={{ width: "100px", height: "100px", marginTop: 30 }}
         />
       </View>
       <View>
         <Text style={styles.textdocks}>DOCKS</Text>
 
-        <Text style={styles.textdocks2}>Versão: 2.0</Text>
+        <Text style={styles.textdocks2}>Versão: 1.0</Text>
       </View>
       <Text style={styles.textversion}>Sobre o Docks</Text>
       <View style={styles.linear}>
@@ -42,36 +42,23 @@ export const SobreScreen = () => {
           {" "}
           O site proporciona a aprendizagem do método de escrita, o Snowflake e
           outros recursos como: Criação de Mundos, Personagens e o roteiro da
-          Jornada do Herói. Além das atividades diárias para o aumento da
-          criatividade.
+          Jornada do Herói.
         </Paragraph>
         <Paragraph>
           {" "}
-          O objetivo final é a criação de um livro bem estruturado, completo e
-          sem furos. Os escritores iniciantes são a nossa principal motivação,
-          já que são pessoas independentes e sem auxílio algum, que através do
-          Docks desenvolvem melhor a escrita e estrutura de seus livros,
+          O objetivo final é a criação de um livro bem estruturado.
+          Os escritores iniciantes são a nossa principal motivação,
+          pois através do
+          Docks desenvolvem melhor a escrita e a estrutura de suas histórias,
           possibilitando assim o crescimento de escritores na literatura
           nacional.{" "}
         </Paragraph>
-        <Paragraph>
-          {" "}
-          O Docks é uma plataforma de aprendizagem, que foi criado por leitoras
-          com o objetivo de suprir a carência de aplicativos na área da escrita.
-          O site proporciona a aprendizagem do método de escrita, o Snowflake e
-          outros recursos como: Criação de Mundos, Personagens e o roteiro da
-          Jornada do Herói. Além das atividades diárias para o aumento da
-          criatividade. O objetivo final é a criação de um livro bem
-          estruturado, completo e sem furos. Os escritores iniciantes são a
-          nossa principal motivação, já que são pessoas independentes e sem
-          auxílio algum, que através do Docks desenvolvem melhor a escrita e
-          estrutura de seus livros, possibilitando assim o crescimento de
-          escritores na literatura nacional.
-        </Paragraph>
+      </View>
+      <View style={{ marginLeft: 20 }}>
         <View style={styles.imgcontainer}>
-        <View style={{right:"15px"}}>
+          <View style={{ right: "15px" }}>
             <Image
-              source={{ uri: require("../images/mentor.png") }}
+              source={{ uri: require("../Images/mentor.png") }}
               style={{ width: "90px", height: "90px" }}
               resizeMode="contain"
             />
@@ -79,9 +66,9 @@ export const SobreScreen = () => {
               <Text style={styles.textmentor}>Mentor</Text>
             </View>
           </View>
-          <View  style={{right:"15px"}}>
+          <View style={{ right: "15px" }}>
             <Image
-              source={{ uri: require("../images/patydocks.png") }}
+              source={{ uri: require("../Images/patydocks.png") }}
               style={{ width: "90px", height: "90px" }}
               resizeMode="contain"
             />
@@ -89,9 +76,9 @@ export const SobreScreen = () => {
               <Text style={styles.textpaty}>Paty</Text>
             </View>
           </View>
-          <View  style={{right:"15px"}}>
+          <View style={{ right: "15px" }}>
             <Image
-              source={{ uri: require("../images/docks.png") }}
+              source={{ uri: require("../Images/docks.png") }}
               style={{ width: "90px", height: "90px" }}
               resizeMode="contain"
             />
@@ -99,9 +86,9 @@ export const SobreScreen = () => {
               <Text style={styles.textdock_mao}>Dock</Text>
             </View>
           </View>
-          <View  style={{right:"15px"}}>
+          <View style={{ right: "15px" }}>
             <Image
-              source={{ uri: require("../images/psicopato.png") }}
+              source={{ uri: require("../Images/psicopato.png") }}
               style={{ width: "90px", height: "90px" }}
               resizeMode="contain"
             />
@@ -110,117 +97,184 @@ export const SobreScreen = () => {
             </View>
           </View>
         </View>
-        <View>
-          <Text style={styles.containercriadoras}>Conheça o Time</Text>
+      </View>
+      <View>
+        <Text style={styles.containercriadoras}>Conheça o Time</Text>
 
-          <View style={styles.containercriadoras2}>
-            <View style={styles.containerfototext_}>
-              <Image
-                source={{ uri: require("../images/clara.png") }}
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50px",
-                  marginRight: "10px",
-                }}
-              />
+        <View style={styles.containercriadoras2}>
+          <View style={styles.containerfototext_}>
+            <Image
+              source={{ uri: require("../Images/clara.png") }}
+              style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "50px",
+                marginRight: "10px",
+              }}
+            />
 
-              <View>
-                <View style>
-                  <Text style={styles.nomesdevs1_}>Clara Vasconcelos</Text>
-                  <Text style={styles.nomesfun}>Desenvolvedora</Text>
-                </View>
+            <View>
+              <View style>
+                <Text style={styles.nomesdevs1_}>Clara Vasconcelos</Text>
+                <Text style={styles.nomesfun}>Desenvolvedora</Text>
               </View>
             </View>
-            <View style={styles.containerfototext}>
-              <Image
-                source={{ uri: require("../images/helena.png") }}
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50px",
-                  marginRight: "10px",
-                }}
-              />
+          </View>
+          <View style={styles.containerfototext}>
+            <Image
+              source={{ uri: require("../Images/helena.png") }}
+              style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "50px",
+                marginRight: "10px",
+              }}
+            />
 
-              <View>
-                <View style>
-                  <Text style={styles.nomesdevs1}>Helena Meirelles</Text>
-                  <Text style={styles.nomesfun}>Desenvolvedora</Text>
-                </View>
+            <View>
+              <View style>
+                <Text style={styles.nomesdevs1}>Helena Meirelles</Text>
+                <Text style={styles.nomesfun}>Desenvolvedora</Text>
               </View>
             </View>
+          </View>
 
-            <View style={styles.containerfototext}>
-              <Image
-                source={{ uri: require("../images/heloisa.png") }}
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50px",
-                  marginRight: "10px",
-                }}
-              />
+          <View style={styles.containerfototext}>
+            <Image
+              source={{ uri: require("../Images/heloisa.png") }}
+              style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "50px",
+                marginRight: "10px",
+              }}
+            />
 
-              <View>
-                <View style>
-                  <Text style={styles.nomesdevs1}>Heloísa Rebello</Text>
-                  <Text style={styles.nomesfun}>Desenvolvedora</Text>
-                </View>
+            <View>
+              <View style>
+                <Text style={styles.nomesdevs1}>Heloísa Rebello</Text>
+                <Text style={styles.nomesfun}>Desenvolvedora</Text>
               </View>
             </View>
+          </View>
 
-            <View style={styles.containerfototext}>
-              <Image
-                source={{ uri: require("../images/raiane.png") }}
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50px",
-                  marginRight: "10px",
-                }}
-              />
+          <View style={styles.containerfototext}>
+            <Image
+              source={{ uri: require("../Images/raiane.png") }}
+              style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "50px",
+                marginRight: "10px",
+              }}
+            />
 
-              <View>
-                <View style>
-                  <Text style={styles.nomesdevs1}>Raiane Miranda</Text>
-                  <Text style={styles.nomesfun}>Desenvolvedora</Text>
-                </View>
+            <View>
+              <View style>
+                <Text style={styles.nomesdevs1}>Raiane Miranda</Text>
+                <Text style={styles.nomesfun}>Desenvolvedora</Text>
               </View>
             </View>
+          </View>
 
-            <View style={styles.containerfototext}>
-              <Image
-                source={{ uri: require("../images/dockinha.png") }}
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50px",
-                  marginRight: "10px",
-                }}
-              />
+          <View style={styles.containerfototext}>
+            <Image
+              source={{ uri: require("../Images/dockinha.png") }}
+              style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "50px",
+                marginRight: "10px",
+              }}
+            />
 
-              <View>
-                <View style>
-                  <Text style={styles.nomesdevs1}>Você!!!</Text>
-                  <Text style={styles.nomesfun}>Usuário do Docks</Text>
-                </View>
+            <View>
+              <View style>
+                <Text style={styles.nomesdevs1}>Você!!!</Text>
+                <Text style={styles.nomesfun}>Usuário do Docks</Text>
               </View>
             </View>
           </View>
         </View>
+      </View>
+      <View style={{ margin: "auto", marginLeft: 10, display: "flex", justifyContent: "center" }}>
         <Text style={styles.containercriadoras3}>
           A nossa equipe visa com o Docks facilitar a criação de um livro e
           tornar o aprendizado acessível para escritores .
         </Text>
-        <LinearGradient // Background Linear Gradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          colors={colors}
-          locations={locations}
-          style={{ height: 7, width: "140%", marginTop: "30%" }}
-        />
       </View>
+      <View
+        style={{
+          marginTop: 30,
+          height: 7,
+          backgroundColor: '#F4CCC8',
+          marginBottom: 10 //opcional
+        }}
+      />
+      <View>
+        <Text style={{ fontSize: 22, fontWeight: "bold", marginLeft: 30, marginBottom: 15, marginTop: 20 }}>Contate-nos</Text>
+      </View>
+      <View style={{ display: "flex" }}>
+        <View>
+          <View style={{ marginLeft: 30, display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 15 }}>
+            <Image source={{ uri: require("../Images/email.png") }}
+              style={{
+                width: "21px",
+                height: "15px",
+                marginRight: "10px",
+              }} />
+            <View style={{ display: "flex", flexDirection: "column" }}>
+              <Text style={{ fontSize: 14, fontWeight: "bold" }}>E-mail</Text>
+              <View>
+                <Text style={{ fontSize: 12 }}>escritadocks@gmail.com</Text>
+              </View>
+            </View>
+          </View>
+          <View style={{ marginLeft: 30, display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 15 }}>
+            <Image source={{ uri: require("../Images/Instagram.png") }}
+              style={{
+                width: "21px",
+                height: "21px",
+                marginRight: "10px",
+              }} />
+            <View style={{ display: 'flex', flexDirection: 'column' }}>
+              <Text style={{ fontSize: 14, fontWeight: 'bold' }}>Instagram</Text>
+              <TouchableOpacity
+
+                onPress={() => Linking.openURL('https://www.instagram.com/docks_escrita/')}
+              >
+                <Text style={{ fontSize: 12, fontWeight: "bold", color: '#CE4BA8' }}>@docks_escrita</Text>
+              </TouchableOpacity>
+            </View>
+
+          </View>
+          <View style={{ marginLeft: 30, display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 15 }}>
+            <Image source={{ uri: require("../Images/facebook.png") }}
+              style={{
+                width: "21px",
+                height: "21px",
+                marginRight: "10px",
+              }} />
+            <View style={{ display: 'flex', flexDirection: 'column' }}>
+              <Text style={{ fontSize: 14, fontWeight: 'bold' }}>facebook</Text>
+              <TouchableOpacity
+
+                onPress={() => Linking.openURL('https://www.facebook.com/Docks-Escrita-Criativa-100220319398159')}
+              >
+                <Text style={{ fontSize: 12, fontWeight: "bold", color: '#CE4BA8' }}>Docks Escrita Criativa</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </View>
+      <LinearGradient // Background Linear Gradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={colors}
+        locations={locations}
+        style={{ height: 7, width: "100%", marginTop: 50 }}
+      />
+
     </View>
   );
 };

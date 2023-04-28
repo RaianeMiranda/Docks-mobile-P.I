@@ -9,7 +9,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { database } from "../config/firebase/firebase";
 
-export default function altCapitulos({route, navigation}) {
+export default function altCapitulos({ route, navigation }) {
     const _goBack = () => console.log("Went back");
     const _handleMore = () => console.log("Shown more");
     const [nomeCapitulos, setNomeCapitulos] = useState('');
@@ -47,7 +47,7 @@ export default function altCapitulos({route, navigation}) {
                 nomeCapitulos: nomeCapitulos,
                 descricao: descricao,
             });
-            navigation.navigate("listCap", { bookId: bookId, capId: capId });
+            navigation.navigate("Capítulos", { bookId: bookId, capId: capId });
             console.log("capitulos atualizado com ID: ", route.params.capId);
         } catch (error) {
             console.error("Erro ao atualizar capitulos: ", error.message);
@@ -85,14 +85,11 @@ export default function altCapitulos({route, navigation}) {
             />
             <View style={{ maxWidth: "300px", margin: "0 auto", }}>
                 <CKEditor
-                   editor={ClassicEditor}
-                   data={descricao}
-                   onChange={handleChange} />
+                    editor={ClassicEditor}
+                    data={descricao}
+                    onChange={handleChange} />
                 <View>
                     <View style={styles.containersalvarper}>
-                        <Button style={styles.buttondeletar} mode="contained">
-                            Deletar
-                        </Button>
                         <Button style={styles.buttonsalvar} mode="contained" onPress={handleUpdate}>
                             Salvar
                         </Button>

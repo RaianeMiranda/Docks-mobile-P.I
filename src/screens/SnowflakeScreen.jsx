@@ -1,11 +1,12 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { View } from "react-native";
 import { Paragraph, Text } from "react-native-paper";
-import { colors, locations, styles } from "../utils/styles";
+import { colors, locations, styles } from "../config/styles";
+
 
 export const SnowflakeScreen = () => {
   return (
-    <View style={styles.containerpagina3}>
+    <View style={styles.containerBiblio}>
       <LinearGradient // Background Linear Gradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
