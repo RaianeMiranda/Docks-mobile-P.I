@@ -516,10 +516,7 @@ export const styles = StyleSheet.create({
     padding: 15,
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    }
+
   },
   buttonclose: {
     fontSize: "24px",
@@ -658,7 +655,377 @@ export const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingLeft: 20,
     paddingRight: 20
-  }
+  },
+  //=======================================================================================================
+  //PÁGINAS DE CONTEÚDO INTRODUTÓRIAS
+  imagedocks_mao: {
+    width: "150px",
+    height: "100px",
+  },
+  imgcontainer: {
+    flex: "1",
+    margin: "auto",
+    display: "flex",
+    flexDirection: "row",
+    paddingTop: "20px"
+
+  },
+  mentor: {
+    width: "200px",
+    height: "100px",
+
+  },
+  logodocks: {
+    width: "200px",
+    height: "200px",
+  },
+  paty: {
+    width: "20px",
+    height: "350px",
+  },
+  psicopato: {
+    width: "90px",
+    height: "150px",
+    backgroundColor: "#FFF2D8",
+  },
+  textdocks: {
+    fontWeight: "bold",
+    fontSize: "30px",
+    textAlign: "center",
+  },
+  containernome: {
+    marginBottom: "20px",
+  },
+  textdocks2: {
+    fontSize: "15px",
+    textAlign: "center",
+  },
+
+  textversion: {
+    fontWeight: "bold",
+    fontSize: "25px",
+    marginTop: "15px",
+    marginBottom: "5px",
+    marginLeft: "25px",
+  },
+  containernome: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  textmentor: {
+    fontWeight: "bolder",
+    marginRight: "10px",
+  },
+  textpaty: {
+    fontWeight: "bolder",
+    marginRight: "10px",
+  },
+  textdock_mao: {
+    fontWeight: "bolder",
+    marginRight: "10px",
+  },
+  textpsicopato: {
+    fontWeight: "bolder",
+    marginRight: "10px",
+  },
+  containercriadoras: {
+    fontWeight: "bolder",
+    margin: "auto",
+    display: "flex",
+    fontSize: "25px",
+    marginTop: "50px",
+  },
+  containercriadoras2: {
+    backgroundColor: "white",
+    width: "330px",
+    height: "300px",
+    display: "flex",
+    borderRadius: "20px",
+    margin: "auto",
+    marginTop: "10px",
+  },
+  containercriadoras3: {
+    fontWeight: "bolder",
+    display: "flex",
+    margin: "auto",
+    justifyContent: "center",
+    marginTop: "15px",
+  },
+  nomesdevs1: {
+    fontWeight: "bolder",
+    marginBottom: "3px",
+    fontSize: "15px",
+    marginTop: "5px",
+  },
+  nomesdevs: {
+    fontWeight: "bolder",
+    marginBottom: "3px",
+    fontSize: "15px",
+  },
+  nomesfun: {
+    fontSize: "13px",
+    marginBottom: "10px",
+  },
+  containerfototext: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: "30px",
+  },
+  containerfototext_: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: "30px",
+    marginTop: "15px",
+  },
+  nomesdevs1_: {
+    fontWeight: "bolder",
+    marginBottom: "3px",
+    fontSize: "15px",
+    marginTop: "5px",
+  },
+
+  pagdocks: {
+    fontWeight: "bolder",
+    fontSize: "25px",
+    marginLeft: "20px",
+    marginTop: "28px",
+  },
+  pagPersona: {
+    fontWeight: "bolder",
+    fontSize: "20px",
+    marginLeft: "20px",
+    marginTop: "28px",
+  },
+
+  linear: {
+
+    maxWidth: 320,
+    margin: "auto",
+  },
+  //=======================================================================================================
+  //LOGIN
+  textinput_email: {
+    width: "240px",
+    height: 40,
+    borderRadius: "10px",
+    backgroundColor: "white",
+    margin: "auto",
+    marginBottom: "10px"
+  },
+  textinput_email1: {
+    width: "240px",
+    height: 40,
+    borderRadius: "10px",
+    backgroundColor: "white",
+    margin: "auto",
+    marginBottom: "3px"
+  },
+  textinput_senha: {
+    width: "240px",
+    height: 40,
+    borderRadius: "10px",
+    backgroundColor: "white",
+    margin: "auto",
+    marginBottom: "10px",
+  },
+  containerlogin1: {
+    backgroundColor: "white",
+    paddingRight: '40px',
+    paddingLeft: '40px',
+    paddingTop: '40px',
+    paddingBottom: '60px',
+    borderRadius: '35px',
+  },
+  containerlogin: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 26,
+    flex: 1,
+    backgroundColor: "#FFF2D8",
+    margin: "25",
+    justifyContent: "center",
+    fontFamily: "Open Sans",
+  },
+  buttoncontinuar1: {
+    marginTop: "7px",
+    backgroundColor: "#F6EB60",
+    borderRadius: "10px",
+    width: "140px",
+    margin: "auto",
+    marginBottom: 10
+  },
+  buttoncadgoogle1: {
+    backgroundColor: "transparent",
+    borderRadius: "5px",
+    border: '5px solid #EDEDED',
+    height: "60px",
+    width: "250px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "auto",
+    marginTop: "5px",
+  },
+  buttoncadface1: {
+    backgroundColor: "transparent",
+    borderRadius: "15px",
+    border: '1px solid #EDEDED',
+    height: "60px",
+    width: "200px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "auto",
+    marginBottom: "5px",
+    marginTop: "5px",
+  },
+  imagetextgoogle: {
+    display: "flex",
+    flexDirection: "row",
+    margin: " auto"
+  },
+  imagetextface: {
+    display: "flex",
+    flexDirection: "row",
+    margin: "auto"
+
+  },
+  imagedocks: {
+    width: '80px',
+    height: '80px',
+    margin: "auto",
+  },
+  paragraphbv: {
+    fontWeight: "bold",
+    margin: "auto",
+    fontSize: '23px',
+
+  },
+  paragraphbv1: {
+    fontWeight: "bold",
+    margin: "auto",
+    marginTop: '0px',
+    fontSize: '23px',
+  },
+  textbv: {
+    margin: "auto",
+  },
+  textbv1: {
+    margin: "auto",
+    marginTop: '0px',
+  },
+  text_cont: {
+    color: "black"
+  },
+  text_ou: {
+    marginLeft: 110
+  },
+  imageface: {
+    width: "30px",
+    height: "30px",
+    marginBottom: "1px",
+    marginTop: 5
+  },
+  textcadface: {
+    color: "black",
+    fontFamily: "Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+    fontSize: "13px",
+    marginLeft: "12px",
+  },
+  textcadface2: {
+    color: "black",
+    fontFamily: "Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+    margin: " 0auto",
+    fontSize: "13px",
+  },
+  buttoncadgoogle: {
+    backgroundColor: "transparent",
+    borderRadius: "15px",
+    border: '1px solid #EDEDED',
+    height: "60px",
+    width: "200px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "auto",
+  },
+  imagegoogle: {
+    width: "32px",
+    height: "32px",
+    marginLeft: "1px",
+    borderRadius: "20px",
+    marginTop: 5
+  },
+  row: {
+    flexDirection: "row",
+    marginTop: 15,
+    marginLeft: 17
+  },
+  label: {
+    color: "black",
+  },
+  link: {
+    fontWeight: "bold",
+    color: "black",
+  },
+
+//=======================================================================================================
+//CADASTRO SCREEN
+container: {
+  alignItems: "center",
+  paddingHorizontal: 26,
+  flex: 1,
+  backgroundColor: "#FFF2D8",
+  justifyContent: "center",
+  fontFamily: "Open Sans",
+
+},
+cad: {
+  backgroundColor: "white",
+  paddingRight: '40px',
+  paddingLeft: '40px',
+  paddingTop: '10px',
+  borderRadius: '35px',
+
+},
+buttoncontinuar: {
+  backgroundColor: "#F6EB60",
+  borderRadius: "10px",
+  width: "140px",
+  margin: "auto",
+  marginBottom: "15px",
+  marginTop:"10px"
+},
+buttoncadface: {
+  backgroundColor: "transparent",
+  borderRadius: "15px",
+  border: '1px solid #EDEDED',
+  height: "60px",
+  width: "200px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  margin: "auto",
+  marginBottom: "5px",
+  marginTop: "5px",
+},
+esqueceuSenha: {
+  // alignItems: "flex-end",
+  alignSelf: "stretch",
+  marginBottom: 10,
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+},
+logindocks: {
+  marginLeft:"70px",
+  marginTop:"10px"
+},
+
 });
 
 
@@ -687,5 +1054,24 @@ export const colors = [
 ];
 
 export const locations = [
-  0, 0.1, 0.1, 0.2, 0.2, 0.3, 0.3, 0.3, 0.4, 0.4, 0.5, 0.5, 0.6, 0.6,
-  0.7, 0.7, 0.8, 0.8, 0.9, 0.9, 1, 1];
+  0,
+  0.1,
+  0.1,
+  0.2,
+  0.2,
+  0.3,
+  0.3,
+  0.3,
+  0.4,
+  0.4,
+  0.5,
+  0.5,
+  0.6,
+  0.6,
+  0.7,
+  0.7,
+  0.8,
+  0.8,
+  0.9,
+  0.9,
+  1];
