@@ -4,7 +4,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { colors, locations, styles } from "../config/styles";
 import { Button, Paragraph, Text, TextInput } from "react-native-paper";
-import { View } from "react-native";
+import { Image, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import 'firebase/firestore';
 import { database, auth } from "../config/firebase/firebase";
@@ -101,36 +101,36 @@ export default function cadMundo({ route, navigation }) {
                                 setModalVisible(!modalVisible);
                             }}>
                             <View style={styles.centeredView}>
-                                <View style={styles.modalView}>
+                                <View style={{
+                                    margin: "auto",
+                                    backgroundColor: 'white',
+                                    borderRadius: 20,
+                                    padding: 15,
+                                    alignItems: 'center',
+                                    shadowColor: '#000',
+
+                                }}>
                                     <Icon name="close"
                                         style={styles.buttonclose}
                                         onPress={() => setModalVisible(!modalVisible)}
 
                                     />
 
-                                    <Text style={styles.modalText}>O primeiro passo é pequeno, mas não tão simples.
-                                        Você deve escrever uma frase que resuma toda a história do seu livro.
-                                        Recomendamos fazer uma frase com menos de 15 palavras que aborda as principais questões da estória sem citar nomes de personagens.
-                                    </Text>
-                                    <Text style={styles.modalText2}>
-                                        O resultado deve ficar mais ou menos assim:
-                                    </Text>
-                                    <Text style={styles.modalText3}>
-                                        “Um cientista excêntrico viaja no tempo para matar Hitler.”
-                                    </Text>
-                                    <Text>
-                                        Como você pode observar, descrevemos o protagonista em vez de citar seu nome.
-                                        Mencionar Hitler não tem problema, pois ele é uma figura histórica.
-                                        Não se preocupe em alcançar a perfeição. O objetivo de cada etapa é justamente desenvolver e aperfeiçoar o seu enredo aos poucos.
-                                    </Text>
-                                    <Text style={styles.modalText4}>
-                                        Aqui há outros exemplos para se inspirar:
-                                    </Text>
-                                    <Text style={styles.modalText5}>
-                                        “Garoto órfão descobre que é um bruxo famoso e é levado para uma escola de magia” (Harry Potter e a Pedra filosofal)
-                                    </Text>
-                                    <Text style={styles.modalText6}>
-                                        “Estudante adolescente descobre que o garoto que ela está interessada é um vampiro” (Crepúsculo)</Text>
+                                    <View style={{ display: "flex", alignItems: "center", flexDirection: "row", marginBottom: 15 }}>
+                                        <Image
+                                            source={require("../Images/placa.png")}
+                                            style={{ minWidth: 120, minHeight: 120 }}
+                                        />
+
+                                        <View style={{ display: "flex", flexDirection: "column" }}>
+                                            <Image
+                                                source={require("../Images/construir.png")}
+                                                style={{ minWidth: 90, minHeight: 145 }}
+                                            />
+                                        </View>
+                                    </View>
+                                    <View style={{ textAlign: 'center', fontSize: 18, fontWeight: "bold" }}>Estamos trabalhando em novos conteúdos!!</View>
+
 
                                 </View>
                             </View>
@@ -152,7 +152,9 @@ export default function cadMundo({ route, navigation }) {
                         marginBottom: 10 //opcional
                     }}
                 />
-
+                <Image
+                    source={require("../Images/construir.png")}
+                />
                 <View style={{ maxWidth: "360px", margin: " auto", }}>
                     <CKEditor
                         editor={ClassicEditor}

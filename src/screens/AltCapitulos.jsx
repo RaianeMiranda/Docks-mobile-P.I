@@ -54,7 +54,7 @@ export default function altCapitulos({ route, navigation }) {
         }
     }
     return (
-        <SafeAreaProvider style={styles.containerBiblio}>
+        <View style={styles.containerBiblio}>
             <View>
                 <LinearGradient
                     // Background Linear Gradient 
@@ -83,13 +83,13 @@ export default function altCapitulos({ route, navigation }) {
                     marginBottom: 10 //opcional
                 }}
             />
-            <View style={{ maxWidth: "300px", margin: "0 auto", }}>
+            <View style={{ maxWidth: "360px", margin: "auto", }}>
                 <CKEditor
                     editor={ClassicEditor}
                     data={descricao}
                     onChange={handleChange} />
                 <View>
-                    <View style={styles.containersalvarper}>
+                    <View style={styles.containersalvarEtapa}>
                         <Button style={styles.buttonsalvar} mode="contained" onPress={handleUpdate}>
                             Salvar
                         </Button>
@@ -110,6 +110,6 @@ export default function altCapitulos({ route, navigation }) {
 
 
 
-        </SafeAreaProvider>
+        </View>
     );
 }

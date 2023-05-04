@@ -97,14 +97,14 @@ export default function listCapitulos({ route, navigation }) {
           </Button>
         </View>
       </View>
-      <View>
+      <View style={styles.containerBiblio}>
         <LinearGradient
           // Background Linear Gradient 
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           colors={colors}
           locations={locations}
-          style={{ height: 7, width: "100%", marginTop: "475px" }}
+          style={{ height: 7, width: "100%", marginTop: "575px" }}
         />
       </View>
 

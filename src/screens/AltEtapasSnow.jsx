@@ -58,26 +58,25 @@ export default function AltEtapasSnow({ route, navigation }) {
     return (
         <View style={styles.containerBiblio}>
 
-            <View style={{ flex: 1 }}>
-                <LinearGradient
-                    // Background Linear Gradient 
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 0 }}
-                    colors={colors}
-                    locations={locations}
-                    style={{ height: 7, width: "100%", }}
-                />
-                <View>
-                </View>
-                <View style={styles.containermodal}>
-                    <View style={styles.containernomeper}>
-                        <Paragraph style={styles.paragraphper}>{nomeEtapas}
-                        </Paragraph>
-                    </View>
-                    <View style={styles.centeredView}>
-                        <Modal
 
-                            animationType="slide"
+            <LinearGradient
+                // Background Linear Gradient 
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                colors={colors}
+                locations={locations}
+                style={{ height: 7, width: "100%", }}
+            />
+            <View>
+            </View>
+            <View style={styles.containermodal}>
+                <View style={styles.containernomeper}>
+                    <Paragraph style={styles.paragraphper}>{nomeEtapas}
+                    </Paragraph>
+                </View>
+                <View style={styles.centeredView}>
+                        <Modal
+                            animationType="none"
                             transparent={true}
                             visible={modalVisible}
                             onRequestClose={() => {
@@ -127,30 +126,30 @@ export default function AltEtapasSnow({ route, navigation }) {
 
 
                     </View>
-                </View>
-
-                <View
-                    style={{
-                        height: 7,
-                        backgroundColor: '#F4CCC8',
-                        marginBottom: 10 //opcional
-                    }}
-                />
-
-                <View style={{ maxWidth: "360px", margin: " auto" }}>
-                    <CKEditor style={{ minHeight: 200 }}
-                        editor={ClassicEditor}
-                        data={descricao} // set data from Firestore to the editor
-                        onChange={handleChange} />
-                </View>
-                <View style={styles.containersalvarEtapa}>
-                    <Button style={styles.buttonSalvarEtapa} mode="contained"
-                        onPress={handleUpdate}>
-                        <Text style={{color:"black"}}>Salvar</Text>
-                    </Button>
-
-                </View>
             </View>
+
+            <View
+                style={{
+                    height: 7,
+                    backgroundColor: '#F4CCC8',
+                    marginBottom: 10 //opcional
+                }}
+            />
+
+            <View style={{ maxWidth: "360px", margin: " auto" }}>
+                <CKEditor style={{ minHeight: 200 }}
+                    editor={ClassicEditor}
+                    data={descricao} // set data from Firestore to the editor
+                    onChange={handleChange} />
+            </View>
+            <View style={styles.containersalvarEtapa}>
+                <Button style={styles.buttonSalvarEtapa} mode="contained"
+                    onPress={handleUpdate}>
+                    <Text style={{ color: "black" }}>Salvar</Text>
+                </Button>
+
+            </View>
+
             <View>
                 <LinearGradient
                     // Background Linear Gradient 
