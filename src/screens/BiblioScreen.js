@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 
 export const BiblioScreen = ({ route, navigation }) => {
   const [livros, setLivros] = useState([]);
+  const [UserId, setUserId] = useState([]);
 
   const user = auth.currentUser;
   if (!user) {
@@ -35,16 +36,6 @@ export const BiblioScreen = ({ route, navigation }) => {
     return () => unsubscribe()
   }, [])
 
-
-  function handleExcluir(livro) {
-    // deleteDoc é responsável pela exclusão do dado em uma coleção "Tabela"
-
-    deleteDoc(
-      doc(database, "livros", livro.id)
-    ).then(() => {
-      console.log("Usuário excluído com sucesso")
-    })
-  }
 
   return (
     <View style={styles.containerBiblio}>
@@ -90,6 +81,8 @@ export const BiblioScreen = ({ route, navigation }) => {
               </View>
             </View>
           ))}
+
+
       </View>
       <LinearGradient
         // Background Linear Gradient

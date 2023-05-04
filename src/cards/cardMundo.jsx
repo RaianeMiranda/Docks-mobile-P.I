@@ -127,6 +127,11 @@ export const CarouselCards2 = ({ bookId, userId, navigation }) => {
                     marginHorizontal: 0,
                     backgroundColor: 'rgba(0, 0, 0, 0.92)',
                 }}
+                useRef={{
+                    paddingLeft: "18.5px",
+                    paddingRight: "158.5px",
+                    marginBottom: 30
+                }}
                 inactiveDotOpacity={0}
                 inactiveDotScale={0.6}
                 tappableDots={true}

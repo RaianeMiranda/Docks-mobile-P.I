@@ -1,12 +1,14 @@
 import { LinearGradient } from 'expo-linear-gradient'
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Image } from "react-native"
+import { View, Text, Image } from "react-native"
 import { Button, Paragraph } from 'react-native-paper'
 import { CarouselCards2 } from '../cards/cardMundo'
 import { CarouselCards1 } from '../cards/cardSnow'
 import { colors, styles, locations } from '../config/styles'
 import { CarouselCards3 } from '../cards/cardPersona'
-import { auth } from '../config/firebase/firebase'
+import { auth, database } from '../config/firebase/firebase'
+import { doc, deleteDoc } from "firebase/firestore";
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export const PaginaInicial = ({ route, navigation }) => {
     const [bookId, setBookId] = useState('');
@@ -17,7 +19,14 @@ export const PaginaInicial = ({ route, navigation }) => {
     if (!user) {
         throw new Error("Usuário não autenticado.");
     }
-
+    function handleExcluir(bookId) {
+        deleteDoc(
+            doc(database, "livros", bookId)
+        ).then(() => {
+            navigation.navigate("Biblioteca")
+            console.log("Livro excluído com sucesso")
+        })
+    }
     useEffect(() => {
         setBookId(route.params.bookId);
         setNomeBook(route.params.nomeBook);
@@ -67,6 +76,35 @@ export const PaginaInicial = ({ route, navigation }) => {
                         <View style={styles.viewcardper}>
                             <CarouselCardsContainer bookId={bookId} userId={userId} />
                         </View>
+                    </View>
+                </View>
+                <View style={{ maxWidth: 300, margin: "auto" }}>
+                    <View style={styles.containersalvarper}>
+                        <Button style={{
+                            backgroundColor: "#E88A8A", border: "3px solid  #D9D9D9", borderRadius: "1px", height: "40px", width: "90px", fontSize: "13px", display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            marginRight: "150px"
+                        }} mode="contained" onPress={() => handleExcluir(bookId)}>
+                            <Text style={{ color: "black", fontWeight: "bold", fontSize: 13 }}>Deletar Livro</Text>
+                        </Button>
+                        <TouchableOpacity
+                            style={{
+                                backgroundColor: "#D5ECB6",
+                                border: "3px solid #D9D9D9",
+                                borderRadius: "1px",
+                                height: "40px",
+                                width: "90px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                            mode="contained"
+                            onPress={() => navigation.navigate("Atualizar Livros", { bookId: bookId, userId: userId })}
+                        >
+                            <Text style={{ fontSize: "13px", fontWeight: "bold", color: "black" }}> Editar Livro </Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>

@@ -59,7 +59,7 @@ export const CadScreen = ({ navigation }) => {
             createUserWithEmailAndPassword(auth, email.value, password.value)
                 .then((value) => {
                     console.log("Cadastrado com sucesso! " + value.user.uid);
-                    navigation.navigate("Inicial", {
+                    navigation.navigate("Login", {
                         mensagem: "Você se registrou com muito sucesso!",
                     });
                 })

@@ -36,9 +36,7 @@ import LogOutScreen from "../screens/logOutScreen";
 import { ConfigScreen } from "../screens/ConfigScreen";
 
 const Drawer = createDrawerNavigator();
-function NoHeader(props) {
-    return <LoginScreen {...props} options={{ headerShown: false }} />;
-}
+
 const CustomDrawer = (props) => {
     return (
 
@@ -245,7 +243,7 @@ export function MyDrawer() {
 
             <Drawer.Screen
                 name="Login"
-                component={user ? BiblioScreen : NoHeader}
+                component={LoginScreen}
                 options={{ drawerLabel: () => null }}
             />
 
@@ -390,7 +388,7 @@ export function MyDrawer() {
             <Drawer.Screen options={{
                 headerTitleAlign: "center",
                 headerLeft: () => (
-                    <TouchableOpacity onPress={() => navigation.navigate("Capítulos")}>
+                    <TouchableOpacity onPress={() => navigation.navigate("Biblioteca")}>
                         <Image
                             source={require("../Images/Voltar.png")}
                             style={styles.drawerFotoVoltar}

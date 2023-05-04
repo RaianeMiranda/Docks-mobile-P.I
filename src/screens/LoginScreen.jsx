@@ -29,11 +29,9 @@ export const LoginScreen = ({ route, navigation }) => {
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
         const user = userCredential.user;
-        navigation.navigate("HomeNavigation");
+        navigation.navigate("Biblioteca");
       })
-      .catch((error) => {
-        lidarComErro(error.code);
-      });
+      
   }
   return (
     <View style={{ backgroundColor: "#FFF2D8" }} >

@@ -38,146 +38,146 @@ const ModalCadLivros = ({ navigation }) => {
       setNomeLivro("");
       setDescricao("");
       setCapaLivro("");
-      navigation.navigate("Login ", { UserId: user.uid })
+      navigation.navigate("Biblioteca");
     } catch (error) {
-      console.error("Erro ao adicionar livro: ", error.message);
-    }
+  console.error("Erro ao adicionar livro: ", error.message);
+}
   };
 
-  const handleImgURLChange = (url) => {
-    setCapaLivro(url);
-  };
+const handleImgURLChange = (url) => {
+  setCapaLivro(url);
+};
 
-  return (
-    <View style={styles.containerBiblio}>
-      <LinearGradient // Background Linear Gradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={colors}
-        locations={locations}
-        style={{ height: 7, width: "100%" }}
-      />
+return (
+  <View style={styles.containerBiblio}>
+    <LinearGradient // Background Linear Gradient
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 0 }}
+      colors={colors}
+      locations={locations}
+      style={{ height: 7, width: "100%" }}
+    />
 
-      <View
-        style={{
-          backgroundColor: "white",
-          height: 380,
-          borderRadius: 25,
-          width: 220,
-          margin: "auto",
-          marginTop: "30px",
-        }}
-      >
-        <View>
-          <View
+    <View
+      style={{
+        backgroundColor: "white",
+        height: 380,
+        borderRadius: 25,
+        width: 220,
+        margin: "auto",
+        marginTop: "30px",
+      }}
+    >
+      <View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            justifyContent: "space-around",
+          }}
+        >
+          <Text
             style={{
-              flex: 1,
-              flexDirection: "row",
-              justifyContent: "space-around",
+              fontWeight: "bold",
+              fontSize: 25,
+              marginBottom: 15,
+              marginTop: 15,
             }}
           >
-            <Text
-              style={{
-                fontWeight: "bold",
-                fontSize: 25,
-                marginBottom: 15,
-                marginTop: 15,
-              }}
-            >
-              Criar Livros
-            </Text>
-          </View>
-          <View style={{ alignItems: "center" }}>
-            <View>
-              {capaLivro ? (
-                <TouchableOpacity onPress={setCapaLivro}>
-                  <ImageBackground
-                    style={{ width: "130px", height: "180px", margin: "auto" }}
-                    source={{ uri: capaLivro }}
-                  >
-                    <ImagePicker
-                      onImgURLChange={handleImgURLChange}
-                    ></ImagePicker>
-                  </ImageBackground>
-                </TouchableOpacity>
-              ) : (
+            Criar Livros
+          </Text>
+        </View>
+        <View style={{ alignItems: "center" }}>
+          <View>
+            {capaLivro ? (
+              <TouchableOpacity onPress={setCapaLivro}>
                 <ImageBackground
-                  source={require("../Images/CriarLivros.png")}
                   style={{ width: "130px", height: "180px", margin: "auto" }}
+                  source={{ uri: capaLivro }}
                 >
                   <ImagePicker
                     onImgURLChange={handleImgURLChange}
                   ></ImagePicker>
                 </ImageBackground>
-              )}
-            </View>
+              </TouchableOpacity>
+            ) : (
+              <ImageBackground
+                source={require("../Images/CriarLivros.png")}
+                style={{ width: "130px", height: "180px", margin: "auto" }}
+              >
+                <ImagePicker
+                  onImgURLChange={handleImgURLChange}
+                ></ImagePicker>
+              </ImageBackground>
+            )}
           </View>
+        </View>
+        <Text
+          style={{
+            fontSize: "25px",
+            marginTop: "20px",
+
+            marginLeft: "20px",
+          }}
+        >
+          Título
+        </Text>
+        <TextInput
+          mode="outlined"
+          underlineColor="#F4CCC8"
+          outlineColor="#F4CCC8"
+          activeOutlineColor="#A5A5A5"
+          style={{
+            width: "180px",
+            height: 30,
+            backgroundColor: "#F4CCC8",
+            borderColor: "#F4CCC8",
+            borderTopRightRadius: 0,
+            borderTopLeftRadius: 0,
+            margin: "auto",
+          }}
+          label="Nome do livro"
+          value={nomeLivro}
+          onChangeText={setNomeLivro}
+        />
+
+        <Button
+          style={{
+            borderWidth: 3,
+            borderColor: "#D9D9D9",
+            backgroundColor: "#D5ECB6",
+
+            width: "50px",
+            borderRadius: 0,
+            height: "30PX",
+            marginTop: "15px",
+            marginLeft: "135px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          onPress={handleAdd}
+        >
           <Text
             style={{
-              fontSize: "25px",
-              marginTop: "20px",
-
-              marginLeft: "20px",
+              fontWeight: "bold",
+              fontSize: "15px",
             }}
           >
-            Título
+            Salvar
           </Text>
-          <TextInput
-            mode="outlined"
-            underlineColor="#F4CCC8"
-            outlineColor="#F4CCC8"
-            activeOutlineColor="#A5A5A5"
-            style={{
-              width: "180px",
-              height: 30,
-              backgroundColor: "#F4CCC8",
-              borderColor: "#F4CCC8",
-              borderTopRightRadius: 0,
-              borderTopLeftRadius: 0,
-              margin: "auto",
-            }}
-            label="Nome do livro"
-            value={nomeLivro}
-            onChangeText={setNomeLivro}
-          />
-
-          <Button
-            style={{
-              borderWidth: 3,
-              borderColor: "#D9D9D9",
-              backgroundColor: "#D5ECB6",
-
-              width: "50px",
-              borderRadius: 0,
-              height: "30PX",
-              marginTop: "15px",
-              marginLeft: "135px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            onPress={handleAdd}
-          >
-            <Text
-              style={{
-                fontWeight: "bold",
-                fontSize: "15px",
-              }}
-            >
-              Salvar
-            </Text>
-          </Button>
-        </View>
+        </Button>
       </View>
-      <LinearGradient // Background Linear Gradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={colors}
-        locations={locations}
-        style={{ height: 7, width: "100%", marginTop: "85%" }}
-      />
     </View>
-  );
+    <LinearGradient // Background Linear Gradient
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 0 }}
+      colors={colors}
+      locations={locations}
+      style={{ height: 7, width: "100%", marginTop: "85%" }}
+    />
+  </View>
+);
 };
 
 

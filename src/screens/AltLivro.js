@@ -6,53 +6,51 @@ import { LinearGradient } from "expo-linear-gradient";
 import { auth, database } from "../config/firebase/firebase";
 import ImagePicker from "./ImagePicker";
 import { colors, locations, styles } from "../config/styles";
+import { useEffect } from "react";
 
 const AltLivro = ({ navigation, route }) => { // route is passed as a prop
-  const { bookID } = route.params; // get bookID from route
-
+  const { bookId } = route.params; // get bookID from route
   const [nomeLivro, setNomeLivro] = React.useState("");
-  const [descricao, setDescricao] = React.useState("");
   const [capaLivro, setCapaLivro] = React.useState("");
-
-  React.useEffect(() => {
-    const fetchBook = async () => {
-      try {
-        const bookDoc = await getDoc(doc(database, "livros", bookID)); // retrieve the book's data by its ID
-        if (bookDoc.exists()) {
-          const bookData = bookDoc.data();
-          setNomeLivro(bookData.nomeLivro);
-          setDescricao(bookData.descricao);
-          setCapaLivro(bookData.capaLivro);
-        } else {
-          throw new Error("Livro não encontrado");
-        }
-      } catch (error) {
-        console.error("Erro ao buscar o livro: ", error.message);
-      }
-    };
-    fetchBook();
-  }, [bookID]);
+  const user = auth.currentUser;
+  if (!user) {
+    throw new Error("Usuário não autenticado.");
+  }
 
   const handleUpdate = async () => {
     try {
-      const user = auth.currentUser;
-      if (!user) {
-        throw new Error("Usuário não autenticado.");
-      }
+      console.log(route);
+      const docRef = doc(database, "livros", route.params.bookId);
 
-      await updateDoc(doc(database, "livros", bookID), { // use the bookID to update the book's data
+      await updateDoc(docRef, {
         nomeLivro: nomeLivro,
-        descricao: descricao,
-        capaLivro: capaLivro
+        capaLivro: capaLivro,
       });
-      console.log("Livro atualizado com sucesso");
+      navigation.navigate("Biblioteca");
+      console.log("livros atualizado com ID: ", route.params.bookId);
     } catch (error) {
-      console.error("Erro ao editar o livro: ", error.message);
+      console.error("Erro ao atualizar livros: ", error.message);
     }
-  };
+  }
 
+  useEffect(() => {
+    const fetchPreviousContent = async () => {
+      try {
+        const docRef = doc(database, "livros", route.params.bookId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setNomeLivro(docSnap.data().nomeLivro);
+          setCapaLivro(docSnap.data().capaLivro);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar conteúdo anterior: ", error.message);
+      }
+    };
+
+    fetchPreviousContent();
+  }, [route.params.capId]);
   const handleImgURLChange = (url) => {
-    setCapaLivro({uri: url});
+    setCapaLivro({ uri: url });
   };
 
   return (
@@ -65,15 +63,17 @@ const AltLivro = ({ navigation, route }) => { // route is passed as a prop
         style={{ height: 7, width: "100%", }}
       />
 
-      <View style={{
-        backgroundColor: "white",
-        height: 450,
-        borderRadius: 25,
-        width: 220,
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
-      }}>
+      <View
+        style={{
+          backgroundColor: "white",
+          height: 380,
+          justifyContent: "center",
+          borderRadius: 25,
+          width: 220,
+          margin: "auto",
+          marginTop: "30px",
+        }}
+      >
         <View>
           <View
             style={{
@@ -89,7 +89,7 @@ const AltLivro = ({ navigation, route }) => { // route is passed as a prop
                 marginBottom: 10,
               }}
             >
-             Editar Livro
+              Editar Livro
             </Text>
           </View>
           <View style={{ alignItems: "center" }}>
@@ -105,7 +105,7 @@ const AltLivro = ({ navigation, route }) => { // route is passed as a prop
                 </TouchableOpacity>
               ) : (
                 <ImageBackground
-                  source={require("../Images/CriarLivros.png")}
+                  source={{ uri: { capaLivro } }}
                   style={{ width: 130, height: 180 }}
                 >
                   <ImagePicker onImgURLChange={handleImgURLChange}></ImagePicker>
@@ -134,7 +134,7 @@ const AltLivro = ({ navigation, route }) => { // route is passed as a prop
               borderTopLeftRadius: 0,
               marginLeft: "20px",
             }}
-            label="Nome do livro"
+            label="Nome do Livro"
             value={nomeLivro}
             onChangeText={setNomeLivro}
           />
@@ -171,7 +171,7 @@ const AltLivro = ({ navigation, route }) => { // route is passed as a prop
         end={{ x: 1, y: 0 }}
         colors={colors}
         locations={locations}
-        style={{ height: 7, width: "100%", marginTop: "135%" }}
+        style={{ height: 7, width: "100%", marginTop: 265 }}
       />
     </View>
   );
